@@ -1,10 +1,12 @@
 <?php
-$attributes		= $settings->attributeData ?? true;
-$attributeTypes	= $settings->attributeTypes ?? null;
+$attributes		= $settings->attributes ?? $widget->attributes;
+$attributeTypes	= isset( $settings ) && !empty( $settings->attributeTypes ) ? $settings->attributeTypes : null;
+
+$attributeWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->attributeWrapClass;
 ?>
 
 <?php if( $attributes ) { ?>
-	<div class="page-content-meta">
+	<div class="box-content-meta <?= $attributeWrapClass ?>">
 		<?php
 
 			$attributeTypes = preg_split( '/,/', $attributeTypes );
@@ -26,7 +28,7 @@ $attributeTypes	= $settings->attributeTypes ?? null;
 
 				$title = isset( $attribute->label ) ? $attribute->label : ucfirst( $attribute->name );
 		?>
-				<div class="page-meta">
+				<div class="box-meta">
 					<span class="h5 inline-block"><?= $title ?></span> - <span class="inline-block"><?= $attribute->value ?></span>
 				</div>
 		<?php

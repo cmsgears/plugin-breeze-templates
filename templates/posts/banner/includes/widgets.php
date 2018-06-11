@@ -15,7 +15,7 @@ $widgetsDir = dirname( __DIR__ ) . '/widgets';
 	'options' => [ 'class' => 'card-posts' ],
 	'wrapperOptions' => [ 'class' => 'card-post-wrap row content-90 max-cols-50' ],
 	'singleOptions' => [ 'class' => 'card card-banner col col5 row' ],
-	'templateDir' => $widgetsDir, 'template' => 'card'
+	'templateDir' => '@cmsgears/plugin-btemplates/templates/posts/widgets', 'template' => 'card'
 ])?>
 
 <?php } ?>

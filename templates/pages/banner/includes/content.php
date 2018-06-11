@@ -12,7 +12,7 @@ $contentSocial	= $settings->contentSocial ?? false;
 $contentLabels	= $settings->contentLabels ?? false;
 
 $contentData		= isset( $settings ) && $settings->contentData ? $modelContent->content : null;
-$contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : 'row content-90';
+$contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : null;
 $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDataClass : 'reader';
 ?>
 
@@ -39,6 +39,5 @@ $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDa
 		<div class="page-content-buffer"></div>
 		<?php include dirname( __FILE__ ) . '/attributes.php' ?>
 		<?php include dirname( __FILE__ ) . '/elements.php' ?>
-		<?php include dirname( __FILE__ ) . '/comments.php' ?>
 	</div>
 <?php } ?>

@@ -22,9 +22,10 @@ $title			= !empty( $model->title ) ? $model->title : $model->name;
 <?php } else { ?>
 	<div class="card-bkg"></div>
 <?php } ?>
-
-<div class="card-header valign-center">
-	<div class="card-header-title h3 text text-default-r align align-center">
-		<a href="<?= $modelUrl ?>"><?= $title ?></a>
+<div class="card-content-wrap">
+	<div class="card-header valign-center">
+		<div class="card-header-title h3 text text-default-r align align-center">
+			<a href="<?= $modelUrl ?>"><?= $title ?></a>
+		</div>
 	</div>
 </div>

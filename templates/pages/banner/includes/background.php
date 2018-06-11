@@ -17,9 +17,7 @@ $textureClass	= !empty( $model->texture ) && $model->texture !== 'texture' ? $mo
 
 // Max Cover ----------------
 
-$maxCover			= $settings->maxCover ?? false;
-$maxCoverClass		= !empty( $settings->maxCoverClass ) ? $settings->maxCoverClass : null;
-$maxCoverContent	= !empty( $settings->maxCoverContent ) ? $settings->maxCoverContent : null;
+$maxCover	= $settings->maxCover ?? false;
 
 // Background ---------------
 
@@ -51,7 +49,5 @@ $slides		= isset( $gallery ) ? $gallery->files : [];
 <?php } ?>
 
 <?php if( $maxCover ) { ?>
-	<div class="max-cover <?= $maxCoverClass ?>">
-		<?= $maxCoverContent ?>
-	</div>
+	<div class="max-cover"></div>
 <?php } ?>

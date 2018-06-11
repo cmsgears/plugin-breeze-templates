@@ -12,13 +12,13 @@ use cmsgears\widgets\comment\submit\SubmitComment;
 			'options' => [ 'id' => 'wrap-comments' ],
 			'parentId' => $model->id,
 			'parentType' => CmsGlobal::TYPE_POST,
-			'templateDir' => '@themeTemplates/widget/comment'
+			'templateDir' => '@cmsgears/plugin-btemplates/templates/widgets/page/banner/comment'
 		]) ?>
 		<?= SubmitComment::widget([
 			'options' => [ 'class' => 'comment-submit' ],
 			'ajaxUrl' => "cms/post/submit-comment?slug=$model->slug&type=$model->type",
 			'model' => $model,
-			'templateDir' => '@themeTemplates/widget/comment/submit'
+			'templateDir' => '@cmsgears/plugin-btemplates/templates/widgets/page/banner/comment/submit'
 		]) ?>
 	</div>
 <?php } ?>

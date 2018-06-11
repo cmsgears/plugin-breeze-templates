@@ -1,21 +1,12 @@
 <?php
-// Yii Imports
-use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
+$content			= $settings->content ?? $widget->content;
+$contentTitle		= isset( $settings ) && $settings->contentTitle && !empty( $model->displayName ) ? $model->displayName : $widget->contentTitle;
+$contentInfo		= isset( $settings ) && $settings->contentInfo && !empty( $model->description ) ? $model->description : $widget->contentInfo;
+$contentSummary		= isset( $settings ) && $settings->contentSummary && !empty( $model->summary ) ? $model->summary : $widget->contentSummary;
+$contentData		= isset( $settings ) && $settings->contentData && !empty( $model->content ) ? $model->content : $widget->contentData;
 
-// Meta ---------------------
-
-$attributes		= $settings->attributeData ?? $widget->attributes;
-$attributeTypes	= $settings->attributeTypes ?? $widget->attributeTypes;
-
-// Elements -----------------
-
-$elements		= $settings->elements ?? $widget->elements;
-$elementType	= $settings->elementType ?? $widget->elementType;
-
-$boxWrapClass	= !empty( $settings->boxWrapClass ) ? $settings->boxWrapClass : $widget->boxWrapClass;
-$boxWrapper		= !empty( $settings->boxWrapper ) ? $settings->boxWrapper : $widget->boxWrapper;
-$boxClass		= !empty( $settings->boxClass ) ? $settings->boxClass : $widget->boxClass;
+$contentClass		= isset( $settings ) && !empty( $settings->contentClass ) ? $settings->contentClass : $widget->contentClass;
+$contentDataClass	= isset( $settings ) && !empty( $settings->contentDataClass ) ? $settings->contentDataClass : $widget->contentDataClass;
 ?>
 
 <?php if( $content ) { ?>
@@ -37,63 +28,7 @@ $boxClass		= !empty( $settings->boxClass ) ? $settings->boxClass : $widget->boxC
 				<?= $widget->bufferData ?>
 			<?php } ?>
 		</div>
-		<?php if( $attributes ) { ?>
-			<div class="box-content-meta">
-				<?php
-
-					$attributeTypes = preg_split( '/,/', $attributeTypes );
-
-					if( count( $attributeTypes ) == 1 ) {
-
-						$attributes = $model->getActiveMetasByType( $attributeTypes[ 0 ] );
-					}
-					else if( count( $attributeTypes ) > 1 ) {
-
-						$attributes = $model->getActiveMetasByTypes( $attributeTypes );
-					}
-					else {
-
-						$attributes = $model->activeMetas;
-					}
-
-					foreach( $attributes as $attribute ) {
-
-						$title = isset( $attribute->label ) ? $attribute->label : ucfirst( $attribute->name );
-				?>
-						<div class="box-meta">
-							<span class="h5 inline-block"><?= $title ?></span> - <span class="inline-block"><?= $attribute->value ?></span>
-						</div>
-				<?php
-					}
-				?>
-			</div>
-		<?php } ?>
-		<?php if( $elements ) { ?>
-			<div class="block-box-wrap <?= $boxWrapClass ?>">
-				<?php
-					$elements = $model->activeElements;
-
-					if( !empty( $elementType ) ) {
-
-						$telements	= Yii::$app->factory->get( 'elementService' )->getActiveByType( $elementType );
-						$elements	= ArrayHelper::merge( $elements, $telements );
-					}
-
-					foreach( $elements as $element ) {
-
-						$elementContent = ElementWidget::widget( [ 'model' => $element ] );
-
-						if( !empty( $boxClass ) ) {
-
-							echo Html::tag( $boxWrapper, $elementContent, [ 'class' => $boxClass ] );
-						}
-						else {
-
-							echo $elementContent;
-						}
-					}
-				?>
-			</div>
-		<?php } ?>
+		<?php include __DIR__ . '/attributes.php'; ?>
+		<?php include __DIR__ . '/elements.php'; ?>
 	</div>
 <?php } ?>

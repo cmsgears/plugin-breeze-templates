@@ -6,9 +6,7 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 
 // Max Cover ----------------
 
-$maxCover			= $settings->maxCover ?? $widget->maxCover;
-$maxCoverClass		= $settings->maxCoverClass ?? $widget->maxCoverClass;
-$maxCoverContent	= $settings->maxCoverContent ?? $widget->maxCoverContent;
+$maxCover	= $settings->maxCover ?? $widget->maxCover;
 
 // Background ---------------
 
@@ -16,9 +14,9 @@ $bkg		= $settings->bkg ?? $widget->bkg;
 $bkgClass	= $settings->bkgClass ?? $widget->bkgClass;
 
 $texture		= $settings->texture ?? $widget->texture;
-$textureClass	= !empty( $model->texture ) ? $model->texture : "texture $widget->textureClass";
+$textureClass	= !empty( $model->texture ) ? $model->texture : $widget->textureClass;
 
-$banner		= $settings->defaultBanner || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
+$banner		= ( isset( $settings ) && $settings->defaultBanner ) || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
 $bannerUrl	= CodeGenUtil::getFileUrl( $model->banner, [ 'image' => $banner ] );
 $bkgUrl		= $bannerUrl ?? $widget->bkgUrl;
 ?>
@@ -32,7 +30,5 @@ $bkgUrl		= $bannerUrl ?? $widget->bkgUrl;
 <?php } ?>
 
 <?php if( $maxCover ) { ?>
-	<div class="max-cover <?= $maxCoverClass ?>">
-		<?= $maxCoverContent ?>
-	</div>
+	<div class="max-cover"></div>
 <?php } ?>

@@ -31,7 +31,6 @@ $publishedAt	= date( 'F d, Y', strtotime( $content->publishedAt ) );
 <?php } else { ?>
 	<div class="card-bkg"></div>
 <?php } ?>
-
 <div class="card-content-wrap">
 	<div class="card-header">
 		<div class="card-header-title h3 text text-default-r">
@@ -46,11 +45,12 @@ $publishedAt	= date( 'F d, Y', strtotime( $content->publishedAt ) );
 			<p class="author h5 text text-default margin margin-small-h"><?= $authorName ?></p>
 		</div>
 	</div>
-	<div class="card-footer">
+	<div class="card-footer row">
 		<hr/>
-		<div class="row">
+		<div class="col col2">
 			<i class="cmti cmti-calendar"></i>
 			<span class="inline-block margin margin-small-h"><?= $publishedAt ?></span>
 		</div>
+		<div class="col col2"></div>
 	</div>
 </div>
