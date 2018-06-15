@@ -1,0 +1,31 @@
+<?php
+// Yii Imports
+use yii\helpers\Url;
+use yii\widgets\ActiveForm;
+?>
+<div class="page-form rounded rounded-medium">
+	<div class="h3 align align-center margin margin-bottom-medium">Activate Account</div>
+	<?php if( Yii::$app->session->hasFlash( 'message' ) ) {  ?>
+		<p class="margin margin-medium-v"><?=Yii::$app->session->getFlash( 'message' )?></p>
+	<?php } else { ?>
+		<?php $form = ActiveForm::begin( [ 'id' => 'frm-account', 'options' => [ 'class' => 'form frm-rounded-all' ] ] ); ?>
+
+			<div class="frm-split-40-60">
+				<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email', 'readOnly' => true ] ) ?>
+				<?= $form->field( $formModel, 'password' )->passwordInput( [ 'placeholder' => 'Password' ] ) ?>
+				<?= $form->field( $formModel, 'password_repeat' )->passwordInput( [ 'placeholder' => 'Repeat Password' ] ) ?>
+			</div>
+
+			<div class="row max-cols-50 padding padding-small-v">
+				<div class="col col2">
+					<label>
+						<a href="<?= Url::toRoute( [ '/login' ] ) ?>">Login ?</a>
+					</label>
+				</div>
+				<div class="col col2 align align-right">
+					<input class="element-medium" type="submit" value="Submit" />
+				</div>
+			</div>
+		<?php ActiveForm::end(); ?>
+	<?php } ?>
+</div>
