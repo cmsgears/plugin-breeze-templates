@@ -9,7 +9,7 @@ $modelContent = $model->modelContent;
 
 $data			= json_decode(  $model->data );
 $settings		= $data->settings ?? null;
-$templateClass	= isset( $modelContent->template ) ? "page-{$modelContent->template->slug}" : 'page-default';
+$templateClass	= isset( $modelContent->template ) ? "page-default page-{$modelContent->template->slug}" : 'page-default';
 
 // Sidebars -----------------------
 
@@ -19,9 +19,11 @@ $leftSidebar	= $settings->leftSidebar ?? false;
 $rightSidebar	= $settings->rightSidebar ?? false;
 
 $pageIncludes = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default' ) . '/includes';
+
+$buffer = "$pageIncludes/buffer.php";
 ?>
 <?php include "$pageIncludes/styles.php"; ?>
-<div id="page-<?= $model->slug ?>" class="page page-basic <?= $templateClass ?> page-model-<?= $model->type ?> page-<?= $model->slug ?>" cmt-block="block-full-auto">
+<div id="page-<?= $model->slug ?>" class="page page-basic <?= $templateClass ?> page-model-<?= $model->type ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">
 	<?php include "$pageIncludes/background.php"; ?>
 	<div class="page-content-wrap">
 		<?php include "$pageIncludes/header.php"; ?>

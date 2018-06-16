@@ -8,7 +8,7 @@ $modelContent	= $model->modelContent;
 
 $data			= json_decode(  $model->data );
 $settings		= $data->settings ?? null;
-$templateClass	= isset( $modelContent->template ) ? "page-{$modelContent->template->slug}" : 'page-default';
+$templateClass	= isset( $modelContent->template ) ? "page-default page-{$modelContent->template->slug}" : 'page-default';
 
 // Sidebars -----------------------
 

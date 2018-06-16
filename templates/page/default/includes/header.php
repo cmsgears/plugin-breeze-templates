@@ -15,7 +15,7 @@ $headerBanner	= $settings->headerBanner ?? false;
 $headerGallery	= $settings->headerGallery ?? false;
 
 $avatar			= isset( $settings ) && $settings->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
-$headerIconUrl	= CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] );
+$headerIconUrl	= isset( $model->avatar ) ? CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( null, [ 'image' => $avatar ] );
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $headerIconUrl;
 
 $headerBanner	= $headerBanner && !empty( $bannerUrl );

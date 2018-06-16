@@ -1,9 +1,7 @@
 <?php
-$siteProperties		= $this->context->getSiteProperties();
-$commentProperties	= $this->context->getCommentProperties();
-$cmsProperties		= $this->context->getCmsProperties();
+$siteProperties	= $this->context->getSiteProperties();
 
-$modelContent = $model->modelContent;
+$modelContent	= $model->modelContent;
 
 // Config -------------------------
 
@@ -20,7 +18,7 @@ $rightSidebar	= $settings->rightSidebar ?? false;
 
 $pageIncludes = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default' ) . '/includes';
 
-$buffer = "$pageIncludes/buffer.php";
+$buffer = dirname( __FILE__ ) . '/includes/buffer.php';
 ?>
 <?php include "$pageIncludes/styles.php"; ?>
 <div id="page-<?= $model->slug ?>" class="page page-basic <?= $templateClass ?> page-model-<?= $model->type ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">
@@ -38,15 +36,7 @@ $buffer = "$pageIncludes/buffer.php";
 					</div>
 				<?php } ?>
 				<div class="colf colf-sidebar-filler <?= $leftSidebar && $rightSidebar ? 'colf12x6' : 'colf12x9' ?>">
-					<div class="row">
-						<div class="colf colf12x4 align align-center">
-							<?php include dirname( __FILE__ ) . '/includes/author.php'; ?>
-						</div>
-						<div class="colf colf12x8">
-							<?php include "$pageIncludes/content.php"; ?>
-						</div>
-					</div>
-					<?php include "$pageIncludes/comments.php"; ?>
+					<?php include dirname( __FILE__ ) . '/includes/content.php'; ?>
 				</div>
 				<?php if( $rightSidebar ) { ?>
 					<div class="colf colf12x3">
@@ -56,15 +46,7 @@ $buffer = "$pageIncludes/buffer.php";
 			</div>
 		<?php } else { ?>
 			<div class="page-content-row row content-90">
-				<div class="row">
-					<div class="colf colf12x4 align align-center">
-						<?php include dirname( __FILE__ ) . '/includes/author.php'; ?>
-					</div>
-					<div class="colf colf12x8">
-						<?php include "$pageIncludes/content.php"; ?>
-					</div>
-				</div>
-				<?php include "$pageIncludes/comments.php"; ?>
+				<?php include dirname( __FILE__ ) . '/includes/content.php'; ?>
 			</div>
 		<?php } ?>
 		<?php include "$pageIncludes/blocks.php"; ?>

@@ -2,7 +2,7 @@
 // CMG Imports
 use cmsgears\cms\common\utilities\ContentUtil;
 
-$formView = dirname( __FILE__ ) . '/includes/confirm-account.php';
+$formView = dirname( __FILE__ ) . '/includes/forms/confirm-account.php';
 
 $model = isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
 
@@ -15,9 +15,11 @@ $settings	= $data->settings ?? null;
 $pageBanner	= 'banner-page';
 
 $bTemplates = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default' );
+
+$buffer = "$bTemplates/includes/buffer.php";
 ?>
 <?php include "$bTemplates/includes/styles.php"; ?>
-<div id="page-<?= $model->slug ?>" class="page page-default page-model-system page-<?= $model->slug ?>" cmt-block="block-qtf-auto">
+<div id="page-<?= $model->slug ?>" class="page page-default page-model-system page-<?= $model->slug ?>" cmt-block="block-half-auto">
 	<?php include "$bTemplates/includes/background.php"; ?>
 	<div class="page-content-wrap">
 		<?php include "$bTemplates/includes/header.php"; ?>

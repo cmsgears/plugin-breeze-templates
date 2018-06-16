@@ -14,8 +14,6 @@ $contentLabels	= $settings->contentLabels ?? false;
 $contentData		= isset( $settings ) && $settings->contentData ? $modelContent->content : null;
 $contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : null;
 $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDataClass : 'reader';
-
-$cTemplates = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default' );
 ?>
 
 <?php if( $content ) { ?>
@@ -30,7 +28,7 @@ $cTemplates = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default
 			<div class="page-content-summary reader"><?= $contentSummary ?></div>
 		<?php } ?>
 		<?php if( $contentSocial ) { ?>
-			<?php include "$cTemplates/includes/social.php"; ?>
+			<?php include "$bTemplates/includes/social.php"; ?>
 		<?php } ?>
 		<?php if( !empty( $contentData ) ) { ?>
 			<div class="page-content-data reader <?= $contentDataClass ?>"><?= $contentData ?></div>
@@ -41,10 +39,10 @@ $cTemplates = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default
 			</div>
 		<?php } ?>
 		<?php if( $contentLabels ) { ?>
-			<?php include "$cTemplates/includes/labels.php"; ?>
+			<?php include "$bTemplates/includes/labels.php"; ?>
 		<?php } ?>
-		<div class="page-content-buffer"></div>
-		<?php include "$cTemplates/includes/attributes.php"; ?>
-		<?php include "$cTemplates/includes/elements.php"; ?>
+		<?php include $buffer; ?>
+		<?php include "$bTemplates/includes/attributes.php"; ?>
+		<?php include "$bTemplates/includes/elements.php"; ?>
 	</div>
 <?php } ?>
