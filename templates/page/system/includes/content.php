@@ -42,7 +42,5 @@ $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDa
 			<?php include "$bTemplates/includes/labels.php"; ?>
 		<?php } ?>
 		<?php include $buffer; ?>
-		<?php include "$bTemplates/includes/attributes.php"; ?>
-		<?php include "$bTemplates/includes/elements.php"; ?>
 	</div>
 <?php } ?>
