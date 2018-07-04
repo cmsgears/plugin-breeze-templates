@@ -1,5 +1,5 @@
 {
-	"name": "cmsgears/plugin-btemplates",
+	"name": "cmsgears/plugin-breeze-templates",
 	"description": "The Breeze Templates Plugin for CMSGears based projects.",
 	"homepage": "http://www.cmsgears.com",
 	"type": "package",
