@@ -10,7 +10,7 @@ $coreProperties = $this->context->getCoreProperties();
 	<?php
 		if( $coreProperties->isLogin() ) {
 	?>
-	<?php $form = ActiveForm::begin( [ 'id' => 'frm-login', 'options' => [ 'class' => 'form frm-rounded-all' ] ] ); ?>
+	<?php $form = ActiveForm::begin( [ 'id' => 'frm-login', 'options' => [ 'class' => 'form' ] ] ); ?>
 
 		<div class="frm-split-40-60">
 			<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email/Username' ] )->label( 'Email/Username' ) ?>

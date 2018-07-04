@@ -18,7 +18,7 @@ $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDa
 			<div class="col col3x2 h3 align align-left margin margin-bottom-small"><?= $contentTitle ?></div>
 			<div class="col col3 margin margin-bottom-small">
 				<div class="widget widget-search search-box" url="blog/search">
-					<div class="frm-icon-element icon-right">
+					<div class="frm-icon-element icon-right text text-small">
 						<i class="cmti cmti-search"></i>
 						<input class="search-terms" type="text" placeholder="Search Posts" />
 					</div>

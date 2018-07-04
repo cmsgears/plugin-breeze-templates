@@ -69,7 +69,7 @@ $headerGallery	= $headerGallery && !empty( $slides );
 			?>
 			</div>
 		<?php } else { ?>
-			<div class="page-header <?= $headerBanner ? 'page-header-banner valign-center' : 'page-header-text' ?>">
+			<div class="page-header <?= $headerBanner ? 'page-header-banner valign-center cscroller' : 'page-header-text' ?>">
 				<?php include dirname( __FILE__ ) . '/header-content.php'; ?>
 			</div>
 		<?php } ?>

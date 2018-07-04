@@ -16,9 +16,9 @@ $termsLabel = "I agree to the <a href=\"$termsUrl\">Terms</a> and <a href=\"$pri
 
 			if( Yii::$app->session->hasFlash( 'message' ) ) {
 	?>
-				<p class="margin margin-medium-v"><?=Yii::$app->session->getFlash( 'message' )?></p>
+				<p class="margin margin-medium-v reader"><?=Yii::$app->session->getFlash( 'message' )?></p>
 	<?php } else { ?>
-		<?php $form = ActiveForm::begin( [ 'id' => 'frm-register', 'options' => [ 'class' => 'form frm-rounded-all' ] ] ); ?>
+		<?php $form = ActiveForm::begin( [ 'id' => 'frm-register', 'options' => [ 'class' => 'form' ] ] ); ?>
 
 			<div class="frm-split-40-60">
 				<?php if( isset( $typeMap ) ) { ?>

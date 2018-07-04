@@ -6,9 +6,9 @@ use yii\widgets\ActiveForm;
 <div class="page-form rounded rounded-medium">
 	<div class="h3 align align-center margin margin-bottom-medium">Forgot Password</div>
 	<?php if( Yii::$app->session->hasFlash( 'message' ) ) {  ?>
-		<p class="margin margin-medium-v"><?=Yii::$app->session->getFlash( 'message' )?></p>
+		<p class="margin margin-medium-v reader"><?=Yii::$app->session->getFlash( 'message' )?></p>
 	<?php } else { ?>
-		<?php $form = ActiveForm::begin( [ 'id' => 'frm-password', 'options' => [ 'class' => 'form frm-rounded-all' ] ] ); ?>
+		<?php $form = ActiveForm::begin( [ 'id' => 'frm-password', 'options' => [ 'class' => 'form' ] ] ); ?>
 
 			<div class="frm-split-40-60">
 				<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email' ] ) ?>
