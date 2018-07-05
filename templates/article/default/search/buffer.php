@@ -9,7 +9,7 @@ use cmsgears\widgets\blog\ArticleWidget;
 		'options' => [ 'class' => 'card-articles' ],
 		'wrapperOptions' => [ 'class' => 'card-article-wrap row max-cols-50' ],
 		'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
-		'templateDir' => '@cmsgears/plugin-btemplates/templates/widget/article/default', 'template' => 'card'
+		'templateDir' => '@breeze/templates/widget/article/default', 'template' => 'card'
 	]);
 	?>
 </div>

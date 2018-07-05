@@ -4,7 +4,7 @@ $data	= $widget->modelData;
 
 $settings = $data->settings ?? null;
 
-$bTemplates = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/block/default' );
+$bTemplates = Yii::getAlias( '@breeze/templates/block/default' );
 
 $buffer = __DIR__ . '/includes/buffer.php';
 ?>

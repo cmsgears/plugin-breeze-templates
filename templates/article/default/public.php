@@ -18,7 +18,7 @@ $bottomSidebar	= $settings->bottomSidebar ?? false;
 $leftSidebar	= $settings->leftSidebar ?? false;
 $rightSidebar	= $settings->rightSidebar ?? false;
 
-$pageIncludes = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default' ) . '/includes';
+$pageIncludes = Yii::getAlias( '@breeze/templates/page/default' ) . '/includes';
 
 $buffer = "$pageIncludes/buffer.php";
 ?>

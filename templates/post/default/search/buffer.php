@@ -9,7 +9,7 @@ use cmsgears\widgets\blog\PostWidget;
 		'options' => [ 'class' => 'card-posts' ],
 		'wrapperOptions' => [ 'class' => 'card-post-wrap row max-cols-50' ],
 		'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
-		'templateDir' => '@cmsgears/plugin-btemplates/templates/widget/post/default', 'template' => 'card'
+		'templateDir' => '@breeze/templates/widget/post/default', 'template' => 'card'
 	]);
 	?>
 </div>

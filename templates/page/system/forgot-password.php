@@ -15,7 +15,7 @@ $data		= json_decode(  $model->data );
 $settings	= $data->settings ?? null;
 $pageBanner	= 'banner-page';
 
-$bTemplates = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default' );
+$bTemplates = Yii::getAlias( '@breeze/templates/page/default' );
 
 $buffer = "$bTemplates/includes/buffer.php";
 ?>

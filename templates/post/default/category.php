@@ -17,7 +17,7 @@ $bottomSidebar	= $settings->bottomSidebar ?? false;
 $leftSidebar	= $settings->leftSidebar ?? false;
 $rightSidebar	= $settings->rightSidebar ?? false;
 
-$bTemplates = Yii::getAlias( '@cmsgears/plugin-btemplates/templates/page/default' );
+$bTemplates = Yii::getAlias( '@breeze/templates/page/default' );
 
 $buffer = dirname( __FILE__ ) . '/search/category.php';
 ?>

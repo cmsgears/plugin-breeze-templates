@@ -9,7 +9,7 @@ use cmsgears\widgets\blog\PageWidget;
 		'options' => [ 'class' => 'card-pages' ],
 		'wrapperOptions' => [ 'class' => 'card-page-wrap row max-cols-50' ],
 		'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
-		'templateDir' => '@cmsgears/plugin-btemplates/templates/widget/page/default', 'template' => 'card'
+		'templateDir' => '@breeze/templates/widget/page/default', 'template' => 'card'
 	]);
 	?>
 </div>
