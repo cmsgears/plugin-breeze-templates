@@ -57,6 +57,8 @@ class m180502_100000_breeze_cms extends Migration {
 
 		$this->insertWidgetTemplates();
 		$this->insertSidebarTemplates();
+
+		$this->insertMenuTemplates();
     }
 
 	/**
@@ -169,6 +171,23 @@ class m180502_100000_breeze_cms extends Migration {
 			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_SIDEBAR, true, 'Default layout for sidebars.', null, 'default', true, null, false, '@breeze/templates/sidebar/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-default" }', null, null ],
 			[ $master->id, $master->id, 'Vertical Sidebar', CmsGlobal::TEMPLATE_SIDEBAR_VERTICAL, null, CmsGlobal::TYPE_SIDEBAR, true, 'Sidebar displayed vertically on a page.', null, 'default', true, null, false, '@breeze/templates/sidebar/vertical', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-vertical" }', null, null ],
 			[ $master->id, $master->id, 'Horizontal Sidebar', CmsGlobal::TEMPLATE_SIDEBAR_HORIZONTAL, null, CmsGlobal::TYPE_SIDEBAR, true, 'Sidebar displayed horizontally on a page.', null, 'default', true, null, false, '@breeze/templates/sidebar/horizontal', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-horizontal" }', null, null ]
+		];
+
+		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
+	}
+
+	private function insertMenuTemplates() {
+
+		$site	= $this->site;
+		$master	= $this->master;
+
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+
+		$templates = [
+			// Default Templates - Sidebar
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_MENU, true, 'Default layout for menus.', null, 'default', true, null, false, '@breeze/templates/menu/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-default" }', null, null ],
+			[ $master->id, $master->id, 'Vertical Menu', CmsGlobal::TEMPLATE_MENU_VERTICAL, null, CmsGlobal::TYPE_MENU, true, 'Vertical menu.', null, 'default', true, null, false, '@breeze/templates/menu/vertical', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-vertical" }', null, null ],
+			[ $master->id, $master->id, 'Horizontal Menu', CmsGlobal::TEMPLATE_MENU_HORIZONTAL, null, CmsGlobal::TYPE_MENU, true, 'Horizontal Menu.', null, 'default', true, null, false, '@breeze/templates/menu/horizontal', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-horizontal" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
