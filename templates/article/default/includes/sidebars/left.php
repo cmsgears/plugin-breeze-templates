@@ -21,7 +21,6 @@ $leftSidebarSlug = isset( $settings ) && !empty( $settings->leftSidebarSlug ) ? 
 			'wrapperOptions' => [ 'class' => 'article-wrap' ],
 			'singleOptions' => [ 'class' => 'card card-icon' ],
 			'template' => 'sidebar'
-		]);
-		?>
+		])?>
 	</div>
 </div>

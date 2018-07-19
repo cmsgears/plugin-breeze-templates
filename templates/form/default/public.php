@@ -16,9 +16,8 @@ $bottomSidebar	= $settings->bottomSidebar ?? false;
 $leftSidebar	= $settings->leftSidebar ?? false;
 $rightSidebar	= $settings->rightSidebar ?? false;
 
-$pageIncludes = Yii::getAlias( '@breeze/templates/page/default' ) . '/includes';
-
-$buffer = dirname( __FILE__ ) . '/includes/buffer.php';
+$pageIncludes	= Yii::getAlias( '@breeze/templates/page/default' ) . '/includes';
+$buffer			= dirname( __FILE__ ) . '/includes/buffer.php';
 ?>
 <?php include "$pageIncludes/styles.php"; ?>
 <div id="page-<?= $model->slug ?>" class="page page-basic <?= $templateClass ?> page-model-<?= $model->type ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">

@@ -17,15 +17,14 @@ $bottomSidebar	= $settings->bottomSidebar ?? false;
 $leftSidebar	= $settings->leftSidebar ?? false;
 $rightSidebar	= $settings->rightSidebar ?? false;
 
-$bTemplates = Yii::getAlias( '@breeze/templates/page/default' );
-
-$buffer = dirname( __FILE__ ) . '/search/buffer.php';
+$bTemplate	= Yii::getAlias( '@breeze/templates/page/default' );
+$buffer		= dirname( __FILE__ ) . '/search/buffer.php';
 ?>
-<?php include "$bTemplates/includes/styles.php"; ?>
+<?php include "$bTemplate/includes/styles.php"; ?>
 <div id="page-<?= $model->slug ?>" class="page page-basic page-search <?= $templateClass ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">
-	<?php include "$bTemplates/includes/background.php"; ?>
+	<?php include "$bTemplate/includes/background.php"; ?>
 	<div class="page-content-wrap">
-		<?php include "$bTemplates/search/header.php"; ?>
+		<?php include "$bTemplate/search/header.php"; ?>
 		<?php if( $topSidebar ) { ?>
 			<?php include dirname( __FILE__ ) . '/includes/sidebars/top.php'; ?>
 		<?php } ?>
@@ -50,9 +49,9 @@ $buffer = dirname( __FILE__ ) . '/search/buffer.php';
 				<?php include dirname( __FILE__ ) . '/search/content.php'; ?>
 			</div>
 		<?php } ?>
-		<?php "$bTemplates/includes/blocks.php"; ?>
+		<?php "$bTemplate/includes/blocks.php"; ?>
 		<?php include dirname( __FILE__ ) . '/includes/widgets.php'; ?>
-		<?php "$bTemplates/includes/sidebars.php"; ?>
+		<?php "$bTemplate/includes/sidebars.php"; ?>
 		<?php if( $bottomSidebar ) { ?>
 			<?php include dirname( __FILE__ ) . '/includes/sidebars/bottom.php'; ?>
 		<?php } ?>

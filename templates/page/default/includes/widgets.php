@@ -13,7 +13,7 @@ $widgetType	= isset( $settings ) ? $settings->widgetType : null;
 			'options' => [ 'class' => 'card-posts' ],
 			'wrapperOptions' => [ 'class' => 'card-post-wrap row content-90 max-cols-50' ],
 			'singleOptions' => [ 'class' => 'card card-banner col col6 row' ],
-			'templateDir' => '@cmsgears/plugin-btemplates/templates/widget/page/default', 'template' => 'card'
+			'templateDir' => '@breeze/templates/page/default', 'template' => 'card'
 		])?>
 	</div>
 <?php } ?>

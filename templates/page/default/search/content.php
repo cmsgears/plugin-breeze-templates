@@ -35,7 +35,7 @@ $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDa
 			<div class="page-content-data reader <?= $contentDataClass ?>"><?= $contentData ?></div>
 		<?php } ?>
 		<?php include $buffer; ?>
-		<?php include "$bTemplates/includes/attributes.php"; ?>
-		<?php include "$bTemplates/includes/elements.php"; ?>
+		<?php include "$bTemplate/includes/attributes.php"; ?>
+		<?php include "$bTemplate/includes/elements.php"; ?>
 	</div>
 <?php } ?>

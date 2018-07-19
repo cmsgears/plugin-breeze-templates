@@ -9,7 +9,7 @@ $controller	= $data[ 'controller' ];
 $action		= $data[ 'action' ];
 $url		= $data[ 'url' ];
 ?>
-<div id="popup-grid-terminate" class="popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
+<div id="popup-grid-activate" class="popup popup-admin popup-medium <?= $modal ? 'popup-modal' : null ?>">
 	<div class="popup-screen"></div>
 	<?php if( $widget->bkg ) { ?>
 		<div class='popup-bkg <?= $widget->bkgClass ?>' <?= isset( $widget->bkgUrl ) ? "style='background-image:url($widget->bkgUrl);'" : null ?>></div>
@@ -30,9 +30,9 @@ $url		= $data[ 'url' ];
 					<div class="valign-center cmti cmti-2x cmti-spinner-9 spin"></div>
 				</div>
 				<div class="clear filler-height"></div>
-				<h5 class="align align-center">Are you sure you want to terminate the selected <?= $model ?> ?</h5>
+				<h5 class="align align-center">Are you sure you want to activate the selected <?= $model ?> ?</h5>
 				<div class="clear filler-height"></div>
-				<div class="align align-center"><input class="element-medium" type="submit" value="Terminate" /></div>
+				<div class="align align-center"><input class="element-medium" type="submit" value="Activate" /></div>
 			</form>
 		</div>
 	</div>

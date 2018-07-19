@@ -28,7 +28,7 @@ $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDa
 			<div class="page-content-summary reader"><?= $contentSummary ?></div>
 		<?php } ?>
 		<?php if( $contentSocial ) { ?>
-			<?php include "$bTemplates/includes/social.php"; ?>
+			<?php include "$bTemplate/includes/social.php"; ?>
 		<?php } ?>
 		<?php if( !empty( $contentData ) ) { ?>
 			<div class="page-content-data reader <?= $contentDataClass ?>"><?= $contentData ?></div>
@@ -39,7 +39,7 @@ $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDa
 			</div>
 		<?php } ?>
 		<?php if( $contentLabels ) { ?>
-			<?php include "$bTemplates/includes/labels.php"; ?>
+			<?php include "$bTemplate/includes/labels.php"; ?>
 		<?php } ?>
 		<?php include $buffer; ?>
 	</div>

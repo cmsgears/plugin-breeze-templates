@@ -17,9 +17,8 @@ $bottomSidebar	= $settings->bottomSidebar ?? false;
 $leftSidebar	= $settings->leftSidebar ?? false;
 $rightSidebar	= $settings->rightSidebar ?? false;
 
-$bTemplates = Yii::getAlias( '@breeze/templates/page/default' );
-
-$buffer = dirname( __FILE__ ) . '/search/buffer.php';
+$bTemplate	= Yii::getAlias( '@breeze/templates/page/default' );
+$buffer		= dirname( __FILE__ ) . '/search/buffer.php';
 ?>
 <?php include dirname( __FILE__ ) . '/includes/styles.php'; ?>
 <div id="page-<?= $model->slug ?>" class="page page-basic page-search <?= $templateClass ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">
