@@ -13,7 +13,7 @@ $modelContent = $model->modelContent;
 
 $data		= json_decode(  $model->data );
 $settings	= $data->settings ?? null;
-$pageBanner	= 'banner-page';
+$pageBanner	= 'banner-page.jpg';
 
 $bTemplate	= Yii::getAlias( '@breeze/templates/page/default' );
 $buffer		= "$bTemplate/includes/buffer.php";
