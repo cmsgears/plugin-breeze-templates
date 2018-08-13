@@ -4,15 +4,15 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
-$header				= $settings->header ?? true;
-$headerIcon			= $settings->headerIcon ?? false;
+$header				= isset( $settings ) && !empty( $settings->header ) ? $settings->header : false;
+$headerIcon			= isset( $settings ) && !empty( $settings->headerIcon ) ? $settings->headerIcon : false;
 $headerIconClass	= $model->icon;
-$headerTitle		= isset( $settings ) && $settings->headerTitle ? ( !empty( $model->title ) ? $model->title : $model->name ) : null;
+$headerTitle		= isset( $settings ) && $settings->headerTitle ? $model->displayName : null;
 $headerInfo			= isset( $settings ) && $settings->headerInfo ? $model->description : null;
 $headerContent		= isset( $settings ) && $settings->headerContent ? $modelContent->summary : null;
 
-$headerBanner	= $settings->headerBanner ?? false;
-$headerGallery	= $settings->headerGallery ?? false;
+$headerBanner	= isset( $settings ) && !empty( $settings->headerBanner ) ? $settings->headerBanner : false;
+$headerGallery	= isset( $settings ) && !empty( $settings->headerGallery ) ? $settings->headerGallery : false;
 
 $avatar			= isset( $settings ) && $settings->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
 $headerIconUrl	= isset( $model->avatar ) ? CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( null, [ 'image' => $avatar ] );
@@ -70,14 +70,14 @@ $headerGallery	= $headerGallery && !empty( $slides );
 			</div>
 		<?php } else { ?>
 			<div class="page-header <?= $headerBanner ? 'page-header-banner valign-center cscroller' : 'page-header-text' ?>">
-				<?php include dirname( __FILE__ ) . '/header-content.php'; ?>
+				<?php include "$pageIncludes/header-content.php"; ?>
 			</div>
 		<?php } ?>
 	</div>
 	<?php if( $headerGallery ) { ?>
 		<div class="page-header-wrap">
 			<div class="page-header page-header-plain">
-				<?php include dirname( __FILE__ ) . '/header-content.php'; ?>
+				<?php include "$pageIncludes/header-content.php"; ?>
 			</div>
 		</div>
 	<?php } ?>

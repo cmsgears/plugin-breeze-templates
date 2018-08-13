@@ -4,7 +4,7 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 ?>
-<div class="block-widget-buffer">
+<div class="block-content-buffer">
 	<?php if( isset( $widget->buffer ) ) { ?>
 		<?= $widget->bufferData ?>
 	<?php } ?>

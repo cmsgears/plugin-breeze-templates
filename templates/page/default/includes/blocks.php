@@ -2,8 +2,7 @@
 // CMG Imports
 use cmsgears\widgets\elements\blocks\BlockWidget;
 
-$blocks		= isset( $settings ) ? $settings->blocks : true;
-$blockType	= isset( $settings ) ? $settings->blockType : null;
+$blockType = isset( $settings ) && !empty( $settings->blockType ) ? $settings->blockType : null;
 ?>
 
 <?php
@@ -24,7 +23,7 @@ $blockType	= isset( $settings ) ? $settings->blockType : null;
 
 			foreach( $blocks as $block ) {
 		?>
-				<div class="page-block"><?= BlockWidget::widget( [ 'model' => $block ] ) ?></div>
+				<?= BlockWidget::widget( [ 'model' => $block ] ) ?>
 		<?php } ?>
 		</div>
 <?php

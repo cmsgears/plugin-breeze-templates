@@ -58,13 +58,13 @@ class m180502_110000_breeze_shop_base extends Migration {
 
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
 			// Default Templates - Shop Page
-			[ $master->id, $master->id, 'Cart', ShopGlobal::TEMPLATE_CART, null, CmsGlobal::TYPE_PAGE, true, 'Cart layout for shop page.', null, 'default', true, 'page/default', false, '@breeze/templates/shop/cart/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-cart" }', null, null ],
-			[ $master->id, $master->id, 'Checkout', ShopGlobal::TEMPLATE_CHECKOUT, null, CmsGlobal::TYPE_PAGE, true, 'Checkout layout for shop page.', null, 'default', true, 'page/default', false, '@breeze/templates/shop/checkout/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-checkout" }', null, null ],
-			[ $master->id, $master->id, 'Payment', ShopGlobal::TEMPLATE_PAYMENT, null, CmsGlobal::TYPE_PAGE, true, 'Payment layout for shop page.', null, 'default', true, 'page/default', false, '@breeze/templates/shop/payment/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-payment" }', null, null ]
+			[ $master->id, $master->id, 'Cart', ShopGlobal::TEMPLATE_CART, null, CmsGlobal::TYPE_PAGE, true, 'Cart layout for shop page.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\PageSettings', '@breeze/templates/page/default/forms', 'default', true, 'page/default', false, '@breeze/templates/shop/cart/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-cart" }', null, null ],
+			[ $master->id, $master->id, 'Checkout', ShopGlobal::TEMPLATE_CHECKOUT, null, CmsGlobal::TYPE_PAGE, true, 'Checkout layout for shop page.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\PageSettings', '@breeze/templates/page/default/forms', 'default', true, 'page/default', false, '@breeze/templates/shop/checkout/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-checkout" }', null, null ],
+			[ $master->id, $master->id, 'Payment', ShopGlobal::TEMPLATE_PAYMENT, null, CmsGlobal::TYPE_PAGE, true, 'Payment layout for shop page.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\PageSettings', '@breeze/templates/page/default/forms', 'default', true, 'page/default', false, '@breeze/templates/shop/payment/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-payment" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
@@ -77,11 +77,11 @@ class m180502_110000_breeze_shop_base extends Migration {
 
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
 			// Default Templates - Product
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, 'product', true, 'Product layout for products.', null, 'default', true, 'product/default', false, '@breeze/templates/shop/product/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-product" }', null, null ]
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, 'product', true, 'Product layout for products.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\ProductSettings', '@breeze/templates/shop/product/default/forms', 'default', true, 'product/default', false, '@breeze/templates/shop/product/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-product" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );

@@ -5,7 +5,6 @@ use yii\helpers\Html;
 // CMG Imports
 use cmsgears\widgets\elements\elements\ElementWidget;
 
-$elements		= $settings->elements ?? true;
 $elementType	= isset( $settings ) && !empty( $settings->elementType ) ? $settings->elementType : null;
 
 $boxWrapClass	= isset( $settings ) && !empty( $settings->boxWrapClass ) ? $settings->boxWrapClass : 'row';

@@ -1,4 +1,4 @@
-<div class="block-widget-buffer">
+<div class="block-content-buffer">
 	<?php if( isset( $widget->buffer ) ) { ?>
 		<?= $widget->bufferData ?>
 	<?php } ?>

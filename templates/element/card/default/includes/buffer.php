@@ -1,4 +1,4 @@
-<div class="card-widget-buffer">
+<div class="card-content-buffer">
 	<?php if( isset( $widget->buffer ) ) { ?>
 		<?= $widget->bufferData ?>
 	<?php } ?>

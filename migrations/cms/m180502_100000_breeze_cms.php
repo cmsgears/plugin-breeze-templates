@@ -68,14 +68,17 @@ class m180502_100000_breeze_cms extends Migration {
 
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
-			// Default Templates - Page
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_PAGE, true, 'Page layout for pages.', null, 'default', true, 'page/default', false, '@breeze/templates/page/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ],
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_ARTICLE, true, 'Article layout for articles.', null, 'default', true, 'article/default', false, '@breeze/templates/article/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ],
-			// Default Templates - Post
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_POST, true, 'Post layout for blog posts.', null, 'default', true, 'post/default', true, '@breeze/templates/post/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ]
+			// Page - Default, Landing
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_PAGE, true, 'Page layout for pages.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\PageSettings', '@breeze/templates/page/default/forms', 'default', true, 'page/default', false, '@breeze/templates/page/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ],
+			[ $master->id, $master->id, 'Landing', 'landing', null, CmsGlobal::TYPE_PAGE, true, 'Page layout for home page.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\PageSettings', '@breeze/templates/page/default/forms', 'default', true, 'page/landing', false, '@breeze/templates/page/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ],
+			[ $master->id, $master->id, 'QnA', 'qna', 'Questions and Answers', CmsGlobal::TYPE_PAGE, true, 'Page layout for pages having Questions and Answers accordian using page attributes.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\PageSettings', '@breeze/templates/page/default/forms', 'default', true, 'page/default', false, '@breeze/templates/page/qna', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ],
+			// Article - Default
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_ARTICLE, true, 'Article layout for articles.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\PageSettings', '@breeze/templates/page/default/forms', 'default', true, 'article/default', false, '@breeze/templates/article/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ],
+			// Post - Default
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_POST, true, 'Post layout for blog posts.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\PageSettings', '@breeze/templates/page/default/forms', 'default', true, 'post/default', true, '@breeze/templates/post/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
@@ -88,11 +91,11 @@ class m180502_100000_breeze_cms extends Migration {
 
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
-			// Default Templates - Form
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CoreGlobal::TYPE_FORM, true, 'It can be used to display public forms.', null, 'default', true, 'form/default', false, '@breeze/templates/form/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ]
+			// Form - Default
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CoreGlobal::TYPE_FORM, true, 'It can be used to display public forms.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\FormSettings', '@breeze/templates/form/default/forms', 'default', true, 'form/default', false, '@breeze/templates/form/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-default" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
@@ -106,12 +109,13 @@ class m180502_100000_breeze_cms extends Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
-			// Default Templates - Element
-			[ $master->id, $master->id, 'Card', 'card', null, CmsGlobal::TYPE_ELEMENT, true, 'Default layout for card elements.', null, 'default', true, null, false, '@breeze/templates/element/card/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "card card-basic card-default" }', null, null ],
-			[ $master->id, $master->id, 'Box', 'box', null, CmsGlobal::TYPE_ELEMENT, true, 'Default layout for box elements.', null, 'default', true, null, false, '@breeze/templates/element/box/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-basic box-default" }', null, null ]
+			// Element - Card
+			[ $master->id, $master->id, 'Card', 'card', null, CmsGlobal::TYPE_ELEMENT, true, 'Default layout for card elements.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\ElementSettings', '@breeze/templates/element/card/default/forms', 'default', true, null, false, '@breeze/templates/element/card/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "card card-basic card-default" }', null, null ],
+			// Element - Box
+			[ $master->id, $master->id, 'Box', 'box', null, CmsGlobal::TYPE_ELEMENT, true, 'Default layout for box elements.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\ElementSettings', '@breeze/templates/element/box/default/forms', 'default', true, null, false, '@breeze/templates/element/box/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "box box-basic box-default" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
@@ -125,15 +129,15 @@ class m180502_100000_breeze_cms extends Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
-			// Default Templates - Block
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_BLOCK, true, 'Default layout for blocks.', null, 'default', true, null, false, '@breeze/templates/block/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "block block-basic block-default" }', null, null ],
-			// Max Templates - Block
-			[ $master->id, $master->id, 'Max', 'max', null, CmsGlobal::TYPE_BLOCK, true, 'Default layout for max blocks.', null, 'default', true, null, false, '@breeze/templates/block/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "block block-max" }', null, null ],
-			[ $master->id, $master->id, 'Testimonial', 'testimonial', null, CmsGlobal::TYPE_BLOCK, true, 'Testimonial layout for blocks showing testimonials.', null, 'default', true, null, false, '@breeze/templates/block/testimonial', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "block block-max block-testimonial" }', null, null ],
-			[ $master->id, $master->id, 'FoxSlider', 'foxslider', null, CmsGlobal::TYPE_BLOCK, true, 'FoxSlider layout for blocks showing slider.', null, 'default', true, null, false, '@breeze/templates/block/foxslider', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "block block-max block-foxslider" }', null, null ]
+			// Block - Default
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_BLOCK, true, 'Default layout for blocks.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\BlockSettings', '@breeze/templates/block/default/forms', 'default', true, null, false, '@breeze/templates/block/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "block block-basic block-default" }', null, null ],
+			// Max Block - Default, Testimonial, FoxSlider
+			[ $master->id, $master->id, 'Max', 'max', null, CmsGlobal::TYPE_BLOCK, true, 'Default layout for max blocks.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\BlockSettings', '@breeze/templates/block/default/forms', 'default', true, null, false, '@breeze/templates/block/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "block block-max" }', null, null ],
+			[ $master->id, $master->id, 'Testimonial', 'testimonial', null, CmsGlobal::TYPE_BLOCK, true, 'Testimonial layout for blocks showing testimonials.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\BlockSettings', '@breeze/templates/block/default/forms', 'default', true, null, false, '@breeze/templates/block/testimonial', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "block block-max block-testimonial" }', null, null ],
+			[ $master->id, $master->id, 'FoxSlider', 'foxslider', null, CmsGlobal::TYPE_BLOCK, true, 'FoxSlider layout for blocks showing slider.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\BlockSettings', '@breeze/templates/block/default/forms', 'default', true, null, false, '@breeze/templates/block/foxslider', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "block block-max block-foxslider" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
@@ -144,16 +148,22 @@ class m180502_100000_breeze_cms extends Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
-			// Default Templates - Widget
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_WIDGET, true, 'Default layout for widgets.', null, 'default', true, null, false, '@breeze/templates/widget/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-default" }', null, null ],
-			[ $master->id, $master->id, 'Search', CmsGlobal::TEMPLATE_SEARCH, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display page, article and post search form.', null, 'default', true, null, false, '@breeze/templates/widget/search', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-search" }', null, null ],
-			[ $master->id, $master->id, 'Archive', CmsGlobal::TEMPLATE_ARCHIVE, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display post and article archive list.', null, 'default', true, null, false, '@breeze/templates/widget/archive', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-archive" }', null, null ],
-			[ $master->id, $master->id, 'Page', CmsGlobal::TEMPLATE_PAGE, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display popular, recent and related pages.', null, 'default', true, null, false, '@breeze/templates/widget/page', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-page" }', null, null ],
-			[ $master->id, $master->id, 'Article', CmsGlobal::TEMPLATE_ARTICLE, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display popular, recent, related and author articles.', null, 'default', true, null, false, '@breeze/templates/widget/article', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-article" }', null, null ],
-			[ $master->id, $master->id, 'Post', CmsGlobal::TEMPLATE_POST, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display popular, recent, similar, related and author posts.', null, 'default', true, null, false, '@breeze/templates/widget/post', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-post" }', null, null ]
+			// Text Widget - Default, Social, Address and Search
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_WIDGET, true, 'Default layout for widgets.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\WidgetSettings', '@breeze/templates/widget/default/forms', 'default', true, null, false, '@breeze/templates/widget/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-default" }', null, null ],
+			[ $master->id, $master->id, 'Social', CmsGlobal::TEMPLATE_SOCIAL, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display social links.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\WidgetSettings', '@breeze/templates/widget/default/forms', 'default', true, null, false, '@breeze/templates/widget/social', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-social" }', null, null ],
+			[ $master->id, $master->id, 'Address', CmsGlobal::TEMPLATE_ADDRESS, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display address details.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\WidgetSettings', '@breeze/templates/widget/default/forms', 'default', true, null, false, '@breeze/templates/widget/address', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-address" }', null, null ],
+			[ $master->id, $master->id, 'Search', CmsGlobal::TEMPLATE_SEARCH, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display page, article and post search form.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\WidgetSettings', '@breeze/templates/widget/default/forms', 'default', true, null, false, '@breeze/templates/widget/search', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-search" }', null, null ],
+			// Archive Widget - Default
+			[ $master->id, $master->id, 'Archive', CmsGlobal::TEMPLATE_ARCHIVE, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display post and article archive list.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\WidgetSettings', '@breeze/templates/widget/default/forms', 'default', true, null, false, '@breeze/templates/widget/archive', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-archive" }', null, null ],
+			// Page Widget - Default
+			[ $master->id, $master->id, 'Page', CmsGlobal::TEMPLATE_PAGE, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display popular, recent and related pages.', 'cmsgears\widgets\blog\PageWidget', null, null, null, null, 'cmsgears\templates\breeze\models\forms\widget\PageConfig', '@breeze/templates/widget/page/forms', 'cmsgears\templates\breeze\models\forms\settings\WidgetSettings', '@breeze/templates/widget/default/forms', 'default', true, null, false, '@breeze/templates/widget/page', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-page" }', null, null ],
+			// Article Widget - Default
+			[ $master->id, $master->id, 'Article', CmsGlobal::TEMPLATE_ARTICLE, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display popular, recent, related and author articles.', 'cmsgears\widgets\blog\ArticleWidget', null, null, null, null, 'cmsgears\templates\breeze\models\forms\widget\ArticleConfig', '@breeze/templates/widget/article/forms', 'cmsgears\templates\breeze\models\forms\settings\WidgetSettings', '@breeze/templates/widget/default/forms', 'default', true, null, false, '@breeze/templates/widget/article', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-article" }', null, null ],
+			// Post Widget - Default
+			[ $master->id, $master->id, 'Post', CmsGlobal::TEMPLATE_POST, null, CmsGlobal::TYPE_WIDGET, true, 'It can be used to display popular, recent, similar, related and author posts.', 'cmsgears\widgets\blog\PostWidget', null, null, null, null, 'cmsgears\templates\breeze\models\forms\widget\PostConfig', '@breeze/templates/widget/post/forms', 'cmsgears\templates\breeze\models\forms\widget\WidgetSettings', '@breeze/templates/widget/default/forms', 'default', true, null, false, '@breeze/templates/widget/post', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-post" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
@@ -164,13 +174,13 @@ class m180502_100000_breeze_cms extends Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
-			// Default Templates - Sidebar
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_SIDEBAR, true, 'Default layout for sidebars.', null, 'default', true, null, false, '@breeze/templates/sidebar/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-default" }', null, null ],
-			[ $master->id, $master->id, 'Vertical Sidebar', CmsGlobal::TEMPLATE_SIDEBAR_VERTICAL, null, CmsGlobal::TYPE_SIDEBAR, true, 'Sidebar displayed vertically on a page.', null, 'default', true, null, false, '@breeze/templates/sidebar/vertical', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-vertical" }', null, null ],
-			[ $master->id, $master->id, 'Horizontal Sidebar', CmsGlobal::TEMPLATE_SIDEBAR_HORIZONTAL, null, CmsGlobal::TYPE_SIDEBAR, true, 'Sidebar displayed horizontally on a page.', null, 'default', true, null, false, '@breeze/templates/sidebar/horizontal', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-horizontal" }', null, null ]
+			// Sidebar - Default, Vertical, Horizontal
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_SIDEBAR, true, 'Default layout for sidebars.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\SidebarSettings', '@breeze/templates/sidebar/default/forms', 'default', true, null, false, '@breeze/templates/sidebar/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-default" }', null, null ],
+			[ $master->id, $master->id, 'Vertical Sidebar', CmsGlobal::TEMPLATE_SIDEBAR_VERTICAL, null, CmsGlobal::TYPE_SIDEBAR, true, 'Sidebar displayed vertically on a page.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\SidebarSettings', '@breeze/templates/sidebar/default/forms', 'default', true, null, false, '@breeze/templates/sidebar/vertical', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-vertical" }', null, null ],
+			[ $master->id, $master->id, 'Horizontal Sidebar', CmsGlobal::TEMPLATE_SIDEBAR_HORIZONTAL, null, CmsGlobal::TYPE_SIDEBAR, true, 'Sidebar displayed horizontally on a page.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\SidebarSettings', '@breeze/templates/sidebar/default/forms', 'default', true, null, false, '@breeze/templates/sidebar/horizontal', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-horizontal" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
@@ -181,13 +191,13 @@ class m180502_100000_breeze_cms extends Migration {
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'icon', 'type', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
 
 		$templates = [
-			// Default Templates - Sidebar
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_MENU, true, 'Default layout for menus.', null, 'default', true, null, false, '@breeze/templates/menu/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-default" }', null, null ],
-			[ $master->id, $master->id, 'Vertical Menu', CmsGlobal::TEMPLATE_MENU_VERTICAL, null, CmsGlobal::TYPE_MENU, true, 'Vertical menu.', null, 'default', true, null, false, '@breeze/templates/menu/vertical', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-vertical" }', null, null ],
-			[ $master->id, $master->id, 'Horizontal Menu', CmsGlobal::TEMPLATE_MENU_HORIZONTAL, null, CmsGlobal::TYPE_MENU, true, 'Horizontal Menu.', null, 'default', true, null, false, '@breeze/templates/menu/horizontal', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-horizontal" }', null, null ]
+			// Menu - Default, Vertical, Horizontal
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, null, CmsGlobal::TYPE_MENU, true, 'Default layout for menus.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\MenuSettings', '@breeze/templates/menu/default/forms', 'default', true, null, false, '@breeze/templates/menu/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-default" }', null, null ],
+			[ $master->id, $master->id, 'Vertical Menu', CmsGlobal::TEMPLATE_MENU_VERTICAL, null, CmsGlobal::TYPE_MENU, true, 'Vertical menu.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\MenuSettings', '@breeze/templates/menu/default/forms', 'default', true, null, false, '@breeze/templates/menu/vertical', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-vertical" }', null, null ],
+			[ $master->id, $master->id, 'Horizontal Menu', CmsGlobal::TEMPLATE_MENU_HORIZONTAL, null, CmsGlobal::TYPE_MENU, true, 'Horizontal Menu.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\forms\settings\MenuSettings', '@breeze/templates/menu/default/forms', 'default', true, null, false, '@breeze/templates/menu/horizontal', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "sidebar sidebar-basic sidebar-horizontal" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );

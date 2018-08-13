@@ -1,4 +1,4 @@
-<div class="box-widget-buffer">
+<div class="box-content-buffer">
 	<?php if( isset( $widget->buffer ) ) { ?>
 		<?= $widget->bufferData ?>
 	<?php } ?>

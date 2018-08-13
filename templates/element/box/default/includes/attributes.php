@@ -1,6 +1,6 @@
 <?php
 $attributes		= $settings->attributes ?? $widget->attributes;
-$attributeTypes	= isset( $settings ) && !empty( $settings->attributeTypes ) ? $settings->attributeTypes : null;
+$attributeType	= isset( $settings ) && !empty( $settings->attributeTypes ) ? $settings->attributeTypes : null;
 
 $attributeWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->attributeWrapClass;
 ?>
@@ -9,17 +9,17 @@ $attributeWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ?
 	<div class="box-content-meta <?= $attributeWrapClass ?>">
 		<?php
 
-			$attributeTypes = preg_split( '/,/', $attributeTypes );
+			$attributeType = preg_split( '/,/', $attributeType );
 
 			// Single Type
-			if( count( $attributeTypes ) == 1 ) {
+			if( count( $attributeType ) == 1 ) {
 
-				$attributes = $model->getActiveMetasByType( $attributeTypes[ 0 ] );
+				$attributes = $model->getActiveMetasByType( $attributeType[ 0 ] );
 			}
 			// Multiple Types
-			else if( count( $attributeTypes ) > 1 ) {
+			else if( count( $attributeType ) > 1 ) {
 
-				$attributes = $model->getActiveMetasByTypes( $attributeTypes );
+				$attributes = $model->getActiveMetasByTypes( $attributeType );
 			}
 			// Default Types
 			else {
