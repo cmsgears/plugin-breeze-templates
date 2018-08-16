@@ -20,6 +20,7 @@ $pageIncludes = Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
 $buffer = "$pageIncludes/buffer.php";
 ?>
 <?php include "$pageIncludes/styles.php"; ?>
+<?php include "$pageIncludes/objects-config.php"; ?>
 <div id="page-<?= $model->slug ?>" class="page page-default page-model-system page-<?= $model->slug ?>" cmt-block="block-half-auto">
 	<?php include "$pageIncludes/background.php"; ?>
 	<div class="page-content-wrap">

@@ -3,6 +3,7 @@ $siteProperties	= $this->context->getSiteProperties();
 
 $model			= $this->params[ 'model' ];
 $modelContent	= $model->modelContent;
+$featuredModels	= Yii::$app->factory->get( 'pageService' )->getFeatured();
 
 // Config -------------------------
 
@@ -18,17 +19,19 @@ $leftSidebar	= isset( $settings ) && !empty( $settings->leftSidebar ) ? $setting
 $rightSidebar	= isset( $settings ) && !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= isset( $settings ) && !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
-$pageIncludes = Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
+$pageIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
+$searchIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/search';
 
 $buffer			= "$pageIncludes/buffer.php";
 $innerObjects	= "$pageIncludes/objects-inner.php";
 $outerObjects	= "$pageIncludes/objects-outer.php";
 ?>
 <?php include "$pageIncludes/styles.php"; ?>
+<?php include "$pageIncludes/objects-config.php"; ?>
 <div id="page-<?= $model->slug ?>" class="page page-basic page-search <?= $templateClass ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">
 	<?php include"$pageIncludes/background.php"; ?>
 	<div class="page-content-wrap">
-		<?php include dirname( __FILE__ ) . '/search/header.php'; ?>
+		<?php include "$searchIncludes/header.php"; ?>
 		<?php if( $topSidebar ) { ?>
 			<?php include "$pageIncludes/sidebars/top.php"; ?>
 		<?php } ?>

@@ -96,31 +96,57 @@ PageWidget::widget([
 ]);
 
 PostWidget::widget([
-		'pagination' => true, 'limit' => 9,
-		'texture' => 'texture texture-brown', 'defaultBanner' => true,
-		'options' => [ 'class' => 'card-posts' ],
-		'wrapperOptions' => [ 'class' => 'card-post-wrap row max-cols-50' ],
-		'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
-		'templateDir' => '@breeze/templates/post/default', 'template' => 'card'
-	])
+	'pagination' => true, 'limit' => 9,
+	'texture' => 'texture texture-brown', 'defaultBanner' => true,
+	'options' => [ 'class' => 'card-posts' ],
+	'wrapperOptions' => [ 'class' => 'card-post-wrap row max-cols-50' ],
+	'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
+	'templateDir' => '@breeze/templates/post/default', 'template' => 'card'
+])
 
 PostWidget::widget([
-		'pagination' => true, 'limit' => 9,
-		'texture' => 'texture texture-brown', 'defaultBanner' => true,
-		'options' => [ 'class' => 'card-posts' ], 'category' => $model,
-		'wrapperOptions' => [ 'class' => 'card-post-wrap row max-cols-50' ],
-		'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
-		'templateDir' => '@breeze/templates/post/default', 'template' => 'card'
-	])
+	'pagination' => true, 'limit' => 9,
+	'texture' => 'texture texture-brown', 'defaultBanner' => true,
+	'options' => [ 'class' => 'card-posts' ], 'category' => $model,
+	'wrapperOptions' => [ 'class' => 'card-post-wrap row max-cols-50' ],
+	'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
+	'templateDir' => '@breeze/templates/post/default', 'template' => 'card'
+])
 
 PostWidget::widget([
-		'pagination' => true, 'limit' => 9,
-		'texture' => 'texture texture-brown', 'defaultBanner' => true,
-		'options' => [ 'class' => 'card-posts' ], 'tag' => $model,
-		'wrapperOptions' => [ 'class' => 'card-post-wrap row max-cols-50' ],
-		'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
-		'templateDir' => '@breeze/templates/post/default', 'template' => 'card'
-	])
+	'pagination' => true, 'limit' => 9,
+	'texture' => 'texture texture-brown', 'defaultBanner' => true,
+	'options' => [ 'class' => 'card-posts' ], 'tag' => $model,
+	'wrapperOptions' => [ 'class' => 'card-post-wrap row max-cols-50' ],
+	'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
+	'templateDir' => '@breeze/templates/post/default', 'template' => 'card'
+])
+
+ArticleWidget::widget([
+	'pagination' => false, 'widget' => 'related', 'model' => $model, 'title' => 'Related Articles',
+	'limit' => 6, 'texture' => 'texture texture-brown', 'defaultBanner' => true,
+	'options' => [ 'class' => 'card-posts' ],
+	'wrapperOptions' => [ 'class' => 'card-post-wrap row content-90 max-cols-50' ],
+	'singleOptions' => [ 'class' => 'card card-banner col col6 row' ],
+	'templateDir' => '@breeze/templates/article/default', 'template' => 'card'
+])
+
+ArticleWidget::widget([
+	'pagination' => false, 'widget' => 'recent', 'limit' => 6,
+	'options' => [ 'class' => 'widget-article' ],
+	'wrapperOptions' => [ 'class' => 'article-wrap' ],
+	'singleOptions' => [ 'class' => 'card card-icon' ],
+	'template' => 'sidebar'
+])
+
+ArticleWidget::widget([
+	'pagination' => true, 'limit' => 9,
+	'texture' => 'texture texture-brown', 'defaultBanner' => true,
+	'options' => [ 'class' => 'card-articles' ],
+	'wrapperOptions' => [ 'class' => 'card-article-wrap row max-cols-50' ],
+	'singleOptions' => [ 'class' => 'card card-banner col col3 row' ],
+	'templateDir' => '@breeze/templates/widget/article/default', 'template' => 'card'
+])
 
 */
 ?>

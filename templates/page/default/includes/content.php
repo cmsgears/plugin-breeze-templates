@@ -1,5 +1,5 @@
 <?php
-$content			= isset( $settings ) & !empty( $settings->content ) ? $settings->content : true;
+$content			= isset( $settings ) & !empty( $settings->content ) ? $settings->content : false;
 $contentTitle		= isset( $settings ) && $settings->contentTitle ? ( !empty( $model->title ) ? $model->title : $model->name ) : null;
 $contentInfo		= isset( $settings ) && $settings->contentInfo ? $model->description : null;
 $contentSummary		= isset( $settings ) && $settings->contentSummary ? $modelContent->summary : null;

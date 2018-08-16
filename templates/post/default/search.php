@@ -3,6 +3,7 @@ $siteProperties	= $this->context->getSiteProperties();
 
 $model			= $this->params[ 'model' ];
 $modelContent	= $model->modelContent;
+$featuredModels	= Yii::$app->factory->get( 'postService' )->getFeatured();
 
 // Config -------------------------
 
@@ -19,13 +20,14 @@ $rightSidebar	= isset( $settings ) && !empty( $settings->rightSidebar ) ? $setti
 $footerSidebar	= isset( $settings ) && !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
 $pageIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
-$searchIncludes = Yii::getAlias( '@breeze' ) . '/templates/page/default/search';
+$searchIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/search';
 
 $buffer			= "$pageIncludes/buffer.php";
 $innerObjects	= "$pageIncludes/objects-inner.php";
 $outerObjects	= "$pageIncludes/objects-outer.php";
 ?>
 <?php include "$pageIncludes/styles.php"; ?>
+<?php include "$pageIncludes/objects-config.php"; ?>
 <div id="page-<?= $model->slug ?>" class="page page-basic page-search <?= $templateClass ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">
 	<?php include"$pageIncludes/background.php"; ?>
 	<div class="page-content-wrap">

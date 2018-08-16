@@ -20,8 +20,6 @@ $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl :
 
 $headerBanner	= $headerBanner && !empty( $bannerUrl );
 $headerGallery	= $headerGallery && !empty( $slides );
-
-$featuredModels	= Yii::$app->factory->get( 'pageService' )->getFeatured();
 ?>
 
 <?php if( $header ) { ?>

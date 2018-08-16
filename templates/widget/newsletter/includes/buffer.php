@@ -17,7 +17,7 @@ $cmtAction		= $widget->cmtAction;
 	</div>
 
     <div class="frm-field padding padding-small-v">
-		<span class="error" cmt-error="email"></span>
+		<span class="error" cmt-error="SignUpForm[email]"></span>
     </div>
 
 	<div class="message success"></div>

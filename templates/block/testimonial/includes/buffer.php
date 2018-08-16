@@ -4,11 +4,13 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 ?>
-<div class="block-content-buffer">
-	<?php if( isset( $widget->buffer ) ) { ?>
+
+<?php if( $widget->buffer ) { ?>
+	<div class="block-content-buffer">
 		<?= $widget->bufferData ?>
-	<?php } ?>
-</div>
+	</div>
+<?php } ?>
+
 <div class="block-content-buffer">
 	<div class="fx fx-slider fx-slider-regular testimonial-slider">
 	<?php
@@ -47,5 +49,6 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 	?>
 	</div>
 </div>
+
 <?php include "$bTemplates/includes/attributes.php"; ?>
 <?php include "$bTemplates/includes/elements.php"; ?>

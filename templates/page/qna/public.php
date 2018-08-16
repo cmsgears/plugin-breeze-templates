@@ -27,6 +27,7 @@ $innerObjects	= "$templateIncludes/objects-inner.php";
 $outerObjects	= "$templateIncludes/objects-outer.php";
 ?>
 <?php include "$pageIncludes/styles.php"; ?>
+<?php include "$pageIncludes/objects-config.php"; ?>
 <div id="page-<?= $model->slug ?>" class="page page-basic <?= $templateClass ?> page-model-<?= $model->type ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">
 	<?php include "$pageIncludes/background.php"; ?>
 	<div class="page-content-wrap">

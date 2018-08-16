@@ -1,7 +1,9 @@
-<div class="widget-content-buffer">
-	<?php if( isset( $widget->buffer ) ) { ?>
+<?php if( $widget->buffer ) { ?>
+	<div class="widget-content-buffer">
 		<?= $widget->bufferData ?>
-	<?php } ?>
-</div>
+	</div>
+<?php } ?>
+
 <!-- <div class="widget-content-buffer"></div> -->
+
 <?php include dirname( __FILE__ ) . '/attributes.php'; ?>
