@@ -19,7 +19,8 @@ $leftSidebar	= isset( $settings ) && !empty( $settings->leftSidebar ) ? $setting
 $rightSidebar	= isset( $settings ) && !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= isset( $settings ) && !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
-$pageIncludes = Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
+$pageIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
+$searchIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/search';
 
 $buffer			= "$pageIncludes/buffer.php";
 $innerObjects	= "$pageIncludes/objects-inner.php";
