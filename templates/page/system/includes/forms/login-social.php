@@ -3,13 +3,21 @@
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
+// CMG Imports
+use cmsgears\social\connect\widgets\SnsLoginWidget;
+
 $coreProperties = $this->context->getCoreProperties();
 ?>
 <div class="page-form rounded rounded-medium">
-	<div class="h3 align align-center margin margin-bottom-medium">Login</div>
+	<div class="h3 align align-center margin margin-bottom-medium">Login With</div>
 	<?php
 		if( $coreProperties->isLogin() ) {
 	?>
+	<?= SnsLoginWidget::widget() ?>
+	<div class="filler-height"></div>
+	<div class="text-with-line">
+		<p class="text-content">OR</p>
+	</div>
 	<?php $form = ActiveForm::begin( [ 'id' => 'frm-login', 'options' => [ 'class' => 'form' ] ] ); ?>
 
 		<div class="<?= $frmSplit ? 'frm-split-40-60' : null ?>">

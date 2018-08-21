@@ -9,9 +9,9 @@ use cmsgears\widgets\elements\widgets\TextWidget;
 $widgets	= isset( $settings->widgets ) ? $settings->widgets : false;
 $widgetType	= isset( $settings->widgetType ) ? $settings->widgetType : null;
 
-$widgetWrapClass	= isset( $settings ) && !empty( $settings->widgetWrapClass ) ? $settings->widgetWrapClass : 'row';
-$widgetWrapper		= isset( $settings ) && !empty( $settings->widgetWrapper ) ? $settings->widgetWrapper : null;
-$widgetClass		= isset( $settings ) && !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row';
+$widgetWrapClass	= !empty( $settings->widgetWrapClass ) ? $settings->widgetWrapClass : 'row';
+$widgetWrapper		= !empty( $settings->widgetWrapper ) ? $settings->widgetWrapper : null;
+$widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row';
 ?>
 
 <?php if( $widgets ) { ?>

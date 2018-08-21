@@ -5,11 +5,11 @@ use yii\helpers\Html;
 // CMG Imports
 use cmsgears\widgets\elements\elements\ElementWidget;
 
-$elementType	= isset( $settings ) && !empty( $settings->elementType ) ? $settings->elementType : null;
+$elementType	= !empty( $settings->elementType ) ? $settings->elementType : null;
 
-$boxWrapClass	= isset( $settings ) && !empty( $settings->boxWrapClass ) ? $settings->boxWrapClass : 'row';
-$boxWrapper		= isset( $settings ) && !empty( $settings->boxWrapper ) ? $settings->boxWrapper : null;
-$boxClass		= isset( $settings ) && !empty( $settings->boxClass ) ? $settings->boxClass : 'row';
+$boxWrapClass	= !empty( $settings->boxWrapClass ) ? $settings->boxWrapClass : 'row';
+$boxWrapper		= !empty( $settings->boxWrapper ) ? $settings->boxWrapper : null;
+$boxClass		= !empty( $settings->boxClass ) ? $settings->boxClass : 'row';
 ?>
 
 <?php if( $elements ) { ?>

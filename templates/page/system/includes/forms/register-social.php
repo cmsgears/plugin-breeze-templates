@@ -3,6 +3,9 @@
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
+// CMG Imports
+use cmsgears\social\connect\widgets\SnsLoginWidget;
+
 $coreProperties = $this->context->getCoreProperties();
 
 $termsUrl	= Url::toRoute( [ '/terms' ] );
@@ -10,7 +13,7 @@ $privacyUrl	= Url::toRoute( [ '/privacy' ] );
 $termsLabel = "I agree to the <a href=\"$termsUrl\">Terms</a> and <a href=\"$privacyUrl\">Privacy Policy";
 ?>
 <div class="page-form rounded rounded-medium">
-	<div class="h3 align align-center margin margin-bottom-medium">Register</div>
+	<div class="h3 align align-center margin margin-bottom-medium">Register With</div>
 	<?php
 		if( $coreProperties->isRegistration() ) {
 
@@ -18,6 +21,11 @@ $termsLabel = "I agree to the <a href=\"$termsUrl\">Terms</a> and <a href=\"$pri
 	?>
 				<p class="margin margin-medium-v reader"><?=Yii::$app->session->getFlash( 'message' )?></p>
 	<?php } else { ?>
+		<?= SnsLoginWidget::widget() ?>
+		<div class="filler-height"></div>
+		<div class="text-with-line">
+			<p class="text-content">OR</p>
+		</div>
 		<?php $form = ActiveForm::begin( [ 'id' => 'frm-register', 'options' => [ 'class' => 'form' ] ] ); ?>
 
 			<div class="<?= $frmSplit ? 'frm-split-40-60' : null ?>">

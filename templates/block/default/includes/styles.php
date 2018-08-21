@@ -2,7 +2,7 @@
 // CMG Imports
 use cmsgears\core\common\utilities\CodeGenUtil;
 
-$pageStyles	= isset( $settings ) & !empty( $settings->pageStyles ) ? $settings->pageStyles : null;
+$pageStyles	= !empty( $settings->pageStyles ) ? $settings->pageStyles : null;
 
 $styles = CodeGenUtil::compressStyles( $pageStyles );
 ?>

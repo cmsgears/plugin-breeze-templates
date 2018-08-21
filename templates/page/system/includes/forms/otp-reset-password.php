@@ -12,6 +12,7 @@ use yii\widgets\ActiveForm;
 
 			<div class="<?= $frmSplit ? 'frm-split-40-60' : null ?>">
 				<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email', 'readOnly' => true ] ) ?>
+				<?= $form->field( $formModel, 'otp' )->textInput( [ 'placeholder' => 'OTP' ] ) ?>
 				<?= $form->field( $formModel, 'password' )->passwordInput( [ 'placeholder' => 'Password' ] ) ?>
 				<?= $form->field( $formModel, 'password_repeat' )->passwordInput( [ 'placeholder' => 'Repeat Password' ] ) ?>
 			</div>

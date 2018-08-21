@@ -8,27 +8,29 @@ $featuredModels	= Yii::$app->factory->get( 'pageService' )->getFeatured();
 // Config -------------------------
 
 $data			= json_decode(  $model->data );
-$settings		= $data->settings ?? null;
+$settings		= isset( $data->settings ) ? $data->settings : [];
 $templateClass	= isset( $modelContent->template ) ? "page-default page-{$modelContent->template->slug}" : 'page-default';
 
 // Sidebars -----------------------
 
-$topSidebar		= isset( $settings ) && !empty( $settings->topSidebar ) ? $settings->topSidebar : false;
-$bottomSidebar	= isset( $settings ) && !empty( $settings->bottomSidebar ) ? $settings->bottomSidebar : false;
-$leftSidebar	= isset( $settings ) && !empty( $settings->leftSidebar ) ? $settings->leftSidebar : false;
-$rightSidebar	= isset( $settings ) && !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
-$footerSidebar	= isset( $settings ) && !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
+$topSidebar		= !empty( $settings->topSidebar ) ? $settings->topSidebar : false;
+$bottomSidebar	= !empty( $settings->bottomSidebar ) ? $settings->bottomSidebar : false;
+$leftSidebar	= !empty( $settings->leftSidebar ) ? $settings->leftSidebar : false;
+$rightSidebar	= !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
+$footerSidebar	= !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
 $pageIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
 $searchIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/search';
 
 $buffer			= "$pageIncludes/buffer.php";
+$preObjects		= "$pageIncludes/objects-pre.php";
 $innerObjects	= "$pageIncludes/objects-inner.php";
 $outerObjects	= "$pageIncludes/objects-outer.php";
 ?>
+<?php include "$pageIncludes/options.php"; ?>
 <?php include "$pageIncludes/styles.php"; ?>
 <?php include "$pageIncludes/objects-config.php"; ?>
-<div id="page-<?= $model->slug ?>" class="page page-basic page-search <?= $templateClass ?> page-<?= $model->slug ?>" cmt-block="block-half-auto">
+<div <?= $options ?>>
 	<?php include"$pageIncludes/background.php"; ?>
 	<div class="page-content-wrap">
 		<?php include "$searchIncludes/header.php"; ?>

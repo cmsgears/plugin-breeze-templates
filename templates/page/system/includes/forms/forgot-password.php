@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 	<?php } else { ?>
 		<?php $form = ActiveForm::begin( [ 'id' => 'frm-password', 'options' => [ 'class' => 'form' ] ] ); ?>
 
-			<div class="frm-split-40-60">
+			<div class="<?= $frmSplit ? 'frm-split-40-60' : null ?>">
 				<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email' ] ) ?>
 			</div>
 
@@ -25,5 +25,13 @@ use yii\widgets\ActiveForm;
 				</div>
 			</div>
 		<?php ActiveForm::end(); ?>
+		<?php if( $otp ) { ?>
+			<div class="text-with-line">
+				<p class="text-content">OR</p>
+			</div>
+			<div class="align align-center">
+				<p>Get OTP on registered mobile ? <a href="<?= Url::toRoute( [ $otpUrl ] ) ?>">Click here</a> to receive OTP.</p>
+			</div>
+		<?php } ?>
 	<?php } ?>
 </div>

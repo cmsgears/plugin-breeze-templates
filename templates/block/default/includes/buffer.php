@@ -6,5 +6,5 @@
 
 <!-- <div class="block-content-buffer"></div> -->
 
-<?php include dirname( __FILE__ ) . '/attributes.php'; ?>
-<?php include dirname( __FILE__ ) . '/elements.php'; ?>
+<?php include "$blockIncludes/attributes.php"; ?>
+<?php include "$blockIncludes/elements.php"; ?>

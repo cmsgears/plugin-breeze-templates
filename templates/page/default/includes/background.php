@@ -6,22 +6,22 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 
 // Media --------------------
 
-$defaultAvatar	= isset( $settings ) && !empty( $settings->defaultAvatar ) ? $settings->defaultAvatar : false;
-$defaultBanner	= isset( $settings ) && !empty( $settings->defaultBanner ) ? $settings->defaultBanner : false;
-$fixedBanner	= isset( $settings ) && !empty( $settings->fixedBanner ) ? $settings->fixedBanner : false;
-$scrollBanner	= isset( $settings ) && !empty( $settings->scrollBanner ) ? $settings->scrollBanner : false;
-$parallaxBanner	= isset( $settings ) && !empty( $settings->parallaxBanner ) ? $settings->parallaxBanner : false;
+$defaultAvatar	= !empty( $settings->defaultAvatar ) ? $settings->defaultAvatar : false;
+$defaultBanner	= !empty( $settings->defaultBanner ) ? $settings->defaultBanner : false;
+$fixedBanner	= !empty( $settings->fixedBanner ) ? $settings->fixedBanner : false;
+$scrollBanner	= !empty( $settings->scrollBanner ) ? $settings->scrollBanner : false;
+$parallaxBanner	= !empty( $settings->parallaxBanner ) ? $settings->parallaxBanner : false;
 
-$texture		= isset( $settings ) && !empty( $settings->texture ) ? $settings->texture : false;
+$texture		= !empty( $settings->texture ) ? $settings->texture : false;
 $textureClass	= !empty( $model->texture ) && $model->texture !== 'texture' ? $model->texture : null;
 
 // Max Cover ----------------
 
-$maxCover	= isset( $settings ) && !empty( $settings->maxCover ) ? $settings->maxCover : false;
+$maxCover	= !empty( $settings->maxCover ) ? $settings->maxCover : false;
 
 // Background ---------------
 
-$bkg		= isset( $settings ) && !empty( $settings->background ) ? $settings->background : false;
+$bkg		= !empty( $settings->background ) ? $settings->background : false;
 $bkgClass	= !empty( $settings->backgroundClass ) ? $settings->backgroundClass : null;
 
 $banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : SiteProperties::getInstance()->getDefaultBanner() ) : null;

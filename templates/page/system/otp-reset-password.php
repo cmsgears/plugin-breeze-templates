@@ -3,10 +3,11 @@
 use cmsgears\cms\common\utilities\ContentUtil;
 
 // Form Config
-$frmSplit = isset( $frmSplit ) ? $frmSplit : true;
+$frmSplit	= isset( $frmSplit ) ? $frmSplit : true;
+$forgotUrl	= '/forgot-password';
 
 $formModel	= $model;
-$formView	= dirname( __FILE__ ) . '/includes/forms/activate-account.php';
+$formView	= dirname( __FILE__ ) . '/includes/forms/otp-reset-password.php';
 $model		= isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
 
 $siteProperties = $this->context->getSiteProperties();

@@ -2,16 +2,16 @@
 $model	= $widget->model;
 $data	= $widget->modelData;
 
-$settings = $data->settings ?? null;
+$settings = isset( $data->settings ) ? $data->settings : [];
 
-$bTemplates = Yii::getAlias( '@breeze/templates/block/default' );
+$blockIncludes = Yii::getAlias( '@breeze' ) . '/templates/block/default/includes';
 
 $buffer = __DIR__ . '/includes/buffer.php';
 ?>
-<?php include "$bTemplates/includes/styles.php"; ?>
-<?php include "$bTemplates/includes/background.php"; ?>
+<?php include "$blockIncludes/styles.php"; ?>
+<?php include "$blockIncludes/background.php"; ?>
 <div class="block-content-wrap">
-	<?php include "$bTemplates/includes/header.php"; ?>
-	<?php include "$bTemplates/includes/content.php"; ?>
-	<?php include "$bTemplates/includes/footer.php"; ?>
+	<?php include "$blockIncludes/header.php"; ?>
+	<?php include "$blockIncludes/content.php"; ?>
+	<?php include "$blockIncludes/footer.php"; ?>
 </div>

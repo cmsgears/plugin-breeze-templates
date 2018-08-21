@@ -4,17 +4,17 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
-$header				= isset( $settings ) & !empty( $settings->header ) ? $settings->header : true;
-$headerIcon			= isset( $settings ) & !empty( $settings->headerIcon ) ? $settings->headerIcon : false;
+$header				= !empty( $settings->header ) ? $settings->header : true;
+$headerIcon			= !empty( $settings->headerIcon ) ? $settings->headerIcon : false;
 $headerIconClass	= $model->icon;
-$headerTitle		= isset( $settings ) && $settings->headerTitle ? ( !empty( $model->title ) ? $model->title : $model->name ) : null;
-$headerInfo			= isset( $settings ) && $settings->headerInfo ? $model->description : null;
-$headerContent		= isset( $settings ) && $settings->headerContent ? $modelContent->summary : null;
+$headerTitle		= !empty( $settings->headerTitle ) ? ( !empty( $model->title ) ? $model->title : $model->name ) : null;
+$headerInfo			= !empty( $settings->headerInfo ) ? $model->description : null;
+$headerContent		= !empty( $settings->headerContent ) ? $modelContent->summary : null;
 
-$headerBanner	= isset( $settings ) & !empty( $settings->headerBanner ) ? $settings->headerBanner : false;
-$headerGallery	= isset( $settings ) & !empty( $settings->headerGallery ) ? $settings->headerGallery : false;
+$headerBanner	= !empty( $settings->headerBanner ) ? $settings->headerBanner : false;
+$headerGallery	= !empty( $settings->headerGallery ) ? $settings->headerGallery : false;
 
-$avatar			= isset( $settings ) && $settings->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
+$avatar			= !empty( $settings->defaultAvatar ) ? SiteProperties::getInstance()->getDefaultAvatar() : null;
 $headerIconUrl	= isset( $model->avatar ) ? CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( null, [ 'image' => $avatar ] );
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $headerIconUrl;
 

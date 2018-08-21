@@ -2,7 +2,7 @@
 // CMG Imports
 use cmsgears\widgets\elements\sidebars\SidebarWidget;
 
-$topSidebarSlugs = isset( $settings ) && !empty( $settings->topSidebarSlugs ) ? $settings->topSidebarSlugs : null;
+$topSidebarSlugs = !empty( $settings->topSidebarSlugs ) ? $settings->topSidebarSlugs : null;
 ?>
 <?php if( count( $topSidebarSlugs ) > 0 ) { ?>
 	<div class="page-sidebar-wrap page-sidebar-wrap-top">

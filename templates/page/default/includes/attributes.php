@@ -1,6 +1,6 @@
 <?php
-$attributeType			= isset( $settings ) && !empty( $settings->attributeType ) ? $settings->attributeType : null;
-$attributesWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
+$attributeType			= !empty( $settings->attributeType ) ? $settings->attributeType : null;
+$attributesWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
 ?>
 <?php if( $attributes ) { ?>
 	<div class="page-content-meta <?= $attributesWrapClass ?>">

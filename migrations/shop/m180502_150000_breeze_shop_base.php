@@ -24,7 +24,7 @@ use cmsgears\core\common\utilities\DateUtil;
  *
  * @since 1.0.0
  */
-class m180502_110000_breeze_shop_base extends Migration {
+class m180502_150000_breeze_shop_base extends Migration {
 
 	// Public variables
 
@@ -89,7 +89,7 @@ class m180502_110000_breeze_shop_base extends Migration {
 
     public function down() {
 
-        echo "m180502_110000_breeze_shop_base will be deleted with m160621_014408_core.\n";
+        echo "m180502_150000_breeze_shop_base will be deleted with m160621_014408_core.\n";
 
         return true;
     }

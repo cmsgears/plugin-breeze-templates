@@ -1,20 +1,21 @@
 <?php
+
 foreach( $objectsOrder as $key => $value ) {
 
 	switch( $key ) {
 
 		case 'attributes': {
 
-			if( $attributes && !$attributesWithContent ) {
+			if( $attributes && $attributesBeforeContent ) {
 
-				include "$templateIncludes/attributes.php";
+				include "$pageIncludes/attributes.php";
 			}
 
 			break;
 		}
 		case 'elements': {
 
-			if( $elements && !$elementsWithContent ) {
+			if( $elements && $elementsBeforeContent ) {
 
 				include "$pageIncludes/elements.php";
 			}
@@ -23,7 +24,7 @@ foreach( $objectsOrder as $key => $value ) {
 		}
 		case 'widgets': {
 
-			if( $widgets && !$widgetsWithContent ) {
+			if( $widgets && $widgetsBeforeContent ) {
 
 				include "$pageIncludes/widgets.php";
 			}
@@ -32,7 +33,7 @@ foreach( $objectsOrder as $key => $value ) {
 		}
 		case 'blocks': {
 
-			if( $blocks && !$blocksWithContent ) {
+			if( $blocks && $blocksBeforeContent ) {
 
 				include "$pageIncludes/blocks.php";
 			}
@@ -41,7 +42,7 @@ foreach( $objectsOrder as $key => $value ) {
 		}
 		case 'sidebars': {
 
-			if( $sidebars && !$sidebarsWithContent ) {
+			if( $sidebars && $sidebarsBeforeContent ) {
 
 				include "$pageIncludes/sidebars.php";
 			}

@@ -107,6 +107,7 @@ class PageSettings extends DataModel {
 
 	// Elements
 	public $elements;
+	public $elementsBeforeContent;
 	public $elementsWithContent;
 	public $elementsOrder;
 	public $elementType;
@@ -117,6 +118,7 @@ class PageSettings extends DataModel {
 
 	// Widgets
 	public $widgets;
+	public $widgetsBeforeContent;
 	public $widgetsWithContent;
 	public $widgetsOrder;
 	public $widgetType;
@@ -127,12 +129,14 @@ class PageSettings extends DataModel {
 
 	// Blocks
 	public $blocks;
+	public $blocksBeforeContent;
 	public $blocksWithContent;
 	public $blocksOrder;
 	public $blockType;
 
 	// Sidebars
 	public $sidebars;
+	public $sidebarsBeforeContent;
 	public $sidebarsWithContent;
 	public $sidebarsOrder;
 	public $sidebarType;
@@ -180,8 +184,9 @@ class PageSettings extends DataModel {
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'attributes' ], 'boolean' ],
 			[ [ 'contentSocial', 'contentLabels' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
-			[ [ 'sidebars', 'sidebarsWithContent', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
-			[ [ 'attributesWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent' ], 'boolean' ],
+			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
+			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
+			[ [ 'attributesWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'attributeType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],

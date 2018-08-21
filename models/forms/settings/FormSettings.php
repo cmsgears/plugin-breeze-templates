@@ -97,6 +97,7 @@ class FormSettings extends DataModel {
 
 	// Elements
 	public $elements;
+	public $elementsBeforeContent;
 	public $elementsWithContent;
 	public $elementsOrder;
 	public $elementType;
@@ -107,19 +108,26 @@ class FormSettings extends DataModel {
 
 	// Widgets
 	public $widgets;
+	public $widgetsBeforeContent;
 	public $widgetsWithContent;
 	public $widgetsOrder;
 	public $widgetType;
 
 	// Blocks
 	public $blocks;
+	public $blocksBeforeContent;
 	public $blocksWithContent;
 	public $blocksOrder;
 	public $blockType;
 
 	// Sidebars
 	public $sidebars;
+	public $sidebarsBeforeContent;
+	public $sidebarsWithContent;
+	public $sidebarsOrder;
 	public $sidebarType;
+
+	// Fixed sidebars
 	public $topSidebar;
 	public $topSidebarSlugs;
 	public $bottomSidebar;
@@ -128,6 +136,8 @@ class FormSettings extends DataModel {
 	public $leftSidebarSlug;
 	public $rightSidebar;
 	public $rightSidebarSlug;
+	public $footerSidebar;
+	public $footerSidebarSlug;
 
 	// Protected --------------
 
@@ -160,12 +170,14 @@ class FormSettings extends DataModel {
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar' ], 'boolean' ],
-			[ [ 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent' ], 'boolean' ],
+			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
+			[ [ 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
+			[ [ 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
 			[ [ 'headerIconUrl', 'footerIconUrl' ], 'url' ]
 		];
 	}

@@ -2,7 +2,7 @@
 // CMG Imports
 use cmsgears\widgets\elements\sidebars\SidebarWidget;
 
-$rightSidebarSlug = isset( $settings ) && !empty( $settings->rightSidebarSlug ) ? $settings->rightSidebarSlug : null;
+$rightSidebarSlug = !empty( $settings->rightSidebarSlug ) ? $settings->rightSidebarSlug : null;
 ?>
 <?php if( !empty( $rightSidebarSlug ) ) { ?>
 	<div class="page-sidebar-wrap page-sidebar-wrap-right">

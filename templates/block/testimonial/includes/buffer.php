@@ -50,5 +50,5 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 	</div>
 </div>
 
-<?php include "$bTemplates/includes/attributes.php"; ?>
-<?php include "$bTemplates/includes/elements.php"; ?>
+<?php include "$blockIncludes/attributes.php"; ?>
+<?php include "$blockIncludes/elements.php"; ?>
