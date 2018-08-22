@@ -6,5 +6,5 @@
 
 <!-- <div class="block-content-buffer"></div> -->
 
-<?php include "$blockIncludes/attributes.php"; ?>
-<?php include "$blockIncludes/elements.php"; ?>
+<?php include "$defaultIncludes/attributes.php"; ?>
+<?php include "$defaultIncludes/elements.php"; ?>

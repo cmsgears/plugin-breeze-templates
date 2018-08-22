@@ -6,4 +6,4 @@
 
 <!-- <div class="box-content-buffer"></div> -->
 
-<?php include dirname( __FILE__ ) . '/attributes.php'; ?>
+<?php include "$defaultIncludes/attributes.php"; ?>

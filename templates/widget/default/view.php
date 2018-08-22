@@ -2,13 +2,15 @@
 $model	= $widget->model;
 $data	= $widget->modelData;
 
-$settings = $data->settings ?? null;
+$settings = isset( $data->settings ) ? $data->settings : [];
 
-$buffer = __DIR__ . '/includes/buffer.php';
+$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/widget/default/includes';
+
+$buffer = "$defaultIncludes/buffer.php";
 ?>
-<?php include __DIR__ . '/includes/styles.php'; ?>
-<?php include __DIR__ . '/includes/background.php'; ?>
+<?php include "$defaultIncludes/styles.php"; ?>
+<?php include "$defaultIncludes/background.php"; ?>
 <div class="widget-content-wrap">
-	<?php include __DIR__ . '/includes/header.php'; ?>
-	<?php include __DIR__ . '/includes/content.php'; ?>
+	<?php include "$defaultIncludes/header.php"; ?>
+	<?php include "$defaultIncludes/content.php"; ?>
 </div>

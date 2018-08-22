@@ -6,5 +6,5 @@
 
 <!-- <div class="sidebar-content-buffer"></div> -->
 
-<?php include dirname( __FILE__ ) . '/attributes.php'; ?>
-<?php include dirname( __FILE__ ) . '/widgets.php'; ?>
+<?php include "$defaultIncludes/attributes.php"; ?>
+<?php include "$defaultIncludes/widgets.php"; ?>

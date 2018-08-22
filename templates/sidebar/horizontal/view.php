@@ -2,15 +2,15 @@
 $model	= $widget->model;
 $data	= $widget->modelData;
 
-$settings = $data->settings ?? null;
+$settings = isset( $data->settings ) ? $data->settings : [];
 
-$includes = dirname( __DIR__ ) . '/default/includes';
+$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/sidebar/default/includes';
 
-$buffer = "$includes/buffer.php";
+$buffer = "$defaultIncludes/buffer.php";
 ?>
-<?php include "$includes/styles.php"; ?>
-<?php include "$includes/background.php"; ?>
+<?php include "$defaultIncludes/styles.php"; ?>
+<?php include "$defaultIncludes/background.php"; ?>
 <div class="sidebar-content-wrap">
-	<?php include "$includes/header.php"; ?>
-	<?php include "$includes/content.php"; ?>
+	<?php include "$defaultIncludes/header.php"; ?>
+	<?php include "$defaultIncludes/content.php"; ?>
 </div>

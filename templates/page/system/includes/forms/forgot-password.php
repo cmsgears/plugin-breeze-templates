@@ -25,13 +25,19 @@ use yii\widgets\ActiveForm;
 				</div>
 			</div>
 		<?php ActiveForm::end(); ?>
-		<?php if( $otp ) { ?>
-			<div class="text-with-line">
-				<p class="text-content">OR</p>
-			</div>
-			<div class="align align-center">
-				<p>Get OTP on registered mobile ? <a href="<?= Url::toRoute( [ $otpUrl ] ) ?>">Click here</a> to receive OTP.</p>
-			</div>
-		<?php } ?>
+		<?php
+			if( $otp ) {
+
+				$smsProperties = \cmsgears\sms\common\config\SmsProperties::getInstance();
+
+				if( $smsProperties->isActive() ) {
+		?>
+					<div class="text-with-line">
+						<p class="text-content">OR</p>
+					</div>
+					<div class="align align-center">
+						<p>Get OTP on registered mobile ? <a href="<?= Url::toRoute( [ $otpUrl ] ) ?>">Click here</a> to receive OTP.</p>
+					</div>
+		<?php } } ?>
 	<?php } ?>
 </div>

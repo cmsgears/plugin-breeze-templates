@@ -4,9 +4,9 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 $footer				= !empty( $settings->footer ) ? $settings->footer : $widget->footer;
 $footerIcon			= !empty( $settings->footerIcon ) ? $settings->footerIcon : $widget->footerIcon;
 $footerIconClass	= !empty( $settings->footerIconClass ) ? $settings->footerIconClass : $widget->footerIconClass;
-$footerTitle		= ( !empty( $settings->footerTitle ) && $settings->footerTitle ) && !empty( $settings->footerTitleData ) ? $settings->footerTitleData : ( isset( $settings ) && $settings->footerTitle && !empty( $model->displayName ) ? $model->displayName : $widget->footerTitle );
-$footerInfo			= ( !empty( $settings->footerInfo ) && $settings->footerInfo ) && !empty( $settings->footerInfoData ) ? $settings->footerInfoData : ( isset( $settings ) && $settings->footerInfo && !empty( $model->description ) ? $model->description : $widget->footerInfo );
-$footerContent		= ( !empty( $settings->footerContent ) && $settings->footerContent ) && !empty( $settings->footerContentData ) ? $settings->footerContentData : ( isset( $settings ) && $settings->footerContent && !empty( $model->summary ) ? $model->summary : $widget->footerContent );
+$footerTitle		= !empty( $settings->footerTitle ) && $settings->footerTitle && !empty( $settings->footerTitleData ) ? $settings->footerTitleData : ( !empty( $settings->footerTitle ) && $settings->footerTitle && !empty( $model->displayName ) ? $model->displayName : $widget->footerTitle );
+$footerInfo			= !empty( $settings->footerInfo ) && $settings->footerInfo && !empty( $settings->footerInfoData ) ? $settings->footerInfoData : ( !empty( $settings->footerInfo ) && $settings->footerInfo && !empty( $model->description ) ? $model->description : $widget->footerInfo );
+$footerContent		= !empty( $settings->footerContent ) && $settings->footerContent && !empty( $settings->footerContentData ) ? $settings->footerContentData : ( !empty( $settings->footerContent ) && $settings->footerContent && !empty( $model->summary ) ? $model->summary : $widget->footerContent );
 
 $footerIconUrl	= !empty( $settings->footerIconUrl ) ? $settings->footerIconUrl : CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] );
 $footerIconUrl	= !empty( $footerIconUrl ) ? $footerIconUrl : $widget->footerIconUrl;

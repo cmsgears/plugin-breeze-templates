@@ -1,8 +1,8 @@
 <?php
-$attributes		= $settings->attributes ?? $widget->attributes;
-$attributeType	= isset( $settings ) && !empty( $settings->attributeTypes ) ? $settings->attributeTypes : null;
+$attributes		= !empty( $settings->attributes ) ? $settings->attributes : $widget->attributes;
+$attributeType	= !empty( $settings->attributeTypes ) ? $settings->attributeTypes : null;
 
-$attributeWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->attributeWrapClass;
+$attributeWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->attributeWrapClass;
 ?>
 
 <?php if( $attributes ) { ?>

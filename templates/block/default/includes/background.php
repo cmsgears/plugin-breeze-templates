@@ -6,7 +6,7 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 
 // Max Cover ----------------
 
-$maxCover = $settings->maxCover ?? $widget->maxCover;
+$maxCover = !empty( $settings->maxCover ) ? $settings->maxCover : $widget->maxCover;
 
 // Background ---------------
 

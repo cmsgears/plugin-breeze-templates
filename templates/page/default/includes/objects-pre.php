@@ -8,7 +8,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 			if( $attributes && $attributesBeforeContent ) {
 
-				include "$pageIncludes/attributes.php";
+				include "$defaultIncludes/attributes.php";
 			}
 
 			break;
@@ -17,7 +17,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 			if( $elements && $elementsBeforeContent ) {
 
-				include "$pageIncludes/elements.php";
+				include "$defaultIncludes/elements.php";
 			}
 
 			break;
@@ -26,7 +26,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 			if( $widgets && $widgetsBeforeContent ) {
 
-				include "$pageIncludes/widgets.php";
+				include "$defaultIncludes/widgets.php";
 			}
 
 			break;
@@ -35,7 +35,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 			if( $blocks && $blocksBeforeContent ) {
 
-				include "$pageIncludes/blocks.php";
+				include "$defaultIncludes/blocks.php";
 			}
 
 			break;
@@ -44,7 +44,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 			if( $sidebars && $sidebarsBeforeContent ) {
 
-				include "$pageIncludes/sidebars.php";
+				include "$defaultIncludes/sidebars.php";
 			}
 
 			break;

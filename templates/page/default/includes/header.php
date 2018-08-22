@@ -70,14 +70,14 @@ $headerGallery	= $headerGallery && !empty( $slides );
 			</div>
 		<?php } else { ?>
 			<div class="page-header <?= $headerBanner ? 'page-header-banner valign-center cscroller' : 'page-header-text' ?>">
-				<?php include "$pageIncludes/header-content.php"; ?>
+				<?php include "$defaultIncludes/header-content.php"; ?>
 			</div>
 		<?php } ?>
 	</div>
 	<?php if( $headerGallery ) { ?>
 		<div class="page-header-wrap">
 			<div class="page-header page-header-plain">
-				<?php include "$pageIncludes/header-content.php"; ?>
+				<?php include "$defaultIncludes/header-content.php"; ?>
 			</div>
 		</div>
 	<?php } ?>

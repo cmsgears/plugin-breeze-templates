@@ -19,29 +19,29 @@ $leftSidebar	= !empty( $settings->leftSidebar ) ? $settings->leftSidebar : false
 $rightSidebar	= !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
-$pageIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
-$searchIncludes = Yii::getAlias( '@breeze' ) . '/templates/page/default/search';
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
+$searchIncludes		= Yii::getAlias( '@breeze' ) . '/templates/page/default/search';
 
-$buffer			= "$pageIncludes/buffer.php";
-$preObjects		= "$pageIncludes/objects-pre.php";
-$innerObjects	= "$pageIncludes/objects-inner.php";
-$outerObjects	= "$pageIncludes/objects-outer.php";
+$buffer			= "$defaultIncludes/buffer.php";
+$preObjects		= "$defaultIncludes/objects-pre.php";
+$innerObjects	= "$defaultIncludes/objects-inner.php";
+$outerObjects	= "$defaultIncludes/objects-outer.php";
 ?>
-<?php include "$pageIncludes/options.php"; ?>
-<?php include "$pageIncludes/styles.php"; ?>
-<?php include "$pageIncludes/objects-config.php"; ?>
+<?php include "$defaultIncludes/options.php"; ?>
+<?php include "$defaultIncludes/styles.php"; ?>
+<?php include "$defaultIncludes/objects-config.php"; ?>
 <div <?= $options ?>>
-	<?php include"$pageIncludes/background.php"; ?>
+	<?php include"$defaultIncludes/background.php"; ?>
 	<div class="page-content-wrap">
 		<?php include "$searchIncludes/header.php"; ?>
 		<?php if( $topSidebar ) { ?>
-			<?php include "$pageIncludes/sidebars/top.php"; ?>
+			<?php include "$defaultIncludes/sidebars/top.php"; ?>
 		<?php } ?>
 		<?php if( $leftSidebar || $rightSidebar ) { ?>
 			<div class="page-content-row row content-90 max-cols-100">
 				<?php if( $leftSidebar ) { ?>
 					<div class="colf colf12x3 colf-sidebar-filler">
-						<?php include "$pageIncludes/sidebars/left.php"; ?>
+						<?php include "$defaultIncludes/sidebars/left.php"; ?>
 					</div>
 				<?php } ?>
 				<div class="colf colf-sidebar-filler <?= $leftSidebar && $rightSidebar ? 'colf12x6' : 'colf12x9' ?>">
@@ -49,7 +49,7 @@ $outerObjects	= "$pageIncludes/objects-outer.php";
 				</div>
 				<?php if( $rightSidebar ) { ?>
 					<div class="colf colf12x3">
-						<?php "$pageIncludes/sidebars/right.php"; ?>
+						<?php "$defaultIncludes/sidebars/right.php"; ?>
 					</div>
 				<?php } ?>
 			</div>
@@ -60,7 +60,7 @@ $outerObjects	= "$pageIncludes/objects-outer.php";
 		<?php } ?>
 		<?php include $outerObjects; ?>
 		<?php if( $bottomSidebar ) { ?>
-			<?php include "$pageIncludes/sidebars/bottom.php"; ?>
+			<?php include "$defaultIncludes/sidebars/bottom.php"; ?>
 		<?php } ?>
 	</div>
 </div>

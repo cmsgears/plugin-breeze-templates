@@ -4,14 +4,14 @@ $data	= $widget->modelData;
 
 $settings = isset( $data->settings ) ? $data->settings : [];
 
-$blockIncludes = Yii::getAlias( '@breeze' ) . '/templates/block/default/includes';
+$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/block/default/includes';
 
-$buffer = "$blockIncludes/buffer.php";
+$buffer = "$defaultIncludes/buffer.php";
 ?>
-<?php include "$blockIncludes/styles.php"; ?>
-<?php include "$blockIncludes/background.php"; ?>
+<?php include "$defaultIncludes/styles.php"; ?>
+<?php include "$defaultIncludes/background.php"; ?>
 <div class="block-content-wrap">
-	<?php include "$blockIncludes/header.php"; ?>
-	<?php include "$blockIncludes/content.php"; ?>
-	<?php include "$blockIncludes/footer.php"; ?>
+	<?php include "$defaultIncludes/header.php"; ?>
+	<?php include "$defaultIncludes/content.php"; ?>
+	<?php include "$defaultIncludes/footer.php"; ?>
 </div>

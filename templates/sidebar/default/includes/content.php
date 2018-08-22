@@ -1,12 +1,12 @@
 <?php
-$content			= $settings->content ?? $widget->content;
-$contentTitle		= isset( $settings ) && $settings->contentTitle && !empty( $model->displayName ) ? $model->displayName : $widget->contentTitle;
-$contentInfo		= isset( $settings ) && $settings->contentInfo && !empty( $model->description ) ? $model->description : $widget->contentInfo;
-$contentSummary		= isset( $settings ) && $settings->contentSummary && !empty( $model->summary ) ? $model->summary : $widget->contentSummary;
-$contentData		= isset( $settings ) && $settings->contentData && !empty( $model->content ) ? $model->content : $widget->contentData;
+$content			= !empty( $settings->content ) ? $settings->content : $widget->content;
+$contentTitle		= !empty( $settings->contentTitle ) && $settings->contentTitle && !empty( $model->displayName ) ? $model->displayName : $widget->contentTitle;
+$contentInfo		= !empty( $settings->contentInfo ) && $settings->contentInfo && !empty( $model->description ) ? $model->description : $widget->contentInfo;
+$contentSummary		= !empty( $settings->contentSummary ) && $settings->contentSummary && !empty( $model->summary ) ? $model->summary : $widget->contentSummary;
+$contentData		= !empty( $settings->contentData ) && $settings->contentData && !empty( $model->content ) ? $model->content : $widget->contentData;
 
-$contentClass		= isset( $settings ) && !empty( $settings->contentClass ) ? $settings->contentClass : $widget->contentClass;
-$contentDataClass	= isset( $settings ) && !empty( $settings->contentDataClass ) ? $settings->contentDataClass : $widget->contentDataClass;
+$contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : $widget->contentClass;
+$contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDataClass : $widget->contentDataClass;
 ?>
 
 <?php if( $content ) { ?>

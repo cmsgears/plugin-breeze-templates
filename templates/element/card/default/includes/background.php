@@ -6,19 +6,19 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 
 // Max Cover ----------------
 
-$maxCover	= $settings->maxCover ?? $widget->maxCover;
+$maxCover = !empty( $settings->maxCover ) ? $settings->maxCover : $widget->maxCover;
 
 // Background ---------------
 
-$bkg		= $settings->bkg ?? $widget->bkg;
-$bkgClass	= $settings->bkgClass ?? $widget->bkgClass;
+$bkg		= !empty( $settings->bkg ) ? $settings->bkg : $widget->bkg;
+$bkgClass	= !empty( $settings->bkgClass ) ? $settings->bkgClass : $widget->bkgClass;
 
-$texture		= $settings->texture ?? $widget->texture;
+$texture		= !empty( $settings->texture ) ? $settings->texture : $widget->texture;
 $textureClass	= !empty( $model->texture ) ? $model->texture : $widget->textureClass;
 
-$banner		= ( isset( $settings ) && $settings->defaultBanner ) || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
+$banner		= ( !empty( $settings->defaultBanner ) && $settings->defaultBanner ) || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
 $bannerUrl	= CodeGenUtil::getFileUrl( $model->banner, [ 'image' => $banner ] );
-$bkgUrl		= $bannerUrl ?? $widget->bkgUrl;
+$bkgUrl		= isset( $bannerUrl ) ? $bannerUrl : $widget->bkgUrl;
 ?>
 
 <?php if( $bkg && !empty( $bkgUrl ) ) { ?>

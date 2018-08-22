@@ -7,9 +7,9 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 $header				= !empty( $settings->header ) ? $settings->header : $widget->header;
 $headerIcon			= !empty( $settings->headerIcon ) ? $settings->headerIcon : $widget->headerIcon;
 $headerIconClass	= !empty( $model->icon ) ? $model->icon : $widget->headerIconClass;
-$headerTitle		= !empty( $settings->headerTitle ) && !empty( $model->displayName ) ? $model->displayName : $widget->headerTitle;
-$headerInfo			= !empty( $settings->headerInfo ) && !empty( $model->description ) ? $model->description : $widget->headerInfo;
-$headerContent		= !empty( $settings->headerContent ) && !empty( $model->summary ) ? $model->summary : $widget->headerContent;
+$headerTitle		= !empty( $settings->headerTitle ) && $settings->headerTitle && !empty( $model->displayName ) ? $model->displayName : $widget->headerTitle;
+$headerInfo			= !empty( $settings->headerInfo ) && $settings->headerInfo && !empty( $model->description ) ? $model->description : $widget->headerInfo;
+$headerContent		= !empty( $settings->headerContent ) && $settings->headerContent && !empty( $model->summary ) ? $model->summary : $widget->headerContent;
 
 $avatar			= ( !empty( $settings->defaultAvatar ) && $settings->defaultAvatar ) || $widget->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] );

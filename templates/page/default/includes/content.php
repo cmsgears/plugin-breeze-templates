@@ -28,14 +28,14 @@ $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDa
 			<div class="page-content-summary reader"><?= $contentSummary ?></div>
 		<?php } ?>
 		<?php if( $contentSocial ) { ?>
-			<?php include "$pageIncludes/social.php"; ?>
+			<?php include "$defaultIncludes/social.php"; ?>
 		<?php } ?>
 		<?php include $preObjects; ?>
 		<?php if( !empty( $contentData ) ) { ?>
 			<div class="page-content-data reader <?= $contentDataClass ?>"><?= $contentData ?></div>
 		<?php } ?>
 		<?php if( $contentLabels ) { ?>
-			<?php include "$pageIncludes/labels.php"; ?>
+			<?php include "$defaultIncludes/labels.php"; ?>
 		<?php } ?>
 		<?php include $buffer; ?>
 		<?php include $innerObjects; ?>
