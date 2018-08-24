@@ -20,6 +20,7 @@ use cmsgears\core\common\models\entities\User;
 use cmsgears\core\common\models\resources\Form;
 use cmsgears\core\common\models\resources\FormField;
 use cmsgears\cms\common\models\entities\Page;
+use cmsgears\cms\common\models\entities\Widget;
 
 use cmsgears\core\common\utilities\DateUtil;
 
@@ -28,7 +29,7 @@ use cmsgears\core\common\utilities\DateUtil;
  *
  * @since 1.0.0
  */
-class m180815_100100_breeze_cms_objects extends Migration {
+class m180810_100100_breeze_cms_data extends Migration {
 
 	// Public variables
 
@@ -63,6 +64,8 @@ class m180815_100100_breeze_cms_objects extends Migration {
 		$this->insertBlocks();
 
 		$this->insertWidgets();
+		$this->insertWidgetMappings();
+
 		$this->insertSidebars();
 
 		$this->insertMenus();
@@ -225,14 +228,71 @@ class m180815_100100_breeze_cms_objects extends Migration {
 
 		$site	= $this->site;
 		$master	= $this->master;
+		$status	= ObjectData::STATUS_ACTIVE;
+		$vis	= ObjectData::VISIBILITY_PUBLIC;
 
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'description', 'createdAt', 'modifiedAt', 'content', 'data' ];
+		$pageTemplate		= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_PAGE, CmsGlobal::TYPE_WIDGET );
+		$postTemplate		= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_POST, CmsGlobal::TYPE_WIDGET );
+		$articleTemplate	= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_ARTICLE, CmsGlobal::TYPE_WIDGET );
+
+		$columns = [ 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data' ];
 
 		$models = [
-			// Default - Widgets
+			// Page Widgets
+			[ $site->id, $pageTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Pages', 'search-pages', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search pages from all sites.', 'It search pages published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $pageTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Recent Pages', 'recent-pages', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Recent pages from all sites.', 'It shows the recent pages published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $pageTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Popular Pages', 'popular-pages', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Popular pages from all sites.', 'It shows the popular pages published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $pageTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Site Pages', 'search-site-pages', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search pages from active site.', 'It search pages published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $pageTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Recent Site Pages', 'recent-site-pages', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Recent pages from active site.', 'It shows the recent pages published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $pageTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Popular Site Pages', 'popular-site-pages', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Popular pages from active site.', 'It shows the popular pages published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			// Post Widgets
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Posts', 'search-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search posts from all sites.', 'It search posts published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Recent Posts', 'recent-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Recent posts from all sites.', 'It shows the recent posts published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Popular Posts', 'popular-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Popular posts from all sites.', 'It shows the popular posts published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Author Posts', 'author-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Author posts from all sites.', 'It shows the author posts published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Archive Posts', 'archive-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Archive posts from all sites.', 'It shows the archive posts according to selected month and published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Site Posts', 'search-site-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search posts from active site.', 'It search posts published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Recent Site Posts', 'recent-site-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Recent posts from active site.', 'It shows the recent posts published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Popular Site Posts', 'popular-site-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Popular posts from active site.', 'It shows the popular posts published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Author Site Posts', 'author-site-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Author posts from active sites.', 'It shows the author posts published on active sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Archive Site Posts', 'archive-site-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Archive posts from active sites.', 'It shows the archive posts according to selected month and published on active sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Category Posts', 'category-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Category posts from active sites.', 'It shows the category posts published on active sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $postTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Tag Posts', 'tag-posts', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Tag posts from active sites.', 'It shows the tag posts published on active sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			// Article Widgets
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Articles', 'search-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search articles from all sites.', 'It search articles published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Recent Articles', 'recent-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Recent articles from all sites.', 'It shows the recent articles published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Popular Articles', 'popular-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Popular articles from all sites.', 'It shows the popular articles published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Author Articles', 'author-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Author articles from all sites.', 'It shows the author articles published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Archive Articles', 'archive-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Archive articles from all sites.', 'It shows the archive articles according to selected month and published on all sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Site Articles', 'search-site-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search articles from active site.', 'It search articles published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Recent Site Articles', 'recent-site-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Recent articles from active site.', 'It shows the recent articles published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Popular Site Articles', 'popular-site-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Popular articles from active site.', 'It shows the popular articles published on active site.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Author Site Articles', 'author-site-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Author articles from active sites.', 'It shows the author articles published on active sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
+			[ $site->id, $articleTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Archive Site Articles', 'archive-site-articles', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Archive articles from active sites.', 'It shows the archive articles according to selected month and published on active sites.', NULL, NULL, 16000, 1500,0,0,0,DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL ],
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
+	}
+
+	private function insertWidgetMappings() {
+
+		$searchPage		= Page::findBySlugType( 'search-pages', CmsGlobal::TYPE_PAGE );
+		$searchPost		= Page::findBySlugType( 'search-posts', CmsGlobal::TYPE_PAGE );
+		$searchArticle	= Page::findBySlugType( 'search-articles', CmsGlobal::TYPE_PAGE );
+
+		$searchPageWidget	= Widget::findBySlugType( 'search-pages', CmsGlobal::TYPE_WIDGET );
+		$searchPostWidget	= Widget::findBySlugType( 'search-posts', CmsGlobal::TYPE_WIDGET );
+		$searchArtiWidget	= Widget::findBySlugType( 'search-articles', CmsGlobal::TYPE_WIDGET );
+
+		$columns = [ 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
+
+		$mappings = [
+			[ $searchPageWidget->id, $searchPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchPostWidget->id, $searchPost->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchArtiWidget->id, $searchArticle->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+		];
+
+		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );
 	}
 
 	/**
@@ -301,7 +361,7 @@ class m180815_100100_breeze_cms_objects extends Migration {
 
     public function down() {
 
-        echo "m180815_100100_breeze_cms_objects will be deleted with m160621_014408_core.\n";
+        echo "m180810_100100_breeze_cms_data will be deleted with m160621_014408_core.\n";
 
         return true;
     }

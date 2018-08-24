@@ -28,7 +28,7 @@ use cmsgears\core\common\utilities\DateUtil;
  *
  * @since 1.0.0
  */
-class m180818_100100_breeze_sns_objects extends Migration {
+class m180812_100100_breeze_sns_objects extends Migration {
 
 	// Public variables
 
@@ -82,7 +82,7 @@ class m180818_100100_breeze_sns_objects extends Migration {
 
     public function down() {
 
-        echo "m180818_100100_breeze_sns_objects will be deleted with m160621_014408_core.\n";
+        echo "m180812_100100_breeze_sns_objects will be deleted with m160621_014408_core.\n";
 
         return true;
     }

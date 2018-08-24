@@ -34,7 +34,6 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 		<div class="row content-90">
 			<?php include dirname( __FILE__ ) . '/includes/content.php'; ?>
 		</div>
-		<?php include "$defaultIncludes/blocks.php"; ?>
-		<?php include "$defaultIncludes/widgets.php"; ?>
+		<?php include $outerObjects; ?>
 	</div>
 </div>
