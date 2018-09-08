@@ -4,9 +4,9 @@ $layout	= $widget->layout;
 
 <?= $headHtml ?>
 
-<?= $reportHtml ?>
-
 <?= $optionsHtml ?>
+
+<?= $reportHtml ?>
 
 <?= $headerHtml ?>
 

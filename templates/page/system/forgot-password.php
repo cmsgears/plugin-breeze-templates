@@ -5,7 +5,7 @@ use cmsgears\cms\common\utilities\ContentUtil;
 // Form Config
 $frmSplit	= isset( $frmSplit ) ? $frmSplit : true;
 $otp		= isset( $otp ) ? $otp : false;
-$otpUrl		= '/otp-reset-password';
+$otpUrl		= '/reset-password-otp';
 
 $formModel	= $model;
 $formView	= dirname( __FILE__ ) . '/includes/forms/forgot-password.php';

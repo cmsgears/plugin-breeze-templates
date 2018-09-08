@@ -53,11 +53,11 @@ $export			= $widget->export;
 			<span class="filler-tab"></span>
 			<?php } ?>
 			<?= LinkPager::widget([
-					'pagination' => $pagination, 'options' => [ 'class' => 'pagination pagination-grid pagination-grid-default' ],
-					'nextPageLabel' => '<i class="icon fa fa-angle-right"></i>',
-					'prevPageLabel' => '<i class="icon fa fa-angle-left"></i>',
-					'firstPageLabel' => '<i class="icon fa fa-angle-double-left"></i>',
-					'lastPageLabel' => '<i class="icon fa fa-angle-double-right"></i>'
+				'pagination' => $pagination, 'options' => [ 'class' => 'pagination pagination-grid pagination-grid-easy' ],
+				'nextPageLabel' => '<i class="icon fa fa-angle-right"></i>',
+				'prevPageLabel' => '<i class="icon fa fa-angle-left"></i>',
+				'firstPageLabel' => '<i class="icon fa fa-angle-double-left"></i>',
+				'lastPageLabel' => '<i class="icon fa fa-angle-double-right"></i>'
 			]) ?>
 		</div>
 	</div>

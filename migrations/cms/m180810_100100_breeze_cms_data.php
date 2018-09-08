@@ -107,12 +107,14 @@ class m180810_100100_breeze_cms_data extends Migration {
 		$privacyPage	= Page::findBySlugType( 'privacy', CmsGlobal::TYPE_PAGE );
 
 		$login			= Page::findBySlugType( 'login', CmsGlobal::TYPE_PAGE );
+		$loginOtp		= Page::findBySlugType( 'login-otp', CmsGlobal::TYPE_PAGE );
 		$register		= Page::findBySlugType( 'register', CmsGlobal::TYPE_PAGE );
 		$caccount		= Page::findBySlugType( 'confirm-account', CmsGlobal::TYPE_PAGE );
+		$caccountOtp	= Page::findBySlugType( 'confirm-account-otp', CmsGlobal::TYPE_PAGE );
 		$aaccount		= Page::findBySlugType( 'activate-account', CmsGlobal::TYPE_PAGE );
 		$fpassword		= Page::findBySlugType( 'forgot-password', CmsGlobal::TYPE_PAGE );
 		$rpassword		= Page::findBySlugType( 'reset-password', CmsGlobal::TYPE_PAGE );
-		$orpassword		= Page::findBySlugType( 'otp-reset-password', CmsGlobal::TYPE_PAGE );
+		$rpasswordOtp	= Page::findBySlugType( 'reset-password-otp', CmsGlobal::TYPE_PAGE );
 		$feedback		= Page::findBySlugType( 'feedback', CmsGlobal::TYPE_PAGE );
 		$testimonial	= Page::findBySlugType( 'testimonial', CmsGlobal::TYPE_PAGE );
 
@@ -124,7 +126,7 @@ class m180810_100100_breeze_cms_data extends Migration {
 		$faqPage		= Page::findBySlugType( 'faq', CmsGlobal::TYPE_PAGE );
 
 		$defaultPages	= join( ',', [ $aboutPage->id, $termPage->id, $privacyPage->id ] );
-		$systemPages	= join( ',', [ $login->id, $register->id, $caccount->id, $aaccount->id, $fpassword->id, $rpassword->id, $orpassword->id, $feedback->id, $testimonial->id ] );
+		$systemPages	= join( ',', [ $login->id, $loginOtp->id, $register->id, $caccount->id, $caccountOtp->id, $aaccount->id, $fpassword->id, $rpassword->id, $rpasswordOtp->id, $feedback->id, $testimonial->id ] );
 		$searchPages	= join( ',', [ $searchPage->id, $searchPost->id, $searchArticle->id ] );
 		$qnaPages		= join( ',', [ $helpPage->id, $faqPage->id ] );
 

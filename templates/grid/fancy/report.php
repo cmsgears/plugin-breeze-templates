@@ -10,7 +10,7 @@ $report = Yii::$app->request->getQueryParam( 'report' );
 <?php if( count( $reportColumns ) > 0 ) { ?>
 <div class="grid-report-wrap form <?= $report ? 'show-report' : null ?>">
 	<div class="grid-report">
-		<div class="row grid-report-fields max-cols-50">
+		<div class="row grid-report-fields max-cols-50 form">
 		<?php
 			foreach ( $reportColumns as $key => $reportColumn ) {
 
@@ -23,21 +23,23 @@ $report = Yii::$app->request->getQueryParam( 'report' );
 
 						$filter	= Yii::$app->request->getQueryParam( $key . '-find' );
 		?>
-						<div class="colf colf2 row">
-							<div class="colf colf3 bold"><?= $title ?></div>
-							<div class="colf colf3x2"><input class="report-field" type="text" name="<?= $key ?>-find" value="<?= isset( $filter ) ? $filter : null ?>" placeholder="<?= $title ?>" /></div>
+						<div class="colf colf2">
+							<div class="form-group">
+								<label><?= $title ?></label>
+								<input class="report-field" type="text" name="<?= $key ?>-find" value="<?= isset( $filter ) ? $filter : null ?>" placeholder="<?= $title ?>" />
+							</div>
 						</div>
 		<?php
 						break;
 					}
 					case 'flag': {
 
-						$flag	= Yii::$app->request->getQueryParam( $key . '-flag' );
+						$flag = Yii::$app->request->getQueryParam( $key . '-flag' );
 		?>
-						<div class="colf colf2 row">
-							<div class="colf colf3 bold"><?= $title ?></div>
-							<div class="colf colf3x2">
-								<span class='cmt-switch cmt-checkbox'>
+						<div class="colf colf2">
+							<div class="form-group">
+								<label><?= $title ?></label>
+								<span class="cmt-switch cmt-checkbox">
 									<input id="<?= $key . '-flag' ?>" class="cmt-toggle cmt-toggle-round" type="checkbox" name="value" />
 									<label for='<?= $key . '-flag' ?>'></label>
 									<input class="report-field" type="hidden" name="<?= $key . '-flag' ?>" value="<?= isset( $flag ) ? $flag : 0 ?>" />
@@ -52,9 +54,9 @@ $report = Yii::$app->request->getQueryParam( 'report' );
 						$filter	= Yii::$app->request->getQueryParam( $key . '-match' );
 						$filter	= isset( $filter ) ? $filter : null;
 		?>
-						<div class="colf colf2 row">
-							<div class="colf colf3 bold"><?= $title ?></div>
-							<div class="colf colf3x2">
+						<div class="colf colf2">
+							<div class="form-group">
+								<label><?= $title ?></label>
 								<?= Html::dropDownList( "$key-match", $filter, $reportColumn[ 'options' ], [ 'class' => 'report-field cmt-select' ] ) ?>
 							</div>
 						</div>
@@ -66,13 +68,15 @@ $report = Yii::$app->request->getQueryParam( 'report' );
 						$start	= Yii::$app->request->getQueryParam( $key . '-start' );
 						$end	= Yii::$app->request->getQueryParam(  $key . '-end' );
 		?>
-						<div class="colf colf2 row">
-							<div class="colf colf3 bold"><?= $title ?></div>
-							<div class="colf colf3 range-wrap">
-								<input class="report-field" type="text" name="<?= $key ?>-start" value="<?= isset( $start ) ? $start : null ?>" placeholder="Start" />
-							</div>
-							<div class="colf colf3 range-wrap">
-								<input class="report-field" type="text" name="<?= $key ?>-end" value="<?= isset( $end ) ? $end : null ?>" placeholder="End" />
+						<div class="colf colf2">
+							<div class="form-group">
+								<label><?= $title ?></label>
+								<div class="range-wrap">
+									<input class="report-field" type="text" name="<?= $key ?>-start" value="<?= isset( $start ) ? $start : null ?>" placeholder="Start" />
+								</div>
+								<div class="range-wrap">
+									<input class="report-field" type="text" name="<?= $key ?>-end" value="<?= isset( $end ) ? $end : null ?>" placeholder="End" />
+								</div>
 							</div>
 						</div>
 		<?php
@@ -84,17 +88,19 @@ $report = Yii::$app->request->getQueryParam( 'report' );
 						$end	= Yii::$app->request->getQueryParam(  $key . '-end' );
 		?>
 						<div class="colf colf2 row">
-							<div class="colf colf3 bold"><?= $title ?></div>
-							<div class="colf colf3 date-wrap">
-								<div class="frm-icon-element icon-right">
-									<span class="cmti cmti-calendar-o"></span>
-									<input class="report-field <?= $dateClass ?>" type="text" name="<?= $key ?>-start" value="<?= isset( $start ) ? $start : null ?>" placeholder="Start Date" />
+							<div class="form-group">
+								<label><?= $title ?></label>
+								<div class="date-wrap">
+									<div class="frm-icon-element icon-right">
+										<span class="cmti cmti-calendar-o"></span>
+										<input class="report-field <?= $dateClass ?>" type="text" name="<?= $key ?>-start" value="<?= isset( $start ) ? $start : null ?>" placeholder="Start Date" />
+									</div>
 								</div>
-							</div>
-							<div class="colf colf3 date-wrap">
-								<div class="frm-icon-element icon-right">
-									<span class="cmti cmti-calendar-o"></span>
-									<input class="report-field <?= $dateClass ?>" type="text" name="<?= $key ?>-end" value="<?= isset( $end ) ? $end : null ?>" placeholder="End Date" />
+								<div class="date-wrap">
+									<div class="frm-icon-element icon-right">
+										<span class="cmti cmti-calendar-o"></span>
+										<input class="report-field <?= $dateClass ?>" type="text" name="<?= $key ?>-end" value="<?= isset( $end ) ? $end : null ?>" placeholder="End Date" />
+									</div>
 								</div>
 							</div>
 						</div>
