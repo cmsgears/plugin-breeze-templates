@@ -4,15 +4,6 @@ foreach( $objectsOrder as $key => $value ) {
 
 	switch( $key ) {
 
-		case 'attributes': {
-
-			if( $attributes && $attributesBeforeContent ) {
-
-				include "$defaultIncludes/attributes.php";
-			}
-
-			break;
-		}
 		case 'elements': {
 
 			if( $elements && $elementsBeforeContent ) {
