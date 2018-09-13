@@ -19,7 +19,7 @@ $leftSidebar	= !empty( $settings->leftSidebar ) ? $settings->leftSidebar : false
 $rightSidebar	= !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
-$defaultIncludes		= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
 $templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/qna/includes';
 
 $buffer			= "$defaultIncludes/buffer.php";
