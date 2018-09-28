@@ -125,11 +125,6 @@ class WidgetConfig extends DataModel {
 	 */
 	public function generateConfig( $params = [] ) {
 
-		if( property_exists( $this, 'model' ) ) {
-
-			$this->model = isset( $params[ 'model' ] ) ? $params[ 'model' ] : null;
-		}
-
 		$config = [
 			// HTML Wrapper
 			'wrap' => $this->wrap,

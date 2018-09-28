@@ -15,7 +15,7 @@ $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row
 ?>
 
 <?php if( $widgets ) { ?>
-	<div class="page-widget-wrap">
+	<div class="page-widget-wrap <?= $widgetWrapClass ?>">
 		<?php
 			$widgets = [];
 
@@ -42,8 +42,8 @@ $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row
 
 					$widgetView		= !empty( $widgetTemplate->view ) ? $widgetTemplate->view : 'default';
 					$widgetConfig	= !empty( $widgetTemplate->configPath ) ? $widgetTemplate->configPath : null;
-					$widgetConfig	= isset( $widgetConfig ) ? new $widgetConfig() : null;
-					$widgetConfig	= isset( $widgetConfig ) ? $widgetConfig->generateConfig( [ 'model' => $model ] ) : [];
+					$widgetConfig	= isset( $widgetConfig ) ? new $widgetConfig( $widget->getDataMeta( 'config' ) ) : null;
+					$widgetConfig	= isset( $widgetConfig ) ? $widgetConfig->generateConfig() : [];
 
 					$widgetConfig = ArrayHelper::merge( $widgetConfig, [
 						'widgetObj' => $widget,

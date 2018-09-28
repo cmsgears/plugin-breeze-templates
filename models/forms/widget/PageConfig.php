@@ -101,7 +101,7 @@ class PageConfig extends PagingConfig {
 
 	public function generateConfig( $params = [] ) {
 
-		$config = parent::generateConfig();
+		$config = parent::generateConfig( $params );
 
 		$config[ 'widget' ]			= $this->widget;
 		$config[ 'texture' ]		= $this->texture;

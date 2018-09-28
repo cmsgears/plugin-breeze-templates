@@ -9,18 +9,18 @@
 					<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'wrapSingle', null, 'cmti cmti-checkbox' ) ?>
 				</div>
 				<div class="col col4">
-					<?= $form->field( $config, 'singleWrapper' ) ?>
+					<?= $form->field( $config, 'textLimit' ) ?>
 				</div>
 				<div class="col col4x2">
-					<?= $form->field( $config, 'singleOptions' )->textarea() ?>
+					<?= $form->field( $config, 'wrapperOptions' )->textarea() ?>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col col2">
-					<?= $form->field( $config, 'textLimit' ) ?>
+					<?= $form->field( $config, 'singleWrapper' ) ?>
 				</div>
 				<div class="col col2">
-					<?= $form->field( $config, 'wrapperOptions' )->textarea() ?>
+					<?= $form->field( $config, 'singleOptions' )->textarea() ?>
 				</div>
 			</div>
 		</div>

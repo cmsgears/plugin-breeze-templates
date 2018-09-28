@@ -7,7 +7,7 @@
  * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
  */
 
-namespace cmsgears\templates\breeze\models\forms\widget;
+namespace cmsgears\templates\breeze\models\forms\settings;
 
 // Yii Imports
 use Yii;

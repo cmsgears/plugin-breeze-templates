@@ -14,11 +14,23 @@ $contentLabels	= !empty( $settings->contentLabels ) ? $settings->contentLabels :
 $contentData		= !empty( $settings->contentData ) && $settings->contentData ? $modelContent->content : null;
 $contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : null;
 $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDataClass : 'reader';
+
+$contentBanner	= $contentBanner && !empty( $bannerUrl );
 ?>
 
 <?php if( $content ) { ?>
 	<div class="page-content <?= $contentClass ?>">
-		<?php if( !empty( $contentTitle ) ) { ?>
+		<?php if( $contentBanner ) { ?>
+			<div class="page-content-banner">
+				<div class="page-bkg <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);" ></div>
+				<?php if( $texture ) { ?>
+					<div class="<?= $textureClass ?>"></div>
+				<?php } ?>
+				<?php if( !empty( $contentTitle ) ) { ?>
+					<div class="page-content-title valign-center"><?= $contentTitle ?></div>
+				<?php } ?>
+			</div>
+		<?php } else if( !empty( $contentTitle ) ) { ?>
 			<div class="page-content-title"><?= $contentTitle ?></div>
 		<?php } ?>
 		<?php if( !empty( $contentInfo ) ) { ?>
