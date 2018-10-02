@@ -416,6 +416,24 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 						</div>
 					</div>
 				</div>
+				<div class="filler-height"></div>
+				<div class="box box-crud">
+					<div class="box-header">
+						<div class="box-header-title">Comments</div>
+					</div>
+					<div class="box-content-wrap frm-split-40-60">
+						<div class="box-content">
+							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'comments', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'disqus', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col col3">
 				<div class="box-content-wysiwyg">

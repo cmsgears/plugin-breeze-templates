@@ -11,11 +11,11 @@ $templateClass	= isset( $modelContent->template ) ? "page-default page-{$modelCo
 
 // Sidebars -----------------------
 
-$topSidebar		= !empty( $settings->topSidebar ) ? $settings->topSidebar : false;
-$bottomSidebar	= !empty( $settings->bottomSidebar ) ? $settings->bottomSidebar : false;
-$leftSidebar	= !empty( $settings->leftSidebar ) ? $settings->leftSidebar : false;
-$rightSidebar	= !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
-$footerSidebar	= !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
+$topSidebar		= isset( $settings->topSidebar ) ? $settings->topSidebar : false;
+$bottomSidebar	= isset( $settings->bottomSidebar ) ? $settings->bottomSidebar : false;
+$leftSidebar	= isset( $settings->leftSidebar ) ? $settings->leftSidebar : false;
+$rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : false;
+$footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
 $defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
 

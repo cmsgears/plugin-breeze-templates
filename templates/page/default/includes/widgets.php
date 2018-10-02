@@ -51,6 +51,19 @@ $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row
 						'template' => $widgetView
 					]);
 
+					// Configure Widget options
+					$htmlOptions	= isset( $widgetTemplate ) && !empty( $widgetTemplate->htmlOptions ) ? json_decode( $widgetTemplate->htmlOptions, true ) : [];
+					$modelOptions	= !empty( $widget->htmlOptions ) ? json_decode( $widget->htmlOptions, true ) : [];
+					$configOptions	= $widgetConfig[ 'options' ];
+
+					$options = !empty( $htmlOptions ) ? ArrayHelper::merge( $htmlOptions, $modelOptions ) : $modelOptions;
+					$options = !empty( $configOptions ) ? ArrayHelper::merge( $options, $configOptions ) : $options;
+
+					$classOption = isset( $options[ 'class' ] ) ? $options[ 'class' ] : null;
+					$classOption = "widget $classOption obj-widget widget-{$widgetTemplate->slug} widget-{$widget->slug}";
+
+					$widgetConfig[ 'options' ][ 'class' ] = join( ' ', array_unique( preg_split( '/ /', $classOption ) ) );
+
 					$widgetContent = $wClassPath::widget( $widgetConfig );
 				}
 

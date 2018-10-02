@@ -22,15 +22,10 @@ $contentBanner	= $contentBanner && !empty( $bannerUrl );
 	<div class="page-content <?= $contentClass ?>">
 		<?php if( $contentBanner ) { ?>
 			<div class="page-content-banner">
-				<div class="page-bkg <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);" ></div>
-				<?php if( $texture ) { ?>
-					<div class="<?= $textureClass ?>"></div>
-				<?php } ?>
-				<?php if( !empty( $contentTitle ) ) { ?>
-					<div class="page-content-title valign-center"><?= $contentTitle ?></div>
-				<?php } ?>
+				<img class="width width-100" src="<?= $bannerUrl ?>" title="<?= "{$model->displayName}" ?>" />
 			</div>
-		<?php } else if( !empty( $contentTitle ) ) { ?>
+		<?php } ?>
+		<?php if( !empty( $contentTitle ) ) { ?>
 			<div class="page-content-title"><?= $contentTitle ?></div>
 		<?php } ?>
 		<?php if( !empty( $contentInfo ) ) { ?>

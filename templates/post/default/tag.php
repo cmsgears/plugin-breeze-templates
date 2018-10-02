@@ -7,17 +7,16 @@ $featuredModels	= Yii::$app->factory->get( 'postService' )->getFeatured();
 
 // Config -------------------------
 
-$data			= json_decode(  $model->data );
-$settings		= isset( $data->settings ) ? $data->settings : [];
-$templateClass	= isset( $modelContent->template ) ? "page-default page-{$modelContent->template->slug}" : 'page-default';
+$data		= json_decode(  $model->data );
+$settings	= isset( $data->settings ) ? $data->settings : [];
 
 // Sidebars -----------------------
 
-$topSidebar		= !empty( $settings->topSidebar ) ? $settings->topSidebar : false;
-$bottomSidebar	= !empty( $settings->bottomSidebar ) ? $settings->bottomSidebar : false;
-$leftSidebar	= !empty( $settings->leftSidebar ) ? $settings->leftSidebar : false;
-$rightSidebar	= !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
-$footerSidebar	= !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
+$topSidebar		= isset( $settings->topSidebar ) ? $settings->topSidebar : false;
+$bottomSidebar	= isset( $settings->bottomSidebar ) ? $settings->bottomSidebar : false;
+$leftSidebar	= isset( $settings->leftSidebar ) ? $settings->leftSidebar : false;
+$rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : false;
+$footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
 $searchIncludes		= Yii::getAlias( '@breeze' ) . '/templates/page/default/search';

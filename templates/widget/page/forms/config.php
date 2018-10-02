@@ -29,7 +29,7 @@ $returnUrl		= $this->context->returnUrl;
 					</div>
 					<div class="row">
 						<div class="col col4x2">
-							<?= $form->field( $config, 'widget' )->dropDownList( [ 'recent' => 'recent' ], [ 'class' => 'cmt-select' ] ) ?>
+							<?= $form->field( $config, 'widget' )->dropDownList( [ 'recent' => 'recent', 'popular' => 'popular' ], [ 'class' => 'cmt-select' ] ) ?>
 						</div>
 						<div class="col col4">
 							<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'authorParam', null, 'cmti cmti-checkbox' ) ?>

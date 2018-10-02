@@ -95,6 +95,14 @@ class FormSettings extends DataModel {
 	public $footerElements;
 	public $footerElementType;
 
+	// Form
+	public $formClass;
+	public $formCaptchaAction;
+	public $wrapCaptcha = true;
+	public $wrapActions = true;
+	public $labels = true;
+	public $split4060 = true;
+
 	// Elements
 	public $elements;
 	public $elementsBeforeContent;
@@ -176,8 +184,10 @@ class FormSettings extends DataModel {
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
+			[ [ 'wrapCaptcha', 'wrapActions', 'labels', 'split4060' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ 'formCaptchaAction', 'string', 'min' => 1, 'max' => Yii::$app->core->xLargeText ],
+			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'formClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],

@@ -153,6 +153,10 @@ class PageSettings extends DataModel {
 	public $footerSidebar;
 	public $footerSidebarSlug;
 
+	// Comments
+	public $comments = true;
+	public $disqus;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -187,6 +191,7 @@ class PageSettings extends DataModel {
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'attributesWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
+			[ [ 'comments', 'disqus' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'attributeType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
@@ -203,7 +208,9 @@ class PageSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
-			'metaWrapClass' => 'Attribute Wrap Class'
+			'metaWrapClass' => 'Attribute Wrap Class',
+			'commentAllFields' => 'All Fields',
+			'commentLabels' => 'Labels'
 		];
 	}
 

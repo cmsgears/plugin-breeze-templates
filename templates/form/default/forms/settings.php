@@ -207,6 +207,38 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 				<div class="filler-height"></div>
 				<div class="box box-crud">
 					<div class="box-header">
+						<div class="box-header-title">Form</div>
+					</div>
+					<div class="box-content-wrap frm-split-40-60">
+						<div class="box-content">
+							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'wrapCaptcha', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'wrapActions', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'labels', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'split4060', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'formClass' ) ?>
+								</div>
+								<div class="col col2">
+									<?= $form->field( $settings, 'formCaptchaAction' ) ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="filler-height"></div>
+				<div class="box box-crud">
+					<div class="box-header">
 						<div class="box-header-title">Elements</div>
 					</div>
 					<div class="box-content-wrap frm-split-40-60">

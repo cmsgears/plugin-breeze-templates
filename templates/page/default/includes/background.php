@@ -24,7 +24,7 @@ $maxCover	= !empty( $settings->maxCover ) ? $settings->maxCover : false;
 $bkg		= !empty( $settings->background ) ? $settings->background : false;
 $bkgClass	= !empty( $settings->backgroundClass ) ? $settings->backgroundClass : null;
 
-$banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : SiteProperties::getInstance()->getDefaultBanner() ) : null;
+$banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : SiteProperties::getInstance()->getPageBanner() ) : null;
 $bannerUrl	= CodeGenUtil::getFileUrl( $modelContent->banner, [ 'image' => $banner ] );
 
 // Slides -------------------
