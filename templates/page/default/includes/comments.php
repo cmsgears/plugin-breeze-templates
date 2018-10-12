@@ -26,7 +26,9 @@ $disqus		= isset( $settings->disqus ) ? ( $comments && $settings->disqus ) : fal
 	</div>
 <?php } ?>
 <?php if( $comments & $disqus ) { ?>
-	<div class="h4">Discussion Forum by DISQUS</div><hr/>
-	<div class="filler-height"></div>
-	<div id="disqus_thread" class="margin margin-small-v"></div>
-<?php }
+	<div class="page-content-buffer page-content-disqus">
+		<div class="h4">Discussion Forum by DISQUS</div><hr/>
+		<div class="filler-height"></div>
+		<div id="disqus_thread" class="margin margin-small-v"></div>
+	</div>
+<?php } ?>
