@@ -8,3 +8,4 @@
 
 <?php include "$defaultIncludes/attributes.php"; ?>
 <?php include "$defaultIncludes/elements.php"; ?>
+<?php include "$defaultIncludes/widgets.php"; ?>

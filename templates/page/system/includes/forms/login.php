@@ -24,7 +24,7 @@ $coreProperties = $this->context->getCoreProperties();
 				</label>
 			</div>
 			<div class="col col2 align align-right">
-				<input class="element-medium" type="submit" value="Login" />
+				<input class="frm-element-medium" type="submit" value="Login" />
 			</div>
 		</div>
 	<?php ActiveForm::end(); ?>

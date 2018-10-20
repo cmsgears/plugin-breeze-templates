@@ -46,7 +46,7 @@ $termsLabel = "I agree to the <a href=\"$termsUrl\">Terms</a> and <a href=\"$pri
 					</label>
 				</div>
 				<div class="col col2 align align-right">
-					<input class="element-medium" type="submit" value="Register" />
+					<input class="frm-element-medium" type="submit" value="Register" />
 				</div>
 			</div>
 		<?php ActiveForm::end(); ?>

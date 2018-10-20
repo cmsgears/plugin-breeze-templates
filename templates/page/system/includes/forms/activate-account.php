@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 					</label>
 				</div>
 				<div class="col col2 align align-right">
-					<input class="element-medium" type="submit" value="Submit" />
+					<input class="frm-element-medium" type="submit" value="Submit" />
 				</div>
 			</div>
 		<?php ActiveForm::end(); ?>
