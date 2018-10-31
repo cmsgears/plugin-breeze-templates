@@ -66,8 +66,8 @@ class WidgetSettings extends DataModel {
 	public $styles;
 
 	// Attributes
-	public $attributes;
-	public $attributeType;
+	public $metas;
+	public $metaType;
 
 	public $metaWrapClass;
 
@@ -98,8 +98,8 @@ class WidgetSettings extends DataModel {
 			[ 'styles', 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
-			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'attributes' ], 'boolean' ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'attributeType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'headerIconUrl', 'url' ]
 		];
@@ -113,6 +113,8 @@ class WidgetSettings extends DataModel {
 		return [
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'metas' => 'Attributes',
+			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

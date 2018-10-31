@@ -1,38 +1,38 @@
 <?php
-$attributes		= isset( $settings ) && !empty( $settings->attributes ) ? $settings->attributes : false;
-$attributeType	= isset( $settings ) && !empty( $settings->attributeTypes ) ? $settings->attributeTypes : null;
+$metas		= isset( $settings ) && !empty( $settings->metas ) ? $settings->metas : false;
+$metaType	= isset( $settings ) && !empty( $settings->metaTypes ) ? $settings->metaTypes : null;
 
-$attributeWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
+$metaWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
 ?>
 
-<?php if( $attributes ) { ?>
-	<div class="widget-content-meta <?= $attributeWrapClass ?>">
+<?php if( $metas ) { ?>
+	<div class="widget-content-meta <?= $metaWrapClass ?>">
 		<?php
 
-			$attributeType = preg_split( '/,/', $attributeType );
+			$metaType = preg_split( '/,/', $metaType );
 
 			// Single Type
-			if( count( $attributeType ) == 1 ) {
+			if( count( $metaType ) == 1 ) {
 
-				$attributes = $model->getActiveMetasByType( $attributeType[ 0 ] );
+				$metas = $model->getActiveMetasByType( $metaType[ 0 ] );
 			}
 			// Multiple Types
-			else if( count( $attributeType ) > 1 ) {
+			else if( count( $metaType ) > 1 ) {
 
-				$attributes = $model->getActiveMetasByTypes( $attributeType );
+				$metas = $model->getActiveMetasByTypes( $metaType );
 			}
 			// Default Types
 			else {
 
-				$attributes = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
+				$metas = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
 			}
 
-			foreach( $attributes as $attribute ) {
+			foreach( $metas as $meta ) {
 
-				$title = isset( $attribute->label ) ? $attribute->label : ucfirst( $attribute->name );
+				$title = isset( $meta->label ) ? $meta->label : ucfirst( $meta->name );
 		?>
 				<div class="widget-meta">
-					<span class="h5 inline-block"><?= $title ?></span> - <span class="inline-block"><?= $attribute->value ?></span>
+					<span class="h5 inline-block"><?= $title ?></span> - <span class="inline-block"><?= $meta->value ?></span>
 				</div>
 		<?php
 			}

@@ -66,8 +66,8 @@ class SidebarSettings extends DataModel {
 	public $styles;
 
 	// Attributes
-	public $attributes;
-	public $attributeType;
+	public $metas;
+	public $metaType;
 
 	public $metaWrapClass;
 
@@ -107,9 +107,9 @@ class SidebarSettings extends DataModel {
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ 'widgets', 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
-			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'attributes' ], 'boolean' ],
+			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'widgetType', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'attributeType', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'headerIconUrl', 'url' ]
 		];
@@ -123,6 +123,8 @@ class SidebarSettings extends DataModel {
 		return [
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'metas' => 'Attributes',
+			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

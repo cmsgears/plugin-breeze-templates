@@ -98,10 +98,10 @@ class PageSettings extends DataModel {
 	public $footerElementType;
 
 	// Attributes
-	public $attributes;
-	public $attributesWithContent;
-	public $attributesOrder;
-	public $attributeType;
+	public $metas;
+	public $metasWithContent;
+	public $metasOrder;
+	public $metaType;
 
 	public $metaWrapClass;
 
@@ -185,19 +185,19 @@ class PageSettings extends DataModel {
 			[ [ 'defaultAvatar', 'defaultBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerGallery', 'headerElements' ], 'boolean' ],
-			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'attributes' ], 'boolean' ],
+			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'metas' ], 'boolean' ],
 			[ [ 'contentSocial', 'contentLabels' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
-			[ [ 'attributesWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
+			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'comments', 'disqus' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'attributeType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
-			[ [ 'attributesOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
+			[ [ 'metasOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
 			[ [ 'headerIconUrl', 'footerIconUrl' ], 'url' ]
 		];
 	}
@@ -208,6 +208,10 @@ class PageSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'metas' => 'Attributes',
+			'metasWithContent' => 'Attributes With Content',
+			'metasOrder' => 'Attributes Order',
+			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class',
 			'commentAllFields' => 'All Fields',
 			'commentLabels' => 'Labels'

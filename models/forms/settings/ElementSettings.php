@@ -82,8 +82,8 @@ class ElementSettings extends DataModel {
 	public $footerContentData; // Show Footer Content using Content Data irrespective of Model Summary
 
 	// Attributes
-	public $attributes;
-	public $attributeType;
+	public $metas;
+	public $metaType;
 
 	public $metaWrapClass;
 
@@ -114,9 +114,9 @@ class ElementSettings extends DataModel {
 			[ [ 'footerContentData', 'styles' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
-			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'attributes' ], 'boolean' ],
+			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaWrapClass', 'attributeType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaWrapClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'headerIconUrl', 'footerIconUrl' ], 'url' ]
@@ -131,6 +131,8 @@ class ElementSettings extends DataModel {
 		return [
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'metas' => 'Attributes',
+			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

@@ -1,35 +1,35 @@
 <?php
-$attributeType			= !empty( $settings->attributeType ) ? $settings->attributeType : null;
-$attributesWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
+$metaType			= !empty( $settings->metaType ) ? $settings->metaType : null;
+$metasWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
 ?>
-<?php if( $attributes ) { ?>
-	<div class="page-content-meta <?= $attributesWrapClass ?>">
+<?php if( $metas ) { ?>
+	<div class="page-content-meta <?= $metasWrapClass ?>">
 		<?php
 
-			$attributeType = preg_split( '/,/', $attributeType );
+			$metaType = preg_split( '/,/', $metaType );
 
 			// Single Type
-			if( count( $attributeType ) == 1 ) {
+			if( count( $metaType ) == 1 ) {
 
-				$attributes = $model->getActiveMetasByType( $attributeType[ 0 ] );
+				$metas = $model->getActiveMetasByType( $metaType[ 0 ] );
 			}
 			// Multiple Types
-			else if( count( $attributeType ) > 1 ) {
+			else if( count( $metaType ) > 1 ) {
 
-				$attributes = $model->getActiveMetasByTypes( $attributeType );
+				$metas = $model->getActiveMetasByTypes( $metaType );
 			}
 			// Default Types
 			else {
 
-				$attributes = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
+				$metas = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
 			}
 
-			foreach( $attributes as $attribute ) {
+			foreach( $metas as $meta ) {
 
-				$title = isset( $attribute->label ) ? $attribute->label : ucfirst( $attribute->name );
+				$title = isset( $meta->label ) ? $meta->label : ucfirst( $meta->name );
 		?>
 				<div class="page-meta">
-					<span class="h5 inline-block"><?= $title ?></span> - <span class="inline-block"><?= $attribute->value ?></span>
+					<span class="h5 inline-block"><?= $title ?></span> - <span class="inline-block"><?= $meta->value ?></span>
 				</div>
 		<?php
 			}

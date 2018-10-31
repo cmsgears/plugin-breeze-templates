@@ -171,10 +171,10 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 						<div class="box-content">
 							<div class="row">
 								<div class="col col5">
-									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'attributes', null, 'cmti cmti-checkbox' ) ?>
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'metas', null, 'cmti cmti-checkbox' ) ?>
 								</div>
 								<div class="col col5x2">
-									<?= $form->field( $settings, 'attributeType' ) ?>
+									<?= $form->field( $settings, 'metaType' ) ?>
 								</div>
 								<div class="col col5x2">
 									<?= $form->field( $settings, 'metaWrapClass' ) ?>

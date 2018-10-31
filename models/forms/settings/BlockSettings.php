@@ -85,8 +85,8 @@ class BlockSettings extends DataModel {
 	public $footerContentData; // Show Footer Content using Content Data irrespective of Model Summary
 
 	// Attributes
-	public $attributes;
-	public $attributeType;
+	public $metas;
+	public $metaType;
 
 	public $metaWrapClass;
 
@@ -136,9 +136,9 @@ class BlockSettings extends DataModel {
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'elementsBeforeContent', 'widgets', 'widgetsBeforeContent' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
-			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'attributes' ], 'boolean' ],
+			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
-			[ [ 'attributeType', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'metaType', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
@@ -157,6 +157,8 @@ class BlockSettings extends DataModel {
 			'scrollBkg' => 'Scrollable Background',
 			'parallaxBkg' => 'Parallax Background',
 			'bkgClass' => 'Background Class',
+			'metas' => 'Attributes',
+			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}
