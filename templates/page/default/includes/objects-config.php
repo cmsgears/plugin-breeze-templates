@@ -1,5 +1,5 @@
 <?php
-$attributes	= !empty( $settings->attributes ) ? $settings->attributes : false;
+$metas		= !empty( $settings->metas ) ? $settings->metas : false;
 $elements	= !empty( $settings->elements ) ? $settings->elements : false;
 $widgets	= !empty( $settings->widgets ) ? $settings->widgets : false;
 $blocks		= !empty( $settings->blocks ) ? $settings->blocks : false;
@@ -7,8 +7,8 @@ $sidebars	= !empty( $settings->sidebars ) ? $settings->sidebars : false;
 
 // Attributes ---------------------
 
-$attributesWithContent	= !empty( $settings->attributesWithContent ) ? $settings->attributesWithContent : false;
-$attributesOrder		= !empty( $settings->attributesOrder ) ? $settings->attributesOrder : 0;
+$metasWithContent	= !empty( $settings->metasWithContent ) ? $settings->metasWithContent : false;
+$metasOrder			= !empty( $settings->metasOrder ) ? $settings->metasOrder : 0;
 
 // Elements -----------------------
 
@@ -34,6 +34,6 @@ $sidebarsBeforeContent	= !empty( $settings->sidebarsBeforeContent ) ? $settings-
 $sidebarsWithContent	= !empty( $settings->sidebarsWithContent ) ? $settings->sidebarsWithContent : false;
 $sidebarsOrder			= !empty( $settings->sidebarsOrder ) ? $settings->sidebarsOrder : 0;
 
-$objectsOrder = [ 'attributes' => $attributesOrder, 'elements' => $elementsOrder, 'widgets' => $widgetsOrder, 'blocks' => $blocksOrder, 'sidebars' => $sidebarsOrder ];
+$objectsOrder = [ 'metas' => $metasOrder, 'elements' => $elementsOrder, 'widgets' => $widgetsOrder, 'blocks' => $blocksOrder, 'sidebars' => $sidebarsOrder ];
 
 asort( $objectsOrder );

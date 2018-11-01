@@ -1,34 +1,34 @@
 <?php
-$attributeType			= isset( $settings ) && !empty( $settings->attributeType ) ? $settings->attributeType : null;
-$attributesWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
+$metaType		= isset( $settings ) && !empty( $settings->metaType ) ? $settings->metaType : null;
+$metasWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
 ?>
-<?php if( $attributes ) { ?>
-	<div class="page-content-meta <?= $attributesWrapClass ?>">
+<?php if( $metas ) { ?>
+	<div class="page-content-meta <?= $metasWrapClass ?>">
 		<?php
 
-			$attributeType = preg_split( '/,/', $attributeType );
+			$metaType = preg_split( '/,/', $metaType );
 
 			// Single Type
-			if( count( $attributeType ) == 1 ) {
+			if( count( $metaType ) == 1 ) {
 
-				$attributes = $model->getActiveMetasByType( $attributeType[ 0 ] );
+				$metas = $model->getActiveMetasByType( $metaType[ 0 ] );
 			}
 			// Multiple Types
-			else if( count( $attributeType ) > 1 ) {
+			else if( count( $metaType ) > 1 ) {
 
-				$attributes = $model->getActiveMetasByTypes( $attributeType );
+				$metas = $model->getActiveMetasByTypes( $metaType );
 			}
 			// Default Types
 			else {
 
-				$attributes = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
+				$metas = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
 			}
 		?>
-			<div class="accordian accordian-basic">
+			<div class="cmt-accordian accordian accordian-basic">
 		<?php
-			foreach( $attributes as $attribute ) {
+			foreach( $metas as $meta ) {
 
-				$title = isset( $attribute->label ) ? $attribute->label : ucfirst( $attribute->name );
+				$title = isset( $meta->label ) ? $meta->label : ucfirst( $meta->name );
 		?>
 				<div class="accordian-tab">
 					<div class="accordian-trigger">
@@ -36,7 +36,7 @@ $attributesWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) 
 						<span class="inline-block right cmti cmti-chevron-down"></span>
 					</div>
 					<div class="accordian-view reader">
-						<?= $attribute->value ?>
+						<?= $meta->value ?>
 					</div>
 				</div>
 		<?php
