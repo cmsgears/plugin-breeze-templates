@@ -26,7 +26,7 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 	<?php include "$defaultIncludes/background.php"; ?>
 	<div class="page-content-wrap">
 		<?php include "$defaultIncludes/header.php"; ?>
-		<div class="row content-90">
+		<div class="row content-80">
 			<?php include dirname( __FILE__ ) . '/includes/content.php'; ?>
 		</div>
 		<?php include $outerObjects; ?>

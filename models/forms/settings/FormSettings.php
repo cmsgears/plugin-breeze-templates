@@ -59,6 +59,7 @@ class FormSettings extends DataModel {
 	public $headerIconUrl; // Show Header Icon using Icon Url irrespective of Model Avatar/Icon
 	public $headerBanner;
 	public $headerGallery;
+	public $headerScroller;
 	public $headerElements;
 	public $headerElementType;
 
@@ -178,7 +179,7 @@ class FormSettings extends DataModel {
 			[ [ 'footerContentData', 'styles' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
-			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerGallery', 'headerElements' ], 'boolean' ],
+			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar' ], 'boolean' ],

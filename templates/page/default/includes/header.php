@@ -10,6 +10,7 @@ $headerIconClass	= $model->icon;
 $headerTitle		= !empty( $settings->headerTitle ) ? $model->displayName : null;
 $headerInfo			= !empty( $settings->headerInfo ) ? $model->description : null;
 $headerContent		= !empty( $settings->headerContent ) ? $modelContent->summary : null;
+$headerScroller		= !empty( $settings->headerScroller ) ? $settings->headerScroller : false;
 
 $headerBanner	= !empty( $settings->headerBanner ) ? $settings->headerBanner : false;
 $headerGallery	= !empty( $settings->headerGallery ) ? $settings->headerGallery : false;
@@ -20,6 +21,8 @@ $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl :
 
 $headerBanner	= $headerBanner && !empty( $bannerUrl );
 $headerGallery	= $headerGallery && !empty( $slides );
+
+$scroller = $headerScroller ? 'cscroller' : null;
 ?>
 
 <?php if( $header ) { ?>
@@ -69,7 +72,7 @@ $headerGallery	= $headerGallery && !empty( $slides );
 			?>
 			</div>
 		<?php } else { ?>
-			<div class="page-header <?= $headerBanner ? 'page-header-banner valign-center cscroller' : 'page-header-text' ?>">
+			<div class="page-header <?= $headerBanner ? "page-header-banner valign-center $scroller" : 'page-header-text' ?>">
 				<?php include "$defaultIncludes/header-content.php"; ?>
 			</div>
 		<?php } ?>
