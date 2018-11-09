@@ -37,7 +37,7 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 			<?php include "$defaultIncludes/sidebars/top.php"; ?>
 		<?php } ?>
 		<?php if( $leftSidebar || $rightSidebar ) { ?>
-			<div class="page-content-row row content-90 max-cols-100">
+			<div class="page-content-row row max-cols-100">
 				<?php if( $leftSidebar ) { ?>
 					<div class="colf colf12x3 colf-sidebar-filler">
 						<?php include "$defaultIncludes/sidebars/left.php"; ?>
@@ -61,7 +61,7 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 				<?php } ?>
 			</div>
 		<?php } else { ?>
-			<div class="page-content-row row content-90">
+			<div class="page-content-row row">
 				<div class="row">
 					<div class="colf colf12x4 align align-center">
 						<?php include dirname( __FILE__ ) . '/includes/author.php'; ?>
