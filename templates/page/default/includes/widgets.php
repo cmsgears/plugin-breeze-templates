@@ -64,6 +64,8 @@ $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row
 
 					$widgetConfig[ 'options' ][ 'class' ] = join( ' ', array_unique( preg_split( '/ /', $classOption ) ) );
 
+					$widgetConfig[ 'model' ] = $model;
+
 					$widgetContent = $wClassPath::widget( $widgetConfig );
 				}
 
