@@ -151,11 +151,11 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'contentSocial', null, 'cmti cmti-checkbox' ) ?>
 								</div>
+							</div>
+							<div class="row">
 								<div class="col col2">
 									<?= $form->field( $settings, 'contentClass' ) ?>
 								</div>
-							</div>
-							<div class="row">
 								<div class="col col2">
 									<?= $form->field( $settings, 'contentDataClass' ) ?>
 								</div>
