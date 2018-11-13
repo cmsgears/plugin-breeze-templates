@@ -19,6 +19,7 @@ $rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : fal
 $footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/page/default/includes';
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/post/default/includes';
 $searchIncludes		= Yii::getAlias( '@breeze' ) . '/templates/page/default/search';
 $tSearchIncludes	= Yii::getAlias( '@breeze' ) . '/templates/post/default/search';
 
@@ -27,7 +28,7 @@ $preObjects		= "$defaultIncludes/objects-pre.php";
 $innerObjects	= "$defaultIncludes/objects-inner.php";
 $outerObjects	= "$defaultIncludes/objects-outer.php";
 ?>
-<?php include "$defaultIncludes/options.php"; ?>
+<?php include "$templateIncludes/tag-options.php"; ?>
 <?php include "$defaultIncludes/styles.php"; ?>
 <?php include "$defaultIncludes/objects-config.php"; ?>
 <div <?= $options ?>>
