@@ -28,7 +28,7 @@ $preObjects		= "$defaultIncludes/objects-pre.php";
 $innerObjects	= "$defaultIncludes/objects-inner.php";
 $outerObjects	= "$defaultIncludes/objects-outer.php";
 ?>
-<?php include "$templateIncludes/tag-options.php"; ?>
+<?php include "$templateIncludes/options-tag.php"; ?>
 <?php include "$defaultIncludes/styles.php"; ?>
 <?php include "$defaultIncludes/objects-config.php"; ?>
 <div <?= $options ?>>
