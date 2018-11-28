@@ -26,7 +26,7 @@ if( isset( $slideImage ) ) {
 ?>
 
 <?php if( isset( $slideUrl ) && strlen( $slideUrl ) > 0 ) { ?>
-	<div>
+	<div class="slide">
 		<a href="<?= $slideUrl ?>">
 			<?= $content ?>
 				<?= $slideTexture ?>
@@ -39,7 +39,7 @@ if( isset( $slideImage ) ) {
 		</a>
 	</div>
 <?php } else { ?>
-	<div>
+	<div class="slide">
 		<?= $content ?>
 			<?= $slideTexture ?>
 			<div class="slide-content">
