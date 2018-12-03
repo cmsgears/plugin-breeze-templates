@@ -24,7 +24,7 @@ use cmsgears\cms\common\models\entities\Page;
  *
  * @since 1.0.0
  */
-class m180811_100100_breeze_shop_data extends Migration {
+class m180611_100100_breeze_shop_data extends Migration {
 
 	// Public variables
 
@@ -91,7 +91,7 @@ class m180811_100100_breeze_shop_data extends Migration {
 
     public function down() {
 
-        echo "m180811_100100_breeze_shop_data will be deleted with m160621_014408_core.\n";
+        echo "m180611_100100_breeze_shop_data will be deleted with m160621_014408_core.\n";
 
         return true;
     }
