@@ -7,12 +7,14 @@ use yii\helpers\Html;
 $coreProperties = $this->context->getCoreProperties();
 $this->title 	= 'Widget Configurations | ' . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
+
+$defaultConfig = Yii::getAlias( '@breeze' ) . '/templates/widget/config';
 ?>
 <div class="box-crud-wrap row">
 	<div class="box-crud-wrap-main row">
 		<?php $form = ActiveForm::begin( [ 'id' => 'frm-config', 'options' => [ 'class' => 'form' ] ] ); ?>
-		<?php include dirname( dirname( __DIR__ ) ) . '/config/basic.php'; ?>
-		<?php include dirname( dirname( __DIR__ ) ) . '/config/paging.php'; ?>
+		<?php include "$defaultConfig/basic.php"; ?>
+		<?php include "$defaultConfig/paging.php"; ?>
 		<div class="box box-crud">
 			<div class="box-header">
 				<div class="box-header-title">Page Config</div>
