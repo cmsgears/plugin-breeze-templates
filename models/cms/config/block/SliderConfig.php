@@ -63,7 +63,7 @@ class SliderConfig extends DataModel {
 
 	// Lightbox
 	public $lightbox		= false;
-	public $lightboxId		= 'lightbox-slider';
+	public $lightboxId;
 	public $lightboxPopup	= false;
 
 	// Protected --------------
