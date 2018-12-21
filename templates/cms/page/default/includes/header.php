@@ -1,4 +1,7 @@
 <?php
+// Yii Imports
+yii\helpers\HtmlPurifier;
+
 // CMG Imports
 use cmsgears\core\frontend\config\SiteProperties;
 
@@ -9,7 +12,7 @@ $headerIcon			= !empty( $settings->headerIcon ) ? $settings->headerIcon : false;
 $headerIconClass	= $model->icon;
 $headerTitle		= !empty( $settings->headerTitle ) ? $model->displayName : null;
 $headerInfo			= !empty( $settings->headerInfo ) ? $model->description : null;
-$headerContent		= !empty( $settings->headerContent ) ? $modelContent->summary : null;
+$headerContent		= !empty( $settings->headerContent ) ? HtmlPurifier::process( $modelContent->summary ) : null;
 $headerScroller		= !empty( $settings->headerScroller ) ? $settings->headerScroller : false;
 
 $headerBanner	= !empty( $settings->headerBanner ) ? $settings->headerBanner : false;

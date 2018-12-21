@@ -12,8 +12,6 @@ use cmsgears\core\common\config\CoreGlobal;
 use cmsgears\cms\common\config\CmsGlobal;
 use cmsgears\shop\common\config\ShopGlobal;
 
-use cmsgears\core\common\base\Migration;
-
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\User;
 
@@ -24,7 +22,7 @@ use cmsgears\core\common\utilities\DateUtil;
  *
  * @since 1.0.0
  */
-class m180611_100000_breeze_shop extends Migration {
+class m180611_100000_breeze_shop extends \cmsgears\core\common\base\Migration {
 
 	// Public variables
 

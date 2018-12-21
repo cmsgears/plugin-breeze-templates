@@ -1,8 +1,11 @@
 <?php
+// Yii Imports
+yii\helpers\HtmlPurifier;
+
 $slideImage		= $slide->image;
 $slideTitle		= $slide->name;
 $slideDesc		= $slide->description;
-$slideContent	= $slide->content;
+$slideContent	= HtmlPurifier::process( $slide->content );
 $slideUrl		= $slide->url;
 $slideImageUrl	= '';
 $slideImageAlt	= '';

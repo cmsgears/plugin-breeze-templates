@@ -13,7 +13,6 @@ $avatar			= !empty( $settings->defaultAvatar ) || $widget->defaultAvatar ? SiteP
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] );
 $headerIconUrl	= !empty( $headerIconUrl ) ? $headerIconUrl : $widget->headerIconUrl;
 ?>
-
 <?php if( $header ) { ?>
 	<div class="sidebar-header-wrap">
 		<div class="sidebar-header">

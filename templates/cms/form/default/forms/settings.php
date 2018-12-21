@@ -51,7 +51,7 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 								</div>
 							</div>
 							<div class="row">
-								<div class="col col4">
+								<div class="col col2">
 									<?= $form->field( $settings, 'backgroundClass' ) ?>
 								</div>
 							</div>

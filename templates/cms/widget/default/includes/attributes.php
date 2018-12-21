@@ -1,14 +1,15 @@
 <?php
+// Yii Imports
+yii\helpers\HtmlPurifier;
+
 $metas		= !empty( $settings->metas ) ? $settings->metas : $widget->metas;
 $metaType	= !empty( $settings->metaTypes ) ? $settings->metaTypes : null;
 
-$metaWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->metaWrapClass;
+$metaWrapClass = !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->metaWrapClass;
 ?>
-
 <?php if( $metas ) { ?>
 	<div class="widget-content-meta <?= $metaWrapClass ?>">
 		<?php
-
 			$metaType = preg_split( '/,/', $metaType );
 
 			// Single Type
@@ -32,7 +33,10 @@ $metaWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass :
 				$title = isset( $meta->label ) ? $meta->label : ucfirst( $meta->name );
 		?>
 				<div class="widget-meta">
-					<span class="h5 inline-block"><?= $title ?></span> - <span class="inline-block"><?= $meta->value ?></span>
+					<span class="h5 inline-block"><?= $title ?></span> -
+					<span class="inline-block">
+						<?= HtmlPurifier::process( $meta->value ) ?>
+					</span>
 				</div>
 		<?php
 			}

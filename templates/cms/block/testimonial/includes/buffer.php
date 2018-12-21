@@ -1,16 +1,17 @@
 <?php
+// Yii Imports
+yii\helpers\HtmlPurifier;
+
 // CMG Imports
 use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 ?>
-
 <?php if( $widget->buffer ) { ?>
 	<div class="block-content-buffer">
 		<?= $widget->bufferData ?>
 	</div>
 <?php } ?>
-
 <div class="block-content-buffer">
 	<div class="fx fx-slider fx-slider-regular testimonial-slider">
 	<?php
@@ -24,7 +25,7 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 					<div class="card-header align align-center">
 						<div class="card-header-icon inline-block circled circled1">
 							<?php
-								$avatarUrl	= $testimonial->avatarUrl;
+								$avatarUrl = $testimonial->avatarUrl;
 
 								if( empty( $avatarUrl ) ) {
 
@@ -39,7 +40,7 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 						</div>
 					</div>
 					<div class="card-content reader text-shadow text-shadow-white align align-center">
-						<?= $testimonial->content ?>
+						<?= HtmlPurifier::process( $testimonial->content ) ?>
 					</div>
 				</div>
 			</div>

@@ -1,4 +1,7 @@
 <?php
+// Yii Imports
+yii\helpers\HtmlPurifier;
+
 $metaType		= isset( $settings ) && !empty( $settings->metaType ) ? $settings->metaType : null;
 $metasWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
 ?>
@@ -36,7 +39,7 @@ $metasWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $se
 						<span class="inline-block right cmti cmti-chevron-down"></span>
 					</div>
 					<div class="accordian-view reader">
-						<?= $meta->value ?>
+						<?= HtmlPurifier::process( $meta->value ) ?>
 					</div>
 				</div>
 		<?php
