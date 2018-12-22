@@ -5,14 +5,13 @@ use yii\helpers\Html;
 // CMG Imports
 use cmsgears\widgets\elements\elements\ElementWidget;
 
-$elements		= !empty( $settings->elements ) ? $settings->elements : $widget->elements;
+$elements		= isset( $settings->elements ) ? $settings->elements : $widget->elements;
 $elementType	= !empty( $settings->elementType ) ? $settings->elementType : $widget->elementType;
 
 $boxWrapClass	= !empty( $settings->boxWrapClass ) ? $settings->boxWrapClass : $widget->boxWrapClass;
 $boxWrapper		= !empty( $settings->boxWrapper ) ? $settings->boxWrapper : $widget->boxWrapper;
 $boxClass		= !empty( $settings->boxClass ) ? $settings->boxClass : $widget->boxClass;
 ?>
-
 <?php if( $elements ) { ?>
 	<div class="block-box-wrap <?= $boxWrapClass ?>">
 		<?php

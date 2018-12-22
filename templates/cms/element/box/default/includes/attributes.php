@@ -1,6 +1,6 @@
 <?php
 // Yii Imports
-yii\helpers\HtmlPurifier;
+use yii\helpers\HtmlPurifier;
 
 $metas		= !empty( $settings->metas ) ? $settings->metas : $widget->metas;
 $metaType	= !empty( $settings->metaTypes ) ? $settings->metaTypes : null;

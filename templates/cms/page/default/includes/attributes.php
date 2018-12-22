@@ -1,6 +1,6 @@
 <?php
 // Yii Imports
-yii\helpers\HtmlPurifier;
+use yii\helpers\HtmlPurifier;
 
 $metaType		= !empty( $settings->metaType ) ? $settings->metaType : null;
 $metasWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;

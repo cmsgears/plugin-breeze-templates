@@ -1,6 +1,6 @@
 <?php
 // Yii Imports
-yii\helpers\HtmlPurifier;
+use yii\helpers\HtmlPurifier;
 
 $content			= !empty( $settings->content ) ? $settings->content : false;
 $contentTitle		= !empty( $settings->contentTitle ) && $settings->contentTitle ? ( !empty( $model->title ) ? $model->title : $model->name ) : null;

@@ -1,6 +1,6 @@
 <?php
 // Yii Imports
-yii\helpers\HtmlPurifier;
+use yii\helpers\HtmlPurifier;
 
 // CMG Imports
 use cmsgears\core\frontend\config\SiteProperties;

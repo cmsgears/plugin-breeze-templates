@@ -1,5 +1,4 @@
 <?php
-
 foreach( $objectsOrder as $key => $value ) {
 
 	switch( $key ) {

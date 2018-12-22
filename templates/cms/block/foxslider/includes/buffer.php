@@ -4,7 +4,7 @@ use foxslider\widgets\FoxSliderMain;
 ?>
 
 <?php if( $widget->buffer ) { ?>
-	<div class="block-content-buffer">
+	<div class="block-widget-buffer">
 		<?= $widget->bufferData ?>
 	</div>
 <?php } ?>

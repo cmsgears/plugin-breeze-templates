@@ -1,5 +1,5 @@
 <?php if( $widget->buffer ) { ?>
-	<div class="box-content-buffer">
+	<div class="box-widget-buffer">
 		<?= $widget->bufferData ?>
 	</div>
 <?php } ?>

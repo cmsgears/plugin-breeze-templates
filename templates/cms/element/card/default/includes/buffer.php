@@ -1,5 +1,5 @@
 <?php if( $widget->buffer ) { ?>
-	<div class="card-content-buffer">
+	<div class="card-widget-buffer">
 		<?= $widget->bufferData ?>
 	</div>
 <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 // Yii Imports
-yii\helpers\HtmlPurifier;
+use yii\helpers\HtmlPurifier;
 
 $slideImage		= $slide->image;
 $slideTitle		= $slide->name;
