@@ -71,6 +71,7 @@ class BlockSettings extends DataModel {
 	public $contentDataClass;
 
 	public $styles;
+	public $scripts;
 
 	// Footer
 	public $footer; // Show Footer
@@ -132,7 +133,7 @@ class BlockSettings extends DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'footerContentData', 'styles' ], 'safe' ],
+			[ [ 'footerContentData', 'styles', 'scripts' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'elementsBeforeContent', 'widgets', 'widgetsBeforeContent' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],

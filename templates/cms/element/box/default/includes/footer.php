@@ -1,17 +1,16 @@
 <?php
 use cmsgears\core\common\utilities\CodeGenUtil;
 
-$footer				= !empty( $settings->footer ) ? $settings->footer : $widget->footer;
-$footerIcon			= !empty( $settings->footerIcon ) ? $settings->footerIcon : $widget->footerIcon;
+$footer				= isset( $settings->footer ) ? $settings->footer : $widget->footer;
+$footerIcon			= isset( $settings->footerIcon ) ? $settings->footerIcon : $widget->footerIcon;
 $footerIconClass	= !empty( $settings->footerIconClass ) ? $settings->footerIconClass : $widget->footerIconClass;
-$footerTitle		= !empty( $settings->footerTitle ) && $settings->footerTitle && !empty( $settings->footerTitleData ) ? $settings->footerTitleData : ( !empty( $settings->footerTitle ) && $settings->footerTitle && !empty( $model->displayName ) ? $model->displayName : $widget->footerTitle );
-$footerInfo			= !empty( $settings->footerInfo ) && $settings->footerInfo && !empty( $settings->footerInfoData ) ? $settings->footerInfoData : ( !empty( $settings->footerInfo ) && $settings->footerInfo && !empty( $model->description ) ? $model->description : $widget->footerInfo );
-$footerContent		= !empty( $settings->footerContent ) && $settings->footerContent && !empty( $settings->footerContentData ) ? $settings->footerContentData : ( !empty( $settings->footerContent ) && $settings->footerContent && !empty( $model->summary ) ? $model->summary : $widget->footerContent );
+$footerTitle		= isset( $settings->footerTitle ) && $settings->footerTitle && !empty( $settings->footerTitleData ) ? $settings->footerTitleData : ( !empty( $settings->footerTitle ) && $settings->footerTitle && !empty( $model->displayName ) ? $model->displayName : $widget->footerTitle );
+$footerInfo			= isset( $settings->footerInfo ) && $settings->footerInfo && !empty( $settings->footerInfoData ) ? $settings->footerInfoData : ( !empty( $settings->footerInfo ) && $settings->footerInfo && !empty( $model->description ) ? $model->description : $widget->footerInfo );
+$footerContent		= isset( $settings->footerContent ) && $settings->footerContent && !empty( $settings->footerContentData ) ? $settings->footerContentData : ( !empty( $settings->footerContent ) && $settings->footerContent && !empty( $model->summary ) ? $model->summary : $widget->footerContent );
 
-$footerIconUrl	= isset( $settings ) && !empty( $settings->footerIconUrl ) ? $settings->footerIconUrl : CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] );
+$footerIconUrl	= !empty( $settings->footerIconUrl ) ? $settings->footerIconUrl : CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] );
 $footerIconUrl	= !empty( $footerIconUrl ) ? $footerIconUrl : $widget->footerIconUrl;
 ?>
-
 <?php if( $footer ) { ?>
 	<div class="box-footer-wrap">
 		<div class="box-footer">

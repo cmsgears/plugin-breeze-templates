@@ -4,9 +4,10 @@ $data	= $widget->modelData;
 
 $settings = isset( $data->settings ) ? $data->settings : [];
 
-$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/testimonial/includes';
 
-$buffer = __DIR__ . '/includes/buffer.php';
+$buffer = "$templateIncludes/buffer.php";
 ?>
 <?php include "$defaultIncludes/styles.php"; ?>
 <?php include "$defaultIncludes/background.php"; ?>
@@ -15,3 +16,4 @@ $buffer = __DIR__ . '/includes/buffer.php';
 	<?php include "$defaultIncludes/content.php"; ?>
 	<?php include "$defaultIncludes/footer.php"; ?>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

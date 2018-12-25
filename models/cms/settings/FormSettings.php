@@ -81,6 +81,7 @@ class FormSettings extends DataModel {
 	public $contentDataClass;
 
 	public $styles;
+	public $scripts;
 
 	// Footer
 	public $footer; // Show Footer
@@ -176,7 +177,7 @@ class FormSettings extends DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'footerContentData', 'styles' ], 'safe' ],
+			[ [ 'footerContentData', 'styles', 'scripts' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],

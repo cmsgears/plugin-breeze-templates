@@ -2,11 +2,13 @@
 $model	= $widget->model;
 $data	= $widget->modelData;
 
-$settings = isset( $data->settings ) ? $data->settings : [];
+$settings	= isset( $data->settings ) ? $data->settings : [];
+$config		= isset( $data->config ) ? $data->config : [];
 
-$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/widget/default/includes';
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/widget/default/includes';
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/widget/search/includes';
 
-$buffer = "$defaultIncludes/buffer.php";
+$buffer = "$templateIncludes/buffer.php";
 ?>
 <?php include "$defaultIncludes/styles.php"; ?>
 <?php include "$defaultIncludes/background.php"; ?>
@@ -14,3 +16,4 @@ $buffer = "$defaultIncludes/buffer.php";
 	<?php include "$defaultIncludes/header.php"; ?>
 	<?php include "$defaultIncludes/content.php"; ?>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

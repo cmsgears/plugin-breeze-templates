@@ -2,13 +2,12 @@
 // Yii Imports
 use yii\helpers\HtmlPurifier;
 
-$metaType		= isset( $settings ) && !empty( $settings->metaType ) ? $settings->metaType : null;
-$metasWrapClass	= isset( $settings ) && !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
+$metaType		= !empty( $settings->metaType ) ? $settings->metaType : null;
+$metasWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
 ?>
 <?php if( $metas ) { ?>
 	<div class="page-content-meta <?= $metasWrapClass ?>">
 		<?php
-
 			$metaType = preg_split( '/,/', $metaType );
 
 			// Single Type

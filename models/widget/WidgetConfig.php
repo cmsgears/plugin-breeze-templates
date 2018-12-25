@@ -48,6 +48,10 @@ class WidgetConfig extends DataModel {
 	public $templateDir = null;
 	public $template	= 'default';
 
+	// Additional Content
+	public $buffer		= false;
+	public $bufferData	= null;
+
 	// Service Factory
 	public $factory = true;
 
@@ -90,13 +94,15 @@ class WidgetConfig extends DataModel {
 	public function rules() {
 
 		$rules = [
+			// Safe
+			[ 'bufferData', 'safe' ],
 			// Text Limits
 			[ [ 'wrapper', 'templateDir', 'template', 'autoloadTemplate' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'autoloadApp', 'autoloadController', 'autoloadAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'templateDir', 'autoloadUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->largeText ],
 			[ [ 'options' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			// Others
-			[ [ 'wrap', 'loadAssets', 'factory', 'cache', 'cacheDb', 'cacheFile', 'autoload' ], 'boolean' ]
+			[ [ 'wrap', 'loadAssets', 'buffer', 'factory', 'cache', 'cacheDb', 'cacheFile', 'autoload' ], 'boolean' ]
 		];
 
 		return $rules;
@@ -135,6 +141,9 @@ class WidgetConfig extends DataModel {
 			// Template
 			'templateDir' => $this->templateDir,
 			'template' => $this->template,
+			// Additional Content
+			'buffer' => $this->buffer,
+			'bufferData' => $this->bufferData,
 			// Service Factory
 			'factory' => $this->factory,
 			// Cache

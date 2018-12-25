@@ -6,8 +6,11 @@ use cmsgears\cms\common\utilities\ContentUtil;
 $socialLogin	= isset( $socialLogin ) ? $socialLogin : false;
 $frmSplit		= isset( $frmSplit ) ? $frmSplit : true;
 
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$systemIncludes		= Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';
+
 $formModel	= $model;
-$formView	= $socialLogin ? dirname( __FILE__ ) . '/includes/forms/register-social.php' : dirname( __FILE__ ) . '/includes/forms/register.php';
+$formView	= $socialLogin ? "$systemIncludes/forms/register-social.php" : "$systemIncludes/forms/register.php";
 $model		= isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
 
 $siteProperties = $this->context->getSiteProperties();
@@ -16,8 +19,6 @@ $modelContent	= $model->modelContent;
 $data		= json_decode(  $model->data );
 $settings	= isset( $data->settings ) ? $data->settings : [];
 $pageBanner	= $siteProperties->getPageBanner();
-
-$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 
 $buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
@@ -37,3 +38,4 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 		<?php include $outerObjects; ?>
 	</div>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

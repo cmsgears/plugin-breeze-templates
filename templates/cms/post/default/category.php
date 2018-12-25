@@ -21,7 +21,6 @@ $footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 $templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/post/default/includes';
 $searchIncludes		= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/search';
-$tSearchIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/post/default/search';
 
 $buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
@@ -46,17 +45,17 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 					</div>
 				<?php } ?>
 				<div class="colf colf-sidebar-filler <?= $leftSidebar && $rightSidebar ? 'colf12x6' : 'colf12x9' ?>">
-					<?php include "$tSearchIncludes/content.php"; ?>
+					<?php include "$defaultIncludes/content.php"; ?>
 				</div>
 				<?php if( $rightSidebar ) { ?>
 					<div class="colf colf12x3">
-						<?php "$defaultIncludes/sidebars/right.php"; ?>
+						<?php include "$defaultIncludes/sidebars/right.php"; ?>
 					</div>
 				<?php } ?>
 			</div>
 		<?php } else { ?>
 			<div class="page-content-row row">
-				<?php include "$tSearchIncludes/content.php"; ?>
+				<?php include "$defaultIncludes/content.php"; ?>
 			</div>
 		<?php } ?>
 		<?php include $outerObjects; ?>
@@ -65,3 +64,4 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 		<?php } ?>
 	</div>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

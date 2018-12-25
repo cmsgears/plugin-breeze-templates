@@ -65,3 +65,4 @@ $outerObjects	= "$templateIncludes/objects-outer.php";
 		<?php } ?>
 	</div>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

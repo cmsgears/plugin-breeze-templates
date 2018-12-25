@@ -2,13 +2,10 @@
 // CMG Imports
 use cmsgears\widgets\elements\blocks\BlockWidget;
 
-$blockType = isset( $settings ) && !empty( $settings->blockType ) ? $settings->blockType : null;
+$blockType = !empty( $settings->blockType ) ? $settings->blockType : null;
 ?>
-
-<?php
-	if( $blocks ) {
-?>
-		<div class="page-block-wrap">
+<?php if( $blocks ) { ?>
+	<div class="page-block-wrap">
 		<?php
 			$blocks = [];
 
@@ -25,7 +22,5 @@ $blockType = isset( $settings ) && !empty( $settings->blockType ) ? $settings->b
 		?>
 				<?= BlockWidget::widget( [ 'model' => $block ] ) ?>
 		<?php } ?>
-		</div>
-<?php
-	}
-?>
+	</div>
+<?php } ?>

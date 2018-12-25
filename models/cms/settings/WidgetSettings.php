@@ -64,6 +64,7 @@ class WidgetSettings extends DataModel {
 	public $contentDataClass;
 
 	public $styles;
+	public $scripts;
 
 	// Attributes
 	public $metas;
@@ -95,7 +96,7 @@ class WidgetSettings extends DataModel {
 	public function rules() {
 
 		return [
-			[ 'styles', 'safe' ],
+			[ [ 'styles', 'scripts' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],

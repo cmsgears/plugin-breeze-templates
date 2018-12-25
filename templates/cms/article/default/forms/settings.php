@@ -407,7 +407,13 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 				<div class="box-content-wysiwyg">
 					<div class="box-content">
 						<label>Page Styles</label>
-						<?= $form->field( $settings, 'styles' )->textarea( [ 'rows' => '8' ] )->label( false ) ?>
+						<?= $form->field( $settings, 'styles' )->textarea( [ 'rows' => '6' ] )->label( false ) ?>
+					</div>
+				</div>
+				<div class="box-content-wysiwyg">
+					<div class="box-content">
+						<label>Page Scripts</label>
+						<?= $form->field( $settings, 'scripts' )->textarea( [ 'rows' => '6' ] )->label( false ) ?>
 					</div>
 				</div>
 				<div class="box-content-wysiwyg">

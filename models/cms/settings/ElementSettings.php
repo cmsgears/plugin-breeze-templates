@@ -61,6 +61,7 @@ class ElementSettings extends DataModel {
 	public $contentInfo; // Show Model Description within content
 	public $contentSummary; // Show Model Summary within content
 	public $contentData; // Show Model Content within content
+	public $contentRaw; // Content without purifier
 
 	public $maxCover;
 
@@ -68,6 +69,7 @@ class ElementSettings extends DataModel {
 	public $contentDataClass;
 
 	public $styles;
+	public $scripts;
 
 	// Footer
 	public $footer; // Show Footer
@@ -111,7 +113,7 @@ class ElementSettings extends DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'footerContentData', 'styles' ], 'safe' ],
+			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
@@ -129,6 +131,7 @@ class ElementSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'contentRaw' => 'Raw Content',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
 			'metas' => 'Attributes',

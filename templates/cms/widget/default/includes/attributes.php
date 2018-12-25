@@ -2,8 +2,8 @@
 // Yii Imports
 use yii\helpers\HtmlPurifier;
 
-$metas		= !empty( $settings->metas ) ? $settings->metas : $widget->metas;
-$metaType	= !empty( $settings->metaTypes ) ? $settings->metaTypes : null;
+$metas		= isset( $settings->metas ) ? $settings->metas : $widget->metas;
+$metaType	= !empty( $settings->metaType ) ? $settings->metaType : $widget->metaType;
 
 $metaWrapClass = !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->metaWrapClass;
 ?>

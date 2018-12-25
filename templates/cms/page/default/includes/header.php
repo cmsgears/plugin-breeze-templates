@@ -7,18 +7,18 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
-$header				= !empty( $settings->header ) ? $settings->header : false;
-$headerIcon			= !empty( $settings->headerIcon ) ? $settings->headerIcon : false;
-$headerIconClass	= $model->icon;
-$headerTitle		= !empty( $settings->headerTitle ) ? $model->displayName : null;
-$headerInfo			= !empty( $settings->headerInfo ) ? $model->description : null;
-$headerContent		= !empty( $settings->headerContent ) ? HtmlPurifier::process( $modelContent->summary ) : null;
-$headerScroller		= !empty( $settings->headerScroller ) ? $settings->headerScroller : false;
+$header				= isset( $settings->header ) ? $settings->header : false;
+$headerIcon			= isset( $settings->headerIcon ) ? $settings->headerIcon : false;
 
-$headerBanner	= !empty( $settings->headerBanner ) ? $settings->headerBanner : false;
-$headerGallery	= !empty( $settings->headerGallery ) ? $settings->headerGallery : false;
+$headerTitle		= isset( $settings->headerTitle ) && $settings->headerTitle ? $model->displayName : null;
+$headerInfo			= isset( $settings->headerInfo ) && $settings->headerInfo ? $model->description : null;
+$headerContent		= isset( $settings->headerContent ) && $settings->headerContent ? HtmlPurifier::process( $modelContent->summary ) : null;
+$headerScroller		= isset( $settings->headerScroller ) ? $settings->headerScroller : false;
 
-$avatar			= !empty( $settings->defaultAvatar ) ? SiteProperties::getInstance()->getDefaultAvatar() : null;
+$headerBanner	= isset( $settings->headerBanner ) ? $settings->headerBanner : false;
+$headerGallery	= isset( $settings->headerGallery ) ? $settings->headerGallery : false;
+
+$avatar			= isset( $settings->defaultAvatar ) && $settings->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
 $headerIconUrl	= isset( $model->avatar ) ? CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( null, [ 'image' => $avatar ] );
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $headerIconUrl;
 
@@ -27,7 +27,6 @@ $headerGallery	= $headerGallery && !empty( $slides );
 
 $scroller = $headerScroller ? 'cscroller' : null;
 ?>
-
 <?php if( $header ) { ?>
 	<div class="page-header-wrap <?= $headerBanner || $headerGallery ? 'page-header-banner' : null ?>">
 		<?php if( $headerBanner && !$headerGallery ) { ?>

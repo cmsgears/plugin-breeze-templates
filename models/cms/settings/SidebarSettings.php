@@ -64,6 +64,7 @@ class SidebarSettings extends DataModel {
 	public $contentDataClass;
 
 	public $styles;
+	public $scripts;
 
 	// Attributes
 	public $metas;
@@ -103,7 +104,7 @@ class SidebarSettings extends DataModel {
 	public function rules() {
 
 		return [
-			[ 'styles', 'safe' ],
+			[ [ 'styles', 'scripts' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ 'widgets', 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],

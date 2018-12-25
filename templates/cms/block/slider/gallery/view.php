@@ -17,3 +17,4 @@ $buffer = "$templateIncludes/buffer.php";
 	<?php include "$defaultIncludes/content.php"; ?>
 	<?php include "$defaultIncludes/footer.php"; ?>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

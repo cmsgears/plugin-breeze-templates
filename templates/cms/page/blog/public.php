@@ -49,7 +49,7 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 				</div>
 				<?php if( $rightSidebar ) { ?>
 					<div class="colf colf12x3">
-						<?php "$defaultIncludes/sidebars/right.php"; ?>
+						<?php include "$defaultIncludes/sidebars/right.php"; ?>
 					</div>
 				<?php } ?>
 			</div>
@@ -64,3 +64,4 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 		<?php } ?>
 	</div>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

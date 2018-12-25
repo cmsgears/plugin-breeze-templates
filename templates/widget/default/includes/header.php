@@ -4,16 +4,15 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
-$header		= isset( $settings ) & !empty( $settings->header ) ? $settings->header : false;
-$headerIcon	= isset( $settings ) & !empty( $settings->headerIcon ) ? $settings->headerIcon : false;
+$header				= isset( $settings->header ) ? $settings->header : false;
+$headerIcon			= isset( $settings->headerIcon ) ? $settings->headerIcon : false;
+$headerIconClass	= !empty( $model->icon ) ? $model->icon : null;
+$headerTitle		= isset( $settings->headerTitle ) && $settings->headerTitle && !empty( $model->displayName ) ? $model->displayName : $widget->title;
 
-$headerIconClass	= !empty( $widgetObj->icon ) ? $widgetObj->icon : null;
-$headerTitle		= isset( $settings ) && $settings->headerTitle && !empty( $widgetObj->displayName ) ? $widgetObj->displayName : null;
-
-$avatar			= ( isset( $settings ) && $settings->defaultAvatar ) ? SiteProperties::getInstance()->getDefaultAvatar() : null;
-$headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : CodeGenUtil::getFileUrl( $widgetObj->avatar, [ 'image' => $avatar ] );
+$avatar			= ( isset( $settings->defaultAvatar ) && $settings->defaultAvatar ) ? SiteProperties::getInstance()->getDefaultAvatar() : null;
+$headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] );
+$headerIconUrl	= !empty( $headerIconUrl ) ? $headerIconUrl : null;
 ?>
-
 <?php if( $header ) { ?>
 	<div class="widget-header-wrap">
 		<div class="widget-header">

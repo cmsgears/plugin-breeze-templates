@@ -44,17 +44,17 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 					</div>
 				<?php } ?>
 				<div class="colf colf-sidebar-filler <?= $leftSidebar && $rightSidebar ? 'colf12x6' : 'colf12x9' ?>">
-					<?php include dirname( __FILE__ ) . '/search/content.php'; ?>
+					<?php include "$defaultIncludes/content.php"; ?>
 				</div>
 				<?php if( $rightSidebar ) { ?>
 					<div class="colf colf12x3">
-						<?php "$defaultIncludes/sidebars/right.php"; ?>
+						<?php include "$defaultIncludes/sidebars/right.php"; ?>
 					</div>
 				<?php } ?>
 			</div>
 		<?php } else { ?>
 			<div class="page-content-row row">
-				<?php include dirname( __FILE__ ) . '/search/content.php'; ?>
+				<?php include "$defaultIncludes/content.php"; ?>
 			</div>
 		<?php } ?>
 		<?php include $outerObjects; ?>
@@ -63,3 +63,4 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 		<?php } ?>
 	</div>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

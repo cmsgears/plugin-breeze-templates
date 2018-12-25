@@ -14,3 +14,4 @@ $buffer = "$defaultIncludes/buffer.php";
 	<?php include "$defaultIncludes/header.php"; ?>
 	<?php include "$defaultIncludes/content.php"; ?>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

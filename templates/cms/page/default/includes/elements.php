@@ -5,13 +5,12 @@ use yii\helpers\Html;
 // CMG Imports
 use cmsgears\widgets\elements\elements\ElementWidget;
 
-$elementType	= !empty( $settings->elementType ) ? $settings->elementType : null;
+$elementType = !empty( $settings->elementType ) ? $settings->elementType : null;
 
 $boxWrapClass	= !empty( $settings->boxWrapClass ) ? $settings->boxWrapClass : 'row';
 $boxWrapper		= !empty( $settings->boxWrapper ) ? $settings->boxWrapper : null;
 $boxClass		= !empty( $settings->boxClass ) ? $settings->boxClass : 'row';
 ?>
-
 <?php if( $elements ) { ?>
 	<div class="page-box-wrap <?= $boxWrapClass ?>">
 		<?php

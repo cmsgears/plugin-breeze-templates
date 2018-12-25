@@ -35,7 +35,7 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 							?>
 							<img class="fluid" src="<?= $avatarUrl ?>" />
 						</div>
-						<div class="card-header-title h4 text text-white text-shadow text-shadow-white">
+						<div class="card-header-title h4 text text-white text-shadow text-shadow-white margin margin-small-v">
 							<?= $testimonial->name ?>
 						</div>
 					</div>

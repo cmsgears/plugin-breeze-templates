@@ -13,7 +13,6 @@ $widgetWrapClass	= !empty( $settings->widgetWrapClass ) ? $settings->widgetWrapC
 $widgetWrapper		= !empty( $settings->widgetWrapper ) ? $settings->widgetWrapper : null;
 $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row';
 ?>
-
 <?php if( $widgets ) { ?>
 	<div class="sidebar-widget-wrap <?= $widgetWrapClass ?>">
 		<?php

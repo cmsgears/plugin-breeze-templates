@@ -6,22 +6,22 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 
 // Media --------------------
 
-$defaultAvatar	= !empty( $settings->defaultAvatar ) ? $settings->defaultAvatar : false;
-$defaultBanner	= !empty( $settings->defaultBanner ) ? $settings->defaultBanner : false;
-$fixedBanner	= !empty( $settings->fixedBanner ) ? $settings->fixedBanner : false;
-$scrollBanner	= !empty( $settings->scrollBanner ) ? $settings->scrollBanner : false;
-$parallaxBanner	= !empty( $settings->parallaxBanner ) ? $settings->parallaxBanner : false;
+$defaultAvatar	= isset( $settings->defaultAvatar ) ? $settings->defaultAvatar : false;
+$defaultBanner	= isset( $settings->defaultBanner ) ? $settings->defaultBanner : false;
+$fixedBanner	= isset( $settings->fixedBanner ) ? $settings->fixedBanner : false;
+$scrollBanner	= isset( $settings->scrollBanner ) ? $settings->scrollBanner : false;
+$parallaxBanner	= isset( $settings->parallaxBanner ) ? $settings->parallaxBanner : false;
 
-$texture		= !empty( $settings->texture ) ? $settings->texture : false;
+$texture		= isset( $settings->texture ) ? $settings->texture : false;
 $textureClass	= !empty( $model->texture ) && $model->texture !== 'texture' ? $model->texture : null;
 
 // Max Cover ----------------
 
-$maxCover	= !empty( $settings->maxCover ) ? $settings->maxCover : false;
+$maxCover	= isset( $settings->maxCover ) ? $settings->maxCover : false;
 
 // Background ---------------
 
-$bkg		= !empty( $settings->background ) ? $settings->background : false;
+$bkg		= isset( $settings->background ) ? $settings->background : false;
 $bkgClass	= !empty( $settings->backgroundClass ) ? $settings->backgroundClass : null;
 
 $banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : SiteProperties::getInstance()->getPageBanner() ) : null;
@@ -32,7 +32,6 @@ $bannerUrl	= CodeGenUtil::getFileUrl( $modelContent->banner, [ 'image' => $banne
 $gallery	= $modelContent->gallery;
 $slides		= isset( $gallery ) ? $gallery->files : [];
 ?>
-
 <?php if( !empty( $bannerUrl ) && $bkg ) { ?>
 	<?php if( $fixedBanner ) { ?>
 		<div class="page-bkg-fixed <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);" ></div>

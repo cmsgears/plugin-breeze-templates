@@ -80,6 +80,7 @@ class m180611_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 	private function configurePageTemplates() {
 
 		// Templates
+		$searchTemplate	= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SEARCH, CmsGlobal::TYPE_PAGE );
 		$cartTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_CART, CmsGlobal::TYPE_PAGE );
 		$checkTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_CHECKOUT, CmsGlobal::TYPE_PAGE );
 		$payTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_PAYMENT, CmsGlobal::TYPE_PAGE );
@@ -88,10 +89,12 @@ class m180611_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 		$cartPage		= Page::findBySlugType( 'cart', CmsGlobal::TYPE_PAGE );
 		$checkoutPage	= Page::findBySlugType( 'checkout', CmsGlobal::TYPE_PAGE );
 		$paymentPage	= Page::findBySlugType( 'payment', CmsGlobal::TYPE_PAGE );
+		$shopPage		= Page::findBySlugType( 'shop', CmsGlobal::TYPE_PAGE );
 
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $cartTemplate->id ], "id=$cartPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $checkTemplate->id ], "id=$checkoutPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $payTemplate->id ], "id=$paymentPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$shopPage->id" );
 	}
 
 	private function insertWidgets() {

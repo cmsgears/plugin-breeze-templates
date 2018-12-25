@@ -1,16 +1,18 @@
 <?php
-$widgetObj	= $widget->widgetObj;
-$data		= json_decode( $widgetObj->data );
+$model	= $widget->widgetObj;
+$data	= json_decode( $model->data );
 
-$settings = $data->settings ?? null;
+$settings = isset( $data->settings ) ? $data->settings : [];
 
-$includes = dirname( __FILE__ ) . '/includes';
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/widget/default/includes';
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/widget/cms/post/default/includes';
 
-$buffer = "$includes/buffer.php";
+$buffer = "$templateIncludes/buffer.php";
 ?>
-<?php include "$includes/styles.php"; ?>
-<?php include "$includes/background.php"; ?>
+<?php include "$defaultIncludes/styles.php"; ?>
+<?php include "$defaultIncludes/background.php"; ?>
 <div class="widget-content-wrap">
-	<?php include "$includes/header.php"; ?>
-	<?php include "$includes/content.php"; ?>
+	<?php include "$defaultIncludes/header.php"; ?>
+	<?php include "$defaultIncludes/content.php"; ?>
 </div>
+<?php include "$defaultIncludes/scripts.php"; ?>

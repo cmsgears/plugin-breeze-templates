@@ -36,9 +36,14 @@ class PagingConfig extends WidgetConfig {
 
 	// Public -----------------
 
-	// HTML Wrapper - Container
+	// HTML Wrapper
 	public $wrap	= true;
+	public $wrapper = 'div';
+
+	// HTML Options - Widget Wrapper
 	public $options	= '{ "class": "widget widget-page" }';
+
+	// HTML Options - Models Wrapper
 	public $wrapperOptions = '{ "class": "row" }';
 
 	// HTML Wrapper - Single

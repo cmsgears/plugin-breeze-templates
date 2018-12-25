@@ -6,20 +6,20 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 
 // Max Cover ----------------
 
-$maxCover = !empty( $settings->maxCover ) ? $settings->maxCover : $widget->maxCover;
+$maxCover = isset( $settings->maxCover ) ? $settings->maxCover : $widget->maxCover;
 
 // Background ---------------
 
-$bkg			= !empty( $settings->bkg ) ? $settings->bkg : $widget->bkg;
-$fixedBkg		= !empty( $settings->fixedBkg ) ? $settings->fixedBkg : $widget->fixedBkg;
-$scrollBkg		= !empty( $settings->scrollBkg ) ? $settings->scrollBkg : $widget->scrollBkg;
-$parallaxBkg	= !empty( $settings->parallaxBkg ) ? $settings->parallaxBkg : $widget->parallaxBkg;
+$bkg			= isset( $settings->bkg ) ? $settings->bkg : $widget->bkg;
+$fixedBkg		= isset( $settings->fixedBkg ) ? $settings->fixedBkg : $widget->fixedBkg;
+$scrollBkg		= isset( $settings->scrollBkg ) ? $settings->scrollBkg : $widget->scrollBkg;
+$parallaxBkg	= isset( $settings->parallaxBkg ) ? $settings->parallaxBkg : $widget->parallaxBkg;
 $bkgClass		= !empty( $settings->bkgClass ) ? $settings->bkgClass : $widget->bkgClass;
 
-$texture		= !empty( $settings->texture ) ? $settings->texture : $widget->texture;
+$texture		= isset( $settings->texture ) ? $settings->texture : $widget->texture;
 $textureClass	= !empty( $model->texture ) ? $model->texture : $widget->textureClass;
 
-$banner		= ( !empty( $settings->defaultBanner ) && $settings->defaultBanner ) || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
+$banner		= ( isset( $settings->defaultBanner ) && $settings->defaultBanner ) || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
 $bannerUrl	= CodeGenUtil::getFileUrl( $model->banner, [ 'image' => $banner ] );
 $bkgUrl		= isset( $bannerUrl ) ? $bannerUrl : $widget->bkgUrl;
 ?>
