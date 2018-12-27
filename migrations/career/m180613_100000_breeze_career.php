@@ -64,7 +64,7 @@ class m180613_100000_breeze_career extends Migration {
 
 		$templates = [
 			// Default Templates - Job
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, CareerGlobal::TYPE_JOB, null, true, 'Default layout for jobs.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\career\settings\JobSettings', '@breeze/templates/career/job/default/forms', 'default', true, 'career/job/default', false, '@breeze/templates/career/job/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-job" }', null, null ]
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, CareerGlobal::TYPE_JOB, null, true, 'Default layout for jobs.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\career\settings\JobSettings', '@breeze/templates/career/job/default/forms', 'default', true, 'career/job/default', true, '@breeze/templates/career/job/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-job" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
@@ -78,7 +78,7 @@ class m180613_100000_breeze_career extends Migration {
 
 		$templates = [
 			// Default Templates - Internship
-			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, CareerGlobal::TYPE_INTERNSHIP, null, true, 'Default layout for internship.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\career\settings\InternshipSettings', '@breeze/templates/career/internship/default/forms', 'default', true, 'career/job/default', false, '@breeze/templates/career/internship/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-internship" }', null, null ]
+			[ $master->id, $master->id, 'Default', CoreGlobal::TEMPLATE_DEFAULT, CareerGlobal::TYPE_INTERNSHIP, null, true, 'Default layout for internship.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\career\settings\InternshipSettings', '@breeze/templates/career/internship/default/forms', 'default', true, 'career/job/default', true, '@breeze/templates/career/internship/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-internship" }', null, null ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );

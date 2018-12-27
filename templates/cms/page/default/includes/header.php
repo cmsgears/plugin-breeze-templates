@@ -13,6 +13,7 @@ $headerIcon			= isset( $settings->headerIcon ) ? $settings->headerIcon : false;
 $headerTitle		= isset( $settings->headerTitle ) && $settings->headerTitle ? $model->displayName : null;
 $headerInfo			= isset( $settings->headerInfo ) && $settings->headerInfo ? $model->description : null;
 $headerContent		= isset( $settings->headerContent ) && $settings->headerContent ? HtmlPurifier::process( $modelContent->summary ) : null;
+$headerFluid		= isset( $settings->headerFluid ) ? $settings->headerFluid : false;
 $headerScroller		= isset( $settings->headerScroller ) ? $settings->headerScroller : false;
 
 $headerBanner	= isset( $settings->headerBanner ) ? $settings->headerBanner : false;
@@ -25,10 +26,12 @@ $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl :
 $headerBanner	= $headerBanner && !empty( $bannerUrl );
 $headerGallery	= $headerGallery && !empty( $slides );
 
-$scroller = $headerScroller ? 'cscroller' : null;
+$fluidClass		= $headerFluid ? 'page-header-fluid' : 'page-header-banner';
+$sliderClass	= $headerFluid ? 'page-slider-fluid' : 'page-slider';
+$scroller		= $headerScroller ? 'cscroller' : null;
 ?>
 <?php if( $header ) { ?>
-	<div class="page-header-wrap <?= $headerBanner || $headerGallery ? 'page-header-banner' : null ?>">
+	<div class="page-header-wrap <?= $headerBanner || $headerGallery ? $fluidClass : null ?>">
 		<?php if( $headerBanner && !$headerGallery ) { ?>
 			<?php if( $fixedBanner ) { ?>
 				<div class="page-bkg-fixed <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);" ></div>
@@ -36,6 +39,10 @@ $scroller = $headerScroller ? 'cscroller' : null;
 				<div class="page-bkg-parallax <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);" ></div>
 			<?php } else if( $scrollBanner ) { ?>
 				<div class="page-bkg-scroll <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);" ></div>
+			<?php } else if( $fluidBanner ) { ?>
+				<div class="page-bkg-fluid <?= $bkgClass ?>">
+					<img src="<?= $bannerUrl ?>" alt="<?= $model->displayName ?>" />
+				</div>
 			<?php } else { ?>
 				<div class="page-bkg <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);" ></div>
 			<?php } ?>
@@ -45,7 +52,7 @@ $scroller = $headerScroller ? 'cscroller' : null;
 		<?php } ?>
 
 		<?php if( $headerGallery ) { ?>
-			<div class="fx fx-slider fx-slider-regular page-slider">
+			<div class="fx fx-slider fx-slider-regular <?= $sliderClass ?>">
 			<?php
 				foreach( $slides as $slide ) {
 
@@ -74,7 +81,7 @@ $scroller = $headerScroller ? 'cscroller' : null;
 			?>
 			</div>
 		<?php } else { ?>
-			<div class="page-header <?= $headerBanner ? "page-header-banner valign-center $scroller" : 'page-header-text' ?>">
+			<div class="page-header <?= $headerBanner ? "page-header-scroll valign-center $scroller" : 'page-header-text' ?>">
 				<?php include "$defaultIncludes/header-content.php"; ?>
 			</div>
 		<?php } ?>

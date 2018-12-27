@@ -44,6 +44,7 @@ class PageSettings extends DataModel {
 	public $fixedBanner;
 	public $scrollBanner;
 	public $parallaxBanner;
+	public $fluidBanner;
 	public $background;
 	public $backgroundClass;
 
@@ -57,6 +58,7 @@ class PageSettings extends DataModel {
 	public $headerInfo; // Show Header Info using Model Description
 	public $headerContent; // Show Header Content using Model Summary
 	public $headerIconUrl; // Show Header Icon using Icon Url irrespective of Model Avatar/Icon
+	public $headerFluid;
 	public $headerBanner;
 	public $headerGallery;
 	public $headerScroller;
@@ -184,9 +186,9 @@ class PageSettings extends DataModel {
 
 		return [
 			[ [ 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'defaultBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'fluidBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
-			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
+			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerFluid', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'metas' ], 'boolean' ],
 			[ [ 'contentSocial', 'contentLabels' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
@@ -210,6 +212,7 @@ class PageSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'headerFluid' => 'Fluid Header',
 			'metas' => 'Attributes',
 			'metasWithContent' => 'Attributes With Content',
 			'metasOrder' => 'Attributes Order',
