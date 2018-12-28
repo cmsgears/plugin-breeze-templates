@@ -7,9 +7,8 @@ use yii\helpers\Html;
 use cmsgears\core\common\widgets\Editor;
 use cmsgears\icons\widgets\IconChooser;
 
-// SF Imports
 $coreProperties = $this->context->getCoreProperties();
-$this->title 	= 'Job Settings | ' . $coreProperties->getSiteTitle();
+$this->title 	= 'Internship Settings | ' . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
 
 Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts' => 'site', 'config' => [ 'controls' => 'mini' ] ] );
@@ -42,6 +41,9 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 							<div class="row">
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'parallaxBanner', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'fluidBanner', null, 'cmti cmti-checkbox' ) ?>
 								</div>
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'texture', null, 'cmti cmti-checkbox' ) ?>
@@ -94,6 +96,9 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 								</div>
 							</div>
 							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'headerFluid', null, 'cmti cmti-checkbox' ) ?>
+								</div>
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'headerScroller', null, 'cmti cmti-checkbox' ) ?>
 								</div>
@@ -427,7 +432,13 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 				<div class="box-content-wysiwyg">
 					<div class="box-content">
 						<label>Page Styles</label>
-						<?= $form->field( $settings, 'styles' )->textarea( [ 'rows' => '8' ] )->label( false ) ?>
+						<?= $form->field( $settings, 'styles' )->textarea( [ 'rows' => '6' ] )->label( false ) ?>
+					</div>
+				</div>
+				<div class="box-content-wysiwyg">
+					<div class="box-content">
+						<label>Page Scripts</label>
+						<?= $form->field( $settings, 'scripts' )->textarea( [ 'rows' => '6' ] )->label( false ) ?>
 					</div>
 				</div>
 				<div class="box-content-wysiwyg">

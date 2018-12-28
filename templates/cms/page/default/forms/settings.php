@@ -7,7 +7,6 @@ use yii\helpers\Html;
 use cmsgears\core\common\widgets\Editor;
 use cmsgears\icons\widgets\IconChooser;
 
-// SF Imports
 $coreProperties = $this->context->getCoreProperties();
 $this->title 	= 'Page Settings | ' . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;

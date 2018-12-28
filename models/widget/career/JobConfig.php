@@ -14,7 +14,7 @@ namespace cmsgears\templates\breeze\models\widget\career;
  *
  * @since 1.0.0
  */
-class JobConfig extends PageConfig {
+class JobConfig extends \cmsgears\templates\breeze\models\widget\cms\PageConfig {
 
 	// Variables ---------------------------------------------------
 
@@ -30,9 +30,9 @@ class JobConfig extends PageConfig {
 
 	// Public -----------------
 
-	public $route		= 'blog/search';
-	public $allPath		= 'blog';
-	public $singlePath	= 'blog';
+	public $route		= 'job/search';
+	public $allPath		= 'job';
+	public $singlePath	= 'job';
 
 	// Protected --------------
 
