@@ -64,6 +64,7 @@ class BlockSettings extends DataModel {
 	public $contentInfo; // Show Model Description within content
 	public $contentSummary; // Show Model Summary within content
 	public $contentData; // Show Model Content within content
+	public $contentRaw; // Content without purifier
 
 	public $maxCover;
 
@@ -133,7 +134,7 @@ class BlockSettings extends DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'footerContentData', 'styles', 'scripts' ], 'safe' ],
+			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'elementsBeforeContent', 'widgets', 'widgetsBeforeContent' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
@@ -158,6 +159,7 @@ class BlockSettings extends DataModel {
 			'scrollBkg' => 'Scrollable Background',
 			'parallaxBkg' => 'Parallax Background',
 			'bkgClass' => 'Background Class',
+			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'

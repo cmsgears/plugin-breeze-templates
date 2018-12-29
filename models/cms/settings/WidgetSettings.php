@@ -59,6 +59,7 @@ class WidgetSettings extends DataModel {
 	public $contentInfo; // Show Model Description within content
 	public $contentSummary; // Show Model Summary within content
 	public $contentData; // Show Model Content within content
+	public $contentRaw; // Content without purifier
 
 	public $contentClass;
 	public $contentDataClass;
@@ -96,7 +97,7 @@ class WidgetSettings extends DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'styles', 'scripts' ], 'safe' ],
+			[ [ 'contentRaw', 'styles', 'scripts' ], 'safe' ],
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
@@ -114,6 +115,7 @@ class WidgetSettings extends DataModel {
 		return [
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'

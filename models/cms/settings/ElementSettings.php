@@ -131,9 +131,9 @@ class ElementSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
-			'contentRaw' => 'Raw Content',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
