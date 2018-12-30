@@ -1,14 +1,11 @@
-Project 	- CMSGears (http://www.cmsgears.org)
+Project 	- CMSGears (http://www.cmsgears.com)
 
-Plugin  	- Analytics
+Module  	- Breeze Templates Plugin
 
-License 	- GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
+License 	- CMSGears (http://www.cmsgears.com/license)
 
-Description - Google Analytics plugin for CMSGears provide options to configure google analytics.
+Description - The Breeze Templates Plugin for CMSGears based projects.
 
 Highlighted Features
 =========================================
-1. It provide options to configure google analytics from admin.
-2. It provide widget to insert tracking code on page.
-
-Notes: The detailed description for each feature can be found at http://www.cmsgears.org.
+1. Provide pre-configured Breeze templates for CMSGears.

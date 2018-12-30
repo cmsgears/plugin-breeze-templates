@@ -1,29 +1,20 @@
 {
-	"name" : "cmsgears/plugin-google-analytics",
-	"description" : "Google Analytics plugin for CMSGears provide options to configure google analytics.",
-	"homepage" : "http://www.cmsgears.org",
-	"type" : "package",
-	"keywords" : [
-		"yii2",
-		"cmsgears",
-		"plugin",
-		"analytics",
-		"google"
-	],
-	"license": "GPL-3.0-or-later",
-	"support" : {
-		"source" : "http://www.cmsgears.org/downloads/plugins/google-analytics",
-		"forum" : "http://forum.cmsgears.org/",
-		"resources" : "http://resources.cmsgears.org/",
-		"issues" : "https://www.amazingdesk.com/project/cmsgears/issues/",
-		"blog" : "http://cmsgears.tutorials24x7.com/"
+	"name": "cmsgears/plugin-breeze-templates",
+	"description": "The Breeze Templates Plugin for CMSGears based projects.",
+	"homepage": "http://www.cmsgears.com",
+	"type": "package",
+	"keywords": [ "yii2", "cmsgears", "plugin", "breeze" ],
+	"license": "http://www.cmsgears.com/license",
+	"support": {
+		"resources": "http://www.cmsgears.com"
 	},
-	"autoload" : {
-		"psr-4" : {
-			"cmsgears\\google\\analytics\\" : ""
+	"autoload": {
+		"psr-4": {
+			"cmsgears\\templates\\breeze\\": ""
 		}
 	},
-	"require" : {
-		"cmsgears/module-core" : "*"
-	}
+    "require": {
+        "cmsgears/module-core": "*",
+        "cmsgears/module-cms": "*"
+    }
 }
