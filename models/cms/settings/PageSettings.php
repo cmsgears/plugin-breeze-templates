@@ -161,6 +161,12 @@ class PageSettings extends DataModel {
 	public $comments = true;
 	public $disqus;
 
+	// Pre-configured data and widgets
+	public $author; // Show author details
+	public $related; // Show related posts
+	public $popular; // Show popular posts
+	public $similar; // Show similar posts
+
 	// Protected --------------
 
 	// Private ----------------
@@ -196,6 +202,7 @@ class PageSettings extends DataModel {
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'comments', 'disqus' ], 'boolean' ],
+			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],

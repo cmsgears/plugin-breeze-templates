@@ -408,6 +408,30 @@ Editor::widget();
 						</div>
 					</div>
 				</div>
+				<div class="filler-height"></div>
+				<div class="box box-crud">
+					<div class="box-header">
+						<div class="box-header-title">Article Data and Widgets</div>
+					</div>
+					<div class="box-content-wrap frm-split-40-60">
+						<div class="box-content">
+							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'author', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'related', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'popular', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'similar', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col col3">
 				<div class="content-wysiwyg">

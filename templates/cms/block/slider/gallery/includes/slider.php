@@ -40,7 +40,7 @@ $sliderOptions = [
 $gallery		= $model->gallery;
 $galleryItems	= isset( $gallery ) ? $gallery->files : [];
 
-$collageClass	= $collage ? $collageClass: null;
+$collageClass	= $collage && count( $galleryItems ) <= $collageLimit ? $collageClass : null;
 $sliderClass	= 'cmt-slider-' . $model->slug;
 ?>
 <?php if( count( $galleryItems ) > 0 ) { ?>
@@ -53,7 +53,7 @@ $sliderClass	= 'cmt-slider-' . $model->slug;
 				$displayUrl	= $mediumImage ? $galleryItem->getMediumUrl() : $galleryItem->getFileUrl();
 		?>
 			<div thumb-url="<?= $galleryItem->getThumbUrl() ?>" image-url="<?= $galleryItem->getFileUrl() ?>">
-				<div class="wrap-slide-content" style="background-image: url(<?= $displayUrl ?>)" 	role="img" aria-label="<?= $slideAlt ?>"></div>
+				<div class="wrap-slide-content bkg-image" style="background-image: url(<?= $displayUrl ?>)" 	role="img" aria-label="<?= $slideAlt ?>"></div>
 			</div>
 		<?php } ?>
 	</div>
