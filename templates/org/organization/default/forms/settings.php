@@ -8,7 +8,7 @@ use cmsgears\core\common\widgets\Editor;
 use cmsgears\icons\widgets\IconChooser;
 
 $coreProperties = $this->context->getCoreProperties();
-$this->title 	= 'Post Settings | ' . $coreProperties->getSiteTitle();
+$this->title 	= 'Organization Settings | ' . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
 
 Editor::widget();

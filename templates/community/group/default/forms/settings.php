@@ -8,7 +8,7 @@ use cmsgears\core\common\widgets\Editor;
 use cmsgears\icons\widgets\IconChooser;
 
 $coreProperties = $this->context->getCoreProperties();
-$this->title 	= 'Post Settings | ' . $coreProperties->getSiteTitle();
+$this->title 	= 'Group Settings | ' . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
 
 Editor::widget();
@@ -424,7 +424,7 @@ Editor::widget();
 				<div class="filler-height"></div>
 				<div class="box box-crud">
 					<div class="box-header">
-						<div class="box-header-title">Post Data and Widgets</div>
+						<div class="box-header-title">Group Data and Widgets</div>
 					</div>
 					<div class="box-content-wrap frm-split-40-60">
 						<div class="box-content">
