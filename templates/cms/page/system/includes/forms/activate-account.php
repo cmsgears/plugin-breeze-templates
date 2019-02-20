@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 ?>
-<div class="page-form rounded rounded-medium">
+<div class="<?= $frmClass ?>">
 	<div class="h3 align align-center margin margin-bottom-medium">Activate Account</div>
 	<?php if( Yii::$app->session->hasFlash( 'message' ) ) {  ?>
 		<p class="margin margin-medium-v reader"><?=Yii::$app->session->getFlash( 'message' )?></p>

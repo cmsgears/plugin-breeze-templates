@@ -52,4 +52,3 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 </div>
 
 <?php include "$defaultIncludes/attributes.php"; ?>
-<?php include "$defaultIncludes/elements.php"; ?>

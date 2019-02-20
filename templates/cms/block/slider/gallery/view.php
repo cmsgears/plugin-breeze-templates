@@ -11,6 +11,7 @@ $templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/slider/ga
 $buffer = "$templateIncludes/buffer.php";
 ?>
 <?php include "$defaultIncludes/styles.php"; ?>
+<?php include "$defaultIncludes/objects-config.php"; ?>
 <?php include "$defaultIncludes/background.php"; ?>
 <div class="block-content-wrap">
 	<?php include "$defaultIncludes/header.php"; ?>

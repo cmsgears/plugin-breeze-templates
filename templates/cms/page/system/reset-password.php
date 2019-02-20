@@ -3,7 +3,8 @@
 use cmsgears\cms\common\utilities\ContentUtil;
 
 // Form Config
-$frmSplit = isset( $frmSplit ) ? $frmSplit : true;
+$frmSplit	= isset( $frmSplit ) ? $frmSplit : true;
+$frmClass	= isset( $frmClass ) ? $frmClass : 'page-form rounded rounded-medium';
 
 $formModel	= $model;
 $formView	= dirname( __FILE__ ) . '/includes/forms/reset-password.php';

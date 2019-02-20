@@ -9,6 +9,7 @@ $defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/in
 $buffer = "$defaultIncludes/buffer.php";
 ?>
 <?php include "$defaultIncludes/styles.php"; ?>
+<?php include "$defaultIncludes/objects-config.php"; ?>
 <?php include "$defaultIncludes/background.php"; ?>
 <div class="block-content-wrap">
 	<?php include "$defaultIncludes/header.php"; ?>

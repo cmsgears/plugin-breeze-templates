@@ -5,6 +5,7 @@ use cmsgears\cms\common\utilities\ContentUtil;
 // Form Config
 $socialLogin	= isset( $socialLogin ) ? $socialLogin : false;
 $frmSplit		= isset( $frmSplit ) ? $frmSplit : true;
+$frmClass		= isset( $frmClass ) ? $frmClass : 'page-form rounded rounded-medium';
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 $systemIncludes		= Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';

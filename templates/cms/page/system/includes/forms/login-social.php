@@ -8,7 +8,7 @@ use cmsgears\social\connect\widgets\SnsLoginWidget;
 
 $coreProperties = $this->context->getCoreProperties();
 ?>
-<div class="page-form rounded rounded-medium">
+<div class="<?= $frmClass ?>">
 	<div class="h3 align align-center margin margin-bottom-medium">Login With</div>
 	<?php
 		if( $coreProperties->isLogin() ) {

@@ -14,4 +14,3 @@ use foxslider\widgets\FoxSliderMain;
 </div>
 
 <?php include "$defaultIncludes/attributes.php"; ?>
-<?php include "$defaultIncludes/elements.php"; ?>

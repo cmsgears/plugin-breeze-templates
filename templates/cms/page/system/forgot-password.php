@@ -4,6 +4,7 @@ use cmsgears\cms\common\utilities\ContentUtil;
 
 // Form Config
 $frmSplit	= isset( $frmSplit ) ? $frmSplit : true;
+$frmClass	= isset( $frmClass ) ? $frmClass : 'page-form rounded rounded-medium';
 $otp		= isset( $otp ) ? $otp : false;
 $otpUrl		= '/reset-password-otp';
 

@@ -12,7 +12,7 @@ $termsUrl	= Url::toRoute( [ '/terms' ] );
 $privacyUrl	= Url::toRoute( [ '/privacy' ] );
 $termsLabel = "I agree to the <a href=\"$termsUrl\">Terms</a> and <a href=\"$privacyUrl\">Privacy Policy";
 ?>
-<div class="page-form rounded rounded-medium">
+<div class="<?= $frmClass ?>">
 	<div class="h3 align align-center margin margin-bottom-medium">Register With</div>
 	<?php
 		if( $coreProperties->isRegistration() ) {

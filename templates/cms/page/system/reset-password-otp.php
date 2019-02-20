@@ -4,6 +4,7 @@ use cmsgears\cms\common\utilities\ContentUtil;
 
 // Form Config
 $frmSplit	= isset( $frmSplit ) ? $frmSplit : true;
+$frmClass	= isset( $frmClass ) ? $frmClass : 'page-form rounded rounded-medium';
 $forgotUrl	= '/forgot-password';
 
 $formModel	= $model;

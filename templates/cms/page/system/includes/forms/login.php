@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 $coreProperties = $this->context->getCoreProperties();
 ?>
-<div class="page-form rounded rounded-medium">
+<div class="<?= $frmClass ?>">
 	<div class="h3 align align-center margin margin-bottom-medium">Login</div>
 	<?php
 		if( $coreProperties->isLogin() ) {
