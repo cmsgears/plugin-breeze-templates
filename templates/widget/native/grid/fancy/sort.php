@@ -7,8 +7,8 @@ $sortAsc	= isset( $sort ) && $sort[0] === '-' ? false : true;
 $sort		= isset( $sort ) && $sort[0] === '-' ? substr( $sort, 1 ) : $sort;
 ?>
 <?php if( count( $sortColumns ) > 0 ) { ?>
-<span class="grid-sort-wrap">
-	<span class="grid-sort">
+<div class="grid-sort-wrap">
+	<div class="grid-sort">
 		<label>Sort By</label>
 		<select class="cmt-select-c">
 			<option value="select">Select Sort</option>
@@ -21,6 +21,6 @@ $sort		= isset( $sort ) && $sort[0] === '-' ? substr( $sort, 1 ) : $sort;
 				<?php } ?>
 			<?php } ?>
 		</select>
-	</span>
-</span>
+	</div>
+</div>
 <?php } ?>

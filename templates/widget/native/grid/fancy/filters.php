@@ -2,9 +2,9 @@
 $filters = $widget->filters;
 ?>
 <?php if( count( $filters ) > 0 ) { ?>
-<span class="grid-filters-wrap">
+<div class="grid-filters-wrap">
 	<label>Filter By</label>
-	<span class="grid-filters" data-cols="<?= join( ',', array_keys( $filters ) ) ?>">
+	<div class="grid-filters" data-cols="<?= join( ',', array_keys( $filters ) ) ?>">
 		<select class="cmt-select-c">
 			<option value="select">Select Filter</option>
 			<?php
@@ -25,6 +25,6 @@ $filters = $widget->filters;
 				}
 			?>
 		</select>
-	</span>
-</span>
+	</div>
+</div>
 <?php } ?>

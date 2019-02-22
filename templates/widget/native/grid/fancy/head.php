@@ -8,6 +8,8 @@ $reportColumns	= $widget->reportColumns;
 
 $layoutSwitch = ( ( $widget->grid || $widget->table ) && $widget->list ) || ( ( $widget->grid || $widget->table ) && $widget->card ) || ( $widget->list && $widget->card );
 ?>
+
+<?php if( !empty( $title ) ) { ?>
 <div class="grid-head-wrap row">
 	<div class="colf colf12x6">
 		<b class="grid-title"><?= $title ?></b>
@@ -37,3 +39,4 @@ $layoutSwitch = ( ( $widget->grid || $widget->table ) && $widget->list ) || ( ( 
 		<?php } ?>
 	</div>
 </div>
+<?php } ?>

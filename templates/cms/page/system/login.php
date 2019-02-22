@@ -15,7 +15,7 @@ $formView	= $socialLogin ? "$systemIncludes/forms/login-social.php" : "$systemIn
 $model		= isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
 
 $siteProperties = $this->context->getSiteProperties();
-$registerUrl	= 'register';
+$registerUrl	= '/register';
 $modelContent	= $model->modelContent;
 
 $data		= json_decode(  $model->data );

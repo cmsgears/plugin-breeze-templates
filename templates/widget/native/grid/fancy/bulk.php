@@ -3,8 +3,8 @@ $bulkActions = $widget->bulkActions;
 ?>
 
 <?php if( count( $bulkActions ) > 0 ) { ?>
-<span class="grid-bulk-wrap">
-	<span class="grid-bulk">
+<div class="grid-bulk-wrap">
+	<div class="grid-bulk">
 		<label>Action</label>
 		<select class="cmt-select-c" popup="<?= $widget->bulkPopup ?>">
 			<option value="select">Select Action</option>
@@ -19,6 +19,6 @@ $bulkActions = $widget->bulkActions;
 				}
 			?>
 		</select>
-	</span>
-</span>
+	</div>
+</div>
 <?php } ?>

@@ -35,12 +35,10 @@ $export			= $widget->export;
 			<?php } ?>
 			<?php if( count( $limits ) > 0 && $pageCount >= 2 ) { ?>
 			<span class="inline-block">
-				<span class="text">View Per Page</span>
+				<span class="text">Page Limit</span>
 				<span class="wrap-limits inline-block">
 					<select class="cmt-select-c">
-						<option value="select">Select Limit</option>
-						<?php foreach ( $limits as $key ) { ?>
-
+						<?php foreach( $limits as $key ) { ?>
 							<?php if( $limit == $key ) { ?>
 								<option value="<?= $key ?>" selected><?= $key ?></option>
 							<?php } else { ?>
