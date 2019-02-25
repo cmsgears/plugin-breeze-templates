@@ -18,9 +18,7 @@ use yii\widgets\ActiveForm;
 
 			<div class="row max-cols-50 padding padding-small-v">
 				<div class="col col2">
-					<label>
-						<a href="<?= Url::toRoute( [ '/login' ] ) ?>">Login ?</a>
-					</label>
+					<label><a href="<?= Url::toRoute( [ '/login' ] ) ?>">Login</a></label>
 				</div>
 				<div class="col col2 align align-right">
 					<input class="frm-element-medium" type="submit" value="Submit" />

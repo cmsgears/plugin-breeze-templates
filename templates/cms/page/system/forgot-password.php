@@ -8,8 +8,12 @@ $frmClass	= isset( $frmClass ) ? $frmClass : 'page-form rounded rounded-medium';
 $otp		= isset( $otp ) ? $otp : false;
 $otpUrl		= '/reset-password-otp';
 
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$systemIncludes		= isset( $systemIncludes ) ? $systemIncludes : Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';
+$systemContent		= isset( $systemContent ) ? $systemContent : "$systemIncludes/content.php";
+
 $formModel	= $model;
-$formView	= dirname( __FILE__ ) . '/includes/forms/forgot-password.php';
+$formView	= "$systemIncludes/forms//forgot-password.php";
 $model		= isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
 
 $siteProperties = $this->context->getSiteProperties();
@@ -18,8 +22,6 @@ $modelContent	= $model->modelContent;
 $data		= json_decode(  $model->data );
 $settings	= isset( $data->settings ) ? $data->settings : [];
 $pageBanner	= $siteProperties->getPageBanner();
-
-$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 
 $buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
@@ -34,7 +36,7 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 	<div class="page-content-wrap">
 		<?php include "$defaultIncludes/header.php"; ?>
 		<div class="row content-80">
-			<?php include dirname( __FILE__ ) . '/includes/content.php'; ?>
+			<?php include $systemContent; ?>
 		</div>
 		<?php include $outerObjects; ?>
 	</div>

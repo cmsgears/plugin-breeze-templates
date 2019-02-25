@@ -8,7 +8,8 @@ $frmSplit		= isset( $frmSplit ) ? $frmSplit : true;
 $frmClass		= isset( $frmClass ) ? $frmClass : 'page-form rounded rounded-medium';
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
-$systemIncludes		= Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';
+$systemIncludes		= isset( $systemIncludes ) ? $systemIncludes : Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';
+$systemContent		= isset( $systemContent ) ? $systemContent : "$systemIncludes/content.php";
 
 $formModel	= $model;
 $formView	= $socialLogin ? "$systemIncludes/forms/login-social.php" : "$systemIncludes/forms/login.php";
@@ -35,7 +36,7 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 	<div class="page-content-wrap">
 		<?php include "$defaultIncludes/header.php"; ?>
 		<div class="row content-80">
-			<?php include dirname( __FILE__ ) . '/includes/content.php'; ?>
+			<?php include $systemContent; ?>
 		</div>
 		<?php include $outerObjects; ?>
 	</div>

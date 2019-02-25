@@ -28,7 +28,7 @@ $coreProperties = $this->context->getCoreProperties();
 		<div class="row max-cols-50 padding padding-small-v">
 			<div class="col col2">
 				<label>
-					<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgotton Password ?</a>
+					<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgotton Password?</a>
 				</label>
 			</div>
 			<div class="col col2 align align-right">
@@ -40,7 +40,7 @@ $coreProperties = $this->context->getCoreProperties();
 		<p class="text-content">OR</p>
 	</div>
 	<div class="align align-center">
-		<p>Don't have an Account ? <a href="<?= Url::toRoute( [ $registerUrl ] ) ?>">Click here</a> to register.</p>
+		<p>Don't have an Account? <a href="<?= Url::toRoute( [ $registerUrl ] ) ?>">Click here</a> to register.</p>
 	</div>
 	<?php
 		}

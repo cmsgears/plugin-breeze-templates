@@ -16,9 +16,7 @@ use yii\widgets\ActiveForm;
 
 			<div class="row max-cols-50 padding padding-small-v">
 				<div class="col col2">
-					<label>
-						<a href="<?= Url::toRoute( [ '/login' ] ) ?>">Login ?</a>
-					</label>
+					<label><a href="<?= Url::toRoute( [ '/login' ] ) ?>">Login</a></label>
 				</div>
 				<div class="col col2 align align-right">
 					<input class="frm-element-medium" type="submit" value="Submit" />
@@ -26,12 +24,12 @@ use yii\widgets\ActiveForm;
 			</div>
 		<?php ActiveForm::end(); ?>
 		<?php if( $otp && Yii::$app->smsManager->isOTP() ) { ?>
-					<div class="text-with-line">
-						<p class="text-content">OR</p>
-					</div>
-					<div class="align align-center">
-						<p>Get OTP on registered mobile ? <a href="<?= Url::toRoute( [ $otpUrl ] ) ?>">Click here</a> to receive OTP.</p>
-					</div>
+			<div class="text-with-line">
+				<p class="text-content">OR</p>
+			</div>
+			<div class="align align-center">
+				<p>Get OTP on registered mobile. <a href="<?= Url::toRoute( [ $otpUrl ] ) ?>">Click here</a> to receive OTP.</p>
+			</div>
 		<?php } ?>
 	<?php } ?>
 </div>
