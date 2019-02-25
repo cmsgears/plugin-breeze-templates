@@ -2,17 +2,12 @@
 // Yii Imports
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-
-// CMG Imports
-use cmsgears\sms\common\config\SmsProperties;
-
-$smsProperties = SmsProperties::getInstance();
 ?>
 <div class="<?= $frmClass ?>">
 	<div class="h3 align align-center margin margin-bottom-medium">Reset Password</div>
 	<?php if( Yii::$app->session->hasFlash( 'message' ) ) {  ?>
 		<p class="margin margin-medium-v reader"><?=Yii::$app->session->getFlash( 'message' )?></p>
-	<?php } else if( $smsProperties->isActive() ) { ?>
+	<?php } else if( Yii::$app->smsManager->isOTP() ) { ?>
 		<?php $form = ActiveForm::begin( [ 'id' => 'frm-password', 'options' => [ 'class' => 'form' ] ] ); ?>
 
 			<div class="<?= $frmSplit ? 'frm-split-40-60' : null ?>">

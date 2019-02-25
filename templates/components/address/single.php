@@ -13,6 +13,7 @@ $locationBase	= isset( $locationBase ) ? $locationBase : 'location';
 $searchCity		= isset( $searchCity ) ? $searchCity : false;
 $locationPicker	= isset( $locationPicker ) ? $locationPicker : false;
 $spinner		= isset( $spinner ) ? $spinner : Yii::getAlias( '@breeze' ) . '/templates/components/spinners/10-white-max.php';
+$intlTelInput	= isset( $intlTelInput ) ? $intlTelInput : false;
 
 // Address Maps
 $countryMap		= Yii::$app->factory->get( 'countryService' )->getIdNameMap();
@@ -90,14 +91,26 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 				<div class="col col2">
 					<div class="form-group">
 						<label>Phone</label>
-						<input type="text" name="Address[phone]" placeholder="Phone" value="<?= $address->phone ?>" />
+						<?php if( $intlTelInput ) { ?>
+							<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" />
+							<input type="hidden" class="intl-tel-number" name="Address[phone]" value="<?= $address->phone ?>" />
+							<div class="help-block"></div>
+						<?php } else { ?>
+							<input type="text" name="Address[phone]" placeholder="Phone" value="<?= $address->phone ?>" />
+						<?php } ?>
 						<span  class="error" cmt-error="Address[phone]"></span>
 					</div>
 				</div>
 				<div class="col col2">
 					<div class="form-group">
 						<label>Fax</label>
-						<input type="text" name="Address[fax]" placeholder="Fax" value="<?= $address->fax ?>" />
+						<?php if( $intlTelInput ) { ?>
+							<input type="text" class="intl-tel-field intl-tel-field-ph" name="fax" placeholder="Fax" autocomplete="off" />
+							<input type="hidden" class="intl-tel-number" name="Address[fax]" value="<?= $address->fax ?>" />
+							<div class="help-block"></div>
+						<?php } else { ?>
+							<input type="text" name="Address[fax]" placeholder="Fax" value="<?= $address->fax ?>" />
+						<?php } ?>
 						<span  class="error" cmt-error="Address[fax]"></span>
 					</div>
 				</div>
