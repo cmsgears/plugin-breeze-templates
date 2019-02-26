@@ -6,8 +6,7 @@ use yii\helpers\Html;
 // CMG Imports
 use cmsgears\widgets\elements\widgets\TextWidget;
 
-$widgets	= isset( $settings->widgets ) ? $settings->widgets : false;
-$widgetType	= isset( $settings->widgetType ) ? $settings->widgetType : null;
+$widgetType = isset( $settings->widgetType ) ? $settings->widgetType : null;
 
 $widgetWrapClass	= !empty( $settings->widgetWrapClass ) ? $settings->widgetWrapClass : 'row';
 $widgetWrapper		= !empty( $settings->widgetWrapper ) ? $settings->widgetWrapper : null;

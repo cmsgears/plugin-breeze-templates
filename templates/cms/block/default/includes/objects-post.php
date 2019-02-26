@@ -1,10 +1,10 @@
 <?php
-if( $elementsBeforeContent ) {
+if( $elements && !$elementsBeforeContent ) {
 
 	include "$defaultIncludes/elements.php";
 }
 
-if( $widgetsBeforeContent ) {
+if( $widgets && !$widgetsBeforeContent ) {
 
 	include "$defaultIncludes/widgets.php";
 }

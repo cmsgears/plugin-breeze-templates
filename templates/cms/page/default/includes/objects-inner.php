@@ -14,7 +14,7 @@ foreach( $objectsOrder as $key => $value ) {
 		}
 		case 'elements': {
 
-			if( $elements && $elementsWithContent ) {
+			if( $elements && !$elementsBeforeContent && $elementsWithContent ) {
 
 				include "$defaultIncludes/elements.php";
 			}
@@ -23,7 +23,7 @@ foreach( $objectsOrder as $key => $value ) {
 		}
 		case 'widgets': {
 
-			if( $widgets && $widgetsWithContent ) {
+			if( $widgets && !$widgetsBeforeContent && $widgetsWithContent ) {
 
 				include "$defaultIncludes/widgets.php";
 			}
@@ -32,7 +32,7 @@ foreach( $objectsOrder as $key => $value ) {
 		}
 		case 'blocks': {
 
-			if( $blocks && $blocksWithContent ) {
+			if( $blocks && !$blocksBeforeContent && $blocksWithContent ) {
 
 				include "$defaultIncludes/blocks.php";
 			}
@@ -41,7 +41,7 @@ foreach( $objectsOrder as $key => $value ) {
 		}
 		case 'sidebars': {
 
-			if( $sidebars && $sidebarsWithContent ) {
+			if( $sidebars && !$sidebarsBeforeContent && $sidebarsWithContent ) {
 
 				include "$defaultIncludes/sidebars.php";
 			}

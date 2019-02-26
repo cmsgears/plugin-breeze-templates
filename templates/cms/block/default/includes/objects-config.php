@@ -1,4 +1,6 @@
 <?php
+$elements	= isset( $settings->elements ) ? $settings->elements : $widget->elements;
+$widgets	= isset( $settings->widgets ) ? $settings->widgets : false;
 
 // Elements -----------------------
 
