@@ -22,11 +22,11 @@ $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDa
 		<?php if( !empty( $contentSummary ) ) { ?>
 			<div class="block-content-summary reader"><?= $contentSummary ?></div>
 		<?php } ?>
-		<?php include "$defaultIncludes/objects-pre.php"; ?>
+		<?php include $preObjects; ?>
 		<?php if( !empty( $contentData ) ) { ?>
 			<div class="block-content-data <?= $contentDataClass ?>"><?= $contentData ?></div>
 		<?php } ?>
 		<?php include $buffer; ?>
-		<?php include "$defaultIncludes/objects-post.php"; ?>
+		<?php include $postObjects; ?>
 	</div>
 <?php } ?>

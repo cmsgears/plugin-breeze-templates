@@ -4,9 +4,12 @@ $data	= $widget->modelData;
 
 $settings = isset( $data->settings ) ? $data->settings : [];
 
-$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/foxslider/includes';
 
-$buffer = __DIR__ . '/includes/buffer.php';
+$buffer			= "$templateIncludes/buffer.php";
+$preObjects		= "$defaultIncludes/objects-pre.php";
+$postObjects	= "$defaultIncludes/objects-post.php";
 ?>
 <?php include "$defaultIncludes/styles.php"; ?>
 <?php include "$defaultIncludes/objects-config.php"; ?>

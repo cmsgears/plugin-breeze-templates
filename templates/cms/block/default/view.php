@@ -6,7 +6,9 @@ $settings = isset( $data->settings ) ? $data->settings : [];
 
 $defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
 
-$buffer = "$defaultIncludes/buffer.php";
+$buffer			= "$defaultIncludes/buffer.php";
+$preObjects		= "$defaultIncludes/objects-pre.php";
+$postObjects	= "$defaultIncludes/objects-post.php";
 ?>
 <?php include "$defaultIncludes/styles.php"; ?>
 <?php include "$defaultIncludes/objects-config.php"; ?>
