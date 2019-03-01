@@ -1,16 +1,22 @@
 <?php
+// Config
+$breezeTemplates = Yii::getAlias( '@breeze/templates' );
+
+$frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
+$apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";
+
+$searchCity = isset( $searchCity ) ? $searchCity : false;
+
 // Location
 $countryMap		= Yii::$app->factory->get( 'countryService' )->getIdNameMap();
 $countryId		= array_keys( $countryMap )[ 0 ];
 $provinceMap	= Yii::$app->factory->get( 'provinceService' )->getMapByCountryId( $countryId );
 $provinceId		= array_keys( $provinceMap )[ 0 ];
 $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $provinceId, [ 'default' => true, 'defaultValue' => Yii::$app->core->regionLabel ] );
-
-$addresses = $user->modelAddresses;
 ?>
-<div class="cmt-address-crud data-crud data-crud-address">
+<div class="cmt-address-crud data-crud data-crud-address data-crud-address-card">
 	<div class="data-crud-title row">
-		<span class="inline-block">Address</span>
+		<span class="inline-block">Addresses</span>
 		<span class="filler-tab"></span>
 		<span class="inline-block actions-wrap text text-medium">
 			<span class="cmt-address-add btn-icon btn-action"><i class="icon cmti cmti-plus"></i></span>
@@ -19,7 +25,7 @@ $addresses = $user->modelAddresses;
 	<div class="cmt-address-form"></div>
 	<div class="cmt-address-collection row max-cols-50">
 		<?php
-			foreach( $addresses as $modelAddress ) {
+			foreach( $modelAddresses as $modelAddress ) {
 
 				$type		= $modelAddress->type;
 				$address	= $modelAddress->model;
@@ -31,15 +37,11 @@ $addresses = $user->modelAddresses;
 							<div class="col col3x2 title"><?= $address->title ?></div>
 							<div class="col col3 align align-right">
 								<span class="relative" cmt-app="core" cmt-controller="address" cmt-action="get" action="<?= $apixBase ?>/get-address?id=<?= $model->id ?>&cid=<?= $modelAddress->id ?>">
-									<span class="spinner hidden-easy">
-										<span class="cmti cmti-spinner-1 spin"></span>
-									</span>
+									<?php include $apixSpinner; ?>
 									<i class="icon cmti cmti-edit cmt-click"></i>
 								</span>
 								<span class="relative" cmt-app="core" cmt-controller="address" cmt-action="delete" action="<?= $apixBase ?>/delete-address?id=<?= $model->id ?>&cid=<?= $modelAddress->id ?>">
-									<span class="spinner hidden-easy">
-										<span class="cmti cmti-spinner-1 spin"></span>
-									</span>
+									<?php include $apixSpinner; ?>
 									<i class="icon cmti cmti-bin cmt-click"></i>
 								</span>
 							</div>
@@ -53,4 +55,5 @@ $addresses = $user->modelAddresses;
 		<?php } ?>
 	</div>
 </div>
-<?php include "$themeIncludes/handlebars/address/card.php"; ?>
+<?php
+include "$breezeTemplates/handlebars/address/card.php";

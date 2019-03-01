@@ -8,7 +8,6 @@ use cmsgears\core\common\models\resources\Address;
 // Config
 $address		= isset( $address ) ? $address : new Address();
 $addressType	= isset( $addressType ) ? $addressType : Address::TYPE_PRIMARY;
-$addressBase	= isset( $addressBase ) ? $addressBase : null;
 $locationBase	= isset( $locationBase ) ? $locationBase : 'location';
 $searchCity		= isset( $searchCity ) ? $searchCity : false;
 $locationPicker	= isset( $locationPicker ) ? $locationPicker : false;
@@ -24,10 +23,10 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 ?>
 <div class="data-crud">
 	<div class="data-crud-title"><?= ucfirst( $addressType ) ?> Address</div>
-	<form class="cmt-location form padding padding-small" cmt-app="core" cmt-controller="user" cmt-action="address" action="<?= $addressBase ?>/address?ctype=<?= $addressType ?>" cmt-keep>
+	<form class="cmt-location form padding padding-small" cmt-app="core" cmt-controller="user" cmt-action="address" action="<?= $apixBase ?>/address?ctype=<?= $addressType ?>" cmt-keep>
 		<?php include $spinner; ?>
 		<div class="data-crud-form row max-cols-100">
-			<div class="row">
+			<div class="row max-cols-50">
 				<div class="col col2">
 					<div class="form-group">
 						<label>Address 1*</label>
@@ -43,15 +42,15 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="cmt-location-countries col col3" cmt-app="core" cmt-controller="province" cmt-action="optionsList" action="<?= $locationBase ?>/province-options" cmt-keep cmt-custom>
+			<div class="row max-cols-50">
+				<div class="cmt-location-countries col col2" cmt-app="core" cmt-controller="province" cmt-action="optionsList" action="<?= $locationBase ?>/province-options" cmt-keep cmt-custom>
 					<div class="form-group">
 						<label>Country *</label>
 						<?= Html::dropDownList( 'Address[countryId]', $address->countryId, $countryMap, [ 'class' => 'cmt-location-country cmt-select cmt-change element-60' ] ) ?>
 						<span  class="error" cmt-error="Address[countryId]"></span>
 					</div>
 				</div>
-				<div class="cmt-location-provinces col col3" cmt-app="core" cmt-controller="region" cmt-action="optionsList" action="<?= $locationBase ?>/region-options" cmt-keep cmt-custom>
+				<div class="cmt-location-provinces col col2" cmt-app="core" cmt-controller="region" cmt-action="optionsList" action="<?= $locationBase ?>/region-options" cmt-keep cmt-custom>
 					<div class="form-group">
 						<label><?= Yii::$app->core->provinceLabel ?> *</label>
 						<?= Html::dropDownList( 'Address[provinceId]', $address->provinceId, $provinceMap, [ 'class' => 'cmt-location-province cmt-select cmt-change element-60' ] ) ?>
@@ -59,15 +58,15 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 						<span class="hidden cmt-click"></span>
 					</div>
 				</div>
-				<div class="cmt-location-regions col col3">
+			</div>
+			<div class="row max-cols-50">
+				<div class="cmt-location-regions col col2">
 					<div class="form-group">
 						<label><?= Yii::$app->core->regionLabel ?></label>
 						<?= Html::dropDownList( 'Address[regionId]', $address->regionId, $regionMap, [ 'class' => 'cmt-location-region cmt-select element-60' ] ) ?>
 						<span  class="error" cmt-error="Address[regionId]"></span>
 					</div>
 				</div>
-			</div>
-			<div class="row">
 				<?php if( $searchCity ) { ?>
 					<!-- City search -->
 				<?php } else { ?>
@@ -79,6 +78,8 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 						</div>
 					</div>
 				<?php } ?>
+			</div>
+			<div class="row max-cols-50">
 				<div class="col col2">
 					<div class="form-group">
 						<label>Postal Code</label>
@@ -125,10 +126,10 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 				</div>
 			<?php } ?>
 		</div>
-		<div class="data-crud-message">
-			<div class="message success"></div>
-			<div class="message warning"></div>
-			<div class="message error"></div>
+		<div class="row data-crud-message">
+			<div class="col col1 message success"></div>
+			<div class="col col1 message warning"></div>
+			<div class="col col1 message error"></div>
 		</div>
 		<div class="row data-crud-actions align align-right">
 			<div class="col col1">
