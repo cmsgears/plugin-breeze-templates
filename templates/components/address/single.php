@@ -62,7 +62,7 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 			<div class="row max-cols-50">
 				<div class="cmt-location-regions col col2">
 					<div class="form-group">
-						<label><?= Yii::$app->core->regionLabel ?></label>
+						<label><?= Yii::$app->core->regionLabel ?> *</label>
 						<?= Html::dropDownList( 'Address[regionId]', $address->regionId, $regionMap, [ 'class' => 'cmt-location-region cmt-select element-60' ] ) ?>
 						<span  class="error" cmt-error="Address[regionId]"></span>
 					</div>
@@ -87,8 +87,6 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 						<span  class="error" cmt-error="Address[zip]"></span>
 					</div>
 				</div>
-			</div>
-			<div class="row">
 				<div class="col col2">
 					<div class="form-group">
 						<label>Phone</label>
@@ -102,6 +100,8 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 						<span  class="error" cmt-error="Address[phone]"></span>
 					</div>
 				</div>
+			</div>
+			<div class="row">
 				<div class="col col2">
 					<div class="form-group">
 						<label>Fax</label>
