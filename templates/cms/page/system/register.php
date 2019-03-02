@@ -40,4 +40,5 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 		<?php include $outerObjects; ?>
 	</div>
 </div>
-<?php include "$defaultIncludes/scripts.php"; ?>
+<?php
+include "$defaultIncludes/scripts.php";
