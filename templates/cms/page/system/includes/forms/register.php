@@ -34,7 +34,7 @@ $termsLabel = "I agree to the <a href=\"$termsUrl\">Terms</a> and <a href=\"$pri
 			<div class="row max-cols-50 padding padding-small-v">
 				<div class="col col2">
 					<label>
-						<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgotton Password?</a>
+						<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgot Password</a>
 					</label>
 				</div>
 				<div class="col col2 align align-right">
