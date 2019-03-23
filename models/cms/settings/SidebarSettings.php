@@ -80,6 +80,10 @@ class SidebarSettings extends DataModel {
 	public $widgetWrapper;
 	public $widgetClass;
 
+	// Purify
+	public $purifySummary = true;
+	public $purifyContent = true;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -109,6 +113,7 @@ class SidebarSettings extends DataModel {
 			[ 'widgets', 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
+			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'widgetType', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],

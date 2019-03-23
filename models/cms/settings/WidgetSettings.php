@@ -73,6 +73,10 @@ class WidgetSettings extends DataModel {
 
 	public $metaWrapClass;
 
+	// Purify
+	public $purifySummary = true;
+	public $purifyContent = true;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -101,6 +105,7 @@ class WidgetSettings extends DataModel {
 			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
+			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'headerIconUrl', 'url' ]
