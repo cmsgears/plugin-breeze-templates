@@ -12,6 +12,7 @@ $fixedBanner	= isset( $settings->fixedBanner ) ? $settings->fixedBanner : false;
 $scrollBanner	= isset( $settings->scrollBanner ) ? $settings->scrollBanner : false;
 $parallaxBanner	= isset( $settings->parallaxBanner ) ? $settings->parallaxBanner : false;
 $fluidBanner	= isset( $settings->fluidBanner ) ? $settings->fluidBanner : false;
+$lazyBanner		= isset( $settings->lazyBanner ) ? $settings->lazyBanner : false;
 
 $texture		= isset( $settings->texture ) ? $settings->texture : false;
 $textureClass	= !empty( $model->texture ) && $model->texture !== 'texture' ? $model->texture : null;
@@ -25,8 +26,22 @@ $maxCover	= isset( $settings->maxCover ) ? $settings->maxCover : false;
 $bkg		= isset( $settings->background ) ? $settings->background : false;
 $bkgClass	= !empty( $settings->backgroundClass ) ? $settings->backgroundClass : null;
 
+$bannerObj	= $modelContent->banner;
 $banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : SiteProperties::getInstance()->getPageBanner() ) : null;
-$bannerUrl	= CodeGenUtil::getFileUrl( $modelContent->banner, [ 'image' => $banner ] );
+$bannerUrl	= CodeGenUtil::getSmallUrl( $modelContent->banner, [ 'image' => $banner ] );
+
+$smallUrl	= isset( $bannerObj ) ? $bannerObj->getSmallUrl() : null;
+$mediumUrl	= isset( $bannerObj ) ? $bannerObj->getMediumUrl() : null;
+
+$lazyBanner	= isset( $bannerObj ) & $lazyBanner ? true : false;
+$bkgUrl		= $bannerUrl;
+
+$bkgLazyClass	= $lazyBanner ? ( $fluidBanner ? 'cmt-lazy-img' : 'cmt-lazy-bkg' ) : ( $fluidBanner ? 'cmt-res-img' : 'cmt-res-bkg' );
+$bkgUrl			= $lazyBanner ? $bannerObj->getSmallPlaceholderUrl() : $bkgUrl;
+
+$bkgSrcset		= isset( $bannerObj ) ? ( $fluidBanner ? $smallUrl . " 1x, " . $mediumUrl . " 1.5x, " . $bannerObj->getFileUrl() . " 2x" : $bannerObj->getFileUrl() . ", " . $mediumUrl . ", " . $smallUrl ) : null;
+$bkgSizes		= isset( $bannerObj ) ? ( $fluidBanner ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : "1025, 481" ) : null;
+$bkgLazyAttrs	= isset( $bannerObj ) ? ( $fluidBanner ? ( $lazyBanner ? "data-src=\"$smallUrl\" data-srcset=\"$bkgSrcset\" data-sizes=\"$bkgSizes\"" : "srcset=\"$bkgSrcset\" sizes=\"$bkgSizes\"" ) : "data-srcset=\"$bkgSrcset\" data-sizes=\"$bkgSizes\"" ) : null;
 
 // Slides -------------------
 
@@ -35,17 +50,17 @@ $slides		= isset( $gallery ) ? $gallery->files : [];
 ?>
 <?php if( !empty( $bannerUrl ) && $bkg ) { ?>
 	<?php if( $fixedBanner ) { ?>
-		<div class="page-bkg-fixed <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);"></div>
+		<div class="page-bkg-fixed <?= $bkgClass ?> <?= $bkgLazyClass ?>" style="background-image:url(<?= $bkgUrl ?>);" <?= $bkgLazyAttrs ?>></div>
 	<?php } else if( $parallaxBanner ) { ?>
-		<div class="page-bkg-parallax <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);"></div>
+		<div class="page-bkg-parallax <?= $bkgClass ?> <?= $bkgLazyClass ?>" style="background-image:url(<?= $bkgUrl ?>);" <?= $bkgLazyAttrs ?>></div>
 	<?php } else if( $scrollBanner ) { ?>
-		<div class="page-bkg-scroll <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);"></div>
+		<div class="page-bkg-scroll <?= $bkgClass ?> <?= $bkgLazyClass ?>" style="background-image:url(<?= $bkgUrl ?>);" <?= $bkgLazyAttrs ?>></div>
 	<?php } else if( $fluidBanner ) { ?>
 		<div class="page-bkg-fluid <?= $bkgClass ?>">
-			<img src="<?= $bannerUrl ?>" alt="<?= $model->displayName ?>" />
+			<img class="<?= $bkgLazyClass ?>" src="<?= $bannerUrl ?>" alt="<?= $model->displayName ?>" <?= $bkgLazyAttrs ?> />
 		</div>
 	<?php } else { ?>
-		<div class="page-bkg <?= $bkgClass ?>" style="background-image:url(<?= $bannerUrl ?>);"></div>
+		<div class="page-bkg <?= $bkgClass ?> <?= $bkgClass ?> <?= $bkgLazyClass ?>" style="background-image:url(<?= $bkgUrl ?>);" <?= $bkgLazyAttrs ?>></div>
 	<?php } ?>
 	<?php if( $texture ) { ?>
 		<div class="<?= $textureClass ?>"></div>

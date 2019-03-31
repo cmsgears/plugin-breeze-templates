@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * SidebarSettings provide sidebar settings data.
  *
  * @since 1.0.0
  */
-class SidebarSettings extends DataModel {
+class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,11 +35,13 @@ class SidebarSettings extends DataModel {
 
 	// Avatar
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
 
 	// Background
 	public $defaultBanner;
 	public $bkg;
 	public $bkgClass;
+	public $bkgLazy;
 
 	// Texture
 	public $texture;
@@ -109,7 +108,7 @@ class SidebarSettings extends DataModel {
 
 		return [
 			[ [ 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'bkg', 'texture', 'bkgLazy' ], 'boolean' ],
 			[ 'widgets', 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
@@ -127,8 +126,10 @@ class SidebarSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'bkgLazy' => 'Lazy Load',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'

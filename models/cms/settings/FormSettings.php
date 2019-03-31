@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * FormSettings provide form settings data.
  *
  * @since 1.0.0
  */
-class FormSettings extends DataModel {
+class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,7 +35,9 @@ class FormSettings extends DataModel {
 
 	// Avatar & Banner
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
 	public $defaultBanner;
+	public $lazyBanner; // Lazy load banner
 
 	// Banner
 	public $fixedBanner;
@@ -184,7 +183,7 @@ class FormSettings extends DataModel {
 
 		return [
 			[ [ 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'fluidBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'lazyBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'fluidBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerFluid', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery' ], 'boolean' ],
@@ -211,6 +210,8 @@ class FormSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
+			'lazyBanner' => 'Lazy Load',
 			'headerFluid' => 'Fluid Header'
 		];
 	}

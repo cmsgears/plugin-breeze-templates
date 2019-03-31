@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * ElementSettings provide element settings data.
  *
  * @since 1.0.0
  */
-class ElementSettings extends DataModel {
+class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,11 +35,13 @@ class ElementSettings extends DataModel {
 
 	// Avatar
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
 
 	// Background
 	public $defaultBanner;
 	public $bkg;
 	public $bkgClass;
+	public $bkgLazy;
 
 	// Texture
 	public $texture;
@@ -118,8 +117,8 @@ class ElementSettings extends DataModel {
 
 		return [
 			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture', 'maxCover' ], 'boolean' ],
-			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'bkg', 'texture', 'maxCover', 'bkgLazy' ], 'boolean' ],
+			[ [ 'bkgLazy', 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
 			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
@@ -136,8 +135,10 @@ class ElementSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'bkgLazy' => 'Lazy Load',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',

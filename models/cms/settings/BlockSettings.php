@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * BlockSettings provide block settings data.
  *
  * @since 1.0.0
  */
-class BlockSettings extends DataModel {
+class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,6 +35,7 @@ class BlockSettings extends DataModel {
 
 	// Avatar
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
 
 	// Background
 	public $defaultBanner;
@@ -46,6 +44,7 @@ class BlockSettings extends DataModel {
 	public $scrollBkg;
 	public $parallaxBkg;
 	public $bkgClass;
+	public $bkgLazy;
 
 	// Texture
 	public $texture;
@@ -139,7 +138,7 @@ class BlockSettings extends DataModel {
 
 		return [
 			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover', 'bkgLazy' ], 'boolean' ],
 			[ [ 'elements', 'elementsBeforeContent', 'widgets', 'widgetsBeforeContent' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
@@ -159,11 +158,13 @@ class BlockSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
 			'bkg' => 'Background',
 			'fixedBkg' => 'Fixed Background',
 			'scrollBkg' => 'Scrollable Background',
 			'parallaxBkg' => 'Parallax Background',
 			'bkgClass' => 'Background Class',
+			'bkgLazy' => 'Lazy Load',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',

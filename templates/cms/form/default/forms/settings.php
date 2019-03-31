@@ -54,6 +54,12 @@ Editor::widget();
 								</div>
 							</div>
 							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'lazyAvatar', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'lazyBanner', null, 'cmti cmti-checkbox' ) ?>
+								</div>
 								<div class="col col2">
 									<?= $form->field( $settings, 'backgroundClass' ) ?>
 								</div>

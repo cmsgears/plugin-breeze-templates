@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * WidgetSettings provide widget settings data.
  *
  * @since 1.0.0
  */
-class WidgetSettings extends DataModel {
+class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,11 +35,13 @@ class WidgetSettings extends DataModel {
 
 	// Avatar
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
 
 	// Background
 	public $defaultBanner;
 	public $bkg;
 	public $bkgClass;
+	public $bkgLazy;
 
 	// Texture
 	public $texture;
@@ -102,7 +101,7 @@ class WidgetSettings extends DataModel {
 
 		return [
 			[ [ 'contentRaw', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'bkg', 'texture', 'bkgLazy' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
@@ -118,8 +117,10 @@ class WidgetSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'bkgLazy' => 'Lazy Load',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',
