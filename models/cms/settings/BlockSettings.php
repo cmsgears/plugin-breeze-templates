@@ -39,12 +39,12 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Background
 	public $defaultBanner;
+	public $lazyBanner;
 	public $bkg;
 	public $fixedBkg;
 	public $scrollBkg;
 	public $parallaxBkg;
 	public $bkgClass;
-	public $bkgLazy;
 
 	// Texture
 	public $texture;
@@ -138,7 +138,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover', 'bkgLazy' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'lazyBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'elementsBeforeContent', 'widgets', 'widgetsBeforeContent' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
@@ -164,7 +164,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'scrollBkg' => 'Scrollable Background',
 			'parallaxBkg' => 'Parallax Background',
 			'bkgClass' => 'Background Class',
-			'bkgLazy' => 'Lazy Load',
+			'lazyBanner' => 'Lazy Load',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',

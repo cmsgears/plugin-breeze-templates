@@ -27,9 +27,10 @@ $lazyAvatar	= isset( $avatarObj ) & $lazyAvatar ? true : false;
 $avatarUrl		= $lazyAvatar ? $avatarObj->getSmallPlaceholderUrl() : $headerIconUrl;
 $iconLazyClass	= $lazyAvatar ? 'cmt-lazy-img' : ( isset( $avatarObj ) ? 'cmt-res-img' : null );
 
+$smallUrl		= isset( $iconLazyClass ) ? $avatarObj->getSmallUrl() : null;
 $iconSrcset		= isset( $iconLazyClass ) ? $avatarObj->getSmallUrl() . " 1x, " . $avatarObj->getMediumUrl() . " 1.5x, " . $avatarObj->getFileUrl() . " 2x" : null;
 $iconSizes		= isset( $iconLazyClass ) ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : null;
-$iconLazyAttrs	= isset( $iconLazyClass ) ? "data-srcset=\"$iconSrcset\" data-sizes=\"$iconSizes\"" : null;
+$iconLazyAttrs	= isset( $iconLazyClass ) ? "data-srcset=\"$smallUrl\" data-srcset=\"$iconSrcset\" data-sizes=\"$iconSizes\"" : null;
 ?>
 <?php if( $header ) { ?>
 	<div class="block-header-wrap">

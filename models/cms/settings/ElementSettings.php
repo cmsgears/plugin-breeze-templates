@@ -39,9 +39,9 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Background
 	public $defaultBanner;
+	public $lazyBanner;
 	public $bkg;
 	public $bkgClass;
-	public $bkgLazy;
 
 	// Texture
 	public $texture;
@@ -117,8 +117,8 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'bkg', 'texture', 'maxCover', 'bkgLazy' ], 'boolean' ],
-			[ [ 'bkgLazy', 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'lazyBanner', 'bkg', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
 			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
@@ -138,7 +138,7 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'lazyAvatar' => 'Lazy Load Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
-			'bkgLazy' => 'Lazy Load',
+			'lazyBanner' => 'Lazy Load',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',

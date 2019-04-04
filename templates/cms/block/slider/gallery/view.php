@@ -6,7 +6,7 @@ $settings	= isset( $data->settings ) ? $data->settings : [];
 $config		= isset( $data->config ) ? $data->config : [];
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
-$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/slider/includes';
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/slider/gallery/includes';
 
 $buffer			= "$templateIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
