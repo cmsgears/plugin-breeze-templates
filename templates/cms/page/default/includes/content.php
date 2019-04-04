@@ -18,16 +18,22 @@ $contentData		= isset( $settings->contentData ) && $settings->contentData ? $mod
 $contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : null;
 $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDataClass : 'reader';
 
-$contentBanner	= $contentBanner && !empty( $bannerUrl );
-
 $purifySummary	= isset( $settings->purifySummary ) ? $settings->purifySummary : true;
 $purifyContent	= isset( $settings->purifyContent ) ? $settings->purifyContent : true;
+
+$contentBanner	= $contentBanner && !empty( $bannerUrl );
+
+$cbkgLazyClass	= $lazyBanner && $contentBanner ? 'cmt-lazy-img' : null;
+
+$cbkgSrcset		= isset( $cbkgLazyClass ) ? $bkgSmallUrl . " 1x, " . $bkgMediumUrl . " 1.5x, " . $bannerObj->getFileUrl() . " 2x" : null;
+$cbkgSizes		= isset( $cbkgLazyClass ) ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : null;
+$cbkgLazyAttrs	= isset( $cbkgLazyClass ) ? "data-src=\"$bkgSmallUrl\" data-srcset=\"$cbkgSrcset\" data-sizes=\"$cbkgSizes\"" : null;
 ?>
 <?php if( $content ) { ?>
 	<div class="page-content <?= $contentClass ?>">
 		<?php if( $contentBanner ) { ?>
 			<div class="page-content-banner">
-				<img class="width width-100" src="<?= $bannerUrl ?>" title="<?= "{$model->displayName}" ?>" />
+				<img class="width width-100 <?= $cbkgLazyClass ?>" src="<?= $bkgUrl ?>" title="<?= "{$model->displayName}" ?>" alt="<?= "{$model->displayName}" ?>" <?= $cbkgLazyAttrs ?> />
 			</div>
 		<?php } ?>
 		<?php if( !empty( $contentTitle ) ) { ?>
