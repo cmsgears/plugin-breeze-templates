@@ -51,6 +51,10 @@ class PagingConfig extends WidgetConfig {
 	public $singleWrapper	= 'div';
 	public $singleOptions	= '{ "class": "row" }';
 
+	// Auto columns
+	public $autoCols = false;
+	public $autoColsCount = 4;
+
 	// Path to form Url
 	public $basePath	= null;
 	public $allPath		= 'all';
@@ -109,9 +113,9 @@ class PagingConfig extends WidgetConfig {
 		$rules[] = [ [ 'ajaxPageApp', 'ajaxPageController', 'ajaxPageAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
 		$rules[] = [ [ 'route', 'nextLabel', 'prevLabel', 'excludeParams' ], 'string', 'min' => 1, 'max' => Yii::$app->core->largeText ];
 		$rules[] = [ [ 'wrapperOptions', 'singleOptions', 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ];
-		$rules[] = [ [ 'wrap', 'wrapSingle', 'showAllPath', 'pagination', 'paging', 'ajaxPagination' ], 'boolean' ];
+		$rules[] = [ [ 'wrap', 'wrapSingle', 'showAllPath', 'pagination', 'paging', 'ajaxPagination', 'autoCols' ], 'boolean' ];
 		$rules[] = [ [ 'excludeMain', 'siteModels' ], 'boolean' ];
-		$rules[] = [ [ 'limit', 'textLimit' ], 'number', 'integerOnly' => true, 'min' => 1 ];
+		$rules[] = [ [ 'limit', 'textLimit', 'autoColsCount' ], 'number', 'integerOnly' => true, 'min' => 1 ];
 
 		return $rules;
 	}
