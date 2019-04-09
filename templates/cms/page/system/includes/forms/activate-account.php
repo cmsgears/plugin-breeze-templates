@@ -1,7 +1,9 @@
 <?php
 // Yii Imports
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
+
+// CMG Imports
+use cmsgears\core\common\widgets\ActiveForm;
 ?>
 <div class="<?= $frmClass ?>">
 	<div class="h3 align align-center margin margin-bottom-medium">Activate Account</div>

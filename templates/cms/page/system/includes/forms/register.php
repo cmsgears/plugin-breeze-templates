@@ -1,7 +1,9 @@
 <?php
 // Yii Imports
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
+
+// CMG Imports
+use cmsgears\core\common\widgets\ActiveForm;
 
 $coreProperties = $this->context->getCoreProperties();
 
