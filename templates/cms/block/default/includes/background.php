@@ -22,7 +22,7 @@ $textureClass	= !empty( $model->texture ) ? $model->texture : $widget->textureCl
 
 $bannerObj	= $model->banner;
 $banner		= ( isset( $settings->defaultBanner ) && $settings->defaultBanner ) || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
-$bannerUrl	= CodeGenUtil::getSmallUrl( $bannerObj, [ 'image' => $banner ] );
+$bannerUrl	= $lazyBanner ? CodeGenUtil::getSmallUrl( $bannerObj, [ 'image' => $banner ] ) : CodeGenUtil::getFileUrl( $bannerObj, [ 'image' => $banner ] );
 
 $lazyBanner	= isset( $bannerObj ) & $lazyBanner ? true : false;
 $bkgUrl		= isset( $bannerUrl ) ? $bannerUrl : $widget->bkgUrl;

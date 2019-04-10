@@ -28,7 +28,7 @@ $bkgClass	= !empty( $settings->backgroundClass ) ? $settings->backgroundClass : 
 
 $bannerObj	= $modelContent->banner;
 $banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : SiteProperties::getInstance()->getPageBanner() ) : null;
-$bannerUrl	= CodeGenUtil::getSmallUrl( $modelContent->banner, [ 'image' => $banner ] );
+$bannerUrl	= $lazyBanner ? CodeGenUtil::getSmallUrl( $modelContent->banner, [ 'image' => $banner ] ) : CodeGenUtil::getFileUrl( $modelContent->banner, [ 'image' => $banner ] );
 
 $bkgSmallUrl	= isset( $bannerObj ) ? $bannerObj->getSmallUrl() : null;
 $bkgMediumUrl	= isset( $bannerObj ) ? $bannerObj->getMediumUrl() : null;
