@@ -36,10 +36,12 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 	// Avatar
 	public $defaultAvatar;
 	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 
 	// Background
 	public $defaultBanner;
 	public $lazyBanner;
+	public $resBanner;
 	public $bkg;
 	public $bkgClass;
 
@@ -101,7 +103,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ [ 'contentRaw', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'lazyBanner', 'bkg', 'texture' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
@@ -118,9 +120,11 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
 			'lazyBanner' => 'Lazy Load',
+			'resBanner' => 'Responsive',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',

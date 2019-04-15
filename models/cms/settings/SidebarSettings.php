@@ -36,10 +36,12 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 	// Avatar
 	public $defaultAvatar;
 	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 
 	// Background
 	public $defaultBanner;
 	public $lazyBanner;
+	public $resBanner;
 	public $bkg;
 	public $bkgClass;
 
@@ -108,7 +110,7 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ [ 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'lazyBanner', 'bkg', 'texture' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ 'widgets', 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
@@ -127,9 +129,11 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
 			'lazyBanner' => 'Lazy Load',
+			'resBanner' => 'Responsive',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'

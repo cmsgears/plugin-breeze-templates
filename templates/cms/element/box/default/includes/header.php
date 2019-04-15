@@ -16,20 +16,21 @@ $headerTitle		= isset( $settings->headerTitle ) && $settings->headerTitle && !em
 $headerInfo			= isset( $settings->headerInfo ) && $settings->headerInfo && !empty( $model->description ) ? $model->description : $widget->headerInfo;
 $headerContent		= isset( $settings->headerContent ) && $settings->headerContent && !empty( $model->summary ) ? HtmlPurifier::process( $model->summary ) : $widget->headerContent;
 $lazyAvatar			= isset( $settings->lazyAvatar ) ? $settings->lazyAvatar : $widget->lazyAvatar;
+$resAvatar			= isset( $settings->resAvatar ) ? $settings->resAvatar : $widget->resAvatar;
 
 $avatarObj		= $model->avatar;
 $avatar			= ( isset( $settings->defaultAvatar ) && $settings->defaultAvatar ) || $widget->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
-$headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : CodeGenUtil::getSmallUrl( $model->avatar, [ 'image' => $avatar ] );
+$headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $lazyAvatar ? CodeGenUtil::getSmallUrl( $avatarObj, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( $avatarObj, [ 'image' => $avatar ] );
 $headerIconUrl	= !empty( $headerIconUrl ) ? $headerIconUrl : $widget->headerIconUrl;
 
 $lazyAvatar	= isset( $avatarObj ) & $lazyAvatar ? true : false;
 
 $avatarUrl		= $lazyAvatar ? $avatarObj->getSmallPlaceholderUrl() : $headerIconUrl;
-$iconLazyClass	= $lazyAvatar ? 'cmt-lazy-img' : ( isset( $avatarObj ) ? 'cmt-res-img' : null );
+$iconLazyClass	= $lazyAvatar ? 'cmt-lazy-img' : ( isset( $avatarObj ) ? ( $resAvatar ? 'cmt-res-img' : null ) : null );
 
 $smallUrl		= isset( $iconLazyClass ) ? $avatarObj->getSmallUrl() : null;
-$iconSrcset		= isset( $iconLazyClass ) ? $avatarObj->getSmallUrl() . " 1x, " . $avatarObj->getMediumUrl() . " 1.5x, " . $avatarObj->getFileUrl() . " 2x" : null;
-$iconSizes		= isset( $iconLazyClass ) ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : null;
+$iconSrcset		= isset( $iconLazyClass ) ? $avatarObj->generateSrcset() : null;
+$iconSizes		= isset( $iconLazyClass ) ? $avatarObj->sizes : null;
 $iconLazyAttrs	= isset( $iconLazyClass ) ? "data-src=\"$smallUrl\" data-srcset=\"$iconSrcset\" data-sizes=\"$iconSizes\"" : null;
 ?>
 <?php if( $header ) { ?>

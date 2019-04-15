@@ -36,10 +36,12 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 	// Avatar
 	public $defaultAvatar;
 	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 
 	// Background
 	public $defaultBanner;
 	public $lazyBanner;
+	public $resBanner;
 	public $bkg;
 	public $fixedBkg;
 	public $scrollBkg;
@@ -138,7 +140,8 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'lazyBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner' ], 'boolean' ],
+			[ [ 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'elementsBeforeContent', 'widgets', 'widgetsBeforeContent' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
@@ -159,12 +162,14 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'fixedBkg' => 'Fixed Background',
 			'scrollBkg' => 'Scrollable Background',
 			'parallaxBkg' => 'Parallax Background',
 			'bkgClass' => 'Background Class',
 			'lazyBanner' => 'Lazy Load',
+			'resBanner' => 'Responsive',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',

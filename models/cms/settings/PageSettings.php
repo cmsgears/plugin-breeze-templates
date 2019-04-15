@@ -36,8 +36,10 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 	// Avatar & Banner
 	public $defaultAvatar;
 	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 	public $defaultBanner;
 	public $lazyBanner; // Lazy load banner
+	public $resBanner;
 
 	// Banner
 	public $fixedBanner;
@@ -195,7 +197,8 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ [ 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'lazyBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'fluidBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner' ], 'boolean' ],
+			[ [ 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'fluidBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerFluid', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'metas' ], 'boolean' ],
@@ -224,7 +227,9 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			'lazyAvatar' => 'Lazy Load Avatar',
-			'lazyBanner' => 'Lazy Load',
+			'resAvatar' => 'Responsive Avatar',
+			'lazyBanner' => 'Lazy Load Background',
+			'resBanner' => 'Responsive Background',
 			'headerFluid' => 'Fluid Header',
 			'metas' => 'Attributes',
 			'metasWithContent' => 'Attributes With Content',

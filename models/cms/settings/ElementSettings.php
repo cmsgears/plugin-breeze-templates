@@ -36,10 +36,12 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 	// Avatar
 	public $defaultAvatar;
 	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 
 	// Background
 	public $defaultBanner;
 	public $lazyBanner;
+	public $resBanner;
 	public $bkg;
 	public $bkgClass;
 
@@ -117,7 +119,7 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'lazyAvatar', 'defaultBanner', 'lazyBanner', 'bkg', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner', 'bkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
@@ -136,9 +138,11 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
 			'lazyBanner' => 'Lazy Load',
+			'resBanner' => 'Responsive',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',

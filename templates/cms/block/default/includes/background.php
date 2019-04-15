@@ -16,6 +16,7 @@ $scrollBkg		= isset( $settings->scrollBkg ) ? $settings->scrollBkg : $widget->sc
 $parallaxBkg	= isset( $settings->parallaxBkg ) ? $settings->parallaxBkg : $widget->parallaxBkg;
 $bkgClass		= !empty( $settings->bkgClass ) ? $settings->bkgClass : $widget->bkgClass;
 $lazyBanner		= isset( $settings->lazyBanner ) ? $settings->lazyBanner : $widget->lazyBanner;
+$resBanner		= isset( $settings->resBanner ) ? $settings->resBanner : $widget->resBanner;
 
 $texture		= isset( $settings->texture ) ? $settings->texture : $widget->texture;
 $textureClass	= !empty( $model->texture ) ? $model->texture : $widget->textureClass;
@@ -27,11 +28,11 @@ $bannerUrl	= $lazyBanner ? CodeGenUtil::getSmallUrl( $bannerObj, [ 'image' => $b
 $lazyBanner	= isset( $bannerObj ) & $lazyBanner ? true : false;
 $bkgUrl		= isset( $bannerUrl ) ? $bannerUrl : $widget->bkgUrl;
 
-$bkgLazyClass	= $lazyBanner ? 'cmt-lazy-bkg' : 'cmt-res-bkg';
+$bkgLazyClass	= $lazyBanner ? 'cmt-lazy-bkg' : ( $resBanner ? 'cmt-res-bkg' : null );
 $bkgUrl			= $lazyBanner ? $bannerObj->getSmallPlaceholderUrl() : $bkgUrl;
 
-$bkgSrcset		= isset( $bannerObj ) ? $bannerObj->getFileUrl() . ", " . $bannerObj->getMediumUrl() . ", " . $bannerObj->getSmallUrl() : null;
-$bkgSizes		= isset( $bannerObj ) ? "1025, 481" : null;
+$bkgSrcset		= isset( $bannerObj ) ? $bannerObj->generateSrcset( true ) : null;
+$bkgSizes		= isset( $bannerObj ) ? $bannerObj->srcset : null;
 $bkgLazyAttrs	= isset( $bannerObj ) ? "data-srcset=\"$bkgSrcset\" data-sizes=\"$bkgSizes\"" : null;
 ?>
 

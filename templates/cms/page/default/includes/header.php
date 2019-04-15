@@ -22,7 +22,7 @@ $headerGallery	= isset( $settings->headerGallery ) ? $settings->headerGallery : 
 
 $avatarObj		= isset( $model->avatar ) ? $model->avatar : null;
 $avatar			= isset( $settings->defaultAvatar ) && $settings->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
-$headerIconUrl	= isset( $model->avatar ) ? CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( null, [ 'image' => $avatar ] );
+$headerIconUrl	= isset( $model->avatar ) ? ( $lazyAvatar ? CodeGenUtil::getSmallUrl( $avatarObj, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( $avatarObj, [ 'image' => $avatar ] ) ) : CodeGenUtil::getFileUrl( null, [ 'image' => $avatar ] );
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $headerIconUrl;
 
 $headerBanner	= $headerBanner && !empty( $bkgUrl );
@@ -38,8 +38,8 @@ $avatarUrl		= $lazyAvatar ? $avatarObj->getSmallPlaceholderUrl() : $headerIconUr
 $iconLazyClass	= $lazyAvatar ? 'cmt-lazy-img' : isset( $avatarObj ) ? 'cmt-res-img' : null;
 
 $smallUrl		= isset( $iconLazyClass ) ? $avatarObj->getSmallUrl() : null;
-$iconSrcset		= isset( $iconLazyClass ) ? $avatarObj->getSmallUrl() . " 1x, " . $avatarObj->getMediumUrl() . " 1.5x, " . $avatarObj->getFileUrl() . " 2x" : null;
-$iconSizes		= isset( $iconLazyClass ) ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : null;
+$iconSrcset		= isset( $iconLazyClass ) ? $avatarObj->generateSrcset() : null;
+$iconSizes		= isset( $iconLazyClass ) ? $avatarObj->sizes : null;
 $iconLazyAttrs	= isset( $iconLazyClass ) ? "data-src=\"$smallUrl\" data-srcset=\"$iconSrcset\" data-sizes=\"$iconSizes\"" : null;
 ?>
 <?php if( $header ) { ?>

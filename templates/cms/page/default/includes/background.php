@@ -13,13 +13,14 @@ $scrollBanner	= isset( $settings->scrollBanner ) ? $settings->scrollBanner : fal
 $parallaxBanner	= isset( $settings->parallaxBanner ) ? $settings->parallaxBanner : false;
 $fluidBanner	= isset( $settings->fluidBanner ) ? $settings->fluidBanner : false;
 $lazyBanner		= isset( $settings->lazyBanner ) ? $settings->lazyBanner : false;
+$resBanner		= isset( $settings->resBanner ) ? $settings->resBanner : false;
 
 $texture		= isset( $settings->texture ) ? $settings->texture : false;
 $textureClass	= !empty( $model->texture ) && $model->texture !== 'texture' ? $model->texture : null;
 
 // Max Cover ----------------
 
-$maxCover	= isset( $settings->maxCover ) ? $settings->maxCover : false;
+$maxCover = isset( $settings->maxCover ) ? $settings->maxCover : false;
 
 // Background ---------------
 
@@ -36,11 +37,11 @@ $bkgMediumUrl	= isset( $bannerObj ) ? $bannerObj->getMediumUrl() : null;
 $lazyBanner	= isset( $bannerObj ) & $lazyBanner ? true : false;
 $bkgUrl		= $bannerUrl;
 
-$bkgLazyClass	= $lazyBanner ? ( $fluidBanner ? 'cmt-lazy-img' : 'cmt-lazy-bkg' ) : ( $fluidBanner ? 'cmt-res-img' : 'cmt-res-bkg' );
+$bkgLazyClass	= $lazyBanner ? ( $fluidBanner ? 'cmt-lazy-img' : 'cmt-lazy-bkg' ) : ( $fluidBanner ? 'cmt-res-img' : ( $resBanner ? 'cmt-res-bkg' : null ) );
 $bkgUrl			= $lazyBanner ? $bannerObj->getSmallPlaceholderUrl() : $bkgUrl;
 
-$bkgSrcset		= isset( $bannerObj ) ? ( $fluidBanner ? $bkgSmallUrl . " 1x, " . $bkgMediumUrl . " 1.5x, " . $bannerObj->getFileUrl() . " 2x" : $bannerObj->getFileUrl() . ", " . $bkgMediumUrl . ", " . $bkgSmallUrl ) : null;
-$bkgSizes		= isset( $bannerObj ) ? ( $fluidBanner ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : "1025, 481" ) : null;
+$bkgSrcset		= isset( $bannerObj ) ? ( $fluidBanner ? $bannerObj->generateSrcset() : $bannerObj->generateSrcset( true ) ) : null;
+$bkgSizes		= isset( $bannerObj ) ? ( $fluidBanner ? $bannerObj->sizes : $bannerObj->srcset ) : null;
 $bkgLazyAttrs	= isset( $bannerObj ) ? ( $fluidBanner ? ( $lazyBanner ? "data-src=\"$bkgSmallUrl\" data-srcset=\"$bkgSrcset\" data-sizes=\"$bkgSizes\"" : "srcset=\"$bkgSrcset\" sizes=\"$bkgSizes\"" ) : "data-srcset=\"$bkgSrcset\" data-sizes=\"$bkgSizes\"" ) : null;
 
 // Slides -------------------

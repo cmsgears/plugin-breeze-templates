@@ -5,7 +5,7 @@
 <?php } ?>
 <?php if( $headerIcon && !empty( $headerIconUrl ) ) { ?>
 	<div class="page-header-icon">
-		<img class="fluid" src="<?= $headerIconUrl ?>" />
+		<img class="fluid <?= $iconLazyClass ?>" src="<?= $avatarUrl ?>" <?= $iconLazyAttrs ?> />
 	</div>
 <?php } ?>
 <?php if( !empty( $headerTitle ) ) { ?>
