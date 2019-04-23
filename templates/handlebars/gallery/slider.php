@@ -121,7 +121,7 @@
 
 <script id="itemViewTemplate" type="text/x-handlebars-template">
 
-<div class="cmt-gallery-item" data-id="{{id}}">
+<div class="cmt-gallery-item" data-id="{{mid}}">
 	<div class="cmt-gallery-item-header slide-header row">
 		<div class="col col3x2 title align align-left" title="{{title}}">{{title}}</div>
 		<div class="col col3 align align-right">

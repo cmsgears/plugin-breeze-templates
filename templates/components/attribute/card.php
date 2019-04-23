@@ -9,9 +9,9 @@ use cmsgears\widgets\popup\Popup;
 
 use cmsgears\core\common\widgets\Editor;
 
-Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts' => 'site', 'config' => [ 'controls' => 'mini' ] ] );
+Editor::widget();
 ?>
-<div class="cmt-meta-crud data-crud data-crud-attribute" data-id="<?= $model->id ?>" data-type="<?= $model->type ?>" ldata-layout="popup">
+<div class="cmt-meta-crud data-crud data-crud-attribute" data-id="<?= $model->id ?>" data-type="<?= $model->type ?>" data-layout="popup">
 	<div class="data-crud-content">
 		<span class="cmt-meta-add btn btn-large btn-green-border inline-block">Add Attribute</span>
 	</div><hr class="margin margin-small-v" />
@@ -42,18 +42,19 @@ Editor::widget( [ 'selector' => '.content-editor', 'loadAssets' => true, 'fonts'
 	'title' => 'Add Attribute', 'size' => 'medium',
 	'templateDir' => Yii::getAlias( "$breezeTemplates/popup/attribute" ), 'template' => 'default',
 	'data' => [ 'type' => 'add', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
-]) ?>
+])?>
 
 <?= Popup::widget([
 	'title' => 'Update Attribute', 'size' => 'medium',
 	'templateDir' => Yii::getAlias( "$breezeTemplates/popup/attribute" ), 'template' => 'default',
 	'data' => [ 'type' => 'update', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
-]) ?>
+])?>
 
 <?= Popup::widget([
 	'title' => 'Delete Attribute', 'size' => 'medium',
 	'templateDir' => Yii::getAlias( "$breezeTemplates/popup/attribute" ), 'template' => 'default',
 	'data' => [ 'type' => 'delete', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
-]) ?>
+])?>
 
-<?php include "$themeIncludes/handlebars/attribute/card.php"; ?>
+<?php
+include "$themeIncludes/handlebars/attribute/card.php";

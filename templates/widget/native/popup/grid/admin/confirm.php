@@ -24,12 +24,10 @@ $url		= $data[ 'url' ];
 			<div class="popup-title"><?= $title ?></div>
 		</div>
 		<div class="popup-content">
-			<div class="filler-height filler-height-medium"></div>
 			<form cmt-app="<?= $app ?>" cmt-controller="<?= $controller ?>" cmt-action="<?= $action ?>" action="<?= $url ?>">
 				<div class="spinner max-area-cover-color">
 					<div class="valign-center cmti cmti-2x cmti-spinner-9 spin"></div>
 				</div>
-				<div class="clear filler-height"></div>
 				<h5 class="align align-center">Are you sure you want to confirm the selected <?= $model ?> ?</h5>
 				<div class="clear filler-height"></div>
 				<div class="align align-center"><input class="frm-element-medium" type="submit" value="Confirm" /></div>

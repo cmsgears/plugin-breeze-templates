@@ -6,8 +6,10 @@ use yii\helpers\Html;
 use cmsgears\core\common\models\resources\Address;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
+use cmsgears\core\common\utilities\DataUtil;
 
-$addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typeMap );
+$addressTypes		= DataUtil::arrayFilterKeys( Address::$typeMap, $excludeAddressTypes );
+$addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes );
 ?>
 
 <script id="addAddressTemplate" type="text/x-handlebars-template">

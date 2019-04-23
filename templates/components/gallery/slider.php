@@ -2,7 +2,7 @@
 // CMG Includes
 use cmsgears\core\common\utilities\CodeGenUtil;
 ?>
-<div class="cmt-gallery-item-crud data-crud data-crud-gallery" ldata-layout="cmt-gallery">
+<div class="cmt-gallery-item-crud data-crud data-crud-gallery data-crud-slider" data-layout="cmt-layout-slider">
 	<div class="data-crud-content">
 		<span class="cmt-gallery-item-add btn btn-large btn-aqua-border inline-block">Add Picture</span>
 	</div><hr class="margin margin-small-v" />
@@ -41,4 +41,4 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 		<?php } ?>
 	</div>
 </div>
-<?php include "$themeIncludes/handlebars/gallery/slider.php";
+<?php include "$breezeTemplates/handlebars/gallery/slider.php";

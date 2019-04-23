@@ -44,7 +44,6 @@ $apixBase	= $data[ 'apixBase' ];
 						<span class="error" cmt-error="<?= $metaClass ?>[value]"></span>
 					</div>
 					<input type="hidden" name="<?= $metaClass ?>[type]" value="<?= $metaType ?>" />
-					<div class="filler-height filler-height-medium"></div>
 					<div class="frm-actions align align-center">
 						<input class="submit btn btn-medium" type="submit" name="submit" value="<?= ucfirst( $type ) ?>">
 					</div>
@@ -52,7 +51,6 @@ $apixBase	= $data[ 'apixBase' ];
 					<div class="message warning"></div>
 					<div class="message error"></div>
 				</form>
-				<div class="filler-height filler-height-medium"></div>
 			</div>
 		</div>
 	</div>

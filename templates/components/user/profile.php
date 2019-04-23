@@ -11,7 +11,7 @@ $frmSpinner = isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/
 ?>
 <div class="data-crud data-crud-profile">
 	<div class="data-crud-title">Basic Info</div>
-	<form class="form" cmt-app="user" cmt-controller="user" cmt-action="profile" action="<?= $apixBase ?>/profile" cmt-keep>
+	<form class="form" cmt-app="core" cmt-controller="user" cmt-action="profile" action="<?= $apixBase ?>/profile" cmt-keep>
 		<?php include $frmSpinner; ?>
 		<div class="data-crud-form">
 			<div class="row max-cols-50">

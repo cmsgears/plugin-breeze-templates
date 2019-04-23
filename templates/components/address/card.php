@@ -5,6 +5,10 @@ $breezeTemplates = Yii::getAlias( '@breeze/templates' );
 $frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
 $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";
 
+$addressesTitle = isset( $addressesTitle ) ? $addressesTitle : 'Addresses';
+
+$excludeAddressTypes = isset( $excludeAddressTypes ) ? $excludeAddressTypes : [];
+
 $searchCity = isset( $searchCity ) ? $searchCity : false;
 
 // Location
@@ -16,7 +20,7 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 ?>
 <div class="cmt-address-crud data-crud data-crud-address data-crud-address-card">
 	<div class="data-crud-title row">
-		<span class="inline-block">Addresses</span>
+		<span class="inline-block"><?= $addressesTitle ?></span>
 		<span class="filler-tab"></span>
 		<span class="inline-block actions-wrap text text-medium">
 			<span class="cmt-address-add btn-icon btn-action"><i class="icon cmti cmti-plus"></i></span>
@@ -29,6 +33,8 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 
 				$type		= $modelAddress->type;
 				$address	= $modelAddress->model;
+
+				if( !in_array( $type, $excludeAddressTypes ) ) {
 		?>
 			<div class="cmt-address card card-basic card-address col col3 padding padding-small" data-id="<?= $modelAddress->id ?>">
 				<div class="card-content-wrap">
@@ -52,7 +58,7 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 					</div>
 				</div>
 			</div>
-		<?php } ?>
+		<?php } } ?>
 	</div>
 </div>
 <?php
