@@ -60,6 +60,9 @@ Editor::widget();
 								<div class="col col2">
 									<?= $form->field( $settings, 'bkgClass' ) ?>
 								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'bkgVideo', null, 'cmti cmti-checkbox' ) ?>
+								</div>
 							</div>
 						</div>
 					</div>

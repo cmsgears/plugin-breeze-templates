@@ -44,6 +44,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $resBanner;
 	public $bkg;
 	public $bkgClass;
+	public $bkgVideo;
 
 	// Texture
 	public $texture;
@@ -106,7 +107,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
-			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
+			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'headerIconUrl', 'url' ]
@@ -123,6 +124,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'bkgVideo' => 'Background Video',
 			'lazyBanner' => 'Lazy Load',
 			'resBanner' => 'Responsive',
 			'contentRaw' => 'Raw Content',

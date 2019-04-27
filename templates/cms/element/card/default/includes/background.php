@@ -12,11 +12,14 @@ $maxCover = isset( $settings->maxCover ) ? $settings->maxCover : $widget->maxCov
 
 $bkg		= isset( $settings->bkg ) ? $settings->bkg : $widget->bkg;
 $bkgClass	= !empty( $settings->bkgClass ) ? $settings->bkgClass : $widget->bkgClass;
+$bkgVideo	= !empty( $settings->bkgVideo ) ? $settings->bkgVideo : $widget->bkgVideo;
 $lazyBanner	= isset( $settings->lazyBanner ) ? $settings->lazyBanner : $widget->lazyBanner;
 $resBanner	= isset( $settings->resBanner ) ? $settings->resBanner : $widget->resBanner;
 
 $texture		= isset( $settings->texture ) ? $settings->texture : $widget->texture;
 $textureClass	= !empty( $model->texture ) ? $model->texture : $widget->textureClass;
+
+$bkgVideoSrc = $bkgVideo ? ( isset( $model->video ) ? $model->video->getVideoTag( [ 'class' => $bkgClass ] ) : $widget->bkgVideoSrc ) : null;
 
 $bannerObj	= $model->banner;
 $banner		= ( isset( $settings->defaultBanner ) && $settings->defaultBanner ) || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
@@ -34,7 +37,11 @@ $bkgLazyAttrs	= isset( $bannerObj ) ? "data-srcset=\"$bkgSrcset\" data-sizes=\"$
 ?>
 
 <?php if( $bkg && !empty( $bkgUrl ) ) { ?>
-	<div class="card-bkg <?= $bkgClass ?> <?= $bkgLazyClass ?>" style="background-image:url(<?= $bkgUrl ?>);" <?= $bkgLazyAttrs ?>></div>
+	<div class="widget-bkg <?= $bkgClass ?> <?= $bkgLazyClass ?>" style="background-image:url(<?= $bkgUrl ?>);" <?= $bkgLazyAttrs ?>></div>
+<?php } ?>
+
+<?php if( !empty( $bkgVideoSrc ) ) { ?>
+	<?= $bkgVideoSrc ?>
 <?php } ?>
 
 <?php if( $texture ) { ?>

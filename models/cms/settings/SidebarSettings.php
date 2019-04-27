@@ -44,6 +44,7 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $resBanner;
 	public $bkg;
 	public $bkgClass;
+	public $bkgVideo;
 
 	// Texture
 	public $texture;
@@ -114,7 +115,7 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ 'widgets', 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
-			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
+			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'widgetType', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
@@ -132,6 +133,7 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'bkgVideo' => 'Background Video',
 			'lazyBanner' => 'Lazy Load',
 			'resBanner' => 'Responsive',
 			'metas' => 'Attributes',

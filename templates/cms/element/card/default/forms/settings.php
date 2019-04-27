@@ -50,6 +50,11 @@ Editor::widget();
 									<?= $form->field( $settings, 'bkgClass' ) ?>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'bkgVideo', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

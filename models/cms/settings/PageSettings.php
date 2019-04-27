@@ -48,6 +48,7 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $fluidBanner;
 	public $background;
 	public $backgroundClass;
+	public $backgroundVideo;
 
 	// Texture
 	public $texture;
@@ -209,7 +210,7 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'comments', 'disqus' ], 'boolean' ],
 			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
-			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
+			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],

@@ -44,6 +44,7 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $resBanner;
 	public $bkg;
 	public $bkgClass;
+	public $bkgVideo;
 
 	// Texture
 	public $texture;
@@ -123,7 +124,7 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
-			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
+			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaWrapClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
@@ -141,6 +142,7 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'bkgVideo' => 'Background Video',
 			'lazyBanner' => 'Lazy Load',
 			'resBanner' => 'Responsive',
 			'contentRaw' => 'Raw Content',

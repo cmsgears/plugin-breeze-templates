@@ -48,6 +48,7 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $fluidBanner;
 	public $background;
 	public $backgroundClass;
+	public $backgroundVideo;
 
 	// Texture
 	public $texture;
@@ -195,7 +196,7 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'wrapCaptcha', 'wrapActions', 'labels', 'split4060' ], 'boolean' ],
-			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
+			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ 'formCaptchaAction', 'string', 'min' => 1, 'max' => Yii::$app->core->xLargeText ],
 			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'formClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],

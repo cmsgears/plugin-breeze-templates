@@ -47,6 +47,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $scrollBkg;
 	public $parallaxBkg;
 	public $bkgClass;
+	public $bkgVideo;
 
 	// Texture
 	public $texture;
@@ -146,7 +147,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
-			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
+			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'metaType', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
@@ -168,6 +169,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'scrollBkg' => 'Scrollable Background',
 			'parallaxBkg' => 'Parallax Background',
 			'bkgClass' => 'Background Class',
+			'bkgVideo' => 'Background Video',
 			'lazyBanner' => 'Lazy Load',
 			'resBanner' => 'Responsive',
 			'contentRaw' => 'Raw Content',
