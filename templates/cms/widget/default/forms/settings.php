@@ -83,7 +83,7 @@ Editor::widget();
 								</div>
 								<div class="col col2">
 									<?= $form->field( $settings, 'headerIconUrl' ) ?>
-								</div
+								</div>
 							</div>
 						</div>
 					</div>
