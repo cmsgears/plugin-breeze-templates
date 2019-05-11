@@ -22,7 +22,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="form-group">
 					<label>Title</label>
 					<input type="text" name="Address[title]" placeholder="Title" />
-					<span  class="error" cmt-error="Address[title]"></span>
+					<span class="error" cmt-error="Address[title]"></span>
 				</div>
 			</div>
 			<div class="col col2">
@@ -37,14 +37,14 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="form-group">
 					<label>Address 1*</label>
 					<input type="text" name="Address[line1]" placeholder="Address 1" />
-					<span  class="error" cmt-error="Address[line1]"></span>
+					<span class="error" cmt-error="Address[line1]"></span>
 				</div>
 			</div>
 			<div class="col col2">
 				<div class="form-group">
 					<label>Address 2</label>
 					<input type="text" name="Address[line2]" placeholder="Address 2" />
-					<span  class="error" cmt-error="Address[line2]"></span>
+					<span class="error" cmt-error="Address[line2]"></span>
 				</div>
 			</div>
 		</div>
@@ -53,14 +53,14 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="form-group">
 					<label>Country *</label>
 					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select' ] ) ?>
-					<span  class="error" cmt-error="Address[countryId]"></span>
+					<span class="error" cmt-error="Address[countryId]"></span>
 				</div>
 			</div>
 			<div class="cmt-location-provinces col col2" cmt-app="core" cmt-controller="region" cmt-action="optionsList" action="location/region-options" cmt-keep cmt-custom>
 				<div class="form-group">
 					<label><?= Yii::$app->core->provinceLabel ?> *</label>
 					<?= Html::dropDownList( 'Address[provinceId]', null, $provinceMap, [ 'class' => 'cmt-location-province element-60 cmt-select cmt-change' ] ) ?>
-					<span  class="error" cmt-error="Address[provinceId]"></span>
+					<span class="error" cmt-error="Address[provinceId]"></span>
 					<span class="hidden cmt-click"></span>
 				</div>
 			</div>
@@ -70,7 +70,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="form-group">
 					<label><?= Yii::$app->core->regionLabel ?> *</label>
 					<?= Html::dropDownList( 'Address[regionId]', null, $regionMap, [ 'class' => 'cmt-location-region element-60 cmt-select' ] ) ?>
-					<span  class="error" cmt-error="Address[regionId]"></span>
+					<span class="error" cmt-error="Address[regionId]"></span>
 				</div>
 			</div>
 			<?php if( $searchCity ) { ?>
@@ -93,7 +93,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 						<div class="auto-fill-target">
 							<input class="target" type="hidden" name="Address[cityId]" />
 						</div>
-						<span  class="error" cmt-error="Address[cityName]"></span>
+						<span class="error" cmt-error="Address[cityName]"></span>
 					</div>
 				</div>
 			<?php } else { ?>
@@ -101,7 +101,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 					<div class="form-group">
 						<label>City *</label>
 						<input type="text" name="Address[cityName]" placeholder="City *" />
-						<span  class="error" cmt-error="Address[cityName]"></span>
+						<span class="error" cmt-error="Address[cityName]"></span>
 					</div>
 				</div>
 			<?php } ?>
@@ -111,24 +111,44 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="form-group">
 					<label>Postal Code</label>
 					<input type="text" name="Address[zip]" placeholder="Postal Code" />
-					<span  class="error" cmt-error="Address[zip]"></span>
+					<span class="error" cmt-error="Address[zip]"></span>
 				</div>
 			</div>
 			<div class="col col2">
-				<div class="form-group">
-					<label>Phone</label>
-					<input type="text" name="Address[phone]" placeholder="Phone" />
-					<span  class="error" cmt-error="Address[phone]"></span>
-				</div>
+				<?php if( $intlTelInput ) { ?>
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" />
+						<input type="hidden" class="intl-tel-number" name="Address[phone]" />
+						<div class="help-block"></div>
+						<span class="error" cmt-error="Address[phone]"></span>
+					</div>
+				<?php } else { ?>
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" name="Address[phone]" placeholder="Phone" />
+						<span class="error" cmt-error="Address[phone]"></span>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div class="row max-cols-50">
 			<div class="col col2">
-				<div class="form-group">
-					<label>Fax</label>
-					<input type="text" name="Address[fax]" placeholder="Fax" />
-					<span  class="error" cmt-error="Address[fax]"></span>
-				</div>
+				<?php if( $intlTelInput ) { ?>
+					<div class="form-group">
+						<label>Fax</label>
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="fax" placeholder="Fax" autocomplete="off" data-intl-type="phone" />
+						<input type="hidden" class="intl-tel-number" name="Address[fax]" />
+						<div class="help-block"></div>
+						<span class="error" cmt-error="Address[fax]"></span>
+					</div>
+				<?php } else { ?>
+					<div class="form-group">
+						<label>Fax</label>
+						<input type="text" name="Address[fax]" placeholder="Fax" data-intl-type="phone" />
+						<span class="error" cmt-error="Address[fax]"></span>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div>
@@ -162,7 +182,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="form-group">
 					<label>Title</label>
 					<input type="text" name="Address[title]" placeholder="Title" value="{{address.title}}" />
-					<span  class="error" cmt-error="Address[title]"></span>
+					<span class="error" cmt-error="Address[title]"></span>
 				</div>
 			</div>
 			<div class="col col2">
@@ -177,14 +197,14 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="form-group">
 					<label>Address 1*</label>
 					<input type="text" name="Address[line1]" placeholder="Address 1" value="{{address.line1}}" />
-					<span  class="error" cmt-error="Address[line1]"></span>
+					<span class="error" cmt-error="Address[line1]"></span>
 				</div>
 			</div>
 			<div class="col col2">
 				<div class="form-group">
 					<label>Address 2</label>
 					<input type="text" name="Address[line2]" placeholder="Address 2" value="{{address.line2}}" />
-					<span  class="error" cmt-error="Address[line2]"></span>
+					<span class="error" cmt-error="Address[line2]"></span>
 				</div>
 			</div>
 		</div>
@@ -241,7 +261,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 					<div class="form-group">
 						<label>City *</label>
 						<input type="text" name="Address[cityName]" placeholder="City *" value="{{address.cityName}}" />
-						<span  class="error" cmt-error="Address[cityName]"></span>
+						<span class="error" cmt-error="Address[cityName]"></span>
 					</div>
 				</div>
 			<?php } ?>
@@ -255,20 +275,40 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				</div>
 			</div>
 			<div class="col col2">
-				<div class="form-group">
-					<label>Phone</label>
-					<input type="text" name="Address[phone]" placeholder="Phone" value="{{address.phone}}" />
-					<span class="error" cmt-error="Address[phone]"></span>
-				</div>
+				<?php if( $intlTelInput ) { ?>
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" />
+						<input type="hidden" class="intl-tel-number" name="Address[phone]" value="{{address.phone}}" />
+						<div class="help-block"></div>
+						<span class="error" cmt-error="Address[phone]"></span>
+					</div>
+				<?php } else { ?>
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" name="Address[phone]" placeholder="Phone" value="{{address.phone}}" />
+						<span class="error" cmt-error="Address[phone]"></span>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div class="row max-cols-50">
 			<div class="col col2">
-				<div class="form-group">
-					<label>Fax</label>
-					<input type="text" name="Address[fax]" placeholder="Fax" value="{{address.fax}}" />
-					<span class="error" cmt-error="Address[fax]"></span>
-				</div>
+				<?php if( $intlTelInput ) { ?>
+					<div class="form-group">
+						<label>Fax</label>
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="fax" placeholder="Fax" autocomplete="off" data-intl-type="phone" />
+						<input type="hidden" class="intl-tel-number" name="Address[fax]" value="{{address.fax}}" />
+						<div class="help-block"></div>
+						<span class="error" cmt-error="Address[fax]"></span>
+					</div>
+				<?php } else { ?>
+					<div class="form-group">
+						<label>Fax</label>
+						<input type="text" name="Address[fax]" placeholder="Fax" value="{{address.fax}}" data-intl-type="phone" />
+						<span class="error" cmt-error="Address[fax]"></span>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div>

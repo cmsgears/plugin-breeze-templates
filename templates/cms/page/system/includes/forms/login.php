@@ -17,9 +17,9 @@ $coreProperties = $this->context->getCoreProperties();
 		<div class="<?= $frmSplit ? 'frm-split-40-60' : null ?>">
 			<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email/Username' ] )->label( 'Email/Username' ) ?>
 			<?= $form->field( $formModel, 'password' )->passwordInput( [ 'placeholder' => 'Password' ] ) ?>
+			<?= Yii::$app->formDesigner->getIconCheckbox( $form, $formModel, 'rememberMe', null, 'cmti cmti-checkbox', [ 'label' => 'Remember Me?' ] ) ?>
 		</div>
-
-		<div class="row max-cols-50 padding padding-small-v">
+		<div class="row max-cols-50 padding padding-default-v">
 			<div class="col col2">
 				<label>
 					<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgot Password</a>

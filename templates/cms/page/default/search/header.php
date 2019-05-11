@@ -20,7 +20,7 @@ $headerScroller	= isset( $settings->headerScroller ) ? $settings->headerScroller
 $headerBanner	= isset( $settings->headerBanner ) ? $settings->headerBanner : false;
 $headerGallery	= isset( $settings->headerGallery ) ? $settings->headerGallery : false;
 
-$avatarObj		= $model->avatar;
+$avatarObj		= isset( $model->avatar ) ? $model->avatar : null;
 $avatar			= isset( $settings->defaultAvatar ) && $settings->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
 $headerIconUrl	= isset( $model->avatar ) ? CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( null, [ 'image' => $avatar ] );
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $headerIconUrl;

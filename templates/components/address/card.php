@@ -2,6 +2,8 @@
 // Config
 $breezeTemplates = Yii::getAlias( '@breeze/templates' );
 
+$intlTelInput = isset( $intlTelInput ) ? $intlTelInput : false;
+
 $frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
 $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";
 

@@ -7,6 +7,9 @@ $coreProperties = $this->context->getCoreProperties();
 
 $breezeTemplates = Yii::getAlias( '@breeze/templates' );
 
+$mobileRequired	= isset( $mobileRequired ) ? $mobileRequired : true;
+$intlTelInput	= isset( $intlTelInput ) ? $intlTelInput : false;
+
 $frmSpinner = isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
 ?>
 <div class="data-crud data-crud-profile">
@@ -59,14 +62,34 @@ $frmSpinner = isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/
 					<span  class="error" cmt-error="User[genderId]"></span>
 				</div>
 				<div class="col col4">
-					<label>Mobile</label>
-					<input type="text" name="User[mobile]" placeholder="Mobile" value="<?= $model->mobile ?>" />
-					<span  class="error" cmt-error="User[mobile]"></span>
+					<?php if( $intlTelInput ) { ?>
+						<div class="form-group">
+							<label>Mobile Number <?= $mobileRequired ? '*' : null ?></label>
+							<input type="text" class="intl-tel-field intl-tel-field-mb <?= $mobileRequired ? 'intl-tel-required' : null ?>" name="mobile" placeholder="Mobile" autocomplete="off" />
+							<input type="hidden" class="intl-tel-number" name="User[mobile]" value="<?= $model->mobile ?>" />
+							<div class="help-block"></div>
+							<span  class="error" cmt-error="User[mobile]"></span>
+						</div>
+					<?php } else { ?>
+						<label>Mobile</label>
+						<input type="text" name="User[mobile]" placeholder="Mobile" value="<?= $model->mobile ?>" />
+						<span  class="error" cmt-error="User[mobile]"></span>
+					<?php } ?>
 				</div>
 				<div class="col col4">
-					<label>Phone</label>
-					<input type="text" name="User[phone]" placeholder="Phone" value="<?= $model->phone ?>" />
-					<span  class="error" cmt-error="User[phone]"></span>
+					<?php if( $intlTelInput ) { ?>
+						<div class="form-group">
+							<label>Phone</label>
+							<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" />
+							<input type="hidden" class="intl-tel-number" name="User[phone]" value="<?= $model->phone ?>" />
+							<div class="help-block"></div>
+							<span  class="error" cmt-error="User[phone]"></span>
+						</div>
+					<?php } else { ?>
+						<label>Phone</label>
+						<input type="text" name="User[phone]" placeholder="Phone" value="<?= $model->phone ?>" />
+						<span  class="error" cmt-error="User[phone]"></span>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
