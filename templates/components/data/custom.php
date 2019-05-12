@@ -38,4 +38,4 @@
 	<div class="cmt-data-custom-add margin margin-small-v pointer">+ Add <?= $customTitle ?></div>
 </div>
 <?php
-include "$themeIncludes/handlebars/data/custom.php";
+include "$breezeTemplates/handlebars/data/custom.php";

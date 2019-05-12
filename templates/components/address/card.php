@@ -3,6 +3,7 @@
 $breezeTemplates = Yii::getAlias( '@breeze/templates' );
 
 $intlTelInput = isset( $intlTelInput ) ? $intlTelInput : false;
+$intlTelCcode = isset( $intlTelCcode ) ? $intlTelCcode : 'us';
 
 $frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
 $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";

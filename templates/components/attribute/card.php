@@ -40,21 +40,21 @@ Editor::widget();
 
 <?= Popup::widget([
 	'title' => 'Add Attribute', 'size' => 'medium',
-	'templateDir' => Yii::getAlias( "$breezeTemplates/popup/attribute" ), 'template' => 'default',
+	'templateDir' => Yii::getAlias( "$breezeTemplates/widget/native/popup/attribute" ), 'template' => 'default',
 	'data' => [ 'type' => 'add', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
 ])?>
 
 <?= Popup::widget([
 	'title' => 'Update Attribute', 'size' => 'medium',
-	'templateDir' => Yii::getAlias( "$breezeTemplates/popup/attribute" ), 'template' => 'default',
+	'templateDir' => Yii::getAlias( "$breezeTemplates/widget/native/popup/attribute" ), 'template' => 'default',
 	'data' => [ 'type' => 'update', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
 ])?>
 
 <?= Popup::widget([
 	'title' => 'Delete Attribute', 'size' => 'medium',
-	'templateDir' => Yii::getAlias( "$breezeTemplates/popup/attribute" ), 'template' => 'default',
+	'templateDir' => Yii::getAlias( "$breezeTemplates/widget/native/popup/attribute" ), 'template' => 'default',
 	'data' => [ 'type' => 'delete', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
 ])?>
 
 <?php
-include "$themeIncludes/handlebars/attribute/card.php";
+include "$breezeTemplates/handlebars/attribute/card.php";

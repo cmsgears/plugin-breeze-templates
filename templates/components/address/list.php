@@ -1,16 +1,45 @@
-<div class="cmt-address-crud data-crud data-crud-address">
-	<div class="data-crud-content">
-		<span class="cmt-address-add btn btn-large btn-aqua-border inline-block">Add Location</span>
-	</div><hr class="margin margin-small-v" />
-	<div class="filler-height"></div>
+<?php
+// Config
+$breezeTemplates = Yii::getAlias( '@breeze/templates' );
+
+$intlTelInput = isset( $intlTelInput ) ? $intlTelInput : false;
+$intlTelCcode = isset( $intlTelCcode ) ? $intlTelCcode : 'us';
+
+$frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
+$apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";
+
+$addressesTitle = isset( $addressesTitle ) ? $addressesTitle : 'Addresses';
+
+$excludeAddressTypes = isset( $excludeAddressTypes ) ? $excludeAddressTypes : [];
+
+$searchCity = isset( $searchCity ) ? $searchCity : false;
+
+// Location
+$countryMap		= Yii::$app->factory->get( 'countryService' )->getIdNameMap();
+$countryId		= array_keys( $countryMap )[ 0 ];
+$provinceMap	= Yii::$app->factory->get( 'provinceService' )->getMapByCountryId( $countryId );
+$provinceId		= array_keys( $provinceMap )[ 0 ];
+$regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $provinceId, [ 'default' => true, 'defaultValue' => Yii::$app->core->regionLabel ] );
+?>
+<div class="cmt-address-crud data-crud data-crud-address data-crud-address-list">
+	<div class="data-crud-title row">
+		<span class="inline-block"><?= $addressesTitle ?></span>
+		<span class="filler-tab"></span>
+		<span class="inline-block actions-wrap text text-medium">
+			<span class="cmt-address-add btn-icon btn-action"><i class="icon cmti cmti-plus"></i></span>
+		</span>
+	</div>
 	<div class="cmt-address-form"></div>
 	<div class="cmt-address-collection">
 		<?php
-			foreach( $locations as $location ) {
+			foreach( $modelAddresses as $modelAddress ) {
 
-				$address = $location->model;
+				$type		= $modelAddress->type;
+				$address	= $modelAddress->model;
+
+				if( !in_array( $type, $excludeAddressTypes ) ) {
 		?>
-			<div class="cmt-address card card-basic" data-id="<?= $location->id ?>">
+			<div class="cmt-address card card-basic" data-id="<?= $modelAddress->id ?>">
 				<div class="card-content-wrap">
 					<div class="cmt-address-header card-header">
 						<div class="card-header-title row">
@@ -23,15 +52,11 @@
 									</div>
 									<div class="actions-list-data actions-list-data-settings">
 										<div class="padding padding-small relative" cmt-app="core" cmt-controller="address" cmt-action="get" action="<?= $apixBase ?>/get-address?id=<?= $model->id ?>&cid=<?= $location->id ?>">
-											<span class="spinner hidden-easy">
-												<span class="cmti cmti-spinner-1 spin"></span>
-											</span>
+											<?= $apixSpinner ?>
 											<span class="cmt-click">Update</span>
 										</div>
 										<div class="padding padding-small relative" cmt-app="core" cmt-controller="address" cmt-action="delete" action="<?= $apixBase ?>/delete-address?id=<?= $model->id ?>&cid=<?= $location->id ?>">
-											<span class="spinner hidden-easy">
-												<span class="cmti cmti-spinner-1 spin"></span>
-											</span>
+											<?= $apixSpinner ?>
 											<span class="cmt-click">Delete</span>
 										</div>
 									</div>
@@ -50,7 +75,7 @@
 					</div><hr/>
 				</div>
 			</div>
-		<?php } ?>
+		<?php } } ?>
 	</div>
 </div>
-<?php include "$themeIncludes/handlebars/address/list.php";
+<?php include "$breezeTemplates/handlebars/address/list.php";

@@ -43,4 +43,4 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 		<?php } ?>
 	</div>
 </div>
-<?php include "$themeIncludes/handlebars/data/social.php";
+<?php include "$breezeTemplates/handlebars/data/social.php";

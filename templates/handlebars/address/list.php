@@ -6,14 +6,16 @@ use yii\helpers\Html;
 use cmsgears\core\common\models\resources\Address;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
+use cmsgears\core\common\utilities\DataUtil;
 
-$addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typeMap );
+$addressTypes		= DataUtil::arrayFilterKeys( Address::$typeMap, $excludeAddressTypes );
+$addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes );
 ?>
 
 <script id="addAddressTemplate" type="text/x-handlebars-template">
 
 <form class="cmt-location form relative" cmt-app="core" cmt-controller="address" cmt-action="add" action="<?= $apixBase ?>/add-address?id=<?= $model->id ?>">
-	<?php include "$themeIncludes/components/spinners/form.php"; ?>
+	<?php include $frmSpinner; ?>
 	<div class="data-crud-form row max-cols-100">
 		<div class="row">
 			<div class="col col2">
@@ -26,8 +28,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 			<div class="col col2">
 				<div class="form-group">
 					<label>Type</label>
-					<label>Location</label>
-					<input type="hidden" name="model-type" value="branch" />
+					<select name="model-type" class="cmt-address-type cmt-select"><?= $addressTypeOptions ?></select>
 				</div>
 			</div>
 		</div>
@@ -72,28 +73,38 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 			</div>
 		</div>
 		<div class="row">
-			<div class="cmt-location-city-fill col col2 auto-fill auto-fill-basic">
-				<div class="form-group">
-					<label>City *</label>
-					<div class="auto-fill-source" cmt-app="core" cmt-controller="city" cmt-action="autoSearch" action="location/city-search" cmt-keep cmt-custom>
-						<div class="relative">
-							<div class="auto-fill-search clearfix">
-								<div class="frm-icon-element icon-right">
-									<span class="icon cmti cmti-search"></span>
-									<input target-app="location" class="cmt-key-up auto-fill-text" type="text" name="Address[cityName]" placeholder="Search City" autocomplete="off" />
+			<?php if( $searchCity ) { ?>
+				<div class="cmt-location-city-fill col col2 auto-fill auto-fill-basic">
+					<div class="form-group">
+						<label>City *</label>
+						<div class="auto-fill-source" cmt-app="core" cmt-controller="city" cmt-action="autoSearch" action="location/city-search" cmt-keep cmt-custom>
+							<div class="relative">
+								<div class="auto-fill-search clearfix">
+									<div class="frm-icon-element icon-right">
+										<span class="icon cmti cmti-search"></span>
+										<input target-app="location" class="cmt-key-up auto-fill-text" type="text" name="Address[cityName]" placeholder="Search City" autocomplete="off" />
+									</div>
+								</div>
+								<div class="auto-fill-items-wrap">
+									<ul class="auto-fill-items vnav"></ul>
 								</div>
 							</div>
-							<div class="auto-fill-items-wrap">
-								<ul class="auto-fill-items vnav"></ul>
-							</div>
 						</div>
+						<div class="auto-fill-target">
+							<input class="target" type="hidden" name="Address[cityId]" />
+						</div>
+						<span  class="error" cmt-error="Address[cityName]"></span>
 					</div>
-					<div class="auto-fill-target">
-						<input class="target" type="hidden" name="Address[cityId]" />
-					</div>
-					<span  class="error" cmt-error="Address[cityName]"></span>
 				</div>
-			</div>
+			<?php } else { ?>
+				<div class="col col2">
+					<div class="form-group">
+						<label>City *</label>
+						<input type="text" name="Address[cityName]" placeholder="City *" />
+						<span class="error" cmt-error="Address[cityName]"></span>
+					</div>
+				</div>
+			<?php } ?>
 			<div class="col col2">
 				<div class="form-group">
 					<label>Postal Code</label>
@@ -104,18 +115,38 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 		</div>
 		<div class="row">
 			<div class="col col2">
-				<div class="form-group">
-					<label>Phone</label>
-					<input type="text" name="Address[phone]" placeholder="Phone" />
-					<span  class="error" cmt-error="Address[phone]"></span>
-				</div>
+				<?php if( $intlTelInput ) { ?>
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" data-ccode="<?= $intlTelCcode ?>" />
+						<input type="hidden" class="intl-tel-number" name="Address[phone]" />
+						<div class="help-block"></div>
+						<span class="error" cmt-error="Address[phone]"></span>
+					</div>
+				<?php } else { ?>
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" name="Address[phone]" placeholder="Phone" />
+						<span class="error" cmt-error="Address[phone]"></span>
+					</div>
+				<?php } ?>
 			</div>
 			<div class="col col2">
-				<div class="form-group">
-					<label>Fax</label>
-					<input type="text" name="Address[fax]" placeholder="Fax" />
-					<span  class="error" cmt-error="Address[fax]"></span>
-				</div>
+				<?php if( $intlTelInput ) { ?>
+					<div class="form-group">
+						<label>Fax</label>
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="fax" placeholder="Fax" autocomplete="off" data-intl-type="phone" data-ccode="<?= $intlTelCcode ?>" />
+						<input type="hidden" class="intl-tel-number" name="Address[fax]" />
+						<div class="help-block"></div>
+						<span class="error" cmt-error="Address[fax]"></span>
+					</div>
+				<?php } else { ?>
+					<div class="form-group">
+						<label>Fax</label>
+						<input type="text" name="Address[fax]" placeholder="Fax" data-intl-type="phone" />
+						<span class="error" cmt-error="Address[fax]"></span>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div>
@@ -124,12 +155,12 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 			<input class="cmt-location-zoom" type="hidden" name="Address[zoomLevel]" value="6" />
 		</div>
 	</div>
-	<div class="data-crud-message">
-		<div class="message success"></div>
-		<div class="message warning"></div>
-		<div class="message error"></div>
+	<div class="row data-crud-message">
+		<div class="col col1 message success"></div>
+		<div class="col col1 message warning"></div>
+		<div class="col col1 message error"></div>
 	</div>
-	<div class="data-crud-actions row">
+	<div class="row data-crud-actions">
 		<div class="col col1">
 			<span class="cmt-address-close btn btn-medium">Cancel</span>
 			<input class="frm-element-medium" type="submit" value="Add" />
@@ -142,7 +173,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 <script id="updateAddressTemplate" type="text/x-handlebars-template">
 
 <form class="cmt-location form relative" cmt-app="core" cmt-controller="address" cmt-action="update" action="<?= $apixBase ?>/update-address?id=<?= $model->id ?>&cid={{cid}}">
-	<?php include "$themeIncludes/components/spinners/form.php"; ?>
+	<?php include $frmSpinner; ?>
 	<div class="data-crud-form row max-cols-100">
 		<div class="row">
 			<div class="col col2">
@@ -155,8 +186,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 			<div class="col col2">
 				<div class="form-group">
 					<label>Type</label>
-					<label>Location</label>
-					<input type="hidden" name="model-type" value="branch" />
+					<select name="model-type" class="cmt-address-type cmt-select"><?= $addressTypeOptions ?></select>
 				</div>
 			</div>
 		</div>
@@ -201,28 +231,38 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 			</div>
 		</div>
 		<div class="row">
-			<div class="cmt-location-city-fill col col2 auto-fill auto-fill-basic">
-				<div class="form-group">
-					<label>City *</label>
-					<div class="auto-fill-source" cmt-app="core" cmt-controller="city" cmt-action="autoSearch" action="location/city-search" cmt-keep cmt-custom>
-						<div class="relative">
-							<div class="auto-fill-search clearfix">
-								<div class="frm-icon-element icon-right">
-									<span class="icon cmti cmti-search"></span>
-									<input target-app="location" class="cmt-key-up auto-fill-text" type="text" name="Address[cityName]" value="{{address.cityName}}" placeholder="Search City" autocomplete="off" />
+			<?php if( $searchCity ) { ?>
+				<div class="cmt-location-city-fill col col2 auto-fill auto-fill-basic">
+					<div class="form-group">
+						<label>City *</label>
+						<div class="auto-fill-source" cmt-app="core" cmt-controller="city" cmt-action="autoSearch" action="location/city-search" cmt-keep cmt-custom>
+							<div class="relative">
+								<div class="auto-fill-search clearfix">
+									<div class="frm-icon-element icon-right">
+										<span class="icon cmti cmti-search"></span>
+										<input target-app="location" class="cmt-key-up auto-fill-text" type="text" name="Address[cityName]" value="{{address.cityName}}" placeholder="Search City" autocomplete="off" />
+									</div>
+								</div>
+								<div class="auto-fill-items-wrap">
+									<ul class="auto-fill-items vnav"></ul>
 								</div>
 							</div>
-							<div class="auto-fill-items-wrap">
-								<ul class="auto-fill-items vnav"></ul>
-							</div>
 						</div>
+						<div class="auto-fill-target">
+							<input class="target" type="hidden" name="Address[cityId]" value="{{address.cityId}}" />
+						</div>
+						<span class="error" cmt-error="Address[cityName]"></span>
 					</div>
-					<div class="auto-fill-target">
-						<input class="target" type="hidden" name="Address[cityId]" value="{{address.cityId}}" />
-					</div>
-					<span class="error" cmt-error="Address[cityName]"></span>
 				</div>
-			</div>
+			<?php } else { ?>
+				<div class="col col2">
+					<div class="form-group">
+						<label>City *</label>
+						<input type="text" name="Address[cityName]" placeholder="City *" value="{{address.cityName}}" />
+						<span class="error" cmt-error="Address[cityName]"></span>
+					</div>
+				</div>
+			<?php } ?>
 			<div class="col col2">
 				<div class="form-group">
 					<label>Postal Code</label>
@@ -233,18 +273,38 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 		</div>
 		<div class="row">
 			<div class="col col2">
-				<div class="form-group">
-					<label>Phone</label>
-					<input type="text" name="Address[phone]" placeholder="Phone" value="{{address.phone}}" />
-					<span class="error" cmt-error="Address[phone]"></span>
-				</div>
+				<?php if( $intlTelInput ) { ?>
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" data-ccode="<?= $intlTelCcode ?>" />
+						<input type="hidden" class="intl-tel-number" name="Address[phone]" value="{{address.phone}}" />
+						<div class="help-block"></div>
+						<span class="error" cmt-error="Address[phone]"></span>
+					</div>
+				<?php } else { ?>
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" name="Address[phone]" placeholder="Phone" value="{{address.phone}}" />
+						<span class="error" cmt-error="Address[phone]"></span>
+					</div>
+				<?php } ?>
 			</div>
 			<div class="col col2">
-				<div class="form-group">
-					<label>Fax</label>
-					<input type="text" name="Address[fax]" placeholder="Fax" value="{{address.fax}}" />
-					<span class="error" cmt-error="Address[fax]"></span>
-				</div>
+				<?php if( $intlTelInput ) { ?>
+					<div class="form-group">
+						<label>Fax</label>
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="fax" placeholder="Fax" autocomplete="off" data-intl-type="phone" data-ccode="<?= $intlTelCcode ?>" />
+						<input type="hidden" class="intl-tel-number" name="Address[fax]" value="{{address.fax}}" />
+						<div class="help-block"></div>
+						<span class="error" cmt-error="Address[fax]"></span>
+					</div>
+				<?php } else { ?>
+					<div class="form-group">
+						<label>Fax</label>
+						<input type="text" name="Address[fax]" placeholder="Fax" value="{{address.fax}}" data-intl-type="phone" />
+						<span class="error" cmt-error="Address[fax]"></span>
+					</div>
+				<?php } ?>
 			</div>
 		</div>
 		<div>
@@ -253,12 +313,12 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( Address::$typ
 			<input class="cmt-location-zoom" type="hidden" name="Address[zoomLevel]" value="{{address.zoomLevel}}" />
 		</div>
 	</div>
-	<div class="data-crud-message">
-		<div class="message success"></div>
-		<div class="message warning"></div>
-		<div class="message error"></div>
+	<div class="row data-crud-message">
+		<div class="col col1 message success"></div>
+		<div class="col col1 message warning"></div>
+		<div class="col col1 message error"></div>
 	</div>
-	<div class="data-crud-actions row">
+	<div class="row data-crud-actions">
 		<div class="col col1">
 			<span class="cmt-address-close btn btn-medium">Cancel</span>
 			<input class="frm-element-medium" type="submit" value="Update" />
