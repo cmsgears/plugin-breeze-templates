@@ -9,6 +9,8 @@ use cmsgears\widgets\popup\Popup;
 
 use cmsgears\core\common\widgets\Editor;
 
+$metaClass = isset( $metaClass ) ? $metaClass : 'Meta';
+
 Editor::widget();
 ?>
 <div class="cmt-meta-crud data-crud data-crud-attribute" data-id="<?= $model->id ?>" data-type="<?= $model->type ?>" data-layout="popup">
@@ -41,19 +43,19 @@ Editor::widget();
 <?= Popup::widget([
 	'title' => 'Add Attribute', 'size' => 'medium',
 	'templateDir' => Yii::getAlias( "$breezeTemplates/widget/native/popup/attribute" ), 'template' => 'default',
-	'data' => [ 'type' => 'add', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
+	'data' => [ 'type' => 'add', 'model' => $model, 'metaClass' => $metaClass, 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
 ])?>
 
 <?= Popup::widget([
 	'title' => 'Update Attribute', 'size' => 'medium',
 	'templateDir' => Yii::getAlias( "$breezeTemplates/widget/native/popup/attribute" ), 'template' => 'default',
-	'data' => [ 'type' => 'update', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
+	'data' => [ 'type' => 'update', 'model' => $model, 'metaClass' => $metaClass, 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
 ])?>
 
 <?= Popup::widget([
 	'title' => 'Delete Attribute', 'size' => 'medium',
 	'templateDir' => Yii::getAlias( "$breezeTemplates/widget/native/popup/attribute" ), 'template' => 'default',
-	'data' => [ 'type' => 'delete', 'model' => $model, 'metaClass' => 'OrgMeta', 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
+	'data' => [ 'type' => 'delete', 'model' => $model, 'metaClass' => $metaClass, 'metaType' => CoreGlobal::META_TYPE_USER, 'apixBase' => $apixBase ]
 ])?>
 
 <?php
