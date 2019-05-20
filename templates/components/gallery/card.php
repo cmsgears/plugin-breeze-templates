@@ -1,6 +1,9 @@
 <?php
 // CMG Imports
 use cmsgears\core\common\utilities\CodeGenUtil;
+
+$frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
+$apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";
 ?>
 <div class="cmt-gallery-item-crud data-crud data-crud-gallery data-crud-gallery-card" data-layout="cmt-layout-card">
 	<div class="data-crud-title row">
@@ -27,15 +30,11 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 							<div class="col col3x2 title" title="<?= $file->title ?>"><?= $file->title ?></div>
 							<div class="col col3 align align-right">
 								<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
-									<span class="spinner hidden-easy">
-										<span class="icon cmti cmti-spinner-1 spin"></span>
-									</span>
+									<?php include $apixSpinner; ?>
 									<i class="icon cmti cmti-edit cmt-click"></i>
 								</span>
 								<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
-									<span class="spinner hidden-easy">
-										<span class="icon cmti cmti-spinner-1 spin"></span>
-									</span>
+									<?php include $apixSpinner; ?>
 									<i class="icon cmti cmti-bin cmt-click"></i>
 								</span>
 							</div>

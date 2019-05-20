@@ -51,12 +51,12 @@ $regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $p
 										<i class="icon icon-caret fa fa-caret-down"></i>
 									</div>
 									<div class="actions-list-data actions-list-data-settings">
-										<div class="padding padding-small relative" cmt-app="core" cmt-controller="address" cmt-action="get" action="<?= $apixBase ?>/get-address?id=<?= $model->id ?>&cid=<?= $location->id ?>">
-											<?= $apixSpinner ?>
+										<div class="padding padding-small relative" cmt-app="core" cmt-controller="address" cmt-action="get" action="<?= $apixBase ?>/get-address?id=<?= $model->id ?>&cid=<?= $address->id ?>">
+											<?php include $apixSpinner; ?>
 											<span class="cmt-click">Update</span>
 										</div>
-										<div class="padding padding-small relative" cmt-app="core" cmt-controller="address" cmt-action="delete" action="<?= $apixBase ?>/delete-address?id=<?= $model->id ?>&cid=<?= $location->id ?>">
-											<?= $apixSpinner ?>
+										<div class="padding padding-small relative" cmt-app="core" cmt-controller="address" cmt-action="delete" action="<?= $apixBase ?>/delete-address?id=<?= $model->id ?>&cid=<?= $address->id ?>">
+											<?php include $apixSpinner; ?>
 											<span class="cmt-click">Delete</span>
 										</div>
 									</div>

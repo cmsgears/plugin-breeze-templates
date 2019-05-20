@@ -9,7 +9,7 @@ $metaClass	= $data[ 'metaClass' ];
 $metaType	= $data[ 'metaType' ];
 $apixBase	= $data[ 'apixBase' ];
 ?>
-<div id="popup-attribute-<?= $type ?>" class="popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
+<div id="popup-attribute-<?= $type ?>" class="cmt-popup popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
 	<div class="popup-screen"></div>
 	<?php if( $widget->bkg ) { ?>
 		<div class="popup-bkg <?= $widget->bkgClass ?>" <?= isset( $widget->bkgUrl ) ? " style=\"background-image:url($widget->bkgUrl);\"" : null ?>></div>

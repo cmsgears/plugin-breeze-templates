@@ -19,6 +19,7 @@
 		<div class="colf colf15"></div>
 		<div class="colf colf15x10">
 			<form class="form" cmt-app="gallery" cmt-controller="item" cmt-action="add" action="<?= $apixBase ?>/add-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>">
+				<?php include $frmSpinner; ?>
 				<div class="file-info">
 					<input name="File[name]" class="name" type="hidden" />
 					<input name="File[extension]" class="extension" type="hidden" />
@@ -85,6 +86,7 @@
 		<div class="colf colf15"></div>
 		<div class="colf colf15x10">
 			<form class="form" cmt-app="gallery" cmt-controller="item" cmt-action="update" action="<?= $apixBase ?>/update-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
+				<?php include $frmSpinner; ?>
 				<div class="file-info">
 					<input name="File[id]" class="id" type="hidden" value="{{fid}}" />
 					<input name="File[name]" class="name" type="hidden" value="{{name}}" />
@@ -140,15 +142,11 @@
 					<div class="col col3x2 title" title="{{title}}">{{title}}</div>
 					<div class="col col3 align align-right">
 						<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
-							<span class="spinner hidden-easy">
-								<span class="icon cmti cmti-spinner-1 spin"></span>
-							</span>
+							<?php include $apixSpinner; ?>
 							<i class="icon cmti cmti-edit cmt-click"></i>
 						</span>
 						<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
-							<span class="spinner hidden-easy">
-								<span class="icon cmti cmti-spinner-1 spin"></span>
-							</span>
+							<?php include $apixSpinner; ?>
 							<i class="icon cmti cmti-bin cmt-click"></i>
 						</span>
 					</div>

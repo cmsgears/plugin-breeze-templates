@@ -12,12 +12,12 @@ $apixSpinner = isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/componen
 	<div class="data-crud-form">
 		<div class="row max-cols-50">
 			<div class="col col2">
-				<div class="frm-field row" cmt-app="core" cmt-controller="user" cmt-action="settings" action="<?= $apixBase ?>/toggle-meta?key=receive_mail&ctype=<?= CoreGlobal::SETTINGS_REMINDER ?>" cmt-keep>
+				<div class="frm-field row" cmt-app="core" cmt-controller="user" cmt-action="settings" action="<?= $apixBase ?>/toggle-meta?key=receive_email&ctype=<?= CoreGlobal::SETTINGS_REMINDER ?>" cmt-keep>
 					<?php include $apixSpinner; ?>
 					<span class="cmt-switch cmt-checkbox">
-						<input id="remind_receive_mail" class="cmt-change cmt-toggle cmt-toggle-round" type="checkbox" name="value" />
-						<label for="remind_receive_mail"></label>
-						<input type="hidden" name="value" value="<?php if( isset( $reminder[ 'receive_mail' ] ) ) echo $reminder[ 'receive_mail' ]->value; ?>" />
+						<input id="remind_receive_email" class="cmt-change cmt-toggle cmt-toggle-round" type="checkbox" name="value" />
+						<label for="remind_receive_email"></label>
+						<input type="hidden" name="value" value="<?php if( isset( $reminder[ 'receive_email' ] ) ) echo $reminder[ 'receive_email' ]->value; ?>" />
 					</span>
 					<span class="inline-block padding padding-default-h">Receive emails</span>
 				</div>
