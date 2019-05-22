@@ -110,7 +110,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
-			[ 'headerIconUrl', 'url' ]
+			[ 'headerIconUrl', 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
 	}
 

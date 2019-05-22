@@ -119,7 +119,7 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'widgetType', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
-			[ 'headerIconUrl', 'url' ]
+			[ 'headerIconUrl', 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
 	}
 

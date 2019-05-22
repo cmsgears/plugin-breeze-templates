@@ -204,7 +204,7 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
-			[ [ 'headerIconUrl', 'footerIconUrl' ], 'url' ]
+			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
 	}
 
