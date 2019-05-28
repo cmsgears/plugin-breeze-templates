@@ -8,7 +8,7 @@ use cmsgears\core\common\widgets\Editor;
 
 // Config
 $coreProperties = $this->context->getCoreProperties();
-$this->title 	= 'Widget Settings | ' . $coreProperties->getSiteTitle();
+$this->title 	= 'Sidebar Settings | ' . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
 
 Editor::widget();
