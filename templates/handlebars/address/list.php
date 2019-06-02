@@ -118,7 +118,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<?php if( $intlTelInput ) { ?>
 					<div class="form-group">
 						<label>Phone</label>
-						<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" data-ccode="<?= $intlTelCcode ?>" />
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" data-intl-type="phone" data-ccode="<?= $intlTelCcode ?>" />
 						<input type="hidden" class="intl-tel-number" name="Address[phone]" />
 						<div class="help-block"></div>
 						<span class="error" cmt-error="Address[phone]"></span>
@@ -276,7 +276,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<?php if( $intlTelInput ) { ?>
 					<div class="form-group">
 						<label>Phone</label>
-						<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" data-ccode="<?= $intlTelCcode ?>" />
+						<input type="text" class="intl-tel-field intl-tel-field-ph" name="phone" placeholder="Phone" autocomplete="off" data-intl-type="phone" data-ccode="<?= $intlTelCcode ?>" />
 						<input type="hidden" class="intl-tel-number" name="Address[phone]" value="{{address.phone}}" />
 						<div class="help-block"></div>
 						<span class="error" cmt-error="Address[phone]"></span>

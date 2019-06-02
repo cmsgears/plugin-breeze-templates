@@ -1,3 +1,7 @@
+<?php
+// Yii Imports
+use yii\helpers\Url;
+?>
 <script id="viewCalendarEventTemplate" type="text/x-handlebars-template">
 	<div class="card card-basic card-event-popup">
 		<div class="card-content-wrap">
@@ -14,7 +18,7 @@
 			</div>
 			<div class="card-content cscroller">
 				<div class="card-content-title">
-					{{name}}
+				<a href="<?= Url::toRoute( [ '/notify/calendar/update' ] ) ?>?id={{id}}"><i class="cmti cmti-edit"></i></a> {{name}}
 				</div>
 				<div class="card-content-summary reader">
 					{{description}}
