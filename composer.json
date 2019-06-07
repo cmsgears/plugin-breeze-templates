@@ -4,7 +4,7 @@
 	"homepage": "http://www.cmsgears.com",
 	"type": "package",
 	"keywords": [ "yii2", "cmsgears", "plugin", "breeze" ],
-	"license": "http://www.cmsgears.com/license",
+	"license": "GPL-3.0-or-later",
 	"support": {
 		"resources": "http://www.cmsgears.com"
 	},
