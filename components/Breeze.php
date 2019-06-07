@@ -11,14 +11,13 @@ namespace cmsgears\templates\breeze\components;
 
 // Yii Imports
 use Yii;
-use yii\base\Component;
 
 /**
  * The breeze component initialize Breeze templates.
  *
  * @since 1.0.0
  */
-class Breeze extends Component {
+class Breeze extends \yii\base\Component {
 
 	public function init() {
 
