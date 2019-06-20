@@ -8,7 +8,8 @@ use cmsgears\core\common\widgets\Editor;
 use cmsgears\icons\widgets\IconChooser;
 
 $coreProperties = $this->context->getCoreProperties();
-$this->title 	= 'Page Settings | ' . $coreProperties->getSiteTitle();
+$title			= $this->context->title;
+$this->title	= "{$title} Settings | " . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
 
 Editor::widget();
@@ -271,7 +272,6 @@ Editor::widget();
 					</div>
 				</div>
 				<div class="filler-height"></div>
-
 				<div class="box box-crud">
 					<div class="box-header">
 						<div class="box-header-title">Elements</div>

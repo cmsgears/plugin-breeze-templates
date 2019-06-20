@@ -7,7 +7,8 @@ use cmsgears\core\common\widgets\ActiveForm;
 use cmsgears\core\common\widgets\Editor;
 
 $coreProperties = $this->context->getCoreProperties();
-$this->title 	= 'Widget Settings | ' . $coreProperties->getSiteTitle();
+$title			= $this->context->title;
+$this->title	= "{$title} Settings | " . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
 
 Editor::widget();

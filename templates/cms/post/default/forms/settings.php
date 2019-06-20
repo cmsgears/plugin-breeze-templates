@@ -8,7 +8,8 @@ use cmsgears\core\common\widgets\Editor;
 use cmsgears\icons\widgets\IconChooser;
 
 $coreProperties = $this->context->getCoreProperties();
-$this->title 	= 'Post Settings | ' . $coreProperties->getSiteTitle();
+$title			= $this->context->title;
+$this->title	= "{$title} Settings | " . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
 
 Editor::widget();
@@ -151,6 +152,9 @@ Editor::widget();
 							</div>
 							<div class="row">
 								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'contentData', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'contentAvatar', null, 'cmti cmti-checkbox' ) ?>
 								</div>
 								<div class="col col4">
@@ -158,9 +162,6 @@ Editor::widget();
 								</div>
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'contentGallery', null, 'cmti cmti-checkbox' ) ?>
-								</div>
-								<div class="col col4">
-									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'contentData', null, 'cmti cmti-checkbox' ) ?>
 								</div>
 							</div>
 							<div class="row">
@@ -440,13 +441,21 @@ Editor::widget();
 									<?= $form->field( $settings, 'rightSidebarSlug' ) ?>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col col5">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'footerSidebar', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col5x4">
+									<?= $form->field( $settings, 'footerSidebarSlug' ) ?>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="filler-height"></div>
 				<div class="box box-crud">
 					<div class="box-header">
-						<div class="box-header-title">Post Data and Widgets</div>
+						<div class="box-header-title">Standard Widgets</div>
 					</div>
 					<div class="box-content-wrap frm-split-40-60">
 						<div class="box-content">
@@ -462,6 +471,24 @@ Editor::widget();
 								</div>
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'similar', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="filler-height"></div>
+				<div class="box box-crud">
+					<div class="box-header">
+						<div class="box-header-title">Comments</div>
+					</div>
+					<div class="box-content-wrap frm-split-40-60">
+						<div class="box-content">
+							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'comments', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'disqus', null, 'cmti cmti-checkbox' ) ?>
 								</div>
 							</div>
 						</div>

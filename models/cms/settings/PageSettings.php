@@ -236,9 +236,7 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'metasWithContent' => 'Attributes With Content',
 			'metasOrder' => 'Attributes Order',
 			'metaType' => 'Attribute Type',
-			'metaWrapClass' => 'Attribute Wrap Class',
-			'commentAllFields' => 'All Fields',
-			'commentLabels' => 'Labels'
+			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}
 

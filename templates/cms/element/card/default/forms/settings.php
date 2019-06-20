@@ -9,7 +9,8 @@ use cmsgears\icons\widgets\IconChooser;
 
 // SF Imports
 $coreProperties = $this->context->getCoreProperties();
-$this->title 	= 'Element Settings | ' . $coreProperties->getSiteTitle();
+$title			= $this->context->title;
+$this->title	= "{$title} Settings | " . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;
 
 Editor::widget();
