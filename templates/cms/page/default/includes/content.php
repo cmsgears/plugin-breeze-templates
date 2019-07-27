@@ -5,7 +5,7 @@ use yii\helpers\HtmlPurifier;
 $content		= isset( $settings->content ) ? $settings->content : false;
 $contentTitle	= isset( $settings->contentTitle ) && $settings->contentTitle ? ( !empty( $model->title ) ? $model->title : $model->name ) : null;
 $contentInfo	= isset( $settings->contentInfo ) && $settings->contentInfo ? $model->description : null;
-$contentSummary	= isset( $settings->contentSummary ) && $settings->contentSummary ? $modelContent->summary : null;
+$contentSummary	= isset( $settings->contentSummary ) && $settings->contentSummary && isset( $modelContent->summary ) ? $modelContent->summary : null;
 
 $contentAvatar	= isset( $settings->contentAvatar ) ? $settings->contentAvatar : false;
 $contentBanner	= isset( $settings->contentBanner ) ? $settings->contentBanner : false;
@@ -14,7 +14,7 @@ $contentGallery	= isset( $settings->contentGallery ) ? $settings->contentGallery
 $contentSocial	= isset( $settings->contentSocial ) ? $settings->contentSocial : false;
 $contentLabels	= isset( $settings->contentLabels ) ? $settings->contentLabels : false;
 
-$contentData		= isset( $settings->contentData ) && $settings->contentData ? $modelContent->content : null;
+$contentData		= isset( $settings->contentData ) && $settings->contentData && isset( $modelContent->content ) ? $modelContent->content : null;
 $contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : null;
 $contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDataClass : 'reader';
 
@@ -23,7 +23,7 @@ $purifyContent	= isset( $settings->purifyContent ) ? $settings->purifyContent : 
 
 $contentBanner	= $contentBanner && !empty( $bannerUrl );
 
-$cbkgLazyClass	= $lazyBanner && $contentBanner ? 'cmt-lazy-img' : null;
+$cbkgLazyClass	= isset( $lazyBanner ) && $lazyBanner && $contentBanner ? 'cmt-lazy-img' : null;
 
 $cbkgSrcset		= isset( $cbkgLazyClass ) ? $bkgSmallUrl . " 1x, " . $bkgMediumUrl . " 1.5x, " . $bannerObj->getFileUrl() . " 2x" : null;
 $cbkgSizes		= isset( $cbkgLazyClass ) ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : null;
