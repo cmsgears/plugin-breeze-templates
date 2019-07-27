@@ -9,6 +9,9 @@ $otp		= isset( $otp ) ? $otp : false;
 $otpUrl		= '/reset-password-otp';
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$elementIncludes	= null;
+$widgetIncludes		= null;
+$blockIncludes		= null;
 $systemIncludes		= isset( $systemIncludes ) ? $systemIncludes : Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';
 $systemContent		= isset( $systemContent ) ? $systemContent : "$systemIncludes/content.php";
 

@@ -19,6 +19,9 @@ $rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : fal
 $footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$elementIncludes	= null;
+$widgetIncludes		= null;
+$blockIncludes		= null;
 $searchIncludes		= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/search';
 
 $buffer			= "$defaultIncludes/buffer.php";

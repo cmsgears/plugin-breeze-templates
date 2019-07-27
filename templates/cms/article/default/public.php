@@ -19,7 +19,10 @@ $leftSidebar	= !empty( $settings->leftSidebar ) ? $settings->leftSidebar : false
 $rightSidebar	= !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
-$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$elementIncludes	= null;
+$widgetIncludes		= null;
+$blockIncludes		= null;
 
 $buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
