@@ -11,6 +11,7 @@ $widgetIncludes		= null;
 $templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/slider/gallery/includes';
 
 $buffer			= "$templateIncludes/buffer.php";
+$attributes		= "$defaultIncludes/attributes.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
 $postObjects	= "$defaultIncludes/objects-post.php";
 ?>

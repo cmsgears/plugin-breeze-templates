@@ -9,6 +9,7 @@ $elementIncludes	= null;
 $widgetIncludes		= null;
 
 $buffer			= "$defaultIncludes/buffer.php";
+$attributes		= "$defaultIncludes/attributes.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
 $postObjects	= "$defaultIncludes/objects-post.php";
 ?>

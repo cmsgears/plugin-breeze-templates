@@ -13,5 +13,3 @@ $rawContent	= !empty( $settings->contentRaw ) ? $settings->contentRaw : null;
 <?php } ?>
 
 <!-- <div class="card-content-buffer"></div> -->
-
-<?php include "$defaultIncludes/attributes.php"; ?>

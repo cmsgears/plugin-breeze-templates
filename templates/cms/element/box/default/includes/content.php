@@ -29,5 +29,6 @@ $purifyContent	= isset( $settings->purifyContent ) ? $settings->purifyContent : 
 			<div class="box-content-data <?= $contentDataClass ?>"><?= $purifyContent ? HtmlPurifier::process( $contentData ) : $contentData ?></div>
 		<?php } ?>
 		<?php include $buffer; ?>
+		<?php include $attributes; ?>
 	</div>
 <?php } ?>

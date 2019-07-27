@@ -30,6 +30,7 @@ $purifyContent	= isset( $settings->purifyContent ) ? $settings->purifyContent : 
 			<div class="block-content-data <?= $contentDataClass ?>"><?= $purifyContent ? HtmlPurifier::process( $contentData ) : $contentData ?></div>
 		<?php } ?>
 		<?php include $buffer; ?>
+		<?php include $attributes; ?>
 		<?php include $postObjects; ?>
 	</div>
 <?php } ?>
