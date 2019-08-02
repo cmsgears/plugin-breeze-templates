@@ -13,7 +13,7 @@ $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/componen
 			<span class="cmt-gallery-item-add btn-icon btn-action"><i class="icon cmti cmti-plus"></i></span>
 		</span>
 	</div>
-	<div class="cmt-gallery-item-form"></div>
+	<div class="cmt-gallery-item-form data-crud-gallery-form"></div>
 	<div class="cmt-gallery-item-collection data-crud-gallery-cards row max-cols-50">
 	<?php
 

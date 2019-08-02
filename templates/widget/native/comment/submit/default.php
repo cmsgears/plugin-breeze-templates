@@ -17,7 +17,7 @@ $controller	= $widget->cmtController;
 $app		= $widget->cmtApp;
 $action		= $widget->cmtAction;
 
-$user = Yii::$app->user->getIdentity();
+$user = Yii::$app->core->getUser();
 ?>
 <?php if( isset( $title ) ) { ?>
 	<div class="h4"><?= $title ?></div><hr/>
@@ -83,6 +83,8 @@ $user = Yii::$app->user->getIdentity();
 			<?php if( $labels ) { ?>
 				<label>Website Link</label>
 			<?php } ?>
+			<input type="hidden" name="Comment[name]" value="<?= $user->name ?>">
+			<input type="hidden" name="Comment[email]" value="<?= $user->email ?>">
 			<input type="text" name="Comment[websiteUrl]" placeholder="Website">
 			<span class="error" cmt-error="Comment[websiteUrl]"></span>
 		</div>

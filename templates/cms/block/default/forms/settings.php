@@ -136,14 +136,22 @@ Editor::widget();
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'maxCover', null, 'cmti cmti-checkbox' ) ?>
 								</div>
-								<div class="col col2">
-									<?= $form->field( $settings, 'contentClass' ) ?>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'contentAvatar', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'contentBanner', null, 'cmti cmti-checkbox' ) ?>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col col2">
+									<?= $form->field( $settings, 'contentClass' ) ?>
+								</div>
+								<div class="col col2">
 									<?= $form->field( $settings, 'contentDataClass' ) ?>
 								</div>
+							</div>
+							<div class="row">
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'purifySummary', null, 'cmti cmti-checkbox' ) ?>
 								</div>

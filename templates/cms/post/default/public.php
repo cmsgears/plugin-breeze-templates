@@ -10,14 +10,6 @@ $modelContent = $model->modelContent;
 $data		= json_decode( $model->data );
 $settings	= isset( $data->settings ) ? $data->settings : [];
 
-// Sidebars -----------------------
-
-$topSidebar		= isset( $settings->topSidebar ) ? $settings->topSidebar : false;
-$bottomSidebar	= isset( $settings->bottomSidebar ) ? $settings->bottomSidebar : false;
-$leftSidebar	= isset( $settings->leftSidebar ) ? $settings->leftSidebar : false;
-$rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : false;
-$footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
-
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 $elementIncludes	= null;
 $widgetIncludes		= null;
@@ -27,6 +19,14 @@ $buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
 $innerObjects	= "$defaultIncludes/objects-inner.php";
 $outerObjects	= "$defaultIncludes/objects-outer.php";
+
+// Sidebars -----------------------
+
+$topSidebar		= isset( $settings->topSidebar ) ? $settings->topSidebar : false;
+$bottomSidebar	= isset( $settings->bottomSidebar ) ? $settings->bottomSidebar : false;
+$leftSidebar	= isset( $settings->leftSidebar ) ? $settings->leftSidebar : false;
+$rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : false;
+$footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 ?>
 <?php include "$defaultIncludes/options.php"; ?>
 <?php include "$defaultIncludes/styles.php"; ?>

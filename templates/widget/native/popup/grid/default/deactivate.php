@@ -10,7 +10,7 @@ $controller	= $data[ 'controller' ];
 $action		= $data[ 'action' ];
 $url		= $data[ 'url' ];
 ?>
-<div id="<?= $popId ?>" class="popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
+<div id="<?= $popId ?>" class="cmt-popup popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
 	<div class="popup-screen"></div>
 	<?php if( $widget->bkg ) { ?>
 		<div class="popup-bkg <?= $widget->bkgClass ?>" <?= isset( $widget->bkgUrl ) ? " style=\"background-image:url($widget->bkgUrl);\"" : null ?>></div>

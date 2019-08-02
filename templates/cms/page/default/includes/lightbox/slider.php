@@ -2,7 +2,7 @@
 $title	= $widget->title;
 $modal	= $widget->modal;
 $data	= $widget->data;
-$popId	= isset( $data[ 'popupId' ] ) ? $data[ 'popupId' ] : 'lightbox-slider-block';
+$popId	= isset( $data[ 'popupId' ] ) ? $data[ 'popupId' ] : 'lightbox-slider-page';
 ?>
 <div id="<?= $popId ?>" class="cmt-popup popup popup-basic popup-lightbox-slider lightbox-slider-wrap <?= $modal ? 'popup-modal' : null ?>">
 	<div class="popup-screen"></div>

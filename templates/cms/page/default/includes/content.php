@@ -22,12 +22,15 @@ $purifySummary	= isset( $settings->purifySummary ) ? $settings->purifySummary : 
 $purifyContent	= isset( $settings->purifyContent ) ? $settings->purifyContent : true;
 
 $contentBanner	= $contentBanner && !empty( $bannerUrl );
+$contentGallery	= $contentGallery && !empty( $slides );
 
 $cbkgLazyClass	= isset( $lazyBanner ) && $lazyBanner && $contentBanner ? 'cmt-lazy-img' : null;
 
 $cbkgSrcset		= isset( $cbkgLazyClass ) ? $bkgSmallUrl . " 1x, " . $bkgMediumUrl . " 1.5x, " . $bannerObj->getFileUrl() . " 2x" : null;
 $cbkgSizes		= isset( $cbkgLazyClass ) ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : null;
 $cbkgLazyAttrs	= isset( $cbkgLazyClass ) ? "data-src=\"$bkgSmallUrl\" data-srcset=\"$cbkgSrcset\" data-sizes=\"$cbkgSizes\"" : null;
+
+$sliderIncludes	= isset( $sliderIncludes ) ? $sliderIncludes : $defaultIncludes;
 ?>
 <?php if( $content ) { ?>
 	<div class="page-content <?= $contentClass ?>">
@@ -51,6 +54,9 @@ $cbkgLazyAttrs	= isset( $cbkgLazyClass ) ? "data-src=\"$bkgSmallUrl\" data-srcse
 		<?php include $preObjects; ?>
 		<?php if( !empty( $contentData ) ) { ?>
 			<div class="page-content-data <?= $contentDataClass ?>"><?= $purifyContent ? HtmlPurifier::process( $contentData ) : $contentData ?></div>
+		<?php } ?>
+		<?php if( $contentGallery ) { ?>
+			<?php include "$sliderIncludes/slider.php"; ?>
 		<?php } ?>
 		<?php if( $contentLabels ) { ?>
 			<?php include "$defaultIncludes/labels.php"; ?>

@@ -24,7 +24,7 @@ Editor::widget();
 	<div class="data-crud-content">
 		<div class="cmt-meta-collection attribute-cards row max-cols-50">
 		<?php foreach( $attributes as $attribute ) { ?>
-			<div class="cmt-meta card card-basic card-attribute col col3 padding padding-small" data-id="<?= $attribute->id ?>">
+			<div class="cmt-meta card card-basic card-attribute col col3 padding padding-small margin margin-bottom-small" data-id="<?= $attribute->id ?>">
 				<div class="card-content-wrap">
 					<div class="cmt-meta-header card-header">
 						<div class="card-header-title row">
