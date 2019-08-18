@@ -2,6 +2,9 @@
 // Yii Imports
 use yii\helpers\HtmlPurifier;
 
+// CMG Imports
+use cmsgears\core\common\config\CoreGlobal;
+
 $metas		= isset( $settings->metas ) ? $settings->metas : $widget->metas;
 $metaType	= !empty( $settings->metaType ) ? $settings->metaType : null;
 
@@ -10,7 +13,7 @@ $metaWrapClass = !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass :
 <?php if( $metas ) { ?>
 	<div class="card-content-meta <?= $metaWrapClass ?>">
 		<?php
-			$metaType = preg_split( '/,/', $metaType );
+			$metaType = isset( $metaType ) ? preg_split( '/,/', $metaType ) : [];
 
 			// Single Type
 			if( count( $metaType ) == 1 ) {
@@ -25,7 +28,7 @@ $metaWrapClass = !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass :
 			// Default Types
 			else {
 
-				$metas = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
+				$metas = $model->getActiveMetasByType( CoreGlobal::TYPE_USER );
 			}
 
 			foreach( $metas as $meta ) {

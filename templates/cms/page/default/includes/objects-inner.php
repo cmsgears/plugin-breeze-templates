@@ -1,11 +1,12 @@
 <?php
+
 foreach( $objectsOrder as $key => $value ) {
 
 	switch( $key ) {
 
-		case 'attributes': {
+		case 'metas': {
 
-			if( $attributes && $attributesWithContent ) {
+			if( $metas && $metasWithContent ) {
 
 				include "$defaultIncludes/attributes.php";
 			}

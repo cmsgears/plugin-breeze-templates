@@ -34,6 +34,6 @@ $sidebarsBeforeContent	= isset( $settings->sidebarsBeforeContent ) ? $settings->
 $sidebarsWithContent	= isset( $settings->sidebarsWithContent ) ? $settings->sidebarsWithContent : false;
 $sidebarsOrder			= !empty( $settings->sidebarsOrder ) ? $settings->sidebarsOrder : 0;
 
-$objectsOrder = [ 'metas' => $metasOrder, 'elements' => $elementsOrder, 'widgets' => $widgetsOrder, 'blocks' => $blocksOrder, 'sidebars' => $sidebarsOrder ];
+$objectsOrder = [ 'elements' => $elementsOrder, 'widgets' => $widgetsOrder, 'blocks' => $blocksOrder, 'sidebars' => $sidebarsOrder, 'metas' => $metasOrder ];
 
 asort( $objectsOrder );

@@ -5,7 +5,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 		case 'attributes': {
 
-			if( $attributes && !$attributesWithContent ) {
+			if( $metas && !$metasWithContent ) {
 
 				include "$defaultIncludes/attributes.php";
 			}

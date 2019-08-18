@@ -136,6 +136,9 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'bkgVideo' => 'Background Video',
 			'lazyBanner' => 'Lazy Load',
 			'resBanner' => 'Responsive',
+			'headerInfo' => 'Header Description',
+			'headerContent' => 'Header Summary',
+			'contentInfo' => 'Content Description',
 			'metas' => 'Attributes',
 			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'

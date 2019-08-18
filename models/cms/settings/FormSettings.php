@@ -218,7 +218,10 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'resAvatar' => 'Responsive Avatar',
 			'lazyBanner' => 'Lazy Load',
 			'resBanner' => 'Responsive',
-			'headerFluid' => 'Fluid Header'
+			'headerInfo' => 'Header Description',
+			'headerContent' => 'Header Summary',
+			'headerFluid' => 'Fluid Header',
+			'contentInfo' => 'Content Description'
 		];
 	}
 
