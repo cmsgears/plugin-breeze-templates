@@ -28,10 +28,12 @@ $bkg		= isset( $settings->background ) ? $settings->background : false;
 $bkgClass	= !empty( $settings->backgroundClass ) ? $settings->backgroundClass : null;
 
 $bannerObj	= $modelContent->banner;
+$mbannerObj	= $modelContent->mobileBanner;
 $banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : SiteProperties::getInstance()->getPageBanner() ) : null;
 $bannerUrl	= $lazyBanner ? CodeGenUtil::getSmallUrl( $modelContent->banner, [ 'image' => $banner ] ) : CodeGenUtil::getFileUrl( $modelContent->banner, [ 'image' => $banner ] );
+$mbannerUrl	= isset( $mbannerObj ) ? CodeGenUtil::getFileUrl( $mbannerObj ) : null;
 
-$bkgSmallUrl	= isset( $bannerObj ) ? $bannerObj->getSmallUrl() : null;
+$bkgSmallUrl	= isset( $mbannerUrl ) ? $mbannerUrl : ( isset( $bannerObj ) ? $bannerObj->getSmallUrl() : null );
 $bkgMediumUrl	= isset( $bannerObj ) ? $bannerObj->getMediumUrl() : null;
 
 $lazyBanner	= isset( $bannerObj ) & $lazyBanner ? true : false;
@@ -40,7 +42,20 @@ $bkgUrl		= $bannerUrl;
 $bkgLazyClass	= $lazyBanner ? ( $fluidBanner ? 'cmt-lazy-img' : 'cmt-lazy-bkg' ) : ( $fluidBanner ? 'cmt-res-img' : ( $resBanner ? 'cmt-res-bkg' : null ) );
 $bkgUrl			= $lazyBanner ? $bannerObj->getSmallPlaceholderUrl() : $bkgUrl;
 
-$bkgSrcset		= isset( $bannerObj ) ? ( $fluidBanner ? $bannerObj->generateSrcset() : $bannerObj->generateSrcset( true ) ) : null;
+$bkgSrcset = isset( $bannerObj ) ? ( $fluidBanner ? $bannerObj->generateSrcset() : $bannerObj->generateSrcset( true ) ) : null;
+
+if( $fluidBanner && isset( $mbannerUrl ) ) {
+
+	$bkgSrcset	= preg_split( '/,/', $bkgSrcset );
+
+	if( count( $bkgSrcset ) > 2 ) {
+
+		$bkgSrcset[ 2 ] = "$mbannerUrl 640w"; // Show mobile banner on devices having width lesser than 640
+
+		$bkgSrcset = join( ',', $bkgSrcset );
+	}
+}
+
 $bkgSizes		= isset( $bannerObj ) ? ( $fluidBanner ? $bannerObj->sizes : $bannerObj->srcset ) : null;
 $bkgLazyAttrs	= isset( $bannerObj ) ? ( $fluidBanner ? ( $lazyBanner ? "data-src=\"$bkgSmallUrl\" data-srcset=\"$bkgSrcset\" data-sizes=\"$bkgSizes\"" : "srcset=\"$bkgSrcset\" sizes=\"$bkgSizes\"" ) : "data-srcset=\"$bkgSrcset\" data-sizes=\"$bkgSizes\"" ) : null;
 

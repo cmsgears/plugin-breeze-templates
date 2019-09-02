@@ -39,21 +39,30 @@ $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row
 				}
 				else {
 
-					$widgetView		= !empty( $widgetTemplate->view ) ? $widgetTemplate->view : 'default';
+					$widgetView = !empty( $widgetTemplate->view ) ? $widgetTemplate->view : ( !empty( $widgetTemplate->viewPath ) ? 'default' : null );
+
 					$widgetConfig	= !empty( $widgetTemplate->configPath ) ? $widgetTemplate->configPath : null;
 					$widgetConfig	= isset( $widgetConfig ) ? new $widgetConfig( $widget->getDataMeta( 'config' ) ) : null;
 					$widgetConfig	= isset( $widgetConfig ) ? $widgetConfig->generateConfig() : [];
 
-					$widgetConfig = ArrayHelper::merge( $widgetConfig, [
-						'widgetObj' => $widget,
-						'templateDir' => $widgetTemplate->viewPath,
-						'template' => $widgetView
-					]);
+					$dbConfig = [ 'widgetObj' => $widget ];
+
+					if( !empty( $widgetTemplate->viewPath ) ) {
+
+						$dbConfig[ 'templateDir' ] = $widgetTemplate->viewPath;
+					}
+
+					if( !empty( $widgetView ) ) {
+
+						$dbConfig[ 'template' ] = $widgetView;
+					}
+
+					$widgetConfig = ArrayHelper::merge( $widgetConfig, $dbConfig );
 
 					// Configure Widget options
 					$htmlOptions	= isset( $widgetTemplate ) && !empty( $widgetTemplate->htmlOptions ) ? json_decode( $widgetTemplate->htmlOptions, true ) : [];
 					$modelOptions	= !empty( $widget->htmlOptions ) ? json_decode( $widget->htmlOptions, true ) : [];
-					$configOptions	= $widgetConfig[ 'options' ];
+					$configOptions	= isset( $widgetConfig[ 'options' ] ) ? $widgetConfig[ 'options' ] : [];
 
 					$options = !empty( $htmlOptions ) ? ArrayHelper::merge( $htmlOptions, $modelOptions ) : $modelOptions;
 					$options = !empty( $configOptions ) ? ArrayHelper::merge( $options, $configOptions ) : $options;
