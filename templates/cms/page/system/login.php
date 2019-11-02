@@ -4,6 +4,7 @@ use cmsgears\cms\common\utilities\ContentUtil;
 
 // Form Config
 $socialLogin	= isset( $socialLogin ) ? $socialLogin : false;
+$socialIcons	= isset( $socialIcons ) ? $socialIcons : true;
 $frmSplit		= isset( $frmSplit ) ? $frmSplit : true;
 $frmClass		= isset( $frmClass ) ? $frmClass : 'page-form rounded rounded-medium';
 
