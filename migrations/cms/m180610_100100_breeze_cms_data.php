@@ -155,11 +155,15 @@ class m180610_100100_breeze_cms_data extends Migration {
 
 		$formTemplate		= Template::findGlobalBySlugType( 'default', CoreGlobal::TYPE_FORM );
 		$contactTemplate	= Template::findGlobalBySlugType( 'contact', CoreGlobal::TYPE_FORM );
+		$feedbackTemplate	= Template::findGlobalBySlugType( 'feedback', CoreGlobal::TYPE_FORM );
+		$testiTemplate		= Template::findGlobalBySlugType( 'testimonial', CoreGlobal::TYPE_FORM );
 
 		$columns = [ 'siteId', 'templateId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'title', 'description', 'success', 'captcha', 'visibility', 'status', 'userMail', 'adminMail', 'createdAt', 'modifiedAt', 'content', 'data' ];
 
 		$models = [
-			[ $site->id, $contactTemplate->id, $master->id, $master->id, 'Contact Us', 'contact-us', CoreGlobal::TYPE_FORM, null, null, 'contact form', 'Thanks for contacting us.', true, $vis, $status, false, true, DateUtil::getDateTime(), DateUtil::getDateTime(), null, '{"settings":{"defaultAvatar":"0","defaultBanner":"0","fixedBanner":"0","scrollBanner":"0","parallaxBanner":"0","background":"0","backgroundClass":"","texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerInfo":"0","headerContent":"0","headerIconUrl":"","headerBanner":"0","headerGallery":"0","headerElements":"0","headerElementType":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"0","maxCover":"0","contentAvatar":"0","contentBanner":"0","contentGallery":"0","contentClass":"","contentDataClass":"","styles":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","footerElements":"0","footerElementType":"","elements":"0","elementsWithContent":"0","elementsOrder":null,"elementType":"","boxWrapClass":"","boxWrapper":"","boxClass":"","widgets":"0","widgetsWithContent":"0","widgetsOrder":null,"widgetType":"","blocks":"0","blocksWithContent":"0","blocksOrder":null,"blockType":"","sidebars":"0","sidebarType":"","topSidebar":"0","topSidebarSlugs":"","bottomSidebar":"0","bottomSidebarSlugs":"","leftSidebar":"0","leftSidebarSlug":"","rightSidebar":"0","rightSidebarSlug":""}}' ]
+			[ $site->id, $contactTemplate->id, $master->id, $master->id, 'Contact Us', 'contact-us', CoreGlobal::TYPE_FORM, null, null, 'contact form', 'Thanks for contacting us.', true, $vis, $status, false, true, DateUtil::getDateTime(), DateUtil::getDateTime(), null, '{"settings":{"defaultAvatar":"0","defaultBanner":"0","fixedBanner":"0","scrollBanner":"0","parallaxBanner":"0","background":"0","backgroundClass":"","texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerInfo":"0","headerContent":"0","headerIconUrl":"","headerBanner":"0","headerGallery":"0","headerElements":"0","headerElementType":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"0","maxCover":"0","contentAvatar":"0","contentBanner":"0","contentGallery":"0","contentClass":"","contentDataClass":"","styles":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","footerElements":"0","footerElementType":"","elements":"0","elementsWithContent":"0","elementsOrder":null,"elementType":"","boxWrapClass":"","boxWrapper":"","boxClass":"","widgets":"0","widgetsWithContent":"0","widgetsOrder":null,"widgetType":"","blocks":"0","blocksWithContent":"0","blocksOrder":null,"blockType":"","sidebars":"0","sidebarType":"","topSidebar":"0","topSidebarSlugs":"","bottomSidebar":"0","bottomSidebarSlugs":"","leftSidebar":"0","leftSidebarSlug":"","rightSidebar":"0","rightSidebarSlug":""}}' ],
+			[ $site->id, $feedbackTemplate->id, $master->id, $master->id, 'Feedback', 'feedback', CoreGlobal::TYPE_FORM, null, null, 'contact form', 'Thanks for submitting your valuable feedback.', true, $vis, $status, false, true, DateUtil::getDateTime(), DateUtil::getDateTime(), null, '{"settings":{"defaultAvatar":"0","defaultBanner":"0","fixedBanner":"0","scrollBanner":"0","parallaxBanner":"0","background":"0","backgroundClass":"","texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerInfo":"0","headerContent":"0","headerIconUrl":"","headerBanner":"0","headerGallery":"0","headerElements":"0","headerElementType":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"0","maxCover":"0","contentAvatar":"0","contentBanner":"0","contentGallery":"0","contentClass":"","contentDataClass":"","styles":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","footerElements":"0","footerElementType":"","elements":"0","elementsWithContent":"0","elementsOrder":null,"elementType":"","boxWrapClass":"","boxWrapper":"","boxClass":"","widgets":"0","widgetsWithContent":"0","widgetsOrder":null,"widgetType":"","blocks":"0","blocksWithContent":"0","blocksOrder":null,"blockType":"","sidebars":"0","sidebarType":"","topSidebar":"0","topSidebarSlugs":"","bottomSidebar":"0","bottomSidebarSlugs":"","leftSidebar":"0","leftSidebarSlug":"","rightSidebar":"0","rightSidebarSlug":""}}' ],
+			[ $site->id, $testiTemplate->id, $master->id, $master->id, 'Testimonial', 'testimonial', CoreGlobal::TYPE_FORM, null, null, 'contact form', 'Thanks for submitting the testimonial.', true, $vis, $status, false, true, DateUtil::getDateTime(), DateUtil::getDateTime(), null, '{"settings":{"defaultAvatar":"0","defaultBanner":"0","fixedBanner":"0","scrollBanner":"0","parallaxBanner":"0","background":"0","backgroundClass":"","texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerInfo":"0","headerContent":"0","headerIconUrl":"","headerBanner":"0","headerGallery":"0","headerElements":"0","headerElementType":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"0","maxCover":"0","contentAvatar":"0","contentBanner":"0","contentGallery":"0","contentClass":"","contentDataClass":"","styles":"","footer":"0","footerIcon":"0","footerIconClass":null,"footerIconUrl":"","footerTitle":"0","footerTitleData":"","footerInfo":"0","footerInfoData":"","footerContent":"0","footerContentData":"","footerElements":"0","footerElementType":"","elements":"0","elementsWithContent":"0","elementsOrder":null,"elementType":"","boxWrapClass":"","boxWrapper":"","boxClass":"","widgets":"0","widgetsWithContent":"0","widgetsOrder":null,"widgetType":"","blocks":"0","blocksWithContent":"0","blocksOrder":null,"blockType":"","sidebars":"0","sidebarType":"","topSidebar":"0","topSidebarSlugs":"","bottomSidebar":"0","bottomSidebarSlugs":"","leftSidebar":"0","leftSidebarSlug":"","rightSidebar":"0","rightSidebarSlug":""}}' ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_form', $columns, $models );
@@ -169,8 +173,10 @@ class m180610_100100_breeze_cms_data extends Migration {
 
 		$columns = [ 'templateId', 'parentId', 'parentType', 'seoName', 'seoDescription', 'seoKeywords', 'seoRobot', 'summary', 'content', 'publishedAt' ];
 
-		$pages	= [
-			[ $contactTemplate->id, Form::findBySlugType( 'contact-us', CoreGlobal::TYPE_FORM )->id, CoreGlobal::TYPE_FORM, null, null, null, null, $summary, $content, DateUtil::getDateTime() ]
+		$pages = [
+			[ $contactTemplate->id, Form::findBySlugType( 'contact-us', CoreGlobal::TYPE_FORM )->id, CoreGlobal::TYPE_FORM, null, null, null, null, $summary, $content, DateUtil::getDateTime() ],
+			[ $feedbackTemplate->id, Form::findBySlugType( 'feedback', CoreGlobal::TYPE_FORM )->id, CoreGlobal::TYPE_FORM, null, null, null, null, $summary, $content, DateUtil::getDateTime() ],
+			[ $testiTemplate->id, Form::findBySlugType( 'testimonial', CoreGlobal::TYPE_FORM )->id, CoreGlobal::TYPE_FORM, null, null, null, null, $summary, $content, DateUtil::getDateTime() ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'cms_model_content', $columns, $pages );
@@ -181,15 +187,25 @@ class m180610_100100_breeze_cms_data extends Migration {
 	 */
 	private function insertFormFields() {
 
-		$form = Form::findBySlugType( 'contact-us', CoreGlobal::TYPE_FORM );
+		$cform = Form::findBySlugType( 'contact-us', CoreGlobal::TYPE_FORM );
+		$fform = Form::findBySlugType( 'feedback', CoreGlobal::TYPE_FORM );
+		$tform = Form::findBySlugType( 'testimonial', CoreGlobal::TYPE_FORM );
 
-		$columns = [ 'formId', 'name', 'label', 'type', 'compress', 'validators', 'order', 'icon', 'htmlOptions' ];
+		$columns = [ 'formId', 'name', 'label', 'type', 'compress', 'validators', 'order', 'active', 'icon', 'htmlOptions' ];
 
 		$fields	= [
-			[ $form->id, 'name', 'Name', FormField::TYPE_TEXT, false, 'required', 0, NULL, '{"field":{placeholder":"Name"}}' ],
-			[ $form->id, 'email', 'Email', FormField::TYPE_TEXT, false, 'required', 0, NULL, '{"field":{"placeholder":"Email"}}' ],
-			[ $form->id, 'subject', 'Subject', FormField::TYPE_TEXT, false, 'required', 0, NULL, '{"field":{"placeholder":"Subject"}}' ],
-			[ $form->id, 'message', 'Message', FormField::TYPE_TEXTAREA, false, 'required', 0, NULL, '{"field":{"placeholder":"Message"}}' ]
+			[ $cform->id, 'name', 'Name', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{placeholder":"Name"}}' ],
+			[ $cform->id, 'email', 'Email', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Email"}}' ],
+			[ $cform->id, 'subject', 'Subject', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Subject"}}' ],
+			[ $cform->id, 'message', 'Message', FormField::TYPE_TEXTAREA, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Message"}}' ],
+			[ $fform->id, 'name', 'Name', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{placeholder":"Name"}}' ],
+			[ $fform->id, 'email', 'Email', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Email"}}' ],
+			[ $fform->id, 'subject', 'Subject', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Subject"}}' ],
+			[ $fform->id, 'message', 'Message', FormField::TYPE_TEXTAREA, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Message"}}' ],
+			[ $tform->id, 'name', 'Name', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{placeholder":"Name"}}' ],
+			[ $tform->id, 'email', 'Email', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Email"}}' ],
+			[ $tform->id, 'subject', 'Subject', FormField::TYPE_TEXT, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Subject"}}' ],
+			[ $tform->id, 'message', 'Message', FormField::TYPE_TEXTAREA, false, 'required', 0, true, NULL, '{"field":{"placeholder":"Message"}}' ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_form_field', $columns, $fields );
