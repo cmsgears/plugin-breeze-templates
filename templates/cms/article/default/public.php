@@ -1,15 +1,34 @@
 <?php
-$siteProperties		= $this->context->getSiteProperties();
-$commentProperties	= $this->context->getCommentProperties();
-$cmsProperties		= $this->context->getCmsProperties();
+// Services & Models --------------
 
 $modelContent = $model->modelContent;
 
 // Config -------------------------
 
-$data			= json_decode( $model->data );
-$settings		= isset( $data->settings ) ? $data->settings : [];
-$templateClass	= isset( $modelContent->template ) ? "page-default page-{$modelContent->template->slug}" : 'page-default';
+$siteProperties		= $this->context->getSiteProperties();
+$commentProperties	= $this->context->getCommentProperties();
+$cmsProperties		= $this->context->getCmsProperties();
+
+$data		= json_decode( $model->data );
+$settings	= isset( $data->settings ) ? $data->settings : [];
+
+$author = $model->creator;
+
+// Includes -----------------------
+
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/article/default/includes';
+$sliderIncludes		= null;
+$elementIncludes	= null;
+$widgetIncludes		= null;
+$blockIncludes		= null;
+
+// Partials -----------------------
+
+$buffer			= "$defaultIncludes/buffer.php";
+$preObjects		= "$defaultIncludes/objects-pre.php";
+$innerObjects	= "$defaultIncludes/objects-inner.php";
+$outerObjects	= "$defaultIncludes/objects-outer.php";
 
 // Sidebars -----------------------
 
@@ -18,16 +37,6 @@ $bottomSidebar	= !empty( $settings->bottomSidebar ) ? $settings->bottomSidebar :
 $leftSidebar	= !empty( $settings->leftSidebar ) ? $settings->leftSidebar : false;
 $rightSidebar	= !empty( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= !empty( $settings->footerSidebar ) ? $settings->footerSidebar : false;
-
-$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
-$elementIncludes	= null;
-$widgetIncludes		= null;
-$blockIncludes		= null;
-
-$buffer			= "$defaultIncludes/buffer.php";
-$preObjects		= "$defaultIncludes/objects-pre.php";
-$innerObjects	= "$defaultIncludes/objects-inner.php";
-$outerObjects	= "$defaultIncludes/objects-outer.php";
 ?>
 <?php include "$defaultIncludes/options.php"; ?>
 <?php include "$defaultIncludes/styles.php"; ?>
@@ -49,7 +58,7 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 				<div class="colf colf-sidebar-filler <?= $leftSidebar && $rightSidebar ? 'colf12x6' : 'colf12x9' ?>">
 					<div class="row">
 						<div class="colf colf12x4 align align-center">
-							<?php include dirname( __FILE__ ) . '/includes/author.php'; ?>
+							<?php include "$templateIncludes/includes/author.php"; ?>
 						</div>
 						<div class="colf colf12x8">
 							<?php include "$defaultIncludes/content.php"; ?>
@@ -67,7 +76,7 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 			<div class="page-content-row row">
 				<div class="row">
 					<div class="colf colf12x4 align align-center">
-						<?php include dirname( __FILE__ ) . '/includes/author.php'; ?>
+						<?php include "$templateIncludes/includes/author.php"; ?>
 					</div>
 					<div class="colf colf12x8">
 						<?php include "$defaultIncludes/content.php"; ?>

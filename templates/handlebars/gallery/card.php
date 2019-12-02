@@ -135,7 +135,7 @@
 
 <script id="itemViewTemplate" type="text/x-handlebars-template">
 
-	<div class="cmt-gallery-item card card-basic card-gallery-item col col6 padding padding-small" data-id="{{id}}">
+	<div class="cmt-gallery-item card card-basic card-gallery-item col col6 padding padding-small" data-id="{{mid}}">
 		<div class="card-content-wrap">
 			<div class="cmt-gallery-item-header card-header">
 				<div class="card-header-title row">

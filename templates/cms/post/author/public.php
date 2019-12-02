@@ -1,14 +1,30 @@
 <?php
-$siteProperties		= $this->context->getSiteProperties();
-$commentProperties	= $this->context->getCommentProperties();
-$cmsProperties		= $this->context->getCmsProperties();
+// Services & Models --------------
 
 $modelContent = $model->modelContent;
 
 // Config -------------------------
 
+$siteProperties		= $this->context->getSiteProperties();
+$commentProperties	= $this->context->getCommentProperties();
+$cmsProperties		= $this->context->getCmsProperties();
+
 $data		= json_decode( $model->data );
 $settings	= isset( $data->settings ) ? $data->settings : [];
+
+// Includes -----------------------
+
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$elementIncludes	= null;
+$widgetIncludes		= null;
+$blockIncludes		= null;
+
+// Partials -----------------------
+
+$buffer			= "$defaultIncludes/buffer.php";
+$preObjects		= "$defaultIncludes/objects-pre.php";
+$innerObjects	= "$defaultIncludes/objects-inner.php";
+$outerObjects	= "$defaultIncludes/objects-outer.php";
 
 // Sidebars -----------------------
 
@@ -17,16 +33,6 @@ $bottomSidebar	= isset( $settings->bottomSidebar ) ? $settings->bottomSidebar : 
 $leftSidebar	= isset( $settings->leftSidebar ) ? $settings->leftSidebar : false;
 $rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
-
-$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
-$elementIncludes	= null;
-$widgetIncludes		= null;
-$blockIncludes		= null;
-
-$buffer			= "$defaultIncludes/buffer.php";
-$preObjects		= "$defaultIncludes/objects-pre.php";
-$innerObjects	= "$defaultIncludes/objects-inner.php";
-$outerObjects	= "$defaultIncludes/objects-outer.php";
 ?>
 <?php include "$defaultIncludes/options.php"; ?>
 <?php include "$defaultIncludes/styles.php"; ?>

@@ -1,19 +1,26 @@
 <?php
-$siteProperties		= $this->context->getSiteProperties();
-$commentProperties	= $this->context->getCommentProperties();
-$cmsProperties		= $this->context->getCmsProperties();
+// Services & Models --------------
 
 $modelContent = $model->modelContent;
 
 // Config -------------------------
 
+$siteProperties		= $this->context->getSiteProperties();
+$commentProperties	= $this->context->getCommentProperties();
+$cmsProperties		= $this->context->getCmsProperties();
+
 $data		= json_decode( $model->data );
 $settings	= isset( $data->settings ) ? $data->settings : [];
 
+// Includes -----------------------
+
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$sliderIncludes		= null;
 $elementIncludes	= null;
 $widgetIncludes		= null;
 $blockIncludes		= null;
+
+// Partials -----------------------
 
 $buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";

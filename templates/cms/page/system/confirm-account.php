@@ -2,11 +2,21 @@
 // CMG Imports
 use cmsgears\cms\common\utilities\ContentUtil;
 
-$formView	= dirname( __FILE__ ) . '/includes/forms/confirm-account.php';
-$model		= isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
+// Services & Models --------------
+
+$model = isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
+
+$modelContent = $model->modelContent;
+
+// Config -------------------------
 
 $siteProperties = $this->context->getSiteProperties();
-$modelContent	= $model->modelContent;
+
+$data		= json_decode(  $model->data );
+$settings	= isset( $data->settings ) ? $data->settings : [];
+$pageBanner	= $siteProperties->getPageBanner();
+
+// Includes -----------------------
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 $elementIncludes	= null;
@@ -15,9 +25,9 @@ $blockIncludes		= null;
 $systemIncludes		= isset( $systemIncludes ) ? $systemIncludes : Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';
 $systemContent		= isset( $systemContent ) ? $systemContent : "$systemIncludes/content.php";
 
-$data		= json_decode(  $model->data );
-$settings	= isset( $data->settings ) ? $data->settings : [];
-$pageBanner	= $siteProperties->getPageBanner();
+$formView = "$systemIncludes/forms/confirm-account.php";
+
+// Partials -----------------------
 
 $buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";

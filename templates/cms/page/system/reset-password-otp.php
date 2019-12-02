@@ -2,10 +2,26 @@
 // CMG Imports
 use cmsgears\cms\common\utilities\ContentUtil;
 
-// Form Config
+// Services & Models --------------
+
+$formModel	= $model;
+$model		= isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
+
+$modelContent = $model->modelContent;
+
+// Config -------------------------
+
 $frmSplit	= isset( $frmSplit ) ? $frmSplit : true;
 $frmClass	= isset( $frmClass ) ? $frmClass : 'page-form rounded rounded-medium';
 $forgotUrl	= '/forgot-password';
+
+$siteProperties = $this->context->getSiteProperties();
+
+$data		= json_decode(  $model->data );
+$settings	= isset( $data->settings ) ? $data->settings : [];
+$pageBanner	= $siteProperties->getPageBanner();
+
+// Includes -----------------------
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 $elementIncludes	= null;
@@ -14,16 +30,9 @@ $blockIncludes		= null;
 $systemIncludes		= isset( $systemIncludes ) ? $systemIncludes : Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';
 $systemContent		= isset( $systemContent ) ? $systemContent : "$systemIncludes/content.php";
 
-$formModel	= $model;
-$formView	= "$systemIncludes/forms/reset-password-otp.php";
-$model		= isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
+$formView = "$systemIncludes/forms/reset-password-otp.php";
 
-$siteProperties = $this->context->getSiteProperties();
-$modelContent	= $model->modelContent;
-
-$data		= json_decode(  $model->data );
-$settings	= isset( $data->settings ) ? $data->settings : [];
-$pageBanner	= $siteProperties->getPageBanner();
+// Partials -----------------------
 
 $buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
