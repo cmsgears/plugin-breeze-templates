@@ -6,10 +6,12 @@ use cmsgears\widgets\social\share\SocialShare;
 
 FbSdkAsset::register( $this );
 
-$publishedAt = date( 'F d, Y', strtotime( $modelContent->publishedAt ) );
+$publishedAt = isset( $modelContent->publishedAt ) ? date( 'F d, Y', strtotime( $modelContent->publishedAt ) ) : null;
 ?>
 <div class="page-content-social margin margin-medium-v">
 	<i class="cmti cmti-calendar"></i>
-	<span class="inline-block margin margin-small-h"><?= $publishedAt ?></span>
+	<?php if( isset( $publishedAt ) ) { ?>
+		<span class="inline-block margin margin-small-h"><?= $publishedAt ?></span>
+	<?php } ?>
 	<?= SocialShare::widget( [ 'url' => Yii::$app->request->absoluteUrl ] ) ?>
 </div>
