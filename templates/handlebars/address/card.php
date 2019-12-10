@@ -21,7 +21,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			<div class="col col2">
 				<div class="form-group">
 					<label>Title</label>
-					<input type="text" name="Address[title]" placeholder="Title" />
+					<input type="text" name="Address[title]" placeholder="Home, Office, etc" />
 					<span class="error" cmt-error="Address[title]"></span>
 				</div>
 			</div>
@@ -181,7 +181,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			<div class="col col2">
 				<div class="form-group">
 					<label>Title</label>
-					<input type="text" name="Address[title]" placeholder="Title" value="{{address.title}}" />
+					<input type="text" name="Address[title]" placeholder="Home, Office, etc" value="{{address.title}}" />
 					<span class="error" cmt-error="Address[title]"></span>
 				</div>
 			</div>
