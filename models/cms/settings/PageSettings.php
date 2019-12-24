@@ -173,6 +173,14 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifySummary = true;
 	public $purifyContent = true;
 
+	// AMP
+	public $amp;
+	public $ampGoogleScripts;
+	public $ampScriptUrl;
+	public $ampStylePath;
+	public $ampSchema;
+	public $ampMetas;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -208,7 +216,7 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
-			[ [ 'comments', 'disqus' ], 'boolean' ],
+			[ [ 'comments', 'disqus', 'amp' ], 'boolean' ],
 			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
 			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
@@ -217,7 +225,9 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'metasOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
-			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
+			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ],
+			[ [ 'ampGoogleScripts', 'ampSchema', 'ampMetas' ] , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
+			[ [ 'ampScriptUrl', 'ampStylePath' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ]
 		];
 	}
 
@@ -239,7 +249,13 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'metasWithContent' => 'Attributes With Content',
 			'metasOrder' => 'Attributes Order',
 			'metaType' => 'Attribute Type',
-			'metaWrapClass' => 'Attribute Wrap Class'
+			'metaWrapClass' => 'Attribute Wrap Class',
+			'amp' => 'AMP Page',
+			'ampGoogleScripts' => 'Google Script Tags',
+			'ampScriptUrl' => 'Script URL',
+			'ampStylePath' => 'Style Path',
+			'ampSchema' => 'Schema Tags',
+			'ampMetas' => 'Meta Tags'
 		];
 	}
 
