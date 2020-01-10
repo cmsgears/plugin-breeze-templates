@@ -47,26 +47,10 @@ class m180620_100000_breeze_forum extends \cmsgears\core\common\base\Migration {
 
     public function up() {
 
-		$this->insertPageTemplates();
-
 		$this->insertTopicTemplates();
 
 		$this->insertWidgetTemplates();
     }
-
-	private function insertPageTemplates() {
-
-		$master	= $this->master;
-
-		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
-
-		$templates = [
-			// Default Templates - Forum Page
-			[ $master->id, $master->id, 'Forum', ForumGlobal::TEMPLATE_FORUM, CmsGlobal::TYPE_PAGE, null, true, 'Forum Page shows topics with filters.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\cms\settings\PageSettings', '@breeze/templates/cms/page/default/forms', 'default', true, 'page/default', false, '@breeze/templates/forum/page/default', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page page-basic page-forum" }', null, null ]
-		];
-
-		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
-	}
 
 	/**
 	 * Topic templates will be available for all the sites and themes.

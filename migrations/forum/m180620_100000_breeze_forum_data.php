@@ -80,12 +80,12 @@ class m180620_100000_breeze_forum_data extends \cmsgears\core\common\base\Migrat
 	private function configurePageTemplates() {
 
 		// Templates
-		$forumTemplate = Template::findGlobalBySlugType( ForumGlobal::TEMPLATE_FORUM, CmsGlobal::TYPE_PAGE );
+		$searchTemplate = Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SEARCH, CmsGlobal::TYPE_PAGE );
 
 		// Pages
-		$forumPage = Page::findBySlugType( 'forum', CmsGlobal::TYPE_PAGE );
+		$topicsPage = Page::findBySlugType( ForumGlobal::PAGE_SEARCH_TOPICS, CmsGlobal::TYPE_PAGE );
 
-		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $forumTemplate->id ], "id=$forumPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$topicsPage->id" );
 	}
 
 	private function insertWidgets() {

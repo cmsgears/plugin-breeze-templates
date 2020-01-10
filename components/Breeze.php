@@ -19,11 +19,29 @@ use Yii;
  */
 class Breeze extends \yii\base\Component {
 
+	// Global -----------------
+
+	// Public -----------------
+
+	// Protected --------------
+
+	// Private ----------------
+
+	// Constructor and Initialisation ------------------------------
+
 	public function init() {
 
 		parent::init();
 
 		Yii::setAlias( 'breeze', dirname( __DIR__ ) );
 	}
+
+	// Instance methods --------------------------------------------
+
+	// Yii parent classes --------------------
+
+	// CMG parent classes --------------------
+
+	// Breeze --------------------------------
 
 }

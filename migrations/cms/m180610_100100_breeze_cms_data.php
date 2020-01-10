@@ -100,7 +100,6 @@ class m180610_100100_breeze_cms_data extends Migration {
 		$systemTemplate		= Template::findGlobalBySlugType( 'system', CmsGlobal::TYPE_PAGE );
 		$searchTemplate		= Template::findGlobalBySlugType( 'search', CmsGlobal::TYPE_PAGE );
 		$qnaTemplate		= Template::findGlobalBySlugType( 'qna', CmsGlobal::TYPE_PAGE );
-		$blogTemplate		= Template::findGlobalBySlugType( 'blog', CmsGlobal::TYPE_PAGE );
 
 		// Pages
 		$homePage		= Page::findBySlugType( 'home', CmsGlobal::TYPE_PAGE );
@@ -121,18 +120,18 @@ class m180610_100100_breeze_cms_data extends Migration {
 		$feedback		= Page::findBySlugType( 'feedback', CmsGlobal::TYPE_PAGE );
 		$testimonial	= Page::findBySlugType( 'testimonial', CmsGlobal::TYPE_PAGE );
 
-		$searchPage		= Page::findBySlugType( 'search-pages', CmsGlobal::TYPE_PAGE );
-		$searchPost		= Page::findBySlugType( 'search-posts', CmsGlobal::TYPE_PAGE );
-		$searchArticle	= Page::findBySlugType( 'search-articles', CmsGlobal::TYPE_PAGE );
+		$searchPage		= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_PAGES, CmsGlobal::TYPE_PAGE );
+		$searchArticle	= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_ARTICLES, CmsGlobal::TYPE_PAGE );
+		$searchPost		= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_POSTS, CmsGlobal::TYPE_PAGE );
 
-		$helpPage		= Page::findBySlugType( 'help', CmsGlobal::TYPE_PAGE );
-		$faqPage		= Page::findBySlugType( 'faq', CmsGlobal::TYPE_PAGE );
+		$helpPage	= Page::findBySlugType( 'help', CmsGlobal::TYPE_PAGE );
+		$faqPage	= Page::findBySlugType( 'faq', CmsGlobal::TYPE_PAGE );
 
-		$blog			= Page::findBySlugType( 'blog', CmsGlobal::TYPE_PAGE );
+		// Configure Page Templates
 
 		$defaultPages	= join( ',', [ $aboutPage->id, $termPage->id, $privacyPage->id ] );
 		$systemPages	= join( ',', [ $login->id, $loginOtp->id, $register->id, $caccount->id, $caccountOtp->id, $aaccount->id, $fpassword->id, $rpassword->id, $rpasswordOtp->id, $feedback->id, $testimonial->id ] );
-		$searchPages	= join( ',', [ $blog->id, $searchPage->id, $searchPost->id, $searchArticle->id ] );
+		$searchPages	= join( ',', [ $searchPage->id, $searchPost->id, $searchArticle->id ] );
 		$qnaPages		= join( ',', [ $helpPage->id, $faqPage->id ] );
 
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $landingTemplate->id ], "id=$homePage->id" );
@@ -140,7 +139,6 @@ class m180610_100100_breeze_cms_data extends Migration {
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $systemTemplate->id ], "id in ($systemPages)" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id in ($searchPages)" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $qnaTemplate->id ], "id in ($qnaPages)" );
-		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $blogTemplate->id ], "id=$blog->id" );
 	}
 
 	/**

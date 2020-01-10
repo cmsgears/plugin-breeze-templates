@@ -86,10 +86,10 @@ class m180611_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 		$payTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_PAYMENT, CmsGlobal::TYPE_PAGE );
 
 		// Pages
-		$cartPage		= Page::findBySlugType( 'cart', CmsGlobal::TYPE_PAGE );
-		$checkoutPage	= Page::findBySlugType( 'checkout', CmsGlobal::TYPE_PAGE );
-		$paymentPage	= Page::findBySlugType( 'payment', CmsGlobal::TYPE_PAGE );
-		$shopPage		= Page::findBySlugType( 'shop', CmsGlobal::TYPE_PAGE );
+		$cartPage		= Page::findBySlugType( ShopGlobal::PAGE_CART, CmsGlobal::TYPE_PAGE );
+		$checkoutPage	= Page::findBySlugType( ShopGlobal::PAGE_CHECKOUT, CmsGlobal::TYPE_PAGE );
+		$paymentPage	= Page::findBySlugType( ShopGlobal::PAGE_PAYMENT, CmsGlobal::TYPE_PAGE );
+		$shopPage		= Page::findBySlugType( ShopGlobal::PAGE_SEARCH_PRODUCTS, CmsGlobal::TYPE_PAGE );
 
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $cartTemplate->id ], "id=$cartPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $checkTemplate->id ], "id=$checkoutPage->id" );
