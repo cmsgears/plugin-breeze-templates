@@ -129,14 +129,14 @@ class m180620_100000_breeze_forum_data extends \cmsgears\core\common\base\Migrat
 
 	private function insertWidgetMappings() {
 
-		$forum = Page::findBySlugType( 'forum', CmsGlobal::TYPE_PAGE );
+		$searchTopicsPage = Page::findBySlugType( ForumGlobal::PAGE_SEARCH_TOPICS, CmsGlobal::TYPE_PAGE );
 
 		$topicsWidget = Widget::findBySlugType( 'search-site-topics', CmsGlobal::TYPE_WIDGET );
 
 		$columns = [ 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
 
 		$mappings = [
-			[ $topicsWidget->id, $forum->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+			[ $topicsWidget->id, $searchTopicsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

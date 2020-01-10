@@ -136,14 +136,14 @@ class m180614_100100_breeze_community_data extends \cmsgears\core\common\base\Mi
 
 	private function insertWidgetMappings() {
 
-		$searchGroup = Page::findBySlugType( 'search-groups', CmsGlobal::TYPE_PAGE );
+		$searchGroupsPage = Page::findBySlugType( CmnGlobal::PAGE_SEARCH_GROUPS, CmsGlobal::TYPE_PAGE );
 
 		$searchGroupsWidget = Widget::findBySlugType( 'search-site-groups', CmsGlobal::TYPE_WIDGET );
 
 		$columns = [ 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
 
 		$mappings = [
-			[ $searchGroupsWidget->id, $searchGroup->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+			[ $searchGroupsWidget->id, $searchGroupsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

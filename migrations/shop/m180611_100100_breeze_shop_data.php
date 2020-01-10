@@ -138,7 +138,7 @@ class m180611_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 
 	private function insertWidgetMappings() {
 
-		$shop = Page::findBySlugType( 'shop', CmsGlobal::TYPE_PAGE );
+		$shop = Page::findBySlugType( ShopGlobal::PAGE_SEARCH_PRODUCTS, CmsGlobal::TYPE_PAGE );
 
 		$productsWidget = Widget::findBySlugType( 'search-site-products', CmsGlobal::TYPE_WIDGET );
 

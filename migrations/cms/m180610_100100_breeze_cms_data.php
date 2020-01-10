@@ -320,10 +320,9 @@ class m180610_100100_breeze_cms_data extends Migration {
 
 	private function insertWidgetMappings() {
 
-		$searchPage		= Page::findBySlugType( 'search-pages', CmsGlobal::TYPE_PAGE );
-		$blog			= Page::findBySlugType( 'blog', CmsGlobal::TYPE_PAGE );
-		$searchPost		= Page::findBySlugType( 'search-posts', CmsGlobal::TYPE_PAGE );
-		$searchArticle	= Page::findBySlugType( 'search-articles', CmsGlobal::TYPE_PAGE );
+		$searchPage		= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_PAGES, CmsGlobal::TYPE_PAGE );
+		$searchPost		= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_POSTS, CmsGlobal::TYPE_PAGE );
+		$searchArticle	= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_ARTICLES, CmsGlobal::TYPE_PAGE );
 
 		$searchPageWidget	= Widget::findBySlugType( 'search-site-pages', CmsGlobal::TYPE_WIDGET );
 		$searchPostWidget	= Widget::findBySlugType( 'search-site-posts', CmsGlobal::TYPE_WIDGET );
@@ -333,7 +332,6 @@ class m180610_100100_breeze_cms_data extends Migration {
 
 		$mappings = [
 			[ $searchPageWidget->id, $searchPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchPostWidget->id, $blog->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
 			[ $searchPostWidget->id, $searchPost->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
 			[ $searchArtiWidget->id, $searchArticle->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
