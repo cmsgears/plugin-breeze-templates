@@ -84,17 +84,23 @@ class m180611_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 		$cartTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_CART, CmsGlobal::TYPE_PAGE );
 		$checkTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_CHECKOUT, CmsGlobal::TYPE_PAGE );
 		$payTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_PAYMENT, CmsGlobal::TYPE_PAGE );
+		$shopTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_SHOP, CmsGlobal::TYPE_PAGE );
+		$offerTemplate	= Template::findGlobalBySlugType( ShopGlobal::TEMPLATE_OFFER, CmsGlobal::TYPE_PAGE );
 
 		// Pages
-		$cartPage		= Page::findBySlugType( ShopGlobal::PAGE_CART, CmsGlobal::TYPE_PAGE );
-		$checkoutPage	= Page::findBySlugType( ShopGlobal::PAGE_CHECKOUT, CmsGlobal::TYPE_PAGE );
-		$paymentPage	= Page::findBySlugType( ShopGlobal::PAGE_PAYMENT, CmsGlobal::TYPE_PAGE );
-		$shopPage		= Page::findBySlugType( ShopGlobal::PAGE_SEARCH_PRODUCTS, CmsGlobal::TYPE_PAGE );
+		$cartPage			= Page::findBySlugType( ShopGlobal::PAGE_CART, CmsGlobal::TYPE_PAGE );
+		$checkoutPage		= Page::findBySlugType( ShopGlobal::PAGE_CHECKOUT, CmsGlobal::TYPE_PAGE );
+		$paymentPage		= Page::findBySlugType( ShopGlobal::PAGE_PAYMENT, CmsGlobal::TYPE_PAGE );
+		$searchProductsPage	= Page::findBySlugType( ShopGlobal::PAGE_SEARCH_PRODUCTS, CmsGlobal::TYPE_PAGE );
+		$shopPage			= Page::findBySlugType( ShopGlobal::PAGE_SHOP, CmsGlobal::TYPE_PAGE );
+		$offersPage			= Page::findBySlugType( ShopGlobal::PAGE_OFFERS, CmsGlobal::TYPE_PAGE );
 
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $cartTemplate->id ], "id=$cartPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $checkTemplate->id ], "id=$checkoutPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $payTemplate->id ], "id=$paymentPage->id" );
-		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$shopPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$searchProductsPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $shopTemplate->id ], "id=$shopPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $offerTemplate->id ], "id=$offersPage->id" );
 	}
 
 	private function insertWidgets() {
@@ -138,14 +144,17 @@ class m180611_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 
 	private function insertWidgetMappings() {
 
-		$shop = Page::findBySlugType( ShopGlobal::PAGE_SEARCH_PRODUCTS, CmsGlobal::TYPE_PAGE );
+		$searchProductsPage	= Page::findBySlugType( ShopGlobal::PAGE_SEARCH_PRODUCTS, CmsGlobal::TYPE_PAGE );
+		$shopPage			= Page::findBySlugType( ShopGlobal::PAGE_SHOP, CmsGlobal::TYPE_PAGE );
+		//$offersPage			= Page::findBySlugType( ShopGlobal::PAGE_OFFERS, CmsGlobal::TYPE_PAGE );
 
 		$productsWidget = Widget::findBySlugType( 'search-site-products', CmsGlobal::TYPE_WIDGET );
 
 		$columns = [ 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
 
 		$mappings = [
-			[ $productsWidget->id, $shop->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+			[ $productsWidget->id, $searchProductsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $productsWidget->id, $shopPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

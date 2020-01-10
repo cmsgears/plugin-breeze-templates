@@ -47,10 +47,26 @@ class m180614_100000_breeze_community extends \cmsgears\core\common\base\Migrati
 
     public function up() {
 
+		$this->insertPageTemplates();
+
 		$this->insertGroupTemplates();
 
 		$this->insertWidgetTemplates();
     }
+
+	private function insertPageTemplates() {
+
+		$master	= $this->master;
+
+		$columns = [ 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'title', 'active', 'description', 'classPath', 'dataPath', 'dataForm', 'attributesPath', 'attributesForm', 'configPath', 'configForm', 'settingsPath', 'settingsForm', 'renderer', 'fileRender', 'layout', 'layoutGroup', 'viewPath', 'view', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data' ];
+
+		$templates = [
+			// Group Pages
+			[ $master->id, $master->id, 'Groups', CmnGlobal::TEMPLATE_GROUP, CmsGlobal::TYPE_PAGE, null, null, true, 'Page layout to show groups on groups page.', null, null, null, null, null, null, null, 'cmsgears\templates\breeze\models\cms\settings\PageSettings', '@breeze/templates/cms/page/default/forms', 'default', true, 'page/default', false, '@breeze/templates/cms/page/search', null, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "page-basic page-default" }', null, null ]
+		];
+
+		$this->batchInsert( $this->cmgPrefix . 'core_template', $columns, $templates );
+	}
 
 	private function insertGroupTemplates() {
 

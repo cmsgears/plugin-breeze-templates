@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\shop\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * OfferSettings provide page settings data.
  *
  * @since 1.0.0
  */
-class OfferSettings extends DataModel {
+class OfferSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,14 +35,20 @@ class OfferSettings extends DataModel {
 
 	// Avatar & Banner
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 	public $defaultBanner;
+	public $lazyBanner; // Lazy load banner
+	public $resBanner;
 
 	// Banner
 	public $fixedBanner;
 	public $scrollBanner;
 	public $parallaxBanner;
+	public $fluidBanner;
 	public $background;
 	public $backgroundClass;
+	public $backgroundVideo;
 
 	// Texture
 	public $texture;
@@ -57,6 +60,7 @@ class OfferSettings extends DataModel {
 	public $headerInfo; // Show Header Info using Model Description
 	public $headerContent; // Show Header Content using Model Summary
 	public $headerIconUrl; // Show Header Icon using Icon Url irrespective of Model Avatar/Icon
+	public $headerFluid;
 	public $headerBanner;
 	public $headerGallery;
 	public $headerScroller;
@@ -83,6 +87,7 @@ class OfferSettings extends DataModel {
 	public $contentDataClass;
 
 	public $styles;
+	public $scripts;
 
 	// Footer
 	public $footer; // Show Footer
@@ -154,9 +159,28 @@ class OfferSettings extends DataModel {
 	public $footerSidebar;
 	public $footerSidebarSlug;
 
+	// Comments, Reviews, and Discussions
+	public $comments	= true;
+	public $reviews		= true;
+	public $disqus;
+
+	// Pre-configured data and widgets
+	public $author; // Show author details
+	public $related; // Show related posts
+	public $popular; // Show popular posts
+	public $similar; // Show similar posts
+
 	// Purify
 	public $purifySummary = true;
 	public $purifyContent = true;
+
+	// AMP
+	public $amp;
+	public $ampGoogleScripts;
+	public $ampScriptUrl;
+	public $ampStylePath;
+	public $ampSchema;
+	public $ampMetas;
 
 	// Protected --------------
 
@@ -182,24 +206,29 @@ class OfferSettings extends DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'footerContentData', 'styles' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'footerContentData', 'styles', 'scripts' ], 'safe' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner' ], 'boolean' ],
+			[ [ 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'fluidBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
-			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
+			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerFluid', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'metas' ], 'boolean' ],
 			[ [ 'contentSocial', 'contentLabels' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
-			[ [ 'purifySummary', 'purifyContent' ], 'boolean' ],
+			[ [ 'comments', 'reviews', 'disqus', 'amp' ], 'boolean' ],
+			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
+			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'metasOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
-			[ [ 'headerIconUrl', 'footerIconUrl' ], 'url' ]
+			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ],
+			[ [ 'ampGoogleScripts', 'ampSchema', 'ampMetas' ] , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
+			[ [ 'ampScriptUrl', 'ampStylePath' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ]
 		];
 	}
 
@@ -209,11 +238,25 @@ class OfferSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
+			'lazyBanner' => 'Lazy Load Background',
+			'resBanner' => 'Responsive Background',
+			'headerInfo' => 'Header Description',
+			'headerContent' => 'Header Summary',
+			'headerFluid' => 'Fluid Header',
+			'contentInfo' => 'Content Description',
 			'metas' => 'Attributes',
 			'metasWithContent' => 'Attributes With Content',
 			'metasOrder' => 'Attributes Order',
 			'metaType' => 'Attribute Type',
-			'metaWrapClass' => 'Attribute Wrap Class'
+			'metaWrapClass' => 'Attribute Wrap Class',
+			'amp' => 'AMP Page',
+			'ampGoogleScripts' => 'Google Script Tags',
+			'ampScriptUrl' => 'Script URL',
+			'ampStylePath' => 'Style Path',
+			'ampSchema' => 'Schema Tags',
+			'ampMetas' => 'Meta Tags'
 		];
 	}
 
@@ -223,6 +266,6 @@ class OfferSettings extends DataModel {
 
 	// Validators ----------------------------
 
-	// ProductSettings -----------------------
+	// OfferSettings -------------------------
 
 }

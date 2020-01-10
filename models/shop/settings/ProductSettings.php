@@ -159,8 +159,10 @@ class ProductSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $footerSidebar;
 	public $footerSidebarSlug;
 
-	// Reviews
-	public $comments = true;
+	// Comments, Reviews, and Discussions
+	public $comments	= true;
+	public $reviews		= true;
+	public $disqus;
 
 	// Pre-configured data and widgets
 	public $author; // Show author details
@@ -171,6 +173,14 @@ class ProductSettings extends \cmsgears\core\common\models\forms\DataModel {
 	// Purify
 	public $purifySummary = true;
 	public $purifyContent = true;
+
+	// AMP
+	public $amp;
+	public $ampGoogleScripts;
+	public $ampScriptUrl;
+	public $ampStylePath;
+	public $ampSchema;
+	public $ampMetas;
 
 	// Protected --------------
 
@@ -207,7 +217,7 @@ class ProductSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
-			[ [ 'comments' ], 'boolean' ],
+			[ [ 'comments', 'reviews', 'disqus', 'amp' ], 'boolean' ],
 			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
 			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
@@ -216,7 +226,9 @@ class ProductSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'metasOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
-			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
+			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ],
+			[ [ 'ampGoogleScripts', 'ampSchema', 'ampMetas' ] , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
+			[ [ 'ampScriptUrl', 'ampStylePath' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ]
 		];
 	}
 
@@ -230,13 +242,21 @@ class ProductSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'resAvatar' => 'Responsive Avatar',
 			'lazyBanner' => 'Lazy Load Background',
 			'resBanner' => 'Responsive Background',
+			'headerInfo' => 'Header Description',
+			'headerContent' => 'Header Summary',
 			'headerFluid' => 'Fluid Header',
+			'contentInfo' => 'Content Description',
 			'metas' => 'Attributes',
 			'metasWithContent' => 'Attributes With Content',
 			'metasOrder' => 'Attributes Order',
 			'metaType' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class',
-			'comments' => 'Reviews'
+			'amp' => 'AMP Page',
+			'ampGoogleScripts' => 'Google Script Tags',
+			'ampScriptUrl' => 'Script URL',
+			'ampStylePath' => 'Style Path',
+			'ampSchema' => 'Schema Tags',
+			'ampMetas' => 'Meta Tags'
 		];
 	}
 

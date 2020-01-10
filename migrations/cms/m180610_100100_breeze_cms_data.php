@@ -11,8 +11,6 @@
 use cmsgears\core\common\config\CoreGlobal;
 use cmsgears\cms\common\config\CmsGlobal;
 
-use cmsgears\core\common\base\Migration;
-
 use cmsgears\core\common\models\entities\ObjectData;
 use cmsgears\core\common\models\entities\Site;
 use cmsgears\core\common\models\entities\Template;
@@ -30,7 +28,7 @@ use cmsgears\core\common\utilities\DateUtil;
  *
  * @since 1.0.0
  */
-class m180610_100100_breeze_cms_data extends Migration {
+class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migration {
 
 	// Public variables
 
@@ -95,11 +93,13 @@ class m180610_100100_breeze_cms_data extends Migration {
 	private function configurePageTemplates() {
 
 		// Templates
-		$landingTemplate	= Template::findGlobalBySlugType( 'landing', CmsGlobal::TYPE_PAGE );
+		$landingTemplate	= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_LANDING, CmsGlobal::TYPE_PAGE );
 		$pageTemplate		= Template::findGlobalBySlugType( CoreGlobal::TEMPLATE_DEFAULT, CmsGlobal::TYPE_PAGE );
-		$systemTemplate		= Template::findGlobalBySlugType( 'system', CmsGlobal::TYPE_PAGE );
-		$searchTemplate		= Template::findGlobalBySlugType( 'search', CmsGlobal::TYPE_PAGE );
-		$qnaTemplate		= Template::findGlobalBySlugType( 'qna', CmsGlobal::TYPE_PAGE );
+		$systemTemplate		= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SYSTEM, CmsGlobal::TYPE_PAGE );
+		$searchTemplate		= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SEARCH, CmsGlobal::TYPE_PAGE );
+		$qnaTemplate		= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_QNA, CmsGlobal::TYPE_PAGE );
+		$blogTemplate		= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_BLOG, CmsGlobal::TYPE_PAGE );
+		$articlesTemplate	= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_ARTICLE, CmsGlobal::TYPE_PAGE );
 
 		// Pages
 		$homePage		= Page::findBySlugType( 'home', CmsGlobal::TYPE_PAGE );
@@ -120,18 +120,20 @@ class m180610_100100_breeze_cms_data extends Migration {
 		$feedback		= Page::findBySlugType( 'feedback', CmsGlobal::TYPE_PAGE );
 		$testimonial	= Page::findBySlugType( 'testimonial', CmsGlobal::TYPE_PAGE );
 
-		$searchPage		= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_PAGES, CmsGlobal::TYPE_PAGE );
-		$searchArticle	= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_ARTICLES, CmsGlobal::TYPE_PAGE );
-		$searchPost		= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_POSTS, CmsGlobal::TYPE_PAGE );
+		$searchPage			= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_PAGES, CmsGlobal::TYPE_PAGE );
+		$searchArticlesPage	= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_ARTICLES, CmsGlobal::TYPE_PAGE );
+		$searchPostsPage	= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_POSTS, CmsGlobal::TYPE_PAGE );
 
-		$helpPage	= Page::findBySlugType( 'help', CmsGlobal::TYPE_PAGE );
-		$faqPage	= Page::findBySlugType( 'faq', CmsGlobal::TYPE_PAGE );
+		$helpPage		= Page::findBySlugType( 'help', CmsGlobal::TYPE_PAGE );
+		$faqPage		= Page::findBySlugType( 'faq', CmsGlobal::TYPE_PAGE );
+		$blogPage		= Page::findBySlugType( CmsGlobal::PAGE_BLOG, CmsGlobal::TYPE_PAGE );
+		$articlesPage	= Page::findBySlugType( CmsGlobal::PAGE_ARTICLES, CmsGlobal::TYPE_PAGE );
 
 		// Configure Page Templates
 
 		$defaultPages	= join( ',', [ $aboutPage->id, $termPage->id, $privacyPage->id ] );
 		$systemPages	= join( ',', [ $login->id, $loginOtp->id, $register->id, $caccount->id, $caccountOtp->id, $aaccount->id, $fpassword->id, $rpassword->id, $rpasswordOtp->id, $feedback->id, $testimonial->id ] );
-		$searchPages	= join( ',', [ $searchPage->id, $searchPost->id, $searchArticle->id ] );
+		$searchPages	= join( ',', [ $searchPage->id, $searchArticlesPage->id, $searchPostsPage->id ] );
 		$qnaPages		= join( ',', [ $helpPage->id, $faqPage->id ] );
 
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $landingTemplate->id ], "id=$homePage->id" );
@@ -139,6 +141,8 @@ class m180610_100100_breeze_cms_data extends Migration {
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $systemTemplate->id ], "id in ($systemPages)" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id in ($searchPages)" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $qnaTemplate->id ], "id in ($qnaPages)" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $blogTemplate->id ], "id=$blogPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $articlesTemplate->id ], "id=$articlesPage->id" );
 	}
 
 	/**
@@ -320,9 +324,11 @@ class m180610_100100_breeze_cms_data extends Migration {
 
 	private function insertWidgetMappings() {
 
-		$searchPage		= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_PAGES, CmsGlobal::TYPE_PAGE );
-		$searchPost		= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_POSTS, CmsGlobal::TYPE_PAGE );
-		$searchArticle	= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_ARTICLES, CmsGlobal::TYPE_PAGE );
+		$searchPage			= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_PAGES, CmsGlobal::TYPE_PAGE );
+		$searchPostsPage	= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_POSTS, CmsGlobal::TYPE_PAGE );
+		$searchArticlesPage	= Page::findBySlugType( CmsGlobal::PAGE_SEARCH_ARTICLES, CmsGlobal::TYPE_PAGE );
+		$blogPage			= Page::findBySlugType( CmsGlobal::PAGE_BLOG, CmsGlobal::TYPE_PAGE );
+		$articlesPage		= Page::findBySlugType( CmsGlobal::PAGE_ARTICLES, CmsGlobal::TYPE_PAGE );
 
 		$searchPageWidget	= Widget::findBySlugType( 'search-site-pages', CmsGlobal::TYPE_WIDGET );
 		$searchPostWidget	= Widget::findBySlugType( 'search-site-posts', CmsGlobal::TYPE_WIDGET );
@@ -332,8 +338,10 @@ class m180610_100100_breeze_cms_data extends Migration {
 
 		$mappings = [
 			[ $searchPageWidget->id, $searchPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchPostWidget->id, $searchPost->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchArtiWidget->id, $searchArticle->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+			[ $searchPostWidget->id, $searchPostsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchPostWidget->id, $blogPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchArtiWidget->id, $searchArticlesPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchArtiWidget->id, $articlesPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

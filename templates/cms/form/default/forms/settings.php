@@ -166,13 +166,13 @@ Editor::widget();
 								</div>
 							</div>
 							<div class="row">
-								<div class="col col5">
+								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'maxCover', null, 'cmti cmti-checkbox' ) ?>
 								</div>
-								<div class="col col5x2">
+								<div class="col col2">
 									<?= $form->field( $settings, 'contentClass' ) ?>
 								</div>
-								<div class="col col5x2">
+								<div class="col col2">
 									<?= $form->field( $settings, 'contentDataClass' ) ?>
 								</div>
 							</div>
@@ -435,6 +435,48 @@ Editor::widget();
 								</div>
 								<div class="col col5x4">
 									<?= $form->field( $settings, 'rightSidebarSlug' ) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col5">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'footerSidebar', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col5x4">
+									<?= $form->field( $settings, 'footerSidebarSlug' ) ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="filler-height"></div>
+				<div class="box box-crud">
+					<div class="box-header">
+						<div class="box-header-title">AMP Page</div>
+					</div>
+					<div class="box-content-wrap frm-split-40-60">
+						<div class="box-content">
+							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'amp', null, 'cmti cmti-checkbox' ) ?>
+								</div>
+								<div class="col col4x3">
+									<?= $form->field( $settings, 'ampGoogleScripts' )->textarea() ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'ampScriptUrl' ) ?>
+								</div>
+								<div class="col col2">
+									<?= $form->field( $settings, 'ampStylePath' ) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'ampSchema' )->textarea() ?>
+								</div>
+								<div class="col col2">
+									<?= $form->field( $settings, 'ampMetas' )->textarea() ?>
 								</div>
 							</div>
 						</div>

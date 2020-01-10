@@ -74,18 +74,18 @@ class m180620_100000_breeze_forum_data extends \cmsgears\core\common\base\Migrat
 		$this->batchInsert( $this->cmgPrefix . 'cms_page', $columns, $models );
 	}
 
-	/**
-	 * Page - Template Mappings
-	 */
 	private function configurePageTemplates() {
 
 		// Templates
 		$searchTemplate = Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SEARCH, CmsGlobal::TYPE_PAGE );
+		$forumTemplate	= Template::findGlobalBySlugType( ForumGlobal::TEMPLATE_FORUM, CmsGlobal::TYPE_PAGE );
 
 		// Pages
-		$topicsPage = Page::findBySlugType( ForumGlobal::PAGE_SEARCH_TOPICS, CmsGlobal::TYPE_PAGE );
+		$searchTopicsPage	= Page::findBySlugType( ForumGlobal::PAGE_SEARCH_TOPICS, CmsGlobal::TYPE_PAGE );
+		$forumPage			= Page::findBySlugType( ForumGlobal::PAGE_FORUM, CmsGlobal::TYPE_PAGE );
 
-		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$topicsPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$searchTopicsPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $forumTemplate->id ], "id=$forumPage->id" );
 	}
 
 	private function insertWidgets() {
@@ -129,14 +129,16 @@ class m180620_100000_breeze_forum_data extends \cmsgears\core\common\base\Migrat
 
 	private function insertWidgetMappings() {
 
-		$searchTopicsPage = Page::findBySlugType( ForumGlobal::PAGE_SEARCH_TOPICS, CmsGlobal::TYPE_PAGE );
+		$searchTopicsPage	= Page::findBySlugType( ForumGlobal::PAGE_SEARCH_TOPICS, CmsGlobal::TYPE_PAGE );
+		$forumPage			= Page::findBySlugType( ForumGlobal::PAGE_FORUM, CmsGlobal::TYPE_PAGE );
 
 		$topicsWidget = Widget::findBySlugType( 'search-site-topics', CmsGlobal::TYPE_WIDGET );
 
 		$columns = [ 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
 
 		$mappings = [
-			[ $topicsWidget->id, $searchTopicsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+			[ $topicsWidget->id, $searchTopicsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $topicsWidget->id, $forumPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

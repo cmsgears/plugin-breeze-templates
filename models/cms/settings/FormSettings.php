@@ -68,7 +68,6 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $headerElementType;
 
 	// Content
-
 	public $content; // Show content
 	public $contentTitle; // Show Model Title within content
 	public $contentInfo; // Show Model Description within content
@@ -161,6 +160,14 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifySummary = true;
 	public $purifyContent = true;
 
+	// AMP
+	public $amp;
+	public $ampGoogleScripts;
+	public $ampScriptUrl;
+	public $ampStylePath;
+	public $ampSchema;
+	public $ampMetas;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -196,6 +203,7 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'wrapCaptcha', 'wrapActions', 'labels', 'split4060' ], 'boolean' ],
+			[ [ 'amp' ], 'boolean' ],
 			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ 'formCaptchaAction', 'string', 'min' => 1, 'max' => Yii::$app->core->xLargeText ],
@@ -204,7 +212,9 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
-			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
+			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ],
+			[ [ 'ampGoogleScripts', 'ampSchema', 'ampMetas' ] , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
+			[ [ 'ampScriptUrl', 'ampStylePath' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ]
 		];
 	}
 
@@ -221,7 +231,13 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'headerInfo' => 'Header Description',
 			'headerContent' => 'Header Summary',
 			'headerFluid' => 'Fluid Header',
-			'contentInfo' => 'Content Description'
+			'contentInfo' => 'Content Description',
+			'amp' => 'AMP Page',
+			'ampGoogleScripts' => 'Google Script Tags',
+			'ampScriptUrl' => 'Script URL',
+			'ampStylePath' => 'Style Path',
+			'ampSchema' => 'Schema Tags',
+			'ampMetas' => 'Meta Tags'
 		];
 	}
 

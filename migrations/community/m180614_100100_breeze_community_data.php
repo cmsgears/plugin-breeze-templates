@@ -74,18 +74,18 @@ class m180614_100100_breeze_community_data extends \cmsgears\core\common\base\Mi
 		$this->batchInsert( $this->cmgPrefix . 'cms_page', $columns, $models );
 	}
 
-	/**
-	 * Page - Template Mappings
-	 */
 	private function configurePageTemplates() {
 
 		// Templates
 		$searchTemplate = Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SEARCH, CmsGlobal::TYPE_PAGE );
+		$groupsTemplate = Template::findGlobalBySlugType( CmnGlobal::TEMPLATE_GROUP, CmsGlobal::TYPE_PAGE );
 
 		// Pages
-		$groupsPage = Page::findBySlugType( CmnGlobal::PAGE_SEARCH_GROUPS, CmsGlobal::TYPE_PAGE );
+		$searchGroupsPage	= Page::findBySlugType( CmnGlobal::PAGE_SEARCH_GROUPS, CmsGlobal::TYPE_PAGE );
+		$groupsPage			= Page::findBySlugType( CmnGlobal::PAGE_GROUPS, CmsGlobal::TYPE_PAGE );
 
-		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$groupsPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$searchGroupsPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $groupsTemplate->id ], "id=$groupsPage->id" );
 	}
 
 	private function insertWidgets() {
@@ -136,14 +136,16 @@ class m180614_100100_breeze_community_data extends \cmsgears\core\common\base\Mi
 
 	private function insertWidgetMappings() {
 
-		$searchGroupsPage = Page::findBySlugType( CmnGlobal::PAGE_SEARCH_GROUPS, CmsGlobal::TYPE_PAGE );
+		$searchGroupsPage	= Page::findBySlugType( CmnGlobal::PAGE_SEARCH_GROUPS, CmsGlobal::TYPE_PAGE );
+		$groupsPage			= Page::findBySlugType( CmnGlobal::PAGE_GROUPS, CmsGlobal::TYPE_PAGE );
 
 		$searchGroupsWidget = Widget::findBySlugType( 'search-site-groups', CmsGlobal::TYPE_WIDGET );
 
 		$columns = [ 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
 
 		$mappings = [
-			[ $searchGroupsWidget->id, $searchGroupsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+			[ $searchGroupsWidget->id, $searchGroupsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchGroupsWidget->id, $groupsPage->id, 'page', CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );
