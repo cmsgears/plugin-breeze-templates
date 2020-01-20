@@ -23,11 +23,11 @@ $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/componen
 				<div class="cmt-gallery-item-header slide-header row">
 					<div class="col col3x2 title align align-left" title="<?= $file->title ?>"><?= $file->title ?></div>
 					<div class="col col3 align align-right">
-						<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
+						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
 							<?php include $apixSpinner; ?>
 							<i class="icon cmti cmti-edit cmt-click"></i>
 						</span>
-						<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
+						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
 							<?php include $apixSpinner; ?>
 							<i class="icon cmti cmti-bin cmt-click"></i>
 						</span>

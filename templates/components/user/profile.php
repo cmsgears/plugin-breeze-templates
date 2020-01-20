@@ -65,14 +65,22 @@ $frmSpinner = isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/
 					<?php if( $intlTelInput ) { ?>
 						<div class="form-group">
 							<label>Mobile Number <?= $mobileRequired ? '*' : null ?></label>
-							<input type="text" class="intl-tel-field intl-tel-field-mb <?= $mobileRequired ? 'intl-tel-required' : null ?>" name="mobile" placeholder="Mobile" autocomplete="off" />
+							<?php if( !$coreProperties->isChangeMobile() ) { ?>
+								<input type="text" class="intl-tel-field intl-tel-field-mb <?= $mobileRequired ? 'intl-tel-required' : null ?>" name="mobile" placeholder="Mobile" autocomplete="off" readonly />
+							<?php } else { ?>
+								<input type="text" class="intl-tel-field intl-tel-field-mb <?= $mobileRequired ? 'intl-tel-required' : null ?>" name="mobile" placeholder="Mobile" autocomplete="off" />
+							<?php } ?>
 							<input type="hidden" class="intl-tel-number" name="User[mobile]" value="<?= $model->mobile ?>" />
 							<div class="help-block"></div>
 							<span  class="error" cmt-error="User[mobile]"></span>
 						</div>
 					<?php } else { ?>
 						<label>Mobile</label>
-						<input type="text" name="User[mobile]" placeholder="Mobile" value="<?= $model->mobile ?>" />
+						<?php if( !$coreProperties->isChangeMobile() ) { ?>
+							<input type="text" name="User[mobile]" placeholder="Mobile" value="<?= $model->mobile ?>" readonly />
+						<?php } else { ?>
+							<input type="text" name="User[mobile]" placeholder="Mobile" value="<?= $model->mobile ?>" />
+						<?php } ?>
 						<span  class="error" cmt-error="User[mobile]"></span>
 					<?php } ?>
 				</div>

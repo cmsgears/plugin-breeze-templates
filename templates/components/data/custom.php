@@ -25,11 +25,11 @@ $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/componen
 					</div>
 				</div>
 				<div class="col col12x2 actions">
-					<span class="btn-icon btn-action" cmt-app="data" cmt-controller="custom" cmt-action="update" action="<?= $apixBase ?>/set-custom?slug=<?= $model->slug ?>&type=<?= $model->type ?>&ckey=<?= $customKey ?>">
+					<span class="btn-icon btn-action" cmt-app="core" cmt-controller="customData" cmt-action="update" action="<?= $apixBase ?>/set-custom?slug=<?= $model->slug ?>&type=<?= $model->type ?>&ckey=<?= $customKey ?>">
 						<?php include $apixSpinner; ?>
 						<i class="icon cmti cmti-save cmt-click"></i>
 					</span>
-					<span class="btn-icon btn-action" cmt-app="data" cmt-controller="custom" cmt-action="delete" action="<?= $apixBase ?>/remove-custom?slug=<?= $model->slug ?>&type=<?= $model->type ?>&ckey=<?= $customKey ?>">
+					<span class="btn-icon btn-action" cmt-app="core" cmt-controller="customData" cmt-action="delete" action="<?= $apixBase ?>/remove-custom?slug=<?= $model->slug ?>&type=<?= $model->type ?>&ckey=<?= $customKey ?>">
 						<?php include $apixSpinner; ?>
 						<i class="icon cmti cmti-bin cmt-click"></i>
 					</span>

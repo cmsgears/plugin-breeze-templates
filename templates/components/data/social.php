@@ -26,13 +26,13 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 					</span>
 				</div>
 				<div class="col col12x2 actions">
-					<span class="btn-icon btn-action" cmt-app="data" cmt-controller="social" cmt-action="update" action="<?= $apixBase ?>/set-social-link?slug=<?= $model->slug ?>&type=<?= $model->type ?>">
+					<span class="btn-icon btn-action" cmt-app="core" cmt-controller="socialData" cmt-action="update" action="<?= $apixBase ?>/set-social-link?slug=<?= $model->slug ?>&type=<?= $model->type ?>">
 						<span class="spinner hidden-easy">
 							<span class="cmti cmti-1-5x cmti-spinner-1 spin"></span>
 						</span>
 						<i class="icon cmti cmti-1-5x cmti-save cmt-click"></i>
 					</span>
-					<span class="btn-icon btn-action" cmt-app="data" cmt-controller="social" cmt-action="delete" action="<?= $apixBase ?>/remove-social-link?slug=<?= $model->slug ?>&type=<?= $model->type ?>">
+					<span class="btn-icon btn-action" cmt-app="core" cmt-controller="socialData" cmt-action="delete" action="<?= $apixBase ?>/remove-social-link?slug=<?= $model->slug ?>&type=<?= $model->type ?>">
 						<span class="spinner hidden-easy">
 							<span class="cmti cmti-1-5x cmti-spinner-1 spin"></span>
 						</span>

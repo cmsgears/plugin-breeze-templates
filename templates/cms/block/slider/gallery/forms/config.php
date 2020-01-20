@@ -5,7 +5,6 @@ use yii\helpers\Html;
 // CMG Imports
 use cmsgears\core\common\widgets\ActiveForm;
 
-// SF Imports
 $coreProperties = $this->context->getCoreProperties();
 $this->title 	= 'Slider Gallery Config | ' . $coreProperties->getSiteTitle();
 $returnUrl		= $this->context->returnUrl;

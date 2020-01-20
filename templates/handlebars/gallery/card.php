@@ -18,7 +18,7 @@
 		</div>
 		<div class="colf colf15"></div>
 		<div class="colf colf15x10">
-			<form class="form" cmt-app="gallery" cmt-controller="item" cmt-action="add" action="<?= $apixBase ?>/add-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>">
+			<form class="form" cmt-app="core" cmt-controller="galleryItem" cmt-action="add" action="<?= $apixBase ?>/add-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>">
 				<?php include $frmSpinner; ?>
 				<div class="file-info">
 					<input name="File[name]" class="name" type="hidden" />
@@ -85,7 +85,7 @@
 		</div>
 		<div class="colf colf15"></div>
 		<div class="colf colf15x10">
-			<form class="form" cmt-app="gallery" cmt-controller="item" cmt-action="update" action="<?= $apixBase ?>/update-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
+			<form class="form" cmt-app="core" cmt-controller="galleryItem" cmt-action="update" action="<?= $apixBase ?>/update-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
 				<?php include $frmSpinner; ?>
 				<div class="file-info">
 					<input name="File[id]" class="id" type="hidden" value="{{fid}}" />
@@ -141,11 +141,11 @@
 				<div class="card-header-title row">
 					<div class="col col3x2 title" title="{{title}}">{{title}}</div>
 					<div class="col col3 align align-right">
-						<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
+						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
 							<?php include $apixSpinner; ?>
 							<i class="icon cmti cmti-edit cmt-click"></i>
 						</span>
-						<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
+						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
 							<?php include $apixSpinner; ?>
 							<i class="icon cmti cmti-bin cmt-click"></i>
 						</span>

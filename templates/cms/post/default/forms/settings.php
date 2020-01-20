@@ -411,7 +411,7 @@ Editor::widget();
 								<div class="col col2">
 									<?= $form->field( $settings, 'sidebarType' ) ?>
 								</div>
-							</div>
+							</div><hr/>
 							<div class="row">
 								<div class="col col5">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'topSidebar', null, 'cmti cmti-checkbox' ) ?>
