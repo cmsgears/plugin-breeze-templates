@@ -5,7 +5,7 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 <div class="cmt-data-social-crud social-links-wrap">
 	<div class="row">
 		<div class="col col12x4">
-			<select class="cmt-data-social-options cmt-select"><?= CodeGenUtil::generateSelectOptionsFromArray( $linksMap ) ?></select>
+			<select class="cmt-data-social-options cmt-select"><?= CodeGenUtil::generateSelectOptions( $linksList, null, 'icon', 'title' ) ?></select>
 		</div>
 		<div class="col col12x2 align align-right">
 			<span class="cmt-data-social-add btn-icon btn-action">
