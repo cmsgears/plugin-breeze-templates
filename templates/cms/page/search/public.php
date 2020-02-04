@@ -10,7 +10,7 @@ $featuredModels	= Yii::$app->factory->get( 'postService' )->getFeatured();
 $siteProperties	= $this->context->getSiteProperties();
 
 $data		= json_decode(  $model->data );
-$settings	= isset( $data->settings ) ? $data->settings : [];
+$settings	= isset( $data->settings ) ? $data->settings : ( isset( $template->settings ) ? $template->settings : [] );
 
 // Includes -----------------------
 

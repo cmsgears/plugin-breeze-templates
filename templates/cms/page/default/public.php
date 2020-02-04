@@ -9,8 +9,8 @@ $siteProperties		= $this->context->getSiteProperties();
 $commentProperties	= $this->context->getCommentProperties();
 $cmsProperties		= $this->context->getCmsProperties();
 
-$data		= json_decode( $model->data );
-$settings	= isset( $data->settings ) ? $data->settings : [];
+$data		= json_decode(  $model->data );
+$settings	= isset( $data->settings ) ? $data->settings : ( isset( $template->settings ) ? $template->settings : [] );
 
 $author = $model->creator;
 
