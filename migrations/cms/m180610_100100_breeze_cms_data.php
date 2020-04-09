@@ -434,7 +434,8 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 			[ $site->id, NULL, NULL ,NULL, $master->id, $master->id, 'Main', 'main', CmsGlobal::TYPE_MENU, NULL, 'Main Menu used on landing header.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, NULL, NULL ,NULL, $master->id, $master->id, 'Secondary', 'secondary', CmsGlobal::TYPE_MENU, NULL, 'Secondary Menu used on public header.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, NULL, NULL, NULL, $master->id, $master->id, 'Links', 'links', CmsGlobal::TYPE_MENU, NULL, 'Links menu used on footer.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
-			[ $site->id, NULL, NULL, NULL, $master->id, $master->id, 'Page', 'page', CmsGlobal::TYPE_MENU, NULL, 'Page menu used on footer, system pages.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
+			[ $site->id, NULL, NULL, NULL, $master->id, $master->id, 'Page', 'page', CmsGlobal::TYPE_MENU, NULL, 'Page menu used on footer, system pages.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
+			[ $site->id, NULL, NULL, NULL, $master->id, $master->id, 'Social', 'social', CmsGlobal::TYPE_MENU, NULL, 'Social menu used on header, footer.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );

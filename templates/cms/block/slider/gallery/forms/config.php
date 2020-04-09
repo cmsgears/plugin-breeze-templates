@@ -21,10 +21,10 @@ $returnUrl		= $this->context->returnUrl;
 					<div class="box-content">
 						<div class="row">
 							<div class="col col4">
-								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'circular', null, 'cmti cmti-checkbox' ) ?>
+								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'circular' ) ?>
 							</div>
 							<div class="col col4">
-								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'mediumImage', null, 'cmti cmti-checkbox' ) ?>
+								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'mediumImage' ) ?>
 							</div>
 						</div>
 						<div class="row">
@@ -73,7 +73,7 @@ $returnUrl		= $this->context->returnUrl;
 					<div class="box-content">
 						<div class="row">
 							<div class="col col4">
-								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'collage', null, 'cmti cmti-checkbox' ) ?>
+								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'collage' ) ?>
 							</div>
 						</div>
 						<div class="row">
@@ -101,10 +101,10 @@ $returnUrl		= $this->context->returnUrl;
 					<div class="box-content">
 						<div class="row">
 							<div class="col col4">
-								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'lightbox', null, 'cmti cmti-checkbox' ) ?>
+								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'lightbox' ) ?>
 							</div>
 							<div class="col col4">
-								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'lightboxPopup', null, 'cmti cmti-checkbox' ) ?>
+								<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'lightboxPopup' ) ?>
 							</div>
 						</div>
 						<div class="row">
