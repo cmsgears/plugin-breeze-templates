@@ -5,6 +5,11 @@ $breezeTemplates = Yii::getAlias( '@breeze/templates' );
 $intlTelInput = isset( $intlTelInput ) ? $intlTelInput : false;
 $intlTelCcode = isset( $intlTelCcode ) ? $intlTelCcode : 'us';
 
+$isRegion	= isset( $isRegion ) ? $isRegion : false;
+$isPostal	= isset( $isPostal ) ? $isPostal : false;
+$isLocation	= isset( $isLocation ) ? $isLocation : false;
+$scenario	= isset( $scenario ) ? $scenario : null; // Set to region, postal, location, regionpostal, regionlocation, regionpostallocation
+
 $frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
 $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";
 

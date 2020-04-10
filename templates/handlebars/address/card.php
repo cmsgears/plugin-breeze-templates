@@ -16,6 +16,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 
 <form class="cmt-location form relative" cmt-app="core" cmt-controller="address" cmt-action="add" action="<?= $apixBase ?>/add-address?id=<?= $model->id ?>">
 	<?php include $frmSpinner; ?>
+	<input type="hidden" name="scenario" value="<?= $scenario ?>" />
 	<div class="data-crud-form row max-cols-100">
 		<div class="row max-cols-50">
 			<div class="col col2">
@@ -49,10 +50,10 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			</div>
 		</div>
 		<div class="row max-cols-50">
-			<div class="cmt-location-countries col col2">
+			<div class="cmt-location-countries col col2" cmt-app="core" cmt-controller="province" cmt-action="optionsList" action="location/province-options" cmt-keep cmt-custom>
 				<div class="form-group">
 					<label>Country *</label>
-					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select' ] ) ?>
+					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select cmt-change' ] ) ?>
 					<span class="error" cmt-error="Address[countryId]"></span>
 				</div>
 			</div>
@@ -66,13 +67,15 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			</div>
 		</div>
 		<div class="row max-cols-50">
-			<div class="cmt-location-regions col col2">
-				<div class="form-group">
-					<label><?= Yii::$app->core->regionLabel ?> *</label>
-					<?= Html::dropDownList( 'Address[regionId]', null, $regionMap, [ 'class' => 'cmt-location-region element-60 cmt-select' ] ) ?>
-					<span class="error" cmt-error="Address[regionId]"></span>
+			<?php if( $isRegion ) { ?>
+				<div class="cmt-location-regions col col2">
+					<div class="form-group">
+						<label><?= Yii::$app->core->regionLabel ?> *</label>
+						<?= Html::dropDownList( 'Address[regionId]', null, $regionMap, [ 'class' => 'cmt-location-region element-60 cmt-select' ] ) ?>
+						<span class="error" cmt-error="Address[regionId]"></span>
+					</div>
 				</div>
-			</div>
+			<?php } ?>
 			<?php if( $searchCity ) { ?>
 				<div class="cmt-location-city-fill col col2 auto-fill auto-fill-basic">
 					<div class="form-group">
@@ -105,15 +108,17 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 					</div>
 				</div>
 			<?php } ?>
+			<?php if( $isPostal ) { ?>
+				<div class="col col2 <?= $isRegion && $isPostal ? 'clear' : null ?>">
+					<div class="form-group">
+						<label>Postal Code *</label>
+						<input type="text" name="Address[zip]" placeholder="Postal Code" />
+						<span class="error" cmt-error="Address[zip]"></span>
+					</div>
+				</div>
+			<?php } ?>
 		</div>
 		<div class="row max-cols-50">
-			<div class="col col2">
-				<div class="form-group">
-					<label>Postal Code</label>
-					<input type="text" name="Address[zip]" placeholder="Postal Code" />
-					<span class="error" cmt-error="Address[zip]"></span>
-				</div>
-			</div>
 			<div class="col col2">
 				<?php if( $intlTelInput ) { ?>
 					<div class="form-group">
@@ -131,8 +136,6 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 					</div>
 				<?php } ?>
 			</div>
-		</div>
-		<div class="row max-cols-50">
 			<div class="col col2">
 				<?php if( $intlTelInput ) { ?>
 					<div class="form-group">
@@ -176,6 +179,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 
 <form class="cmt-location form relative" cmt-app="core" cmt-controller="address" cmt-action="update" action="<?= $apixBase ?>/update-address?id=<?= $model->id ?>&cid={{cid}}">
 	<?php include $frmSpinner; ?>
+	<input type="hidden" name="scenario" value="<?= $scenario ?>" />
 	<div class="data-crud-form row max-cols-100">
 		<div class="row max-cols-50">
 			<div class="col col2">
@@ -209,7 +213,8 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			</div>
 		</div>
 		<div class="row max-cols-50">
-			<div class="cmt-location-countries col col2">
+			<div class="cmt-location-countries col col2" cmt-app="core" cmt-controller="province" cmt-action="optionsList" action="location/province-options" cmt-keep cmt-custom>
+				<span class="cmt-click"></span>
 				<div class="form-group">
 					<label>Country *</label>
 					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select', 'cid' => "{{address.countryId}}" ] ) ?>
@@ -226,6 +231,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			</div>
 		</div>
 		<div class="row max-cols-50">
+			<?php if( $isRegion ) { ?>
 			<div class="cmt-location-regions col col2">
 				<div class="form-group">
 					<label><?= Yii::$app->core->regionLabel ?> *</label>
@@ -233,6 +239,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 					<span class="error" cmt-error="Address[regionId]"></span>
 				</div>
 			</div>
+			<?php } ?>
 			<?php if( $searchCity ) { ?>
 				<div class="cmt-location-city-fill col col2 auto-fill auto-fill-basic">
 					<div class="form-group">
@@ -265,15 +272,17 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 					</div>
 				</div>
 			<?php } ?>
+			<?php if( $isPostal ) { ?>
+				<div class="col col2 <?= $isRegion && $isPostal ? 'clear' : null ?>">
+					<div class="form-group">
+						<label>Postal Code</label>
+						<input type="text" name="Address[zip]" placeholder="Postal Code" value="{{address.zip}}" />
+						<span class="error" cmt-error="Address[zip]"></span>
+					</div>
+				</div>
+			<?php } ?>
 		</div>
 		<div class="row max-cols-50">
-			<div class="col col2">
-				<div class="form-group">
-					<label>Postal Code</label>
-					<input type="text" name="Address[zip]" placeholder="Postal Code" value="{{address.zip}}" />
-					<span class="error" cmt-error="Address[zip]"></span>
-				</div>
-			</div>
 			<div class="col col2">
 				<?php if( $intlTelInput ) { ?>
 					<div class="form-group">
@@ -291,8 +300,6 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 					</div>
 				<?php } ?>
 			</div>
-		</div>
-		<div class="row max-cols-50">
 			<div class="col col2">
 				<?php if( $intlTelInput ) { ?>
 					<div class="form-group">
