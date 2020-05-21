@@ -6,6 +6,9 @@ $title			= $widget->title;
 $layout			= $widget->layout;
 $reportColumns	= $widget->reportColumns;
 
+$import	= $widget->import;
+$export	= $widget->export;
+
 $layoutSwitch = ( ( $widget->grid || $widget->table ) && $widget->list ) || ( ( $widget->grid || $widget->table ) && $widget->card ) || ( $widget->list && $widget->card );
 ?>
 <div class="grid-head-wrap row">
@@ -19,6 +22,12 @@ $layoutSwitch = ( ( $widget->grid || $widget->table ) && $widget->list ) || ( ( 
 			</a>
 		<?php } else if( $widget->addPopup ) { ?>
 			<span class="btn-icon cmti cmti-plus popup-trigger" popup="popup-grid-add"></span>
+		<?php } ?>
+		<?php if( $import ) { ?>
+			<i class="trigger-import-toggle btn-icon fa fa-upload" title="Import XML"></i>
+		<?php } ?>
+		<?php if( $export ) { ?>
+			<i class="trigger-export-toggle btn-icon fa fa-download" title="Export XML"></i>
 		<?php } ?>
 		<?php if( count( $reportColumns ) > 0 ) { ?>
 			<i class="trigger-report-toggle btn-icon cmti cmti-chart-column <?= isset( $report ) ? 'active' : null ?>" title="Generate Report"></i>
