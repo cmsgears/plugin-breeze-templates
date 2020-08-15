@@ -87,7 +87,7 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Attributes
 	public $metas;
-	public $metaType;
+	public $metaTypes;
 
 	public $metaWrapClass;
 
@@ -125,7 +125,7 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
 			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaWrapClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaWrapClass', 'metaTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
@@ -150,7 +150,7 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'contentInfo' => 'Content Description',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Types',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

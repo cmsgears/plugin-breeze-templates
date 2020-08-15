@@ -6,24 +6,24 @@ use yii\helpers\HtmlPurifier;
 use cmsgears\core\common\config\CoreGlobal;
 
 $metas		= isset( $settings->metas ) ? $settings->metas : $widget->metas;
-$metaType	= !empty( $settings->metaType ) ? $settings->metaType : null;
+$metaTypes	= !empty( $settings->metaTypes ) ? $settings->metaType : null;
 
 $metaWrapClass = !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->metaWrapClass;
 ?>
 <?php if( $metas ) { ?>
 	<div class="box-content-meta <?= $metaWrapClass ?>">
 		<?php
-			$metaType = isset( $metaType ) ? preg_split( '/,/', $metaType ) : [];
+			$metaTypes = isset( $metaTypes ) ? preg_split( '/,/', $metaTypes ) : [];
 
 			// Single Type
-			if( count( $metaType ) == 1 ) {
+			if( count( $metaTypes ) == 1 ) {
 
-				$metas = $model->getActiveMetasByType( $metaType[ 0 ] );
+				$metas = $model->getActiveMetasByType( $metaTypes[ 0 ] );
 			}
 			// Multiple Types
-			else if( count( $metaType ) > 1 ) {
+			else if( count( $metaTypes ) > 1 ) {
 
-				$metas = $model->getActiveMetasByTypes( $metaType );
+				$metas = $model->getActiveMetasByTypes( $metaTypes );
 			}
 			// Default Types
 			else {
