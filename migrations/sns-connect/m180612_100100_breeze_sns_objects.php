@@ -66,13 +66,13 @@ class m180612_100100_breeze_sns_objects extends \cmsgears\core\common\base\Migra
 		$iconWidget		= Template::findGlobalBySlugType( 'sns-login-icon', CmsGlobal::TYPE_WIDGET );
 		$textWidget		= Template::findGlobalBySlugType( 'sns-login-text', CmsGlobal::TYPE_WIDGET );
 
-		$columns = [ 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'admin', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
+		$columns = [ 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
 			// Widgets
-			[$site->id, $defaultWidget->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'SNS Login', 'sns-login', 'widget', 'icon', 'texture', 'SNS Login with text and icon', NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ],
-			[$site->id, $iconWidget->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'SNS Login Icons', 'sns-login-icons', 'widget', 'icon', 'texture', 'SNS Login with icons', NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ],
-			[$site->id, $textWidget->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'SNS Login Text', 'sns-login-text', 'widget', 'icon', 'texture', 'SNS Login with text', NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 1, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ]
+			[$site->id, $defaultWidget->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'SNS Login', 'sns-login', 'widget', 'icon', 'texture', 'SNS Login with text and icon', NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ],
+			[$site->id, $iconWidget->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'SNS Login Icons', 'sns-login-icons', 'widget', 'icon', 'texture', 'SNS Login with icons', NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ],
+			[$site->id, $textWidget->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'SNS Login Text', 'sns-login-text', 'widget', 'icon', 'texture', 'SNS Login with text', NULL, NULL, NULL, 16000, 1500, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, NULL, NULL, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_object', $columns, $models );
