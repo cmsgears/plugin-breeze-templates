@@ -40,13 +40,13 @@ $sliderIncludes	= isset( $sliderIncludes ) ? $sliderIncludes : $defaultIncludes;
 			</div>
 		<?php } ?>
 		<?php if( !empty( $contentTitle ) ) { ?>
-			<div class="page-content-title"><?= $contentTitle ?></div>
+			<h1 class="page-content-title"><?= $contentTitle ?></h1>
 		<?php } ?>
 		<?php if( !empty( $contentInfo ) ) { ?>
-			<div class="page-content-info reader"><?= $contentInfo ?></div>
+			<h2 class="page-content-info reader"><?= $contentInfo ?></h2>
 		<?php } ?>
 		<?php if( !empty( $contentSummary ) ) { ?>
-			<div class="page-content-summary reader"><?= $purifySummary ? HtmlPurifier::process( $contentSummary ) : $contentSummary ?></div>
+			<h3 class="page-content-summary reader"><?= $purifySummary ? HtmlPurifier::process( $contentSummary ) : $contentSummary ?></h3>
 		<?php } ?>
 		<?php if( $contentSocial ) { ?>
 			<?php include "$defaultIncludes/social.php"; ?>

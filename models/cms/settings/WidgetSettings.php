@@ -71,7 +71,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Attributes
 	public $metas;
-	public $metaType;
+	public $metaTypes;
 
 	public $metaWrapClass;
 
@@ -108,7 +108,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'headerIconUrl', 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
@@ -132,7 +132,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'contentInfo' => 'Content Description',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

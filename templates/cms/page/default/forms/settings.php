@@ -265,7 +265,7 @@ Editor::widget();
 							</div>
 							<div class="row">
 								<div class="col col4x2">
-									<?= $form->field( $settings, 'metaType' ) ?>
+									<?= $form->field( $settings, 'metaTypes' ) ?>
 								</div>
 								<div class="col col4x2">
 									<?= $form->field( $settings, 'metaWrapClass' ) ?>

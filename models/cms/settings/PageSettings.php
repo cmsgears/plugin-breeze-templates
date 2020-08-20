@@ -108,7 +108,7 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $metas;
 	public $metasWithContent;
 	public $metasOrder;
-	public $metaType;
+	public $metaTypes;
 
 	public $metaWrapClass;
 
@@ -221,7 +221,7 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
 			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
@@ -249,7 +249,7 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'metas' => 'Attributes',
 			'metasWithContent' => 'Attributes With Content',
 			'metasOrder' => 'Attributes Order',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Types',
 			'metaWrapClass' => 'Attribute Wrap Class',
 			'amp' => 'AMP Page',
 			'ampGoogleScripts' => 'Google Script Tags',

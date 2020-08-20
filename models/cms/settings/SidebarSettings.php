@@ -70,7 +70,7 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Attributes
 	public $metas;
-	public $metaType;
+	public $metaTypes;
 
 	public $metaWrapClass;
 
@@ -117,7 +117,7 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'widgetType', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaTypes', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'headerIconUrl', 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
@@ -140,7 +140,7 @@ class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'headerContent' => 'Header Summary',
 			'contentInfo' => 'Content Description',
 			'metas' => 'Attributes',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

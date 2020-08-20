@@ -144,7 +144,7 @@ Editor::widget();
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'metas' ) ?>
 								</div>
 								<div class="col col5x2">
-									<?= $form->field( $settings, 'metaType' ) ?>
+									<?= $form->field( $settings, 'metaTypes' ) ?>
 								</div>
 								<div class="col col5x2">
 									<?= $form->field( $settings, 'metaWrapClass' ) ?>
