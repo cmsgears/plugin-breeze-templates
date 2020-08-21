@@ -22,9 +22,9 @@ $searchCity = isset( $searchCity ) ? $searchCity : false;
 // Location
 $countryMap		= Yii::$app->factory->get( 'countryService' )->getIdNameMap();
 $countryId		= array_keys( $countryMap )[ 0 ];
-$provinceMap	= Yii::$app->factory->get( 'provinceService' )->getMapByCountryId( $countryId );
+$provinceMap	= Yii::$app->factory->get( 'provinceService' )->getIdNameMapByCountryId( $countryId );
 $provinceId		= array_keys( $provinceMap )[ 0 ];
-$regionMap		= Yii::$app->factory->get( 'regionService' )->getMapByProvinceId( $provinceId, [ 'default' => true, 'defaultValue' => Yii::$app->core->regionLabel ] );
+$regionMap		= Yii::$app->factory->get( 'regionService' )->getIdNameMapByProvinceId( $provinceId, [ 'default' => true, 'defaultValue' => Yii::$app->core->regionLabel ] );
 ?>
 <div class="cmt-address-crud data-crud data-crud-address data-crud-address-card">
 	<div class="data-crud-title row">
