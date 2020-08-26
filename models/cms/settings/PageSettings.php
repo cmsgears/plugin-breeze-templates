@@ -73,7 +73,6 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $contentInfo; // Show Model Description within content
 	public $contentSummary; // Show Model Summary within content
 	public $contentData; // Show Model Content within content
-	public $h1Summary; // Create H1 Tag using Summary
 
 	public $maxCover;
 
@@ -212,7 +211,7 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerFluid', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'metas' ], 'boolean' ],
-			[ [ 'contentSocial', 'contentLabels', 'h1Summary' ], 'boolean' ],
+			[ [ 'contentSocial', 'contentLabels' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],

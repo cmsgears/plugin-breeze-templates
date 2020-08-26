@@ -7,7 +7,6 @@ use cmsgears\core\common\widgets\ActiveForm;
 use cmsgears\core\common\widgets\Editor;
 use cmsgears\icons\widgets\IconChooser;
 
-// SF Imports
 $coreProperties = $this->context->getCoreProperties();
 $title			= $this->context->title;
 $this->title	= "{$title} Settings | " . $coreProperties->getSiteTitle();
@@ -117,9 +116,6 @@ Editor::widget();
 								</div>
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'headerScroller' ) ?>
-								</div>
-								<div class="col col4">
-									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'h1Summary' ) ?>
 								</div>
 							</div>
 							<div class="row">

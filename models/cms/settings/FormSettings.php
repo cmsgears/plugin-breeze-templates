@@ -73,7 +73,6 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $contentInfo; // Show Model Description within content
 	public $contentSummary; // Show Model Summary within content
 	public $contentData; // Show Model Content within content
-	public $h1Summary; // Create H1 Tag using Summary
 
 	public $maxCover;
 
@@ -204,7 +203,7 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
 			[ [ 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'wrapCaptcha', 'wrapActions', 'labels', 'split4060' ], 'boolean' ],
-			[ [ 'h1Summary', 'amp' ], 'boolean' ],
+			[ [ 'amp' ], 'boolean' ],
 			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ 'formCaptchaAction', 'string', 'min' => 1, 'max' => Yii::$app->core->xLargeText ],

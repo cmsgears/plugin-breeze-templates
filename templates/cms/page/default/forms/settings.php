@@ -117,9 +117,6 @@ Editor::widget();
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'headerScroller' ) ?>
 								</div>
-								<div class="col col4">
-									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'h1Summary' ) ?>
-								</div>
 							</div>
 							<div class="row">
 								<div class="col col2">
