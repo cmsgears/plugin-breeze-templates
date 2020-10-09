@@ -4,7 +4,7 @@ $dataIcon = isset( $dataIcon ) ? $dataIcon : 'cmti cmti-groups';
 $frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
 $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";
 ?>
-<div class="cmt-data-custom-crud data-custom-wrap <?= $customTarget ?>">
+<div class="cmt-data-custom-crud data-custom-wrap <?= isset( $customTarget ) ? $customTarget : null ?>">
 	<div class="cmt-data-custom-collection data-custom-all margin margin-small-v">
 	<?php
 		$metas = $model->getDataMeta( $customKey, true );

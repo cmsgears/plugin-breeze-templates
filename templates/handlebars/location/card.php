@@ -20,7 +20,7 @@ $locationTypeOptions = isset( $locationTypeOptions ) ? $locationTypeOptions : []
 					<div class="col col2">
 						<div class="form-group">
 							<label>Type</label>
-							<select name="model-type" class="cmt-location-type cmt-select"><?= $locationTypeOptions ?></select>
+							<select name="modelType" class="cmt-location-type cmt-select"><?= $locationTypeOptions ?></select>
 						</div>
 					</div>
 				</div>
@@ -75,7 +75,7 @@ $locationTypeOptions = isset( $locationTypeOptions ) ? $locationTypeOptions : []
 					<div class="col col2">
 						<div class="form-group">
 							<label>Type</label>
-							<select name="model-type" class="cmt-location-type cmt-select"><?= $locationTypeOptions ?></select>
+							<select name="modelType" class="cmt-location-type cmt-select"><?= $locationTypeOptions ?></select>
 						</div>
 					</div>
 				</div>
