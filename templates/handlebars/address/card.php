@@ -29,7 +29,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			<div class="col col2">
 				<div class="form-group">
 					<label>Type</label>
-					<select name="model-type" class="cmt-address-type cmt-select"><?= $addressTypeOptions ?></select>
+					<select name="modelType" class="cmt-address-type cmt-select"><?= $addressTypeOptions ?></select>
 				</div>
 			</div>
 		</div>
@@ -192,7 +192,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			<div class="col col2">
 				<div class="form-group">
 					<label>Type</label>
-					<select name="model-type" class="cmt-address-type cmt-select"><?= $addressTypeOptions ?></select>
+					<select name="modelType" class="cmt-address-type cmt-select" data-val="{{ctype}}"><?= $addressTypeOptions ?></select>
 				</div>
 			</div>
 		</div>

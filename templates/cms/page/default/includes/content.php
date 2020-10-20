@@ -49,7 +49,7 @@ $sliderIncludes	= isset( $sliderIncludes ) ? $sliderIncludes : $defaultIncludes;
 			<h3 class="page-content-summary reader"><?= $purifySummary ? HtmlPurifier::process( $contentSummary ) : $contentSummary ?></h3>
 		<?php } ?>
 		<?php if( $contentSocial ) { ?>
-			<?php include "$defaultIncludes/social.php"; ?>
+			<?php include isset( $socialIncludes ) ? "$socialIncludes/social.php" : "$defaultIncludes/social.php"; ?>
 		<?php } ?>
 		<?php include $preObjects; ?>
 		<?php if( !empty( $contentData ) ) { ?>

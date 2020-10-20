@@ -20,7 +20,7 @@ $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row
 
 			if( empty( $widgetType ) ) {
 
-				$widgets = $model->activeWidgets;
+				$widgets = $model->displayWidgets;
 			}
 			else {
 

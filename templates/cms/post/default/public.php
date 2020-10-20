@@ -16,6 +16,7 @@ $settings	= isset( $data->settings ) ? $data->settings : ( isset( $template->set
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 $sliderIncludes		= null;
+$socialIncludes		= null;
 $elementIncludes	= null;
 $widgetIncludes		= null;
 $blockIncludes		= null;

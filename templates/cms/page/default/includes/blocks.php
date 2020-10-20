@@ -11,7 +11,7 @@ $blockType = !empty( $settings->blockType ) ? $settings->blockType : null;
 
 			if( empty( $blockType ) ) {
 
-				$blocks = $model->activeBlocks;
+				$blocks = $model->displayBlocks;
 			}
 			else {
 
