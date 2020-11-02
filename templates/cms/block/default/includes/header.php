@@ -18,6 +18,8 @@ $headerContent		= isset( $settings->headerContent ) && $settings->headerContent 
 $lazyAvatar			= isset( $settings->lazyAvatar ) ? $settings->lazyAvatar : $widget->lazyAvatar;
 $resAvatar			= isset( $settings->resAvatar ) ? $settings->resAvatar : $widget->resAvatar;
 
+$headerClass = !empty( $settings->headerClass ) ? $settings->headerClass : $widget->headerClass;
+
 $avatarObj		= $model->avatar;
 $avatar			= ( isset( $settings->defaultAvatar ) && $settings->defaultAvatar ) || $widget->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $lazyAvatar ? CodeGenUtil::getSmallUrl( $avatarObj, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( $avatarObj, [ 'image' => $avatar ] );
@@ -34,7 +36,7 @@ $iconSizes		= isset( $iconLazyClass ) ? $avatarObj->sizes : null;
 $iconLazyAttrs	= isset( $iconLazyClass ) ? "data-src=\"$smallUrl\" data-srcset=\"$iconSrcset\" data-sizes=\"$iconSizes\"" : null;
 ?>
 <?php if( $header ) { ?>
-	<div class="block-header-wrap">
+	<div class="block-header-wrap <?= $headerClass ?>">
 		<div class="block-header">
 			<?php if( $headerIcon && !empty( $headerIconClass ) && $headerIconClass !== 'icon' ) { ?>
 				<div class="block-header-icon">

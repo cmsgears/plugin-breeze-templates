@@ -22,7 +22,7 @@ $elementIncludes	= null;
 $widgetIncludes		= null;
 $blockIncludes		= null;
 
-$buffer			= dirname( __FILE__ ) . '/includes/buffer.php';
+$buffer			= "$defaultIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
 $innerObjects	= "$defaultIncludes/objects-inner.php";
 $outerObjects	= "$defaultIncludes/objects-outer.php";

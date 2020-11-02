@@ -58,11 +58,16 @@ Editor::widget();
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'resBanner' ) ?>
 								</div>
-								<div class="col col2">
-									<?= $form->field( $settings, 'bkgClass' ) ?>
-								</div>
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'bkgVideo' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'bkgHeader' ) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'bkgClass' ) ?>
 								</div>
 							</div>
 						</div>
@@ -101,6 +106,9 @@ Editor::widget();
 								</div>
 							</div>
 							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'headerClass' ) ?>
+								</div>
 								<div class="col col2">
 									<?= $form->field( $settings, 'headerIconUrl' ) ?>
 								</div>

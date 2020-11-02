@@ -7,17 +7,17 @@
  * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
  */
 
-namespace cmsgears\templates\breeze\models\cms\config\element\box;
+namespace cmsgears\templates\breeze\models\cms\config\block;
 
 // Yii Imports
 use Yii;
 
 /**
- * TextConfig provide text configuration data.
+ * AttributeConfig provide attributes configuration data.
  *
  * @since 1.0.0
  */
-class TextConfig extends \cmsgears\core\common\models\forms\DataModel {
+class AttributeConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -34,10 +34,10 @@ class TextConfig extends \cmsgears\core\common\models\forms\DataModel {
 	// Public -----------------
 
 	public $flip		= false;
-	public $flipClass	= 'box-text-flip';
+	public $flipClass	= 'block-attribute-flip';
 
 	public $split		= false;
-	public $splitClass	= 'box-text-split';
+	public $splitClass	= 'block-attribute-split';
 
 	// Protected --------------
 
@@ -74,6 +74,6 @@ class TextConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Validators ----------------------------
 
-	// TextConfig ----------------------------
+	// AttributeConfig -----------------------
 
 }

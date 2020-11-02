@@ -16,6 +16,7 @@ $scrollBkg		= isset( $settings->scrollBkg ) ? $settings->scrollBkg : $widget->sc
 $parallaxBkg	= isset( $settings->parallaxBkg ) ? $settings->parallaxBkg : $widget->parallaxBkg;
 $bkgClass		= !empty( $settings->bkgClass ) ? $settings->bkgClass : $widget->bkgClass;
 $bkgVideo		= !empty( $settings->bkgVideo ) ? $settings->bkgVideo : $widget->bkgVideo;
+$bkgHeader		= !empty( $settings->bkgHeader ) ? $settings->bkgHeader : $widget->bkgHeader;
 $lazyBanner		= isset( $settings->lazyBanner ) ? $settings->lazyBanner : $widget->lazyBanner;
 $resBanner		= isset( $settings->resBanner ) ? $settings->resBanner : $widget->resBanner;
 

@@ -48,6 +48,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $parallaxBkg;
 	public $bkgClass;
 	public $bkgVideo;
+	public $bkgHeader;
 
 	// Texture
 	public $texture;
@@ -59,6 +60,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $headerInfo; // Show Header Info using Model Description
 	public $headerContent; // Show Header Content using Model Summary
 	public $headerIconUrl; // Show Header Icon using Icon Url irrespective of Model Avatar/Icon
+	public $headerClass;
 
 	// Content
 	public $content; // Show content
@@ -150,9 +152,9 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
-			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
+			[ [ 'bkgVideo', 'bkgHeader', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'metaTypes', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgClass', 'headerClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
@@ -173,6 +175,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'parallaxBkg' => 'Parallax Background',
 			'bkgClass' => 'Background Class',
 			'bkgVideo' => 'Background Video',
+			'bkgHeader' => 'Background In Header',
 			'lazyBanner' => 'Lazy Load',
 			'resBanner' => 'Responsive',
 			'headerInfo' => 'Header Description',
