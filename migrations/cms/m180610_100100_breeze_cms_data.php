@@ -477,7 +477,7 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 
 		$columns = [ 'siteId', 'pageId', 'createdBy', 'modifiedBy', 'name', 'title', 'url', 'type', 'icon', 'order', 'absolute', 'private', 'createdAt', 'modifiedAt', 'htmlOptions', 'urlOptions', 'data' ];
 
-		$links = [
+		$linksMenus = [
 			[ $site->id, NULL, $master->id, $master->id, 'Home', NULL, '/', 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, $loginPage->id, $master->id, $master->id, 'Login', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, $registerPage->id, $master->id, $master->id, 'Register', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
@@ -493,7 +493,7 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 			[ $site->id, $testiPage->id, $master->id, $master->id, 'Testimonial', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
 		];
 
-		$this->batchInsert( $this->cmgPrefix . 'cms_link', $columns, $links );
+		$this->batchInsert( $this->cmgPrefix . 'cms_link', $columns, $linksMenus );
 	}
 
 	/**
@@ -512,7 +512,7 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 			[ $site->id, NULL, NULL ,NULL, $master->id, $master->id, 'Main', 'main', CmsGlobal::TYPE_MENU, NULL, 'Main Menu used on landing header.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, NULL, NULL ,NULL, $master->id, $master->id, 'Secondary', 'secondary', CmsGlobal::TYPE_MENU, NULL, 'Secondary Menu used on public header.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, NULL, NULL, NULL, $master->id, $master->id, 'Links', 'links', CmsGlobal::TYPE_MENU, NULL, 'Links menu used on footer.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
-			[ $site->id, NULL, NULL, NULL, $master->id, $master->id, 'Page', 'page', CmsGlobal::TYPE_MENU, NULL, 'Page menu used on footer, system pages.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
+			[ $site->id, NULL, NULL, NULL, $master->id, $master->id, 'Pages', 'pages', CmsGlobal::TYPE_MENU, NULL, 'Page menu used on footer, system pages.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, NULL, NULL, NULL, $master->id, $master->id, 'Social', 'social', CmsGlobal::TYPE_MENU, NULL, 'Social menu used on header, footer.', NULL, NULL, $status, $vis, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
 		];
 
@@ -524,31 +524,31 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 		$site	= $this->site;
 		$master	= $this->master;
 
-		$main	= Menu::findBySlugType( 'main', CmsGlobal::TYPE_MENU );
-		$sec	= Menu::findBySlugType( 'secondary', CmsGlobal::TYPE_MENU );
-		$link	= Menu::findBySlugType( 'links', CmsGlobal::TYPE_MENU );
+		$mainMenu	= Menu::findBySlugType( 'main', CmsGlobal::TYPE_MENU );
+		$secMenu	= Menu::findBySlugType( 'secondary', CmsGlobal::TYPE_MENU );
+		$linksMenu	= Menu::findBySlugType( 'links', CmsGlobal::TYPE_MENU );
 
 		$columns = [ 'modelId', 'parentId', 'parentType', 'type', 'order', 'active' ];
 
 		$mappings = [
-			[ 1, $main->id, 'menu', NULL, 0, 1 ],
-			[ 4, $main->id, 'menu', NULL, 0, 1 ],
-			[ 9, $main->id, 'menu', NULL, 0, 1 ],
-			[ 10, $main->id, 'menu', NULL, 0, 1 ],
-			[ 2, $main->id, 'menu', NULL, 0, 1 ],
-			[ 3, $main->id, 'menu', NULL, 0, 1 ],
-			[ 1, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 4, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 9, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 10, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 2, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 3, $sec->id, 'menu', NULL, 0, 1 ],
-			[ 5, $link->id, 'menu', NULL, 0, 1 ],
-			[ 6, $link->id, 'menu', NULL, 0, 1 ],
-			[ 7, $link->id, 'menu', NULL, 0, 1 ],
-			[ 8, $link->id, 'menu', NULL, 0, 1 ],
-			[ 11, $link->id, 'menu', NULL, 0, 1 ],
-			[ 12, $link->id, 'menu', NULL, 0, 1 ]
+			[ 1, $mainMenu->id, 'menu', NULL, 0, 1 ],
+			[ 4, $mainMenu->id, 'menu', NULL, 0, 1 ],
+			[ 9, $mainMenu->id, 'menu', NULL, 0, 1 ],
+			[ 10, $mainMenu->id, 'menu', NULL, 0, 1 ],
+			[ 2, $mainMenu->id, 'menu', NULL, 0, 1 ],
+			[ 3, $mainMenu->id, 'menu', NULL, 0, 1 ],
+			[ 1, $secMenu->id, 'menu', NULL, 0, 1 ],
+			[ 4, $secMenu->id, 'menu', NULL, 0, 1 ],
+			[ 9, $secMenu->id, 'menu', NULL, 0, 1 ],
+			[ 10, $secMenu->id, 'menu', NULL, 0, 1 ],
+			[ 2, $secMenu->id, 'menu', NULL, 0, 1 ],
+			[ 3, $secMenu->id, 'menu', NULL, 0, 1 ],
+			[ 5, $linksMenu->id, 'menu', NULL, 0, 1 ],
+			[ 6, $linksMenu->id, 'menu', NULL, 0, 1 ],
+			[ 7, $linksMenu->id, 'menu', NULL, 0, 1 ],
+			[ 8, $linksMenu->id, 'menu', NULL, 0, 1 ],
+			[ 11, $linksMenu->id, 'menu', NULL, 0, 1 ],
+			[ 12, $linksMenu->id, 'menu', NULL, 0, 1 ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'cms_model_link', $columns, $mappings );
