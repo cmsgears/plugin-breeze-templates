@@ -473,6 +473,7 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 		$testiPage		= Page::findBySlugType( 'testimonial', CmsGlobal::TYPE_PAGE );
 
 		$blogPage		= Page::findBySlugType( 'blog', CmsGlobal::TYPE_PAGE );
+		$articlesPage	= Page::findBySlugType( 'articles', CmsGlobal::TYPE_PAGE );
 
 		$columns = [ 'siteId', 'pageId', 'createdBy', 'modifiedBy', 'name', 'title', 'url', 'type', 'icon', 'order', 'absolute', 'private', 'createdAt', 'modifiedAt', 'htmlOptions', 'urlOptions', 'data' ];
 
@@ -486,6 +487,7 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 			[ $site->id, $helpPage->id, $master->id, $master->id, 'Help', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, $faqsPage->id, $master->id, $master->id, 'FAQs', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, $blogPage->id, $master->id, $master->id, 'Blog', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
+			[ $site->id, $articlesPage->id, $master->id, $master->id, 'Articles', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, NULL, $master->id, $master->id, 'Contact Us', NULL, '/form/contact-us', 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, $feedbackPage->id, $master->id, $master->id, 'Feedback', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, $testiPage->id, $master->id, $master->id, 'Testimonial', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
