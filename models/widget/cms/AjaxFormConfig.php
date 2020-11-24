@@ -20,7 +20,7 @@ use cmsgears\core\common\config\CoreGlobal;
  *
  * @since 1.0.0
  */
-class AjaxFormConfig extends WidgetConfig {
+class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConfig {
 
 	// Variables ---------------------------------------------------
 
