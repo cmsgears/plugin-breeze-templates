@@ -4,23 +4,23 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
-$bkg		= isset( $settings->bkg ) ? $settings->bkg : $widget->bkg;
-$bkgClass	= isset( $settings->bkgClass ) ? $settings->bkgClass : $widget->bkgClass;
-$bkgVideo	= !empty( $settings->bkgVideo ) ? $settings->bkgVideo : $widget->bkgVideo;
-$lazyBanner	= isset( $settings->lazyBanner ) ? $settings->lazyBanner : $widget->lazyBanner;
-$resBanner	= isset( $settings->resBanner ) ? $settings->resBanner : $widget->resBanner;
+$bkg		= isset( $settings->bkg ) ? $settings->bkg : ( isset( $widget->bkg ) ? $widget->bkg : false );
+$bkgClass	= isset( $settings->bkgClass ) ? $settings->bkgClass : ( isset( $widget->bkgClass ) ? $widget->bkgClass : null );
+$bkgVideo	= !empty( $settings->bkgVideo ) ? $settings->bkgVideo : ( isset( $widget->bkgVideo ) ? $widget->bkgVideo : false );
+$lazyBanner	= isset( $settings->lazyBanner ) ? $settings->lazyBanner : ( isset( $widget->lazyBanner ) ? $widget->lazyBanner : false );
+$resBanner	= isset( $settings->resBanner ) ? $settings->resBanner : ( isset( $widget->resBanner ) ? $widget->resBanner : false );
 
-$texture		= isset( $settings->texture ) ? $settings->texture : $widget->texture;
-$textureClass	= !empty( $model->texture ) ? $model->texture : $widget->textureClass;
+$texture		= isset( $settings->texture ) ? $settings->texture : ( isset( $widget->texture ) ? $widget->texture : false );
+$textureClass	= !empty( $model->texture ) ? $model->texture : ( isset( $widget->textureClass ) ? $widget->textureClass : null );
 
 $bkgVideoSrc = $bkgVideo ? ( isset( $model->video ) ? $model->video->getVideoTag( [ 'class' => $bkgClass ] ) : $widget->bkgVideoSrc ) : null;
 
 $bannerObj	= $model->banner;
-$banner		= ( isset( $settings->defaultBanner ) && $settings->defaultBanner ) || $widget->defaultBanner ? SiteProperties::getInstance()->getDefaultBanner() : null;
+$banner		= ( isset( $settings->defaultBanner ) && $settings->defaultBanner ) || ( isset( $widget->defaultBanner ) ? $widget->defaultBanner : false ) ? SiteProperties::getInstance()->getDefaultBanner() : null;
 $bannerUrl	= $lazyBanner ? CodeGenUtil::getSmallUrl( $bannerObj, [ 'image' => $banner ] ) : CodeGenUtil::getFileUrl( $bannerObj, [ 'image' => $banner ] );
 
 $lazyBanner	= isset( $bannerObj ) & $lazyBanner ? true : false;
-$bkgUrl		= isset( $bannerUrl ) ? $bannerUrl : $widget->bkgUrl;
+$bkgUrl		= isset( $bannerUrl ) ? $bannerUrl : ( isset( $widget->bkgUrl ) ? $widget->bkgUrl : null );
 
 $bkgLazyClass	= $lazyBanner ? 'cmt-lazy-bkg' : ( $resBanner ? 'cmt-res-bkg' : null );
 $bkgUrl			= $lazyBanner ? $bannerObj->getSmallPlaceholderUrl() : $bkgUrl;

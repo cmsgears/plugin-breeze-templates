@@ -1,8 +1,11 @@
 <?php
 $rawContent	= !empty( $settings->contentRaw ) ? $settings->contentRaw : null;
+
+$buffer		= isset( $widget->buffer ) ? $widget->buffer : false;
+$bufferData = isset( $widget->bufferData ) ? $widget->bufferData : null;
 ?>
 
-<?php if( $widget->buffer ) { ?>
+<?php if( $buffer ) { ?>
 	<div class="widget-buffer">
 		<?= $widget->bufferData ?>
 	</div>

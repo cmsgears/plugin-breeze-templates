@@ -4,17 +4,17 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
-$header				= isset( $settings->header ) ? $settings->header : $widget->header;
-$headerIcon			= isset( $settings->headerIcon ) ? $settings->headerIcon : $widget->headerIcon;
-$headerIconClass	= !empty( $model->icon ) ? $model->icon : $widget->headerIconClass;
-$headerTitle		= isset( $settings->headerTitle ) && $settings->headerTitle && !empty( $model->displayName ) ? $model->displayName : $widget->headerTitle;
-$lazyAvatar			= isset( $settings->lazyAvatar ) ? $settings->lazyAvatar : $widget->lazyAvatar;
-$resAvatar			= isset( $settings->resAvatar ) ? $settings->resAvatar : $widget->resAvatar;
+$header				= isset( $settings->header ) ? $settings->header : ( isset( $widget->header ) ? $widget->header : false );
+$headerIcon			= isset( $settings->headerIcon ) ? $settings->headerIcon : ( isset( $widget->headerIcon ) ? $widget->headerIcon : false );
+$headerIconClass	= !empty( $model->icon ) ? $model->icon : ( isset( $widget->headerIconClass ) ? $widget->headerIconClass : null );
+$headerTitle		= isset( $settings->headerTitle ) && $settings->headerTitle && !empty( $model->displayName ) ? $model->displayName : ( isset( $widget->headerTitle ) ? $widget->headerTitle : null );
+$lazyAvatar			= isset( $settings->lazyAvatar ) ? $settings->lazyAvatar : ( isset( $widget->lazyAvatar ) ? $widget->lazyAvatar : false );
+$resAvatar			= isset( $settings->resAvatar ) ? $settings->resAvatar : ( isset( $widget->resAvatar ) ? $widget->resAvatar : false );
 
 $avatarObj		= $model->avatar;
-$avatar			= ( isset( $settings->defaultAvatar ) && $settings->defaultAvatar ) || $widget->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
+$avatar			= ( isset( $settings->defaultAvatar ) && $settings->defaultAvatar ) || ( isset( $widget->defaultAvatar ) ? $widget->defaultAvatar : false ) ? SiteProperties::getInstance()->getDefaultAvatar() : null;
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $lazyAvatar ? CodeGenUtil::getSmallUrl( $avatarObj, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( $avatarObj, [ 'image' => $avatar ] );
-$headerIconUrl	= !empty( $headerIconUrl ) ? $headerIconUrl : $widget->headerIconUrl;
+$headerIconUrl	= !empty( $headerIconUrl ) ? $headerIconUrl : ( isset( $widget->headerIconUrl ) ? $widget->headerIconUrl : null );
 
 $lazyAvatar	= isset( $avatarObj ) & $lazyAvatar ? true : false;
 

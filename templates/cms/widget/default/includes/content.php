@@ -2,14 +2,14 @@
 // Yii Imports
 use yii\helpers\HtmlPurifier;
 
-$content			= isset( $settings->content ) ? $settings->content : $widget->content;
-$contentTitle		= isset( $settings->contentTitle ) && $settings->contentTitle && !empty( $model->displayName ) ? $model->displayName : $widget->contentTitle;
-$contentInfo		= isset( $settings->contentInfo ) && $settings->contentInfo && !empty( $model->description ) ? $model->description : $widget->contentInfo;
-$contentSummary		= isset( $settings->contentSummary ) && $settings->contentSummary && !empty( $model->summary ) ? $model->summary : $widget->contentSummary;
-$contentData		= isset( $settings->contentData ) && $settings->contentData && !empty( $model->content ) ? $model->content : $widget->contentData;
+$content			= isset( $settings->content ) ? $settings->content : ( isset( $widget->content ) ? $widget->content : false );
+$contentTitle		= isset( $settings->contentTitle ) && $settings->contentTitle && !empty( $model->displayName ) ? $model->displayName : ( isset( $widget->contentTitle ) ? $widget->contentTitle : null );
+$contentInfo		= isset( $settings->contentInfo ) && $settings->contentInfo && !empty( $model->description ) ? $model->description : ( isset( $widget->contentInfo ) ? $widget->contentInfo : null );
+$contentSummary		= isset( $settings->contentSummary ) && $settings->contentSummary && !empty( $model->summary ) ? $model->summary : ( isset( $widget->contentSummary ) ? $widget->contentSummary : null );
+$contentData		= isset( $settings->contentData ) && $settings->contentData && !empty( $model->content ) ? $model->content : ( isset( $widget->contentData ) ? $widget->contentData : null );
 
-$contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : $widget->contentClass;
-$contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDataClass : $widget->contentDataClass;
+$contentClass		= !empty( $settings->contentClass ) ? $settings->contentClass : ( isset( $widget->contentClass ) ? $widget->contentClass : null );
+$contentDataClass	= !empty( $settings->contentDataClass ) ? $settings->contentDataClass : ( isset( $widget->contentDataClass ) ? $widget->contentDataClass : null );
 
 $purifySummary	= isset( $settings->purifySummary ) ? $settings->purifySummary : true;
 $purifyContent	= isset( $settings->purifyContent ) ? $settings->purifyContent : true;
