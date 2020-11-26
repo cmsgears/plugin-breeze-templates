@@ -21,8 +21,9 @@ $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/inc
 $elementIncludes	= null;
 $widgetIncludes		= null;
 $blockIncludes		= null;
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/form/default/includes';
 
-$buffer			= "$defaultIncludes/buffer.php";
+$buffer			= "$templateIncludes/buffer.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
 $innerObjects	= "$defaultIncludes/objects-inner.php";
 $outerObjects	= "$defaultIncludes/objects-outer.php";
