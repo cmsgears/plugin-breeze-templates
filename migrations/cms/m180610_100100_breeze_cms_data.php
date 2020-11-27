@@ -330,8 +330,8 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 		$status	= ObjectData::STATUS_ACTIVE;
 		$vis	= ObjectData::VISIBILITY_PUBLIC;
 
-		$hTemplate	= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SIDEBAR_VERTICAL, CmsGlobal::TYPE_SIDEBAR );
-		$vTemplate	= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SIDEBAR_HORIZONTAL, CmsGlobal::TYPE_SIDEBAR );
+		$hTemplate	= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SIDEBAR_HORIZONTAL, CmsGlobal::TYPE_SIDEBAR );
+		$vTemplate	= Template::findGlobalBySlugType( CmsGlobal::TEMPLATE_SIDEBAR_VERTICAL, CmsGlobal::TYPE_SIDEBAR );
 
 		$columns = [ 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
