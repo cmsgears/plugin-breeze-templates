@@ -36,6 +36,9 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 
 	// Public -----------------
 
+	public $split		= false;
+	public $splitClass	= 'widget-newsletter-split';	
+
 	public $wrap	= true;
 	public $wrapper = 'form';
 
@@ -49,7 +52,7 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 
 	public $spinner = 'cmti cmti-3x cmti-spinner-10';
 
-	public $ajaxUrl;
+	public $ajaxUrl = '/forms/form/submit';
 
 	public $cmtApp			= 'forms';
 	public $cmtController	= 'form';
@@ -80,10 +83,10 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 
 		$rules = parent::rules();
 
-		$rules[] = [ [ 'formName', 'slug', 'type', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
+		$rules[] = [ [ 'split', 'labels' ], 'boolean' ];
+		$rules[] = [ [ 'splitClass', 'formName', 'slug', 'type', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
 		$rules[] = [ [ 'spinner' ], 'string', 'min' => 1, 'max' => Yii::$app->core->largeText ];
 		$rules[] = [ [ 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ];
-		$rules[] = [ [ 'labels' ], 'boolean' ];
 
 		return $rules;
 	}
@@ -94,7 +97,11 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 	public function attributeLabels() {
 
 		return [
-
+			'spinner' => 'Spinner',
+			'ajaxUrl' => 'AJAX Url',
+			'cmtApp' => 'AJAX Application',
+			'cmtController' => 'AJAX Controller',
+			'cmtAction' => 'AJAX Action',
 		];
 	}
 
@@ -120,7 +127,7 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 
 		$config[ 'cmtController' ] = $this->cmtController;
 
-		$config[ 'cmtAction' ]	= $this->cmtAction;
+		$config[ 'cmtAction' ] = $this->cmtAction;
 
 		return $config;
 	}
