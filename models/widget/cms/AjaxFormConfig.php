@@ -37,7 +37,7 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 	// Public -----------------
 
 	public $split		= false;
-	public $splitClass	= 'widget-newsletter-split';	
+	public $splitClass	= 'widget-newsletter-split';
 
 	public $wrap	= true;
 	public $wrapper = 'form';
@@ -52,7 +52,7 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 
 	public $spinner = 'cmti cmti-3x cmti-spinner-10';
 
-	public $ajaxUrl = '/forms/form/submit';
+	public $ajaxUrl;
 
 	public $cmtApp			= 'forms';
 	public $cmtController	= 'form';
