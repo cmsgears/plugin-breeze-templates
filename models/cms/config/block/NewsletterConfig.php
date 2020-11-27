@@ -39,6 +39,19 @@ class NewsletterConfig extends \cmsgears\core\common\models\forms\DataModel {
 	public $split		= false;
 	public $splitClass	= 'block-newsletter-split';
 
+    public $btnText	= "Join Us";
+
+	public $labels = false;
+
+	public $spinner = 'cmti cmti-3x cmti-spinner-10';
+
+	public $ajaxUrl	= 'newsletter/site/sign-up'; // CMT App Request - Submit Path
+
+	// CMT JS Framework to handle ajax request
+	public $cmtApp			= 'core';
+    public $cmtController	= 'default';
+    public $cmtAction		= 'default';
+
 	// Protected --------------
 
 	// Private ----------------
@@ -63,8 +76,24 @@ class NewsletterConfig extends \cmsgears\core\common\models\forms\DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'flip', 'split' ], 'boolean' ],
-			[ [ 'flipClass', 'splitClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ]
+			[ [ 'flip', 'split', 'labels' ], 'boolean' ],
+			[ [ 'flipClass', 'splitClass', 'btnText', 'spinner', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels() {
+
+		return [
+			'btnText' => 'Button Text',
+			'spinner' => 'Spinner',
+			'ajaxUrl' => 'AJAX Url',
+			'cmtApp' => 'AJAX Application',
+			'cmtController' => 'AJAX Controller',
+			'cmtAction' => 'AJAX Action',
 		];
 	}
 
@@ -75,5 +104,20 @@ class NewsletterConfig extends \cmsgears\core\common\models\forms\DataModel {
 	// Validators ----------------------------
 
 	// NewsletterConfig ----------------------
+
+	public function generateConfig( $params = [] ) {
+
+		$config[ 'btnText' ]	= $this->btnText;
+		$config[ 'labels' ]		= $this->labels;
+		$config[ 'spinner' ]	= $this->spinner;
+		$config[ 'ajaxUrl' ]	= $this->ajaxUrl;
+		$config[ 'cmtApp' ]		= $this->cmtApp;
+
+		$config[ 'cmtController' ] = $this->cmtController;
+
+		$config[ 'cmtAction' ] = $this->cmtAction;
+
+		return $config;
+	}
 
 }
