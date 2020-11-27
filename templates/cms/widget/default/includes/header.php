@@ -42,6 +42,9 @@ $iconLazyAttrs	= isset( $iconLazyClass ) ? "data-src=\"$smallUrl\" data-srcset=\
 			<?php if( !empty( $headerTitle ) ) { ?>
 				<div class="widget-header-title"><?= $headerTitle ?></div>
 			<?php } ?>
+			<?php if( !empty( $headerContent ) ) { ?>
+				<div class="widget-header-content reader"><?= $headerContent ?></div>
+			<?php } ?>
 		</div>
 	</div>
 <?php } ?>
