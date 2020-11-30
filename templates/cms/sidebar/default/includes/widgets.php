@@ -61,11 +61,12 @@ $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row
 
 					// Configure Widget options
 					$htmlOptions	= isset( $widgetTemplate ) && !empty( $widgetTemplate->htmlOptions ) ? json_decode( $widgetTemplate->htmlOptions, true ) : [];
-					$modelOptions	= !empty( $widget->htmlOptions ) ? json_decode( $widget->htmlOptions, true ) : [];
 					$configOptions	= isset( $widgetConfig[ 'options' ] ) ? $widgetConfig[ 'options' ] : [];
+					$modelOptions	= !empty( $widget->htmlOptions ) ? json_decode( $widget->htmlOptions, true ) : [];
 
-					$options = !empty( $htmlOptions ) ? ArrayHelper::merge( $htmlOptions, $modelOptions ) : $modelOptions;
+					$options = $htmlOptions;
 					$options = !empty( $configOptions ) ? ArrayHelper::merge( $options, $configOptions ) : $options;
+					$options = !empty( $modelOptions ) ? ArrayHelper::merge( $options, $modelOptions ) : $options;
 
 					$classOption = isset( $options[ 'class' ] ) ? $options[ 'class' ] : null;
 					$classOption = "widget $classOption obj-widget widget-{$widgetTemplate->slug} widget-{$widget->slug}";

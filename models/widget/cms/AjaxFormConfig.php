@@ -101,7 +101,7 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 			'ajaxUrl' => 'AJAX Url',
 			'cmtApp' => 'AJAX Application',
 			'cmtController' => 'AJAX Controller',
-			'cmtAction' => 'AJAX Action',
+			'cmtAction' => 'AJAX Action'
 		];
 	}
 
