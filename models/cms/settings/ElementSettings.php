@@ -95,6 +95,11 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifySummary = true;
 	public $purifyContent = true;
 
+	// Files
+	public $files = false;
+
+	public $fileTypes;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -124,8 +129,9 @@ class ElementSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
-			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaWrapClass', 'metaTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgVideo', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'metaTypes', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaWrapClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]

@@ -79,6 +79,11 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifySummary = true;
 	public $purifyContent = true;
 
+	// Files
+	public $files = false;
+
+	public $fileTypes;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -107,8 +112,9 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
-			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgVideo', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'metaTypes', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'headerIconUrl', 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];

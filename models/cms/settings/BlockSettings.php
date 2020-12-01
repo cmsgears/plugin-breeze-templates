@@ -121,6 +121,11 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifySummary = true;
 	public $purifyContent = true;
 
+	// Files
+	public $files = false;
+
+	public $fileTypes;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -152,8 +157,8 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
-			[ [ 'bkgVideo', 'bkgHeader', 'purifySummary', 'purifyContent' ], 'boolean' ],
-			[ [ 'metaTypes', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'bkgVideo', 'bkgHeader', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'metaTypes', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'bkgClass', 'headerClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],

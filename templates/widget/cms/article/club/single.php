@@ -7,15 +7,21 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
+// Config
+$siteProperties = SiteProperties::getInstance();
+
+// Settings
+$settings = $widget->widgetObj->getDataMeta( 'settings' );
+
 // Author
 $author			= $model->creator;
-$avatar			= SiteProperties::getInstance()->getDefaultAvatar();
+$avatar			= $siteProperties->getDefaultAvatar();
 $userAvatarUrl	= CodeGenUtil::getFileUrl( $author->avatar, [ 'image' => $avatar ] );
 $authorName		= $author->getName();
 
 // Content
 $content		= $model->modelContent;
-$banner			= $widget->defaultBanner ? 'banner-blog.jpg' : null;
+$banner			= $settings->defaultBanner ? $siteProperties->getPageBanner() : null;
 $bannerUrl		= CodeGenUtil::getMediumUrl( $content->banner, [ 'image' => $banner ] );
 
 $modelUrl		= isset( $widget->singlePath ) ? "$widget->singlePath/$model->slug" : Url::toRoute( [ "/$model->slug" ], true );

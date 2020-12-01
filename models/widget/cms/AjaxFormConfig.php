@@ -37,10 +37,10 @@ class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConf
 	// Public -----------------
 
 	public $split		= false;
-	public $splitClass	= 'widget-newsletter-split';
+	public $splitClass	= 'widget-form-split';
 
 	public $wrap	= true;
-	public $wrapper = 'form';
+	public $wrapper = 'div';
 
 	public $formName = 'GenericForm'; // Form Name used to collect the data
 

@@ -18,7 +18,7 @@ use yii\helpers\Html;
 		<?php if( $widget->pagination && $widget->paging ) { ?>
 			<div class="filler-height filler-height-medium"></div>
 			<div class="pagination-basic clearfix">
-				<div class="info">
+				<div class="page-info">
 					<?= $widget->pageInfo ?>
 				</div>
 				<div class="page-links">

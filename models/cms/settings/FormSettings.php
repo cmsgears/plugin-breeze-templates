@@ -160,6 +160,11 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifySummary = true;
 	public $purifyContent = true;
 
+	// Files
+	public $files = false;
+
+	public $fileTypes;
+
 	// AMP
 	public $amp;
 	public $ampGoogleScripts;
@@ -204,8 +209,8 @@ class FormSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'wrapCaptcha', 'wrapActions', 'labels', 'split4060' ], 'boolean' ],
 			[ [ 'amp' ], 'boolean' ],
-			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
-			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ 'formCaptchaAction', 'string', 'min' => 1, 'max' => Yii::$app->core->xLargeText ],
 			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'formClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],

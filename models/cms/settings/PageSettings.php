@@ -173,6 +173,11 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifySummary = true;
 	public $purifyContent = true;
 
+	// Files
+	public $files = false;
+
+	public $fileTypes;
+
 	// AMP
 	public $amp;
 	public $ampGoogleScripts;
@@ -218,9 +223,9 @@ class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
 			[ [ 'comments', 'disqus', 'amp' ], 'boolean' ],
 			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
-			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
-			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper', 'metaTypes', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
