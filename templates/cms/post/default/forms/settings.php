@@ -191,6 +191,11 @@ Editor::widget();
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'purifyContent' ) ?>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'route' ) ?>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

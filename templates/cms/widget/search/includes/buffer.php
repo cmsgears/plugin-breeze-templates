@@ -1,5 +1,12 @@
 <?php
-$searchUrl		= !empty( $config->searchUrl ) ? $config->searchUrl : null;
+// CMG Imports
+use cmsgears\core\common\config\CoreProperties;
+
+// Config
+$coreProperties = CoreProperties::getInstance();
+
+$searchUrl		= str_replace( $coreProperties->getSiteUrl() . '/', '', Yii::$app->request->absoluteUrl );
+$searchUrl		= !empty( $config->searchUrl ) ? $config->searchUrl : $searchUrl;
 $searchParam	= !empty( $config->searchParam ) ? $config->searchParam : 'keywords';
 $searchTitle	= !empty( $model->displayName ) ? $model->displayName : $widget->headerTitle;
 $keywords		= Yii::$app->request->get( $searchParam );

@@ -272,6 +272,8 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 		$columns = [ 'siteId', 'templateId', 'avatarId', 'bannerId', 'videoId', 'galleryId', 'createdBy', 'modifiedBy', 'name', 'slug', 'type', 'icon', 'texture', 'title', 'description', 'classPath', 'link', 'status', 'visibility', 'order', 'pinned', 'featured', 'backend', 'frontend', 'shared', 'createdAt', 'modifiedAt', 'htmlOptions', 'summary', 'content', 'data', 'gridCache', 'gridCacheValid', 'gridCachedAt' ];
 
 		$models = [
+			// Default
+			[ $site->id, $searchTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Tool', 'search-tool', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search', 'It filters models using the keywords.', NULL, NULL, 16000, 1500, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-default widget-box widget-box-search" }', NULL, NULL, '{"config":{"searchUrl":"","searchParam":"keywrods"},"settings":{"defaultAvatar":"0","defaultBanner":"0","bkg":"0","bkgClass":"","texture":"0","header":"1","headerIcon":"0","headerTitle":"1","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"1","contentClass":"","contentDataClass":"","styles":"","scripts":"","metas":"0","metaType":"","metaWrapClass":""}}', NULL, 0, NULL ],
 			// Page Widgets
 			[ $site->id, $searchTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Page Tool', 'search-page-tool', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search Pages', 'It filters pages using the keywords.', NULL, NULL, 16000, 1500, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), '{ "class": "widget widget-basic widget-default widget-box widget-box-search" }', NULL, NULL, '{"config":{"searchUrl":"page/search","searchParam":"keywrods"},"settings":{"defaultAvatar":"0","defaultBanner":"0","bkg":"0","bkgClass":"","texture":"0","header":"1","headerIcon":"0","headerTitle":"1","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"1","contentClass":"","contentDataClass":"","styles":"","scripts":"","metas":"0","metaType":"","metaWrapClass":""}}', NULL, 0, NULL ],
 			[ $site->id, $pagesTemplate->id, NULL, NULL, NULL, NULL, $master->id, $master->id, 'Search Pages', 'search-pages', CmsGlobal::TYPE_WIDGET, 'icon', 'texture', 'Search Pages', 'It search pages published on all sites.', NULL, NULL, 16000, 1500, 0, 0, 0, 1, 0, 1, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL, '{"settings":{"defaultAvatar":"0","defaultBanner":"0","bkg":"0","bkgClass":"","texture":"0","header":"0","headerIcon":"0","headerTitle":"0","headerIconUrl":"","content":"1","contentTitle":"0","contentInfo":"0","contentSummary":"0","contentData":"0","contentClass":"","contentDataClass":"","styles":"","metas":"0","metaType":"","metaWrapClass":""},"config":{"wrapperOptions":"{ \"class\": \"box-model-search-wrap row max-cols-50\" }","singleOptions":"{ \"class\": \"box box-default box-model-search box-page-search col col12x4\" }","excludeParams":"{\"params\": [ \"slug\" ] }","widget":"recent","texture":"","defaultBanner":"0","authorParam":"0","categoryParam":false,"tagParam":false,"wrap":"1","options":"{ \"class\": \"widget widget-basic widget-default widget-box widget-box-search-model widget-box-search-page\" }","wrapSingle":"1","singleWrapper":"div","basePath":"","allPath":"all","showAllPath":"0","singlePath":"","route":"","pagination":"1","paging":"1","nextLabel":"&raquo;","prevLabel":"&laquo;","limit":"12","ajaxPagination":"0","ajaxPageApp":"pagination","ajaxPageController":"page","ajaxPageAction":"getPage","ajaxUrl":"","textLimit":"250","excludeMain":"0","siteModels":"0","wrapper":"div","loadAssets":"0","templateDir":null,"template":"default","factory":true,"cache":false,"cacheDb":false,"cacheFile":false,"autoload":"0","autoloadTemplate":"autoload","autoloadApp":"autoload","autoloadController":"autoload","autoloadAction":"autoload","autoloadUrl":""}}', NULL, 0, NULL ],
@@ -437,7 +439,10 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 		$articleRight		= Sidebar::findBySlugType( 'article-right', CmsGlobal::TYPE_SIDEBAR );
 		$postRight			= Sidebar::findBySlugType( 'post-right', CmsGlobal::TYPE_SIDEBAR );
 		$postSearchRight	= Sidebar::findBySlugType( 'post-search-right', CmsGlobal::TYPE_SIDEBAR );
+		$postCategoryRight	= Sidebar::findBySlugType( 'post-category-right', CmsGlobal::TYPE_SIDEBAR );
+		$postTagRight		= Sidebar::findBySlugType( 'post-tag-right', CmsGlobal::TYPE_SIDEBAR );
 
+		$searchDefault	= Widget::findBySlugType( 'search-tool', CmsGlobal::TYPE_WIDGET );
 		$searchPage		= Widget::findBySlugType( 'search-page-tool', CmsGlobal::TYPE_WIDGET );
 		$searchArticle	= Widget::findBySlugType( 'search-article-tool', CmsGlobal::TYPE_WIDGET );
 		$searchPost		= Widget::findBySlugType( 'search-post-tool', CmsGlobal::TYPE_WIDGET );
@@ -448,7 +453,9 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 			[ $searchPage->id, $pageRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
 			[ $searchArticle->id, $articleRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
 			[ $searchPost->id, $postRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchPost->id, $postSearchRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+			[ $searchPost->id, $postSearchRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchDefault->id, $postCategoryRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchDefault->id, $postTagRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );
@@ -463,7 +470,7 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 		$master	= $this->master;
 
 		// Pages
-		$homePage		= Page::findBySlugType( 'home', CmsGlobal::TYPE_PAGE );
+		$homePage = Page::findBySlugType( 'home', CmsGlobal::TYPE_PAGE );
 
 		$aboutPage		= Page::findBySlugType( 'about-us', CmsGlobal::TYPE_PAGE );
 		$termPage		= Page::findBySlugType( 'terms', CmsGlobal::TYPE_PAGE );
