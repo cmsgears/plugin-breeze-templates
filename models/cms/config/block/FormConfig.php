@@ -12,6 +12,9 @@ namespace cmsgears\templates\breeze\models\cms\config\block;
 // Yii Imports
 use Yii;
 
+// CMG Imports
+use cmsgears\core\common\config\CoreGlobal;
+
 /**
  * FormConfig provide text configuration data.
  *
@@ -112,8 +115,6 @@ class FormConfig extends \cmsgears\core\common\models\forms\DataModel {
 	// FormConfig ----------------------------
 
 	public function generateConfig( $params = [] ) {
-
-		$config = parent::generateConfig();
 
 		$config[ 'formName' ]	= $this->formName;
 		$config[ 'labels' ]		= $this->labels;

@@ -2,7 +2,8 @@
 $model	= $widget->model;
 $data	= $widget->modelData;
 
-$settings = isset( $data->settings ) ? $data->settings : [];
+$settings	= isset( $data->settings ) ? $data->settings : [];
+$config		= isset( $data->config ) ? $data->config : [];
 
 $defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/element/box/default/includes';
 
