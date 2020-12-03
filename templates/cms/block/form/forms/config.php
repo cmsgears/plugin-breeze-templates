@@ -39,6 +39,56 @@ $returnUrl		= $this->context->returnUrl;
 			</div>
 		</div>
 		<div class="filler-height filler-height-medium"></div>
+		<div class="box box-crud">
+			<div class="box-header">
+				<div class="box-header-title">Widget Config</div>
+			</div>
+			<div class="box-content-wrap frm-split-40-60">
+				<div class="box-content">
+					<div class="row">
+						<div class="col col2">
+							<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'wrap' ) ?>
+						</div>
+						<div class="col col2">
+							<?= $form->field( $config, 'wrapper' ) ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col2">
+							<?= $form->field( $config, 'formName' ) ?>
+						</div>
+						<div class="col col2">
+							<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'labels' ) ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col2">
+							<?= $form->field( $config, 'slug' ) ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col2">
+							<?= $form->field( $config, 'spinner' ) ?>
+						</div>
+						<div class="col col2">
+							<?= $form->field( $config, 'ajaxUrl' ) ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col3">
+							<?= $form->field( $config, 'cmtApp' ) ?>
+						</div>
+						<div class="col col3">
+							<?= $form->field( $config, 'cmtController' ) ?>
+						</div>
+						<div class="col col3">
+							<?= $form->field( $config, 'cmtAction' ) ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="filler-height filler-height-medium"></div>
 		<div class="align align-right">
 			<?= Html::a( 'View All', $returnUrl, [ 'class' => 'btn btn-medium' ] ); ?>
 			<input class="frm-element-medium" type="submit" value="Submit" />

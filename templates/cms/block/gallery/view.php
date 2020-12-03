@@ -8,13 +8,14 @@ $config		= isset( $data->config ) ? $data->config : [];
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
 $elementIncludes	= null;
 $widgetIncludes		= null;
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/newsletter/includes';
 
 $split		= isset( $config->split ) ? $config->split : false;
 $flip		= isset( $config->flip ) ? $config->flip : false;
 $splitClass	= isset( $config->splitClass ) ? $config->splitClass : 'box-text-split';
 $flipClass	= isset( $config->flipClass ) ? $config->flipClass : 'box-text-flip';
 
-$buffer			= "$defaultIncludes/buffer.php";
+$buffer			= "$templateIncludes/buffer.php";
 $attributes		= "$defaultIncludes/attributes.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
 $postObjects	= "$defaultIncludes/objects-post.php";

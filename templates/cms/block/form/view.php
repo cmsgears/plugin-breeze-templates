@@ -1,9 +1,13 @@
 <?php
+// CMG Imports
+use cmsgears\templates\breeze\models\cms\config\block\FormConfig;
+
 $model	= $widget->model;
 $data	= $widget->modelData;
 
-$settings	= isset( $data->settings ) ? $data->settings : [];
-$config		= isset( $data->config ) ? $data->config : [];
+$settings		= isset( $data->settings ) ? $data->settings : [];
+$config			= isset( $data->config ) ? $data->config : [];
+$widgetConfig	= new FormConfig( $config );
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
 $elementIncludes	= null;
@@ -15,7 +19,7 @@ $flip		= isset( $config->flip ) ? $config->flip : false;
 $splitClass	= isset( $config->splitClass ) ? $config->splitClass : 'box-text-split';
 $flipClass	= isset( $config->flipClass ) ? $config->flipClass : 'box-text-flip';
 
-$buffer			= "$defaultIncludes/buffer.php";
+$buffer			= "$templateIncludes/buffer.php";
 $attributes		= "$defaultIncludes/attributes.php";
 $preObjects		= "$defaultIncludes/objects-pre.php";
 $postObjects	= "$defaultIncludes/objects-post.php";

@@ -37,7 +37,7 @@ $sliderOptions = [
 ];
 
 // Gallery
-$galleryItems	= $slides;
+$galleryItems = $slides;
 
 $collageClass	= $collage && count( $galleryItems ) <= $collageLimit ? $collageClass : null;
 $sliderClass	= 'cmt-slider-' . $model->slug;

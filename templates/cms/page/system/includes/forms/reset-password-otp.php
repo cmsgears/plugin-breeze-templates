@@ -16,7 +16,12 @@ use cmsgears\core\common\widgets\ActiveForm;
 				<?php if( empty( $mobile ) || !empty( $merror ) ) { ?>
 					<div class="form-group">
 						<label>Registered Mobile</label>
-						<input type="text" name="mobile" placeholder="Mobile" value="<?= $mobile ?>" />
+						<?php if( $intlMobile ) { ?>
+							<input type="text" name="mobile" placeholder="Mobile" value="<?= $mobile ?>" />
+						<?php } else { ?>
+							<input type="text" class="intl-tel-field intl-tel-field-mb required" name="tmobile" placeholder="Mobile Number" autocomplete="off" />
+							<input type="hidden" class="intl-tel-number" name="mobile" value="<?= $mobile ?>" />
+						<?php } ?>
 						<?php if( !empty( $merror ) ) { ?>
 							<p class="error"><?= $merror ?></p>
 						<?php } ?>

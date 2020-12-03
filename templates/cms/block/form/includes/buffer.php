@@ -10,7 +10,7 @@ use cmsgears\widgets\aform\AjaxFormWidget;
 <?php } ?>
 
 <div class="block-content-buffer">
-	<?= AjaxFormWidget::widget( [ 'slug' => $model->slug ] ) ?>
+	<?= AjaxFormWidget::widget( $widgetConfig->generateConfig() ) ?>
 </div>
 
 <?php include "$defaultIncludes/attributes.php"; ?>

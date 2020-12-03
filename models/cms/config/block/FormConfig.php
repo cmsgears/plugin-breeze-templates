@@ -37,7 +37,26 @@ class FormConfig extends \cmsgears\core\common\models\forms\DataModel {
 	public $flipClass	= 'block-form-flip';
 
 	public $split		= false;
-	public $splitClass	= 'block-form-split';
+	public $splitClass	= 'widget-form-split';
+
+	public $wrap	= true;
+	public $wrapper = 'div';
+
+	public $formName = 'GenericForm'; // Form Name used to collect the data
+
+	public $labels = true; // Flag to show/hide field labels
+
+	public $slug;
+
+	public $type = CoreGlobal::TYPE_FORM;
+
+	public $spinner = 'cmti cmti-3x cmti-spinner-10';
+
+	public $ajaxUrl;
+
+	public $cmtApp			= 'forms';
+	public $cmtController	= 'form';
+	public $cmtAction		= 'default';
 
 	// Protected --------------
 
@@ -63,8 +82,24 @@ class FormConfig extends \cmsgears\core\common\models\forms\DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'flip', 'split' ], 'boolean' ],
-			[ [ 'flipClass', 'splitClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ]
+			[ [ 'flip', 'split', 'labels' ], 'boolean' ],
+			[ [ 'flipClass', 'splitClass', 'formName', 'slug', 'type', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'spinner' ], 'string', 'min' => 1, 'max' => Yii::$app->core->largeText ],
+			[ [ 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels() {
+
+		return [
+			'spinner' => 'Spinner',
+			'ajaxUrl' => 'AJAX Url',
+			'cmtApp' => 'AJAX Application',
+			'cmtController' => 'AJAX Controller',
+			'cmtAction' => 'AJAX Action'
 		];
 	}
 
@@ -75,5 +110,24 @@ class FormConfig extends \cmsgears\core\common\models\forms\DataModel {
 	// Validators ----------------------------
 
 	// FormConfig ----------------------------
+
+	public function generateConfig( $params = [] ) {
+
+		$config = parent::generateConfig();
+
+		$config[ 'formName' ]	= $this->formName;
+		$config[ 'labels' ]		= $this->labels;
+		$config[ 'slug' ]		= $this->slug;
+		$config[ 'type' ]		= $this->type;
+		$config[ 'spinner' ]	= $this->spinner;
+		$config[ 'ajaxUrl' ]	= $this->ajaxUrl;
+		$config[ 'cmtApp' ]		= $this->cmtApp;
+
+		$config[ 'cmtController' ] = $this->cmtController;
+
+		$config[ 'cmtAction' ] = $this->cmtAction;
+
+		return $config;
+	}
 
 }
