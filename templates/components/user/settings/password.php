@@ -43,7 +43,7 @@ $frmSpinner = isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/
 		</div>
 		<div class="row data-crud-actions">
 			<div class="col col1">
-				<input class="frm-element-small" type="submit" value="Update" />
+				<input class="frm-element-medium" type="submit" value="Update" />
 			</div>
 		</div>
 	</form>

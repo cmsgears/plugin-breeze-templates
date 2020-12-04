@@ -35,7 +35,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 		<div class="row">
 			<div class="col col2">
 				<div class="form-group">
-					<label>Address 1*</label>
+					<label>Address 1 *</label>
 					<input type="text" name="Address[line1]" placeholder="Address 1" />
 					<span  class="error" cmt-error="Address[line1]"></span>
 				</div>
@@ -193,7 +193,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 		<div class="row">
 			<div class="col col2">
 				<div class="form-group">
-					<label>Address 1*</label>
+					<label>Address 1 *</label>
 					<input type="text" name="Address[line1]" placeholder="Address 1" value="{{address.line1}}" />
 					<span class="error" cmt-error="Address[line1]"></span>
 				</div>

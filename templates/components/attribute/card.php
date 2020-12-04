@@ -30,8 +30,8 @@ Editor::widget();
 						<div class="card-header-title row">
 							<div class="col col3x2 title"><?= $attribute->name ?></div>
 							<div class="col col3 align align-right">
-								<i class="btn-edit icon cmti cmti-edit pointer"></i>
-								<i class="btn-delete icon cmti cmti-bin pointer"></i>
+								<i class="btn-edit icon cmti pointer cmti-edit"></i>
+								<i class="btn-delete icon cmti pointer cmti-bin"></i>
 							</div>
 						</div>
 					</div>

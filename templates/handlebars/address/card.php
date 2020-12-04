@@ -36,7 +36,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 		<div class="row max-cols-50">
 			<div class="col col2">
 				<div class="form-group">
-					<label>Address 1*</label>
+					<label>Address 1 *</label>
 					<input type="text" name="Address[line1]" placeholder="Address 1" />
 					<span class="error" cmt-error="Address[line1]"></span>
 				</div>
@@ -167,8 +167,8 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 	</div>
 	<div class="row data-crud-actions">
 		<div class="col col1">
-			<span class="cmt-address-close btn btn-small">Cancel</span>
-			<input class="frm-element-small" type="submit" value="Add" />
+			<span class="cmt-address-close btn btn-medium">Cancel</span>
+			<input class="frm-element-medium" type="submit" value="Add" />
 		</div>
 	</div>
 </form>
@@ -199,7 +199,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 		<div class="row max-cols-50">
 			<div class="col col2">
 				<div class="form-group">
-					<label>Address 1*</label>
+					<label>Address 1 *</label>
 					<input type="text" name="Address[line1]" placeholder="Address 1" value="{{address.line1}}" />
 					<span class="error" cmt-error="Address[line1]"></span>
 				</div>
@@ -331,8 +331,8 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 	</div>
 	<div class="row data-crud-actions">
 		<div class="col col1">
-			<span class="cmt-address-close btn btn-small">Cancel</span>
-			<input class="frm-element-small" type="submit" value="Update" />
+			<span class="cmt-address-close btn btn-medium">Cancel</span>
+			<input class="frm-element-medium" type="submit" value="Update" />
 		</div>
 	</div>
 </form>
