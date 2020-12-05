@@ -8,7 +8,7 @@ $config		= isset( $data->config ) ? $data->config : [];
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/default/includes';
 $elementIncludes	= null;
 $widgetIncludes		= null;
-$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/testimonial/includes';
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/block/testimonials/includes';
 
 $split		= isset( $config->split ) ? $config->split : false;
 $flip		= isset( $config->flip ) ? $config->flip : false;
