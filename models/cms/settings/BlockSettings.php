@@ -96,7 +96,6 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 	// Attributes
 	public $metas;
 	public $metaTypes;
-
 	public $metaWrapClass;
 
 	// Elements
@@ -122,9 +121,9 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifyContent = true;
 
 	// Files
-	public $files = false;
-
+	public $files;
 	public $fileTypes;
+	public $fileWrapClass;
 
 	// Protected --------------
 
@@ -160,7 +159,7 @@ class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'bkgVideo', 'bkgHeader', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
 			[ [ 'metaTypes', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'bkgClass', 'headerClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
-			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'metaWrapClass', 'fileWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];

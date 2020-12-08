@@ -15,9 +15,12 @@ $settings	= isset( $data->settings ) ? $data->settings : ( isset( $template->set
 // Includes -----------------------
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$sliderIncludes		= null;
+$socialIncludes		= null;
 $elementIncludes	= null;
 $widgetIncludes		= null;
 $blockIncludes		= null;
+$fileIncludes		= null;
 $searchIncludes		= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/search';
 
 // Partials -----------------------

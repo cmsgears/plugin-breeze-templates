@@ -73,7 +73,6 @@ class GroupSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $contentInfo; // Show Model Description within content
 	public $contentSummary; // Show Model Summary within content
 	public $contentData; // Show Model Content within content
-	public $h1Summary; // Create H1 Tag using Summary
 
 	public $maxCover;
 
@@ -108,8 +107,7 @@ class GroupSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $metas;
 	public $metasWithContent;
 	public $metasOrder;
-	public $metaType;
-
+	public $metaTypes;
 	public $metaWrapClass;
 
 	// Elements
@@ -175,6 +173,19 @@ class GroupSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifySummary = true;
 	public $purifyContent = true;
 
+	// Routing
+	public $route;
+
+	// Files
+	public $files;
+	public $filesWithContent;
+	public $filesOrder;
+	public $fileTypes;
+
+	public $fileWrapClass;
+	public $fileWrapper;
+	public $fileClass;
+
 	// AMP
 	public $amp;
 	public $ampGoogleScripts;
@@ -213,20 +224,20 @@ class GroupSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerFluid', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'metas' ], 'boolean' ],
-			[ [ 'contentSocial', 'contentLabels', 'h1Summary' ], 'boolean' ],
+			[ [ 'contentSocial', 'contentLabels' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
-			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
+			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent', 'filesWithContent' ], 'boolean' ],
 			[ [ 'comments', 'reviews', 'disqus', 'amp' ], 'boolean' ],
 			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
-			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
-			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper', 'fileWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'fileWrapClass', 'fileClass', 'metaTypes', 'route', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
-			[ [ 'metasOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
+			[ [ 'metasOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder', 'filesOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
 			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ],
 			[ [ 'ampGoogleScripts', 'ampSchema', 'ampMetas' ] , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
 			[ [ 'ampScriptUrl', 'ampStylePath' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ]
@@ -250,7 +261,7 @@ class GroupSettings extends \cmsgears\core\common\models\forms\DataModel {
 			'metas' => 'Attributes',
 			'metasWithContent' => 'Attributes With Content',
 			'metasOrder' => 'Attributes Order',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class',
 			'amp' => 'AMP Page',
 			'ampGoogleScripts' => 'Google Script Tags',

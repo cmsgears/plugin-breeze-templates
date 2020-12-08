@@ -1,4 +1,5 @@
 <?php
+
 foreach( $objectsOrder as $key => $value ) {
 
 	switch( $key ) {
@@ -8,6 +9,15 @@ foreach( $objectsOrder as $key => $value ) {
 			if( $metas && !$metasWithContent ) {
 
 				include "$defaultIncludes/attributes.php";
+			}
+
+			break;
+		}
+		case 'files': {
+
+			if( $files && !$filesWithContent ) {
+
+				include isset( $fileIncludes ) ? "$fileIncludes/files.php" : "$defaultIncludes/files.php";
 			}
 
 			break;

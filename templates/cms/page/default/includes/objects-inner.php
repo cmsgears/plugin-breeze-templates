@@ -13,6 +13,15 @@ foreach( $objectsOrder as $key => $value ) {
 
 			break;
 		}
+		case 'files': {
+
+			if( $files && $filesWithContent ) {
+
+				include isset( $fileIncludes ) ? "$fileIncludes/files.php" : "$defaultIncludes/files.php";
+			}
+
+			break;
+		}
 		case 'elements': {
 
 			if( $elements && !$elementsBeforeContent && $elementsWithContent ) {

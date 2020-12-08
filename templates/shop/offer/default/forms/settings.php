@@ -117,9 +117,6 @@ Editor::widget();
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'headerScroller' ) ?>
 								</div>
-								<div class="col col4">
-									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'h1Summary' ) ?>
-								</div>
 							</div>
 							<div class="row">
 								<div class="col col2">
@@ -495,6 +492,43 @@ Editor::widget();
 								</div>
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'disqus' ) ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="filler-height"></div>
+				<div class="box box-crud">
+					<div class="box-header">
+						<div class="box-header-title">Files</div>
+					</div>
+					<div class="box-content-wrap frm-split-40-60">
+						<div class="box-content">
+							<div class="row">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'files' ) ?>
+								</div>
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'filesWithContent' ) ?>
+								</div>
+								<div class="col col4">
+									<?= $form->field( $settings, 'filesOrder' ) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'fileTypes' ) ?>
+								</div>
+								<div class="col col2">
+									<?= $form->field( $settings, 'fileWrapClass' ) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'fileWrapper' ) ?>
+								</div>
+								<div class="col col2">
+									<?= $form->field( $settings, 'fileClass' ) ?>
 								</div>
 							</div>
 						</div>

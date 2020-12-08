@@ -5,23 +5,23 @@ use yii\helpers\HtmlPurifier;
 // CMG Imports
 use cmsgears\core\common\config\CoreGlobal;
 
-$metaType		= !empty( $settings->metaType ) ? $settings->metaType : null;
+$metaTypes		= !empty( $settings->metaTypes ) ? $settings->metaTypes : null;
 $metasWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
 ?>
 <?php if( $metas ) { ?>
 	<div class="page-content-meta <?= $metasWrapClass ?>">
 		<?php
-			$metaType = isset( $metaType ) ? preg_split( '/,/', $metaType ) : [];
+			$metaTypes = isset( $metaTypes ) ? preg_split( '/,/', $metaTypes ) : [];
 
 			// Single Type
-			if( count( $metaType ) == 1 ) {
+			if( count( $metaTypes ) == 1 ) {
 
-				$metas = $model->getActiveMetasByType( $metaType[ 0 ] );
+				$metas = $model->getActiveMetasByType( $metaTypes[ 0 ] );
 			}
 			// Multiple Types
-			else if( count( $metaType ) > 1 ) {
+			else if( count( $metaTypes ) > 1 ) {
 
-				$metas = $model->getActiveMetasByTypes( $metaType );
+				$metas = $model->getActiveMetasByTypes( $metaTypes );
 			}
 			// Default Types
 			else {

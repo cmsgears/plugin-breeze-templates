@@ -72,7 +72,6 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 	// Attributes
 	public $metas;
 	public $metaTypes;
-
 	public $metaWrapClass;
 
 	// Purify
@@ -80,9 +79,9 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 	public $purifyContent = true;
 
 	// Files
-	public $files = false;
-
+	public $files;
 	public $fileTypes;
+	public $fileWrapClass;
 
 	// Protected --------------
 
@@ -115,7 +114,7 @@ class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 			[ [ 'bkgVideo', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
 			[ [ 'metaTypes', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'bkgClass', 'contentClass', 'contentDataClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
-			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'metaWrapClass', 'fileWrapClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'headerIconUrl', 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
 	}

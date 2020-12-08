@@ -20,6 +20,7 @@ $socialIncludes		= null;
 $elementIncludes	= null;
 $widgetIncludes		= null;
 $blockIncludes		= null;
+$fileIncludes		= null;
 
 // Partials -----------------------
 

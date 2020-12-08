@@ -478,8 +478,27 @@ Editor::widget();
 								<div class="col col4">
 									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'files' ) ?>
 								</div>
-								<div class="col col4x3">
+								<div class="col col4">
+									<?= Yii::$app->formDesigner->getIconCheckbox( $form, $settings, 'filesWithContent' ) ?>
+								</div>
+								<div class="col col4">
+									<?= $form->field( $settings, 'filesOrder' ) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col2">
 									<?= $form->field( $settings, 'fileTypes' ) ?>
+								</div>
+								<div class="col col2">
+									<?= $form->field( $settings, 'fileWrapClass' ) ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col col2">
+									<?= $form->field( $settings, 'fileWrapper' ) ?>
+								</div>
+								<div class="col col2">
+									<?= $form->field( $settings, 'fileClass' ) ?>
 								</div>
 							</div>
 						</div>

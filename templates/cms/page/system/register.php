@@ -25,9 +25,11 @@ $pageBanner	= $siteProperties->getPageBanner();
 
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 $sliderIncludes		= null;
+$socialIncludes		= null;
 $elementIncludes	= null;
 $widgetIncludes		= null;
 $blockIncludes		= null;
+$fileIncludes		= null;
 $systemIncludes		= isset( $systemIncludes ) ? $systemIncludes : Yii::getAlias( '@breeze' ) . '/templates/cms/page/system/includes';
 $systemContent		= isset( $systemContent ) ? $systemContent : "$systemIncludes/content.php";
 
