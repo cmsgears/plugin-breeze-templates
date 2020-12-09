@@ -38,6 +38,7 @@ class TextConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 	public $split		= false;
 	public $splitClass	= 'block-text-split';
+	public $splitRight	= false;
 
 	// Protected --------------
 
@@ -63,7 +64,7 @@ class TextConfig extends \cmsgears\core\common\models\forms\DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'flip', 'split' ], 'boolean' ],
+			[ [ 'flip', 'split', 'splitRight' ], 'boolean' ],
 			[ [ 'flipClass', 'splitClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ]
 		];
 	}

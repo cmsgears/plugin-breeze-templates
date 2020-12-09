@@ -38,6 +38,7 @@ class SliderConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 	public $split		= false;
 	public $splitClass	= 'block-slider-split';
+	public $splitRight	= false;
 
 	// Controls
 	public $lControlContent = '<i class="fa fa-angle-left valign-center"></i>';
@@ -94,7 +95,7 @@ class SliderConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ 'collageConfig', 'safe' ],
-			[ [ 'flip', 'split', 'circular', 'mediumImage', 'collage', 'lightbox', 'lightboxPopup' ], 'boolean' ],
+			[ [ 'flip', 'split', 'splitRight', 'circular', 'mediumImage', 'collage', 'lightbox', 'lightboxPopup' ], 'boolean' ],
 			[ 'collageLimit', 'number', 'integerOnly' => true, 'min' => 1 ],
 			[ [ 'flipClass', 'splitClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'smallerContent', 'onSlideClick', 'preSlideChange', 'postSlideChange', 'collageClass', 'lightboxId' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],

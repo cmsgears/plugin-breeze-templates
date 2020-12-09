@@ -41,6 +41,7 @@ class FormConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 	public $split		= false;
 	public $splitClass	= 'widget-form-split';
+	public $splitRight	= false;
 
 	public $wrap	= true;
 	public $wrapper = 'div';
@@ -85,7 +86,7 @@ class FormConfig extends \cmsgears\core\common\models\forms\DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'flip', 'split', 'labels' ], 'boolean' ],
+			[ [ 'flip', 'split', 'splitRight', 'labels' ], 'boolean' ],
 			[ [ 'flipClass', 'splitClass', 'formName', 'slug', 'type', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'spinner' ], 'string', 'min' => 1, 'max' => Yii::$app->core->largeText ],
 			[ [ 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]

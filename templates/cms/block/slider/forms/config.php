@@ -19,11 +19,14 @@ $returnUrl		= $this->context->returnUrl;
 			<div class="box-content-wrap frm-split-40-60">
 				<div class="box-content">
 					<div class="row">
-						<div class="col col2">
+						<div class="col col3">
 							<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'flip' ) ?>
 						</div>
-						<div class="col col2">
+						<div class="col col3">
 							<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'split' ) ?>
+						</div>
+						<div class="col col3">
+							<?= Yii::$app->formDesigner->getIconCheckbox( $form, $config, 'splitRight' ) ?>
 						</div>
 					</div>
 					<div class="row">

@@ -38,6 +38,7 @@ class NewsletterConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 	public $split		= false;
 	public $splitClass	= 'block-newsletter-split';
+	public $splitRight	= false;
 
     public $btnText	= "Join Us";
 
@@ -76,7 +77,7 @@ class NewsletterConfig extends \cmsgears\core\common\models\forms\DataModel {
 	public function rules() {
 
 		return [
-			[ [ 'flip', 'split', 'labels' ], 'boolean' ],
+			[ [ 'flip', 'split', 'splitRight', 'labels' ], 'boolean' ],
 			[ [ 'flipClass', 'splitClass', 'btnText', 'spinner', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];

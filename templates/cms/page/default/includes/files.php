@@ -88,6 +88,12 @@ $fileClass		= !empty( $settings->fileClass ) ? $settings->fileClass : 'row';
 
 							break;
 						}
+						case 'pdf': {
+
+							$fileIcon = 'icon cmti cmti-file-pdf';
+
+							break;
+						}
 					}
 				}
 ob_start();
