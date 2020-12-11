@@ -62,6 +62,9 @@ class PagingConfig extends WidgetConfig {
 	public $singlePath	= 'single';
 	public $route		= null;
 
+	// Type
+	public $type;
+
 	// Pagination
 	public $pagination	= true;
 	public $paging		= true;
@@ -109,7 +112,7 @@ class PagingConfig extends WidgetConfig {
 
 		$rules = parent::rules();
 
-		$rules[] = [ [ 'singleWrapper', 'basePath', 'allPath', 'singlePath' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
+		$rules[] = [ [ 'singleWrapper', 'basePath', 'allPath', 'singlePath', 'type' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
 		$rules[] = [ [ 'ajaxPageApp', 'ajaxPageController', 'ajaxPageAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
 		$rules[] = [ [ 'route', 'nextLabel', 'prevLabel', 'excludeParams' ], 'string', 'min' => 1, 'max' => Yii::$app->core->largeText ];
 		$rules[] = [ [ 'wrapperOptions', 'singleOptions', 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ];
@@ -165,6 +168,11 @@ class PagingConfig extends WidgetConfig {
 		$config[ 'textLimit' ]		= $this->textLimit;
 		$config[ 'excludeMain' ]	= $this->excludeMain;
 		$config[ 'siteModels' ]		= $this->siteModels;
+
+		if( !empty( $this->type ) ) {
+
+			$config[ 'type' ] = $this->type;
+		}
 
 		return $config;
 	}

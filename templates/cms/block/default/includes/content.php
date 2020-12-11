@@ -21,9 +21,7 @@ $contentBanner	= $contentBanner && !empty( $bannerUrl );
 
 $cbkgLazyClass	= isset( $lazyBanner ) && $lazyBanner && $contentBanner ? 'cmt-lazy-img' : null;
 
-$cbkgSrcset		= isset( $cbkgLazyClass ) ? $bkgSmallUrl . " 1x, " . $bkgMediumUrl . " 1.5x, " . $bannerObj->getFileUrl() . " 2x" : null;
-$cbkgSizes		= isset( $cbkgLazyClass ) ? "(min-width: 1025px) 2x, (min-width: 481px) 1.5x, 1x" : null;
-$cbkgLazyAttrs	= isset( $cbkgLazyClass ) ? "data-src=\"$bkgSmallUrl\" data-srcset=\"$cbkgSrcset\" data-sizes=\"$cbkgSizes\"" : null;
+$cbkgLazyAttrs = isset( $cbkgLazyClass ) ? $bkgLazyAttrs : null;
 ?>
 <?php if( $content ) { ?>
 	<div class="block-content <?= $contentClass ?>">

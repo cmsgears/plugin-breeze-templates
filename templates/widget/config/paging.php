@@ -60,6 +60,21 @@
 <div class="filler-height"></div>
 <div class="box box-crud">
 	<div class="box-header">
+		<div class="box-header-title">Type</div>
+	</div>
+	<div class="box-content-wrap frm-split-40-60">
+		<div class="box-content">
+			<div class="row">
+				<div class="col col2">
+					<?= $form->field( $config, 'type' ) ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="filler-height"></div>
+<div class="box box-crud">
+	<div class="box-header">
 		<div class="box-header-title">Pagination</div>
 	</div>
 	<div class="box-content-wrap frm-split-40-60">
