@@ -40,10 +40,10 @@ $sliderOptions = [
 $galleryItems = $slides;
 
 $collageClass	= $collage && count( $galleryItems ) <= $collageLimit ? $collageClass : null;
-$sliderClass	= 'cmt-slider-' . $model->slug;
+$sliderClass	= 'cmt-slider' . $model->slug;
 ?>
 <?php if( count( $galleryItems ) > 0 ) { ?>
-	<div id="<?= $sliderClass ?>" class="<?= $sliderClass ?> slider slider-basic <?= $collageClass ?>">
+	<div id="<?= $sliderClass ?>" class="<?= $sliderClass ?> slider slider-with-lightbox slider-basic <?= $collageClass ?>">
 		<?php
 			foreach( $galleryItems as $galleryItem ) {
 
@@ -68,6 +68,7 @@ if( $lightboxPopup ) {
 
 	echo Popup::widget([
 		'templateDir' => Yii::getAlias( "$sliderIncludes/lightbox" ),
-		'template' => 'slider', 'data' => [ 'popupId' => $lightboxId ]
+		'template' => 'slider', 'title' => isset( $gallery ) ? $gallery->title : null,
+		'data' => [ 'popupId' => $lightboxId ]
 	]);
 }

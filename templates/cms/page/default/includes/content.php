@@ -51,12 +51,12 @@ $sliderIncludes	= isset( $sliderIncludes ) ? $sliderIncludes : $defaultIncludes;
 		<?php if( $contentSocial ) { ?>
 			<?php include isset( $socialIncludes ) ? "$socialIncludes/social.php" : "$defaultIncludes/social.php"; ?>
 		<?php } ?>
+		<?php if( $contentGallery ) { ?>
+			<?php include "$sliderIncludes/slider.php"; ?>
+		<?php } ?>
 		<?php include $preObjects; ?>
 		<?php if( !empty( $contentData ) ) { ?>
 			<div class="page-content-data <?= $contentDataClass ?>"><?= $purifyContent ? HtmlPurifier::process( $contentData ) : $contentData ?></div>
-		<?php } ?>
-		<?php if( $contentGallery ) { ?>
-			<?php include "$sliderIncludes/slider.php"; ?>
 		<?php } ?>
 		<?php if( $contentLabels ) { ?>
 			<?php include "$defaultIncludes/labels.php"; ?>
