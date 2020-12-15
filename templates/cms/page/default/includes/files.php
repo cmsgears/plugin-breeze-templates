@@ -98,7 +98,7 @@ $fileClass		= !empty( $settings->fileClass ) ? $settings->fileClass : 'row';
 				}
 ob_start();
 ?>
-<div class="file file-download file-type-<?= $file->type ?> file-extension-<?= $file->extension ?>" data-type="<?= $file->type ?>">
+<div class="file file-download file-type-<?= $file->type ?> file-extension-<?= $file->extension ?>" data-type="<?= $file->type ?>" data-url="<?= $file->getFileUrl() ?>">
 	<a href="<?= $file->getFileUrl() ?>" download="<?= "{$file->name}.{$file->extension}" ?>">
 		<i class="<?= $fileIcon ?>"></i>
 	</a>
