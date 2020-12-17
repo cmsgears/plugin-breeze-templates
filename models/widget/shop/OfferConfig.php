@@ -10,11 +10,11 @@
 namespace cmsgears\templates\breeze\models\widget\shop;
 
 /**
- * ProductConfig provide widget config data.
+ * OfferConfig provide widget config data.
  *
  * @since 1.0.0
  */
-class ProductConfig extends \cmsgears\templates\breeze\models\widget\cms\PageConfig {
+class OfferConfig extends \cmsgears\templates\breeze\models\widget\cms\PageConfig {
 
 	// Variables ---------------------------------------------------
 
@@ -30,9 +30,9 @@ class ProductConfig extends \cmsgears\templates\breeze\models\widget\cms\PageCon
 
 	// Public -----------------
 
-	public $route		= 'shop';
-	public $allPath		= 'product';
-	public $singlePath	= 'product';
+	public $route		= 'offers';
+	public $allPath		= 'offer';
+	public $singlePath	= 'offer';
 
 	// Protected --------------
 
@@ -58,6 +58,6 @@ class ProductConfig extends \cmsgears\templates\breeze\models\widget\cms\PageCon
 
 	// Validators ----------------------------
 
-	// ProductConfig -------------------------
+	// OfferConfig ---------------------------
 
 }
