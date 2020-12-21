@@ -435,27 +435,36 @@ class m180610_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 
 	private function insertSidebarMappings() {
 
-		$pageRight			= Sidebar::findBySlugType( 'page-right', CmsGlobal::TYPE_SIDEBAR );
-		$articleRight		= Sidebar::findBySlugType( 'article-right', CmsGlobal::TYPE_SIDEBAR );
-		$postRight			= Sidebar::findBySlugType( 'post-right', CmsGlobal::TYPE_SIDEBAR );
-		$postSearchRight	= Sidebar::findBySlugType( 'post-search-right', CmsGlobal::TYPE_SIDEBAR );
-		$postCategoryRight	= Sidebar::findBySlugType( 'post-category-right', CmsGlobal::TYPE_SIDEBAR );
-		$postTagRight		= Sidebar::findBySlugType( 'post-tag-right', CmsGlobal::TYPE_SIDEBAR );
+		$pageRightSidebar			= Sidebar::findBySlugType( 'page-right', CmsGlobal::TYPE_SIDEBAR );
+		$articleRightSidebar		= Sidebar::findBySlugType( 'article-right', CmsGlobal::TYPE_SIDEBAR );
+		$postRightSidebar			= Sidebar::findBySlugType( 'post-right', CmsGlobal::TYPE_SIDEBAR );
+		$postSearchRightSidebar		= Sidebar::findBySlugType( 'post-search-right', CmsGlobal::TYPE_SIDEBAR );
+		$postCategoryRightSidebar	= Sidebar::findBySlugType( 'post-category-right', CmsGlobal::TYPE_SIDEBAR );
+		$postTagRightSidebar		= Sidebar::findBySlugType( 'post-tag-right', CmsGlobal::TYPE_SIDEBAR );
 
-		$searchDefault	= Widget::findBySlugType( 'search-tool', CmsGlobal::TYPE_WIDGET );
-		$searchPage		= Widget::findBySlugType( 'search-page-tool', CmsGlobal::TYPE_WIDGET );
-		$searchArticle	= Widget::findBySlugType( 'search-article-tool', CmsGlobal::TYPE_WIDGET );
-		$searchPost		= Widget::findBySlugType( 'search-post-tool', CmsGlobal::TYPE_WIDGET );
+		$searchDefaultWidget	= Widget::findBySlugType( 'search-tool', CmsGlobal::TYPE_WIDGET );
+		$searchPageWidget		= Widget::findBySlugType( 'search-page-tool', CmsGlobal::TYPE_WIDGET );
+		$searchArticleWidget	= Widget::findBySlugType( 'search-article-tool', CmsGlobal::TYPE_WIDGET );
+		$searchPostWidget		= Widget::findBySlugType( 'search-post-tool', CmsGlobal::TYPE_WIDGET );
+
+		$featuredArtiWidget	= Widget::findBySlugType( 'featured-site-articles', CmsGlobal::TYPE_WIDGET );
+		$featuredPostWidget	= Widget::findBySlugType( 'featured-site-posts', CmsGlobal::TYPE_WIDGET );
+		$recentPostWidget	= Widget::findBySlugType( 'recent-site-posts', CmsGlobal::TYPE_WIDGET );
 
 		$columns = [ 'modelId', 'parentId', 'parentType', 'type', 'order', 'active', 'pinned', 'featured', 'nodes' ];
 
 		$mappings = [
-			[ $searchPage->id, $pageRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchArticle->id, $articleRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchPost->id, $postRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchPost->id, $postSearchRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchDefault->id, $postCategoryRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
-			[ $searchDefault->id, $postTagRight->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
+			[ $searchPageWidget->id, $pageRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchArticleWidget->id, $articleRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			//[ $featuredArtiWidget->id, $articleRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchPostWidget->id, $postRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			//[ $featuredPostWidget->id, $postRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchPostWidget->id, $postSearchRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			//[ $featuredPostWidget->id, $postSearchRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchDefaultWidget->id, $postCategoryRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			//[ $recentPostWidget->id, $postCategoryRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			[ $searchDefaultWidget->id, $postTagRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ],
+			//[ $recentPostWidget->id, $postTagRightSidebar->id, CmsGlobal::TYPE_SIDEBAR, CmsGlobal::TYPE_WIDGET, 0, 1, 0, 0, NULL ]
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );

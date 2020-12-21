@@ -1,5 +1,5 @@
 <script id="addItemTemplate" type="text/x-handlebars-template">
-	<div class="cmt-gallery-item-uploader gallery-uploader row max-cols-50" type="image" directory="gallery">
+	<div class="cmt-gallery-item-uploader gallery-uploader row max-cols-50" type="image" directory="gallery" uploader="apix/file/file-handler">
 		<div class="colf colf15x4">
 			<label>Image</label>
 			<div class="uploader uploader-basic uploader-small">
@@ -66,7 +66,7 @@
 </script>
 
 <script id="updateItemTemplate" type="text/x-handlebars-template">
-	<div class="cmt-gallery-item-uploader gallery-uploader row max-cols-50" type="image" directory="gallery">
+	<div class="cmt-gallery-item-uploader gallery-uploader row max-cols-50" type="image" directory="gallery" uploader="apix/file/file-handler">
 		<div class="colf colf15x4">
 			<label>Image</label>
 			<div class="uploader uploader-basic uploader-small">

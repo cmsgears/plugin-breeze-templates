@@ -30,7 +30,7 @@ $apixBase	= $data[ 'apixBase' ];
 		<div class="popup-content-wrap" data-id="<?= $model->id ?>" data-type="<?= $model->type ?>">
 			<div class="popup-content cscroller">
 				<form class="form" cmt-app="core" cmt-controller="meta" cmt-action="<?= $type ?>" action="<?= $apixBase ?>/<?= $type ?>-meta?slug=<?= $model->slug ?>&type=<?= $model->type ?>">
-					<div class="spinner max-area-cover-color">
+					<div class="spinner max-area-cover bkg-transparent bkg-transparent-black">
 						<div class="valign-center cmti cmti-2x cmti-spinner-9 spin"></div>
 					</div>
 					<div class="frm-field">

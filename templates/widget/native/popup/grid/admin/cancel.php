@@ -25,7 +25,7 @@ $url		= $data[ 'url' ];
 		</div>
 		<div class="popup-content">
 			<form cmt-app="<?= $app ?>" cmt-controller="<?= $controller ?>" cmt-action="<?= $action ?>" action="<?= $url ?>">
-				<div class="spinner max-area-cover-color">
+				<div class="spinner max-area-cover bkg-transparent bkg-transparent-black">
 					<div class="valign-center cmti cmti-2x cmti-spinner-9 spin"></div>
 				</div>
 				<h5 class="align align-center">Are you sure you want to cancel the selected <?= $model ?> ?</h5>

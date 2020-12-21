@@ -15,7 +15,7 @@ $coreProperties = $this->context->getCoreProperties();
 	<?php $form = ActiveForm::begin( [ 'id' => 'frm-login', 'options' => [ 'class' => 'form' ] ] ); ?>
 
 		<div class="<?= $frmSplit ? 'frm-split-40-60' : null ?>">
-			<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email/Username' ] )->label( 'Email/Username' ) ?>
+			<?= $form->field( $formModel, 'identifier' )->textInput( [ 'placeholder' => 'Email/Username' ] )->label( 'Email/Username' ) ?>
 			<?= $form->field( $formModel, 'password' )->passwordInput( [ 'placeholder' => 'Password' ] ) ?>
 			<?= Yii::$app->formDesigner->getIconCheckbox( $form, $formModel, 'rememberMe', null, [ 'label' => 'Remember Me?' ] ) ?>
 		</div>

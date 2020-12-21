@@ -9,10 +9,10 @@ FbSdkAsset::register( $this );
 $publishedAt = isset( $modelContent->publishedAt ) ? date( 'F d, Y', strtotime( $modelContent->publishedAt ) ) : null;
 ?>
 <div class="page-content-social">
-	<div class="page-publish-date">
+	<div class="page-publish-date inline-block">
 		<i class="icon cmti cmti-calendar"></i>
 		<?php if( isset( $publishedAt ) ) { ?>
-			<span class="inline-block margin margin-small-h"><?= $publishedAt ?></span>
+			<span class="margin margin-small-h"><?= $publishedAt ?></span>
 		<?php } ?>
 	</div>
 	<?= SocialShare::widget( [ 'url' => Yii::$app->request->absoluteUrl ] ) ?>
