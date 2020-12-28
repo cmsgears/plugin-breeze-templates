@@ -21,7 +21,7 @@ use cmsgears\core\common\utilities\DateUtil;
  *
  * @since 1.0.0
  */
-class m180610_100000_breeze_cms extends \cmsgears\core\common\base\Migration {
+class m190710_100000_breeze_cms extends \cmsgears\core\common\base\Migration {
 
 	// Public variables
 
@@ -284,7 +284,7 @@ class m180610_100000_breeze_cms extends \cmsgears\core\common\base\Migration {
 
     public function down() {
 
-        echo "m180610_100000_breeze_cms will be deleted with m160621_014408_core.\n";
+        echo "m190710_100000_breeze_cms will be deleted with m160621_014408_core.\n";
 
         return true;
     }
