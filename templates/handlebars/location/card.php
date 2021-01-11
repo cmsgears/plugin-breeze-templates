@@ -112,7 +112,7 @@ $locationTypeOptions = isset( $locationTypeOptions ) ? $locationTypeOptions : []
 
 </script>
 
-<script id="locationViewTemplate" type="text/x-handlebars-template">
+<script id="viewLocationTemplate" type="text/x-handlebars-template">
 
 <div class="cmt-location card card-basic card-location col col3 padding padding-small" data-id="{{cid}}">
 	<div class="card-content-wrap">
@@ -136,6 +136,6 @@ $locationTypeOptions = isset( $locationTypeOptions ) ? $locationTypeOptions : []
 
 </script>
 
-<script id="locationRefreshTemplate" type="text/x-handlebars-template">
+<script id="refreshLocationTemplate" type="text/x-handlebars-template">
 
 </script>

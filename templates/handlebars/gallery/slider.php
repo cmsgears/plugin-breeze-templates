@@ -1,4 +1,4 @@
-<script id="addItemTemplate" type="text/x-handlebars-template">
+<script id="addGalleryItemTemplate" type="text/x-handlebars-template">
 	<div class="cmt-gallery-item-uploader row max-cols-50" type="image" directory="gallery" uploader="apix/file/file-handler">
 		<div class="colf colf15x5">
 			<label>Image</label>
@@ -59,7 +59,7 @@
 	</div>
 </script>
 
-<script id="updateItemTemplate" type="text/x-handlebars-template">
+<script id="updateGalleryItemTemplate" type="text/x-handlebars-template">
 	<div class="cmt-gallery-item-uploader row max-cols-50" type="image" directory="gallery" uploader="apix/file/file-handler">
 		<div class="colf colf15x5">
 			<label>Image</label>
@@ -121,7 +121,7 @@
 	</div>
 </script>
 
-<script id="itemViewTemplate" type="text/x-handlebars-template">
+<script id="viewGalleryItemTemplate" type="text/x-handlebars-template">
 
 <div class="cmt-gallery-item" data-id="{{mid}}">
 	<div class="cmt-gallery-item-header slide-header row">
@@ -144,7 +144,7 @@
 
 </script>
 
-<script id="itemRefreshTemplate" type="text/x-handlebars-template">
+<script id="refreshGalleryItemTemplate" type="text/x-handlebars-template">
 
 <div class="cmt-gallery-item-data slide-data">
 	<div class="slide-image bkg-image" style="background-image:url({{thumbUrl}})"></div>

@@ -31,71 +31,7 @@ $fileClass		= !empty( $settings->fileClass ) ? $settings->fileClass : 'row';
 
 			foreach( $files as $file ) {
 
-				$fileIcon = 'icon cmti cmti-file';
-
-				switch( $file->type ) {
-
-					case 'image': {
-
-						$fileIcon = 'icon cmti cmti-file-image';
-
-						break;
-					}
-					case 'video': {
-
-						$fileIcon = 'icon cmti cmti-file-video';
-
-						break;
-					}
-					case 'compressed': {
-
-						$fileIcon = 'icon cmti cmti-file-archive';
-
-						break;
-					}
-				}
-
-				if( $file->type == 'document' ) {
-
-					switch( $file->extension ) {
-
-						case 'doc':
-						case 'docx':
-						case 'odt': {
-
-							$fileIcon = 'icon cmti cmti-file-doc';
-
-							break;
-						}
-						case 'ppt':
-						case 'pptx':
-						case 'odp': {
-
-							$fileIcon = 'icon cmti cmti-file-ppt';
-
-							break;
-						}
-						case 'xls':
-						case 'ods': {
-
-							$fileIcon = 'icon cmti cmti-file-xls';
-
-							break;
-						}
-						case 'xlsx': {
-
-							$fileIcon = 'icon cmti cmti-file-xlsx';
-
-							break;
-						}
-						case 'pdf': {
-
-							$fileIcon = 'icon cmti cmti-file-pdf';
-
-							break;
-						}
-					}
-				}
+				$fileIcon = $file->getFileIcon();
 ob_start();
 ?>
 <div class="file file-download file-type-<?= $file->type ?> file-extension-<?= $file->extension ?>" data-type="<?= $file->type ?>" data-url="<?= $file->getFileUrl() ?>">

@@ -1,7 +1,7 @@
-<script id="addGalleryItemTemplate" type="text/x-handlebars-template">
-	<div class="cmt-gallery-item-uploader gallery-uploader row max-cols-50" type="image" directory="gallery" uploader="apix/file/file-handler">
+<script id="addFileTemplate" type="text/x-handlebars-template">
+	<div class="cmt-file-uploader row max-cols-50" type="mixed" directory="mixed" uploader="apix/file/file-handler">
 		<div class="colf colf15x4">
-			<label>Image</label>
+			<label>File</label>
 			<div class="uploader uploader-basic uploader-small">
 				<div class="file-dragger">
 					<div class="drag-wrap"></div>
@@ -18,13 +18,13 @@
 		</div>
 		<div class="colf colf15"></div>
 		<div class="colf colf15x10">
-			<form class="form" cmt-app="core" cmt-controller="galleryItem" cmt-action="add" action="<?= $apixBase ?>/add-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>">
+			<form class="form" cmt-app="core" cmt-controller="file" cmt-action="add" action="<?= $apixBase ?>/add-file?id=<?= $model->id ?>">
 				<?php include $frmSpinner; ?>
 				<div class="file-info">
 					<input name="File[name]" class="name" type="hidden" />
 					<input name="File[extension]" class="extension" type="hidden" />
-					<input name="File[directory]" value="gallery" type="hidden" />
-					<input name="File[type]" value="image" type="hidden" />
+					<input name="File[directory]" value="mixed" type="hidden" />
+					<input name="File[type]" value="mixed" type="hidden" />
 					<input name="File[changed]" class="change" type="hidden" />
 				</div>
 				<div class="file-fields row">
@@ -57,7 +57,7 @@
 					<div class="message error"></div>
 				</div>
 				<div class="data-crud-actions">
-					<span class="cmt-gallery-item-close btn btn-close-form btn-medium">Cancel</span>
+					<span class="cmt-file-close btn btn-close-form btn-medium">Cancel</span>
 					<input class="frm-element-medium" type="submit" value="Create" />
 				</div>
 			</form>
@@ -65,10 +65,10 @@
 	</div>
 </script>
 
-<script id="updateGalleryItemTemplate" type="text/x-handlebars-template">
-	<div class="cmt-gallery-item-uploader gallery-uploader row max-cols-50" type="image" directory="gallery" uploader="apix/file/file-handler">
+<script id="updateFileTemplate" type="text/x-handlebars-template">
+	<div class="cmt-file-uploader row max-cols-50" type="mixed" directory="mixed" uploader="apix/file/file-handler">
 		<div class="colf colf15x4">
-			<label>Image</label>
+			<label>File</label>
 			<div class="uploader uploader-basic uploader-small">
 				<div class="file-dragger">
 					<div class="drag-wrap"></div>
@@ -85,14 +85,14 @@
 		</div>
 		<div class="colf colf15"></div>
 		<div class="colf colf15x10">
-			<form class="form" cmt-app="core" cmt-controller="galleryItem" cmt-action="update" action="<?= $apixBase ?>/update-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
+			<form class="form" cmt-app="core" cmt-controller="file" cmt-action="update" action="<?= $apixBase ?>/update-file?id=<?= $model->id ?>&fid={{fid}}">
 				<?php include $frmSpinner; ?>
 				<div class="file-info">
 					<input name="File[id]" class="id" type="hidden" value="{{fid}}" />
 					<input name="File[name]" class="name" type="hidden" value="{{name}}" />
 					<input name="File[extension]" class="extension" type="hidden" value="{{extension}}" />
-					<input name="File[directory]" value="gallery" type="hidden" />
-					<input name="File[type]" value="image" type="hidden" />
+					<input name="File[directory]" value="mixed" type="hidden" />
+					<input name="File[type]" value="mixed" type="hidden" />
 					<input name="File[changed]" class="change" type="hidden" />
 				</div>
 				<div class="file-fields row">
@@ -125,7 +125,7 @@
 					<div class="message error"></div>
 				</div>
 				<div class="data-crud-actions">
-					<span class="cmt-gallery-item-close btn btn-close-form btn-medium">Cancel</span>
+					<span class="cmt-file-close btn btn-close-form btn-medium">Cancel</span>
 					<input class="frm-element-medium" type="submit" value="Update" />
 				</div>
 			</form>
@@ -133,37 +133,37 @@
 	</div>
 </script>
 
-<script id="viewGalleryItemTemplate" type="text/x-handlebars-template">
+<script id="viewFileTemplate" type="text/x-handlebars-template">
 
-	<div class="cmt-gallery-item card card-basic card-gallery-item col col6 padding padding-small" data-id="{{mid}}">
+	<div class="cmt-file card card-basic card-file col col3 padding padding-small" data-id="{{mid}}">
 		<div class="card-content-wrap">
-			<div class="cmt-gallery-item-header card-header">
+			<div class="cmt-file-header card-header">
 				<div class="card-header-title row">
 					<div class="col col3x2 title" title="{{title}}">{{title}}</div>
 					<div class="col col3 align align-right">
-						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
+						<span class="relative" cmt-app="core" cmt-controller="file" cmt-action="get" action="<?= $apixBase ?>/get-file?id=<?= $model->id ?>&fid={{fid}}">
 							<?php include $apixSpinner; ?>
 							<i class="icon cmti cmti-edit cmt-click"></i>
 						</span>
-						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid={{fid}}">
+						<span class="relative" cmt-app="core" cmt-controller="file" cmt-action="delete" action="<?= $apixBase ?>/delete-file?id=<?= $model->id ?>&fid={{fid}}">
 							<?php include $apixSpinner; ?>
 							<i class="icon cmti cmti-bin cmt-click"></i>
 						</span>
 					</div>
 				</div>
 			</div>
-			<div class="cmt-gallery-item-data card-data">
-				<img src="{{thumbUrl}}" />
+			<div class="cmt-file-data card-data">
+				<i class="{{icon}}"></i>
 			</div>
 		</div>
 	</div>
 
 </script>
 
-<script id="refreshGalleryItemTemplate" type="text/x-handlebars-template">
+<script id="refreshFileTemplate" type="text/x-handlebars-template">
 
-<div class="cmt-gallery-item-data card-data">
-	<img src="{{thumbUrl}}" />
+<div class="cmt-file-data card-data">
+	<i class="{{icon}}"></i>
 </div>
 
 </script>

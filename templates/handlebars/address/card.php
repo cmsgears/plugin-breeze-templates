@@ -339,7 +339,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 
 </script>
 
-<script id="addressViewTemplate" type="text/x-handlebars-template">
+<script id="viewAddressTemplate" type="text/x-handlebars-template">
 
 <div class="cmt-address card card-basic card-address col col3 padding padding-small" data-id="{{cid}}">
 	<div class="card-content-wrap">
@@ -366,7 +366,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 
 </script>
 
-<script id="addressRefreshTemplate" type="text/x-handlebars-template">
+<script id="refreshAddressTemplate" type="text/x-handlebars-template">
 
 <div class="cmt-address-data card-data text text-large-5">
 	{{value}}

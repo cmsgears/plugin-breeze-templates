@@ -25,11 +25,11 @@ $apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/componen
 					<div class="col col3 align align-right">
 						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
 							<?php include $apixSpinner; ?>
-							<i class="icon cmti cmti-edit cmt-click"></i>
+							<i class="icon pointer cmti cmti-edit cmt-click"></i>
 						</span>
 						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
 							<?php include $apixSpinner; ?>
-							<i class="icon cmti cmti-bin cmt-click"></i>
+							<i class="icon pointer cmti cmti-bin cmt-click"></i>
 						</span>
 					</div>
 				</div>
