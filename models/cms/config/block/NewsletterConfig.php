@@ -46,6 +46,9 @@ class NewsletterConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 	public $spinner = 'cmti cmti-3x cmti-spinner-10';
 
+	public $templateDir = null;
+	public $template	= 'default';
+
 	public $ajaxUrl	= 'newsletter/site/sign-up'; // CMT App Request - Submit Path
 
 	// CMT JS Framework to handle ajax request
@@ -78,8 +81,8 @@ class NewsletterConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 		return [
 			[ [ 'flip', 'split', 'splitRight', 'labels' ], 'boolean' ],
-			[ [ 'flipClass', 'splitClass', 'btnText', 'spinner', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
+			[ [ 'flipClass', 'splitClass', 'btnText', 'spinner', 'template', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'templateDir', 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
 	}
 
@@ -111,6 +114,10 @@ class NewsletterConfig extends \cmsgears\core\common\models\forms\DataModel {
 		$config[ 'btnText' ]	= $this->btnText;
 		$config[ 'labels' ]		= $this->labels;
 		$config[ 'spinner' ]	= $this->spinner;
+
+		$config[ 'templateDir' ]	= $this->templateDir;
+		$config[ 'template' ]		= $this->template;
+
 		$config[ 'ajaxUrl' ]	= $this->ajaxUrl;
 		$config[ 'cmtApp' ]		= $this->cmtApp;
 

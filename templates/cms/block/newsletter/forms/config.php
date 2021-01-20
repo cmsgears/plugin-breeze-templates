@@ -58,6 +58,14 @@ $returnUrl		= $this->context->returnUrl;
 					</div>
 					<div class="row">
 						<div class="col col2">
+							<?= $form->field( $config, 'templateDir' ) ?>
+						</div>
+						<div class="col col2">
+							<?= $form->field( $config, 'template' ) ?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col2">
 							<?= $form->field( $config, 'spinner' ) ?>
 						</div>
 						<div class="col col2">
