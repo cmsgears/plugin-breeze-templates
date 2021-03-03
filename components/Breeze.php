@@ -34,6 +34,8 @@ class Breeze extends \yii\base\Component {
 		parent::init();
 
 		Yii::setAlias( 'breeze', dirname( __DIR__ ) );
+
+		Yii::setAlias( 'breezeTemplates', dirname( __DIR__ ) . '/templates' );
 	}
 
 	// Instance methods --------------------------------------------

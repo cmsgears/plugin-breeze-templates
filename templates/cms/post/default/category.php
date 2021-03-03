@@ -7,6 +7,7 @@ $featuredModels	= Yii::$app->factory->get( 'postService' )->getFeatured();
 
 // Config -------------------------
 
+$coreProperties	= $this->context->getCoreProperties();
 $siteProperties	= $this->context->getSiteProperties();
 
 $data		= json_decode(  $model->data );
@@ -14,15 +15,15 @@ $settings	= isset( $data->settings ) ? $data->settings : ( isset( $template->set
 
 // Includes -----------------------
 
-$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$defaultIncludes	= Yii::getAlias( '@breezeTemplates' ) . '/cms/page/default/includes';
 $sliderIncludes		= null;
 $socialIncludes		= null;
 $elementIncludes	= null;
 $widgetIncludes		= null;
 $blockIncludes		= null;
 $fileIncludes		= null;
-$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/post/default/includes';
-$searchIncludes		= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/search';
+$templateIncludes	= Yii::getAlias( '@breezeTemplates' ) . '/cms/post/default/includes';
+$searchIncludes		= Yii::getAlias( '@breezeTemplates' ) . '/cms/page/default/search';
 
 // Partials -----------------------
 
