@@ -13,7 +13,7 @@ $resAvatar			= isset( $settings->resAvatar ) ? $settings->resAvatar : ( isset( $
 
 $avatarObj		= $model->avatar;
 $avatar			= ( isset( $settings->defaultAvatar ) && $settings->defaultAvatar ) || ( isset( $widget->defaultAvatar ) ? $widget->defaultAvatar : false ) ? SiteProperties::getInstance()->getDefaultAvatar() : null;
-$headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $lazyAvatar ? CodeGenUtil::getSmallUrl( $avatarObj, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( $avatarObj, [ 'image' => $avatar ] );
+$headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : ( $lazyAvatar ? CodeGenUtil::getSmallUrl( $avatarObj, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( $avatarObj, [ 'image' => $avatar ] ) );
 $headerIconUrl	= !empty( $headerIconUrl ) ? $headerIconUrl : ( isset( $widget->headerIconUrl ) ? $widget->headerIconUrl : null );
 
 $lazyAvatar	= isset( $avatarObj ) & $lazyAvatar ? true : false;

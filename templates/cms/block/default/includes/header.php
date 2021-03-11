@@ -22,7 +22,7 @@ $headerClass = !empty( $settings->headerClass ) ? $settings->headerClass : $widg
 
 $avatarObj		= $model->avatar;
 $avatar			= ( isset( $settings->defaultAvatar ) && $settings->defaultAvatar ) || $widget->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
-$headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $lazyAvatar ? CodeGenUtil::getSmallUrl( $avatarObj, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( $avatarObj, [ 'image' => $avatar ] );
+$headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : ( $lazyAvatar ? CodeGenUtil::getSmallUrl( $avatarObj, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( $avatarObj, [ 'image' => $avatar ] ) );
 $headerIconUrl	= !empty( $headerIconUrl ) ? $headerIconUrl : $widget->headerIconUrl;
 
 $lazyAvatar	= isset( $avatarObj ) & $lazyAvatar ? true : false;

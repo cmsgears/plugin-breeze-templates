@@ -35,7 +35,7 @@ $scroller		= $headerScroller ? 'cscroller' : null;
 $lazyAvatar	= isset( $avatarObj ) & $lazyAvatar ? true : false;
 
 $avatarUrl		= $lazyAvatar ? $avatarObj->getSmallPlaceholderUrl() : $headerIconUrl;
-$iconLazyClass	= $lazyAvatar ? 'cmt-lazy-img' : isset( $avatarObj ) ? 'cmt-res-img' : null;
+$iconLazyClass	= $lazyAvatar ? 'cmt-lazy-img' : ( isset( $avatarObj ) ? 'cmt-res-img' : null );
 
 $smallUrl		= isset( $iconLazyClass ) ? $avatarObj->getSmallUrl() : null;
 $iconSrcset		= isset( $iconLazyClass ) ? $avatarObj->generateSrcset() : null;
