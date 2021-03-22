@@ -4,7 +4,8 @@ $data	= $widget->modelData;
 
 $settings = isset( $data->settings ) ? $data->settings : [];
 
-$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/widget/default/includes';
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/widget/default/includes';
+$elementIncludes	= null;
 
 $buffer = "$defaultIncludes/buffer.php";
 ?>
