@@ -9,7 +9,7 @@ $metaClass	= $data[ 'metaClass' ];
 $metaType	= $data[ 'metaType' ];
 $apixBase	= $data[ 'apixBase' ];
 ?>
-<div id="popup-attribute-<?= $type ?>" class="popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
+<div id="popup-attribute-<?= $type ?>" class="cmt-popup popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
 	<div class="popup-screen"></div>
 	<?php if( $widget->bkg ) { ?>
 		<div class="popup-bkg <?= $widget->bkgClass ?>" <?= isset( $widget->bkgUrl ) ? " style=\"background-image:url($widget->bkgUrl);\"" : null ?>></div>
@@ -30,7 +30,7 @@ $apixBase	= $data[ 'apixBase' ];
 		<div class="popup-content-wrap" data-id="<?= $model->id ?>" data-type="<?= $model->type ?>">
 			<div class="popup-content cscroller">
 				<form class="form" cmt-app="core" cmt-controller="meta" cmt-action="<?= $type ?>" action="<?= $apixBase ?>/<?= $type ?>-meta?slug=<?= $model->slug ?>&type=<?= $model->type ?>">
-					<div class="spinner max-area-cover-color">
+					<div class="spinner max-area-cover bkg-transparent bkg-transparent-black">
 						<div class="valign-center cmti cmti-2x cmti-spinner-9 spin"></div>
 					</div>
 					<div class="frm-field">
@@ -44,7 +44,6 @@ $apixBase	= $data[ 'apixBase' ];
 						<span class="error" cmt-error="<?= $metaClass ?>[value]"></span>
 					</div>
 					<input type="hidden" name="<?= $metaClass ?>[type]" value="<?= $metaType ?>" />
-					<div class="filler-height filler-height-medium"></div>
 					<div class="frm-actions align align-center">
 						<input class="submit btn btn-medium" type="submit" name="submit" value="<?= ucfirst( $type ) ?>">
 					</div>
@@ -52,7 +51,6 @@ $apixBase	= $data[ 'apixBase' ];
 					<div class="message warning"></div>
 					<div class="message error"></div>
 				</form>
-				<div class="filler-height filler-height-medium"></div>
 			</div>
 		</div>
 	</div>

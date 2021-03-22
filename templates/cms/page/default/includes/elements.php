@@ -18,7 +18,7 @@ $boxClass		= !empty( $settings->boxClass ) ? $settings->boxClass : 'row';
 
 			if( empty( $elementType ) ) {
 
-				$elements = $model->activeElements;
+				$elements = $model->displayElements;
 			}
 			else {
 

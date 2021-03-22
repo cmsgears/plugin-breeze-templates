@@ -10,7 +10,7 @@ $controller	= $data[ 'controller' ];
 $action		= $data[ 'action' ];
 $url		= $data[ 'url' ];
 ?>
-<div id="<?= $popId ?>" class="popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
+<div id="<?= $popId ?>" class="cmt-popup popup popup-basic popup-medium <?= $modal ? 'popup-modal' : null ?>">
 	<div class="popup-screen"></div>
 	<?php if( $widget->bkg ) { ?>
 		<div class="popup-bkg <?= $widget->bkgClass ?>" <?= isset( $widget->bkgUrl ) ? " style=\"background-image:url($widget->bkgUrl);\"" : null ?>></div>
@@ -28,12 +28,10 @@ $url		= $data[ 'url' ];
 		</div>
 		<div class="popup-content-wrap">
 			<div class="popup-content">
-				<div class="filler-height filler-height-medium"></div>
 				<form cmt-app="<?= $app ?>" cmt-controller="<?= $controller ?>" cmt-action="<?= $action ?>" action="<?= $url ?>">
-					<div class="spinner max-area-cover-color">
+					<div class="spinner max-area-cover bkg-transparent bkg-transparent-black">
 						<div class="valign-center cmti cmti-2x cmti-spinner-9 spin"></div>
 					</div>
-					<div class="clear filler-height"></div>
 					<h5 class="align align-center">Are you sure you want to deactivate the selected <?= $model ?> ?</h5>
 					<div class="clear filler-height"></div>
 					<div class="align align-center"><input class="frm-element-medium" type="submit" value="Deactivate" /></div>

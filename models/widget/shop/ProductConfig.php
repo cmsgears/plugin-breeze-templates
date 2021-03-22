@@ -14,7 +14,7 @@ namespace cmsgears\templates\breeze\models\widget\shop;
  *
  * @since 1.0.0
  */
-class ProductConfig extends PageConfig {
+class ProductConfig extends \cmsgears\templates\breeze\models\widget\cms\PageConfig {
 
 	// Variables ---------------------------------------------------
 
@@ -30,9 +30,9 @@ class ProductConfig extends PageConfig {
 
 	// Public -----------------
 
-	public $route		= 'blog/search';
-	public $allPath		= 'blog';
-	public $singlePath	= 'blog';
+	public $route		= 'shop';
+	public $allPath		= 'product';
+	public $singlePath	= 'product';
 
 	// Protected --------------
 

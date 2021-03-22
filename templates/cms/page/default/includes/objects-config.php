@@ -1,5 +1,6 @@
 <?php
 $metas		= isset( $settings->metas ) ? $settings->metas : false;
+$files		= isset( $settings->files ) ? $settings->files : false;
 $elements	= isset( $settings->elements ) ? $settings->elements : false;
 $widgets	= isset( $settings->widgets ) ? $settings->widgets : false;
 $blocks		= isset( $settings->blocks ) ? $settings->blocks : false;
@@ -9,6 +10,11 @@ $sidebars	= isset( $settings->sidebars ) ? $settings->sidebars : false;
 
 $metasWithContent	= isset( $settings->metasWithContent ) ? $settings->metasWithContent : false;
 $metasOrder			= !empty( $settings->metasOrder ) ? $settings->metasOrder : 0;
+
+// Files --------------------------
+
+$filesWithContent	= isset( $settings->filesWithContent ) ? $settings->filesWithContent : false;
+$filesOrder			= !empty( $settings->filesOrder ) ? $settings->filesOrder : 0;
 
 // Elements -----------------------
 
@@ -34,6 +40,10 @@ $sidebarsBeforeContent	= isset( $settings->sidebarsBeforeContent ) ? $settings->
 $sidebarsWithContent	= isset( $settings->sidebarsWithContent ) ? $settings->sidebarsWithContent : false;
 $sidebarsOrder			= !empty( $settings->sidebarsOrder ) ? $settings->sidebarsOrder : 0;
 
-$objectsOrder = [ 'metas' => $metasOrder, 'elements' => $elementsOrder, 'widgets' => $widgetsOrder, 'blocks' => $blocksOrder, 'sidebars' => $sidebarsOrder ];
+$objectsOrder = [
+	'elements' => $elementsOrder, 'widgets' => $widgetsOrder,
+	'blocks' => $blocksOrder, 'sidebars' => $sidebarsOrder,
+	'metas' => $metasOrder, 'files' => $filesOrder
+];
 
 asort( $objectsOrder );

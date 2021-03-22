@@ -51,12 +51,19 @@ class PagingConfig extends WidgetConfig {
 	public $singleWrapper	= 'div';
 	public $singleOptions	= '{ "class": "row" }';
 
+	// Auto columns
+	public $autoCols = false;
+	public $autoColsCount = 4;
+
 	// Path to form Url
 	public $basePath	= null;
 	public $allPath		= 'all';
 	public $showAllPath = false;
 	public $singlePath	= 'single';
 	public $route		= null;
+
+	// Type
+	public $type;
 
 	// Pagination
 	public $pagination	= true;
@@ -105,13 +112,13 @@ class PagingConfig extends WidgetConfig {
 
 		$rules = parent::rules();
 
-		$rules[] = [ [ 'singleWrapper', 'basePath', 'allPath', 'singlePath' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
+		$rules[] = [ [ 'singleWrapper', 'basePath', 'allPath', 'singlePath', 'type' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
 		$rules[] = [ [ 'ajaxPageApp', 'ajaxPageController', 'ajaxPageAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
 		$rules[] = [ [ 'route', 'nextLabel', 'prevLabel', 'excludeParams' ], 'string', 'min' => 1, 'max' => Yii::$app->core->largeText ];
 		$rules[] = [ [ 'wrapperOptions', 'singleOptions', 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ];
-		$rules[] = [ [ 'wrap', 'wrapSingle', 'showAllPath', 'pagination', 'paging', 'ajaxPagination' ], 'boolean' ];
+		$rules[] = [ [ 'wrap', 'wrapSingle', 'showAllPath', 'pagination', 'paging', 'ajaxPagination', 'autoCols' ], 'boolean' ];
 		$rules[] = [ [ 'excludeMain', 'siteModels' ], 'boolean' ];
-		$rules[] = [ [ 'limit', 'textLimit' ], 'number', 'integerOnly' => true, 'min' => 1 ];
+		$rules[] = [ [ 'limit', 'textLimit', 'autoColsCount' ], 'number', 'integerOnly' => true, 'min' => 1 ];
 
 		return $rules;
 	}
@@ -161,6 +168,11 @@ class PagingConfig extends WidgetConfig {
 		$config[ 'textLimit' ]		= $this->textLimit;
 		$config[ 'excludeMain' ]	= $this->excludeMain;
 		$config[ 'siteModels' ]		= $this->siteModels;
+
+		if( !empty( $this->type ) ) {
+
+			$config[ 'type' ] = $this->type;
+		}
 
 		return $config;
 	}

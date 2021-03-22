@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * BlockSettings provide block settings data.
  *
  * @since 1.0.0
  */
-class BlockSettings extends DataModel {
+class BlockSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,14 +35,20 @@ class BlockSettings extends DataModel {
 
 	// Avatar
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 
 	// Background
 	public $defaultBanner;
+	public $lazyBanner;
+	public $resBanner;
 	public $bkg;
 	public $fixedBkg;
 	public $scrollBkg;
 	public $parallaxBkg;
 	public $bkgClass;
+	public $bkgVideo;
+	public $bkgHeader;
 
 	// Texture
 	public $texture;
@@ -57,6 +60,7 @@ class BlockSettings extends DataModel {
 	public $headerInfo; // Show Header Info using Model Description
 	public $headerContent; // Show Header Content using Model Summary
 	public $headerIconUrl; // Show Header Icon using Icon Url irrespective of Model Avatar/Icon
+	public $headerClass;
 
 	// Content
 	public $content; // Show content
@@ -67,6 +71,9 @@ class BlockSettings extends DataModel {
 	public $contentRaw; // Content without purifier
 
 	public $maxCover;
+
+	public $contentAvatar;
+	public $contentBanner;
 
 	public $contentClass;
 	public $contentDataClass;
@@ -88,8 +95,7 @@ class BlockSettings extends DataModel {
 
 	// Attributes
 	public $metas;
-	public $metaType;
-
+	public $metaTypes;
 	public $metaWrapClass;
 
 	// Elements
@@ -109,6 +115,15 @@ class BlockSettings extends DataModel {
 	public $widgetWrapClass;
 	public $widgetWrapper;
 	public $widgetClass;
+
+	// Purify
+	public $purifySummary = true;
+	public $purifyContent = true;
+
+	// Files
+	public $files;
+	public $fileTypes;
+	public $fileWrapClass;
 
 	// Protected --------------
 
@@ -135,16 +150,18 @@ class BlockSettings extends DataModel {
 
 		return [
 			[ [ 'contentRaw', 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner' ], 'boolean' ],
+			[ [ 'bkg', 'fixedBkg', 'scrollBkg', 'parallaxBkg', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'elementsBeforeContent', 'widgets', 'widgetsBeforeContent' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent' ], 'boolean' ],
-			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
+			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'metas' ], 'boolean' ],
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent' ], 'boolean' ],
-			[ [ 'metaType', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
-			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgVideo', 'bkgHeader', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'metaTypes', 'elementType', 'widgetType', 'boxWrapper', 'widgetWrapper', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'bkgClass', 'headerClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'metaWrapClass', 'fileWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
-			[ [ 'headerIconUrl', 'footerIconUrl' ], 'url' ]
+			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
 	}
 
@@ -154,14 +171,23 @@ class BlockSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'fixedBkg' => 'Fixed Background',
 			'scrollBkg' => 'Scrollable Background',
 			'parallaxBkg' => 'Parallax Background',
 			'bkgClass' => 'Background Class',
+			'bkgVideo' => 'Background Video',
+			'bkgHeader' => 'Background In Header',
+			'lazyBanner' => 'Lazy Load',
+			'resBanner' => 'Responsive',
+			'headerInfo' => 'Header Description',
+			'headerContent' => 'Header Summary',
+			'contentInfo' => 'Content Description',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Types',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

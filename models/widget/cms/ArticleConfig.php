@@ -58,6 +58,6 @@ class ArticleConfig extends PageConfig {
 
 	// Validators ----------------------------
 
-	// ArticleConfig ----------------------------
+	// ArticleConfig -------------------------
 
 }

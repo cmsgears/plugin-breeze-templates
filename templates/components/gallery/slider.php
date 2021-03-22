@@ -1,8 +1,11 @@
 <?php
 // CMG Includes
 use cmsgears\core\common\utilities\CodeGenUtil;
+
+$frmSpinner		= isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
+$apixSpinner	= isset( $apixSpinner ) ? $apixSpinner : "$breezeTemplates/components/spinners/10-hidden.php";
 ?>
-<div class="cmt-gallery-item-crud data-crud data-crud-gallery" ldata-layout="cmt-gallery">
+<div class="cmt-gallery-item-crud data-crud data-crud-gallery data-crud-slider" data-layout="cmt-layout-slider">
 	<div class="data-crud-content">
 		<span class="cmt-gallery-item-add btn btn-large btn-aqua-border inline-block">Add Picture</span>
 	</div><hr class="margin margin-small-v" />
@@ -20,17 +23,13 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 				<div class="cmt-gallery-item-header slide-header row">
 					<div class="col col3x2 title align align-left" title="<?= $file->title ?>"><?= $file->title ?></div>
 					<div class="col col3 align align-right">
-						<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
-							<span class="spinner hidden-easy">
-								<span class="icon cmti cmti-spinner-1 spin"></span>
-							</span>
-							<i class="icon cmti cmti-edit cmt-click"></i>
+						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="get" action="<?= $apixBase ?>/get-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
+							<?php include $apixSpinner; ?>
+							<i class="icon pointer cmti cmti-edit cmt-click"></i>
 						</span>
-						<span class="relative" cmt-app="gallery" cmt-controller="item" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
-							<span class="spinner hidden-easy">
-								<span class="icon cmti cmti-spinner-1 spin"></span>
-							</span>
-							<i class="icon cmti cmti-bin cmt-click"></i>
+						<span class="relative" cmt-app="core" cmt-controller="galleryItem" cmt-action="delete" action="<?= $apixBase ?>/delete-gallery-item?id=<?= $model->id ?>&cid=<?= $gallery->id ?>&fid=<?= $file->id ?>">
+							<?php include $apixSpinner; ?>
+							<i class="icon pointer cmti cmti-bin cmt-click"></i>
 						</span>
 					</div>
 				</div>
@@ -41,4 +40,4 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 		<?php } ?>
 	</div>
 </div>
-<?php include "$themeIncludes/handlebars/gallery/slider.php";
+<?php include "$breezeTemplates/handlebars/gallery/slider.php";

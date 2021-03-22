@@ -4,7 +4,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 // Template options
-$template		= $modelContent->template;
+$template		= isset( $modelContent->template ) ? $modelContent->template : $template;
 $tclass			= isset( $template ) ? "page-{$template->slug}" : null;
 $htmlOptions	= isset( $template ) && !empty( $template->htmlOptions ) ? json_decode( $template->htmlOptions, true ) : [];
 

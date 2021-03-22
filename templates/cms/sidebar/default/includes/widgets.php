@@ -39,24 +39,34 @@ $widgetClass		= !empty( $settings->widgetClass ) ? $settings->widgetClass : 'row
 				}
 				else {
 
-					$widgetView		= !empty( $widgetTemplate->view ) ? $widgetTemplate->view : 'default';
+					$widgetView = !empty( $widgetTemplate->view ) ? $widgetTemplate->view : ( !empty( $widgetTemplate->viewPath ) ? 'default' : null );
+
 					$widgetConfig	= !empty( $widgetTemplate->configPath ) ? $widgetTemplate->configPath : null;
 					$widgetConfig	= isset( $widgetConfig ) ? new $widgetConfig( $widget->getDataMeta( 'config' ) ) : null;
 					$widgetConfig	= isset( $widgetConfig ) ? $widgetConfig->generateConfig() : [];
 
-					$widgetConfig = ArrayHelper::merge( $widgetConfig, [
-						'widgetObj' => $widget,
-						'templateDir' => $widgetTemplate->viewPath,
-						'template' => $widgetView
-					]);
+					$dbConfig = [ 'widgetObj' => $widget ];
+
+					if( !empty( $widgetTemplate->viewPath ) ) {
+
+						$dbConfig[ 'templateDir' ] = $widgetTemplate->viewPath;
+					}
+
+					if( !empty( $widgetView ) ) {
+
+						$dbConfig[ 'template' ] = $widgetView;
+					}
+
+					$widgetConfig = ArrayHelper::merge( $widgetConfig, $dbConfig );
 
 					// Configure Widget options
 					$htmlOptions	= isset( $widgetTemplate ) && !empty( $widgetTemplate->htmlOptions ) ? json_decode( $widgetTemplate->htmlOptions, true ) : [];
+					$configOptions	= isset( $widgetConfig[ 'options' ] ) ? $widgetConfig[ 'options' ] : [];
 					$modelOptions	= !empty( $widget->htmlOptions ) ? json_decode( $widget->htmlOptions, true ) : [];
-					$configOptions	= $widgetConfig[ 'options' ];
 
-					$options = !empty( $htmlOptions ) ? ArrayHelper::merge( $htmlOptions, $modelOptions ) : $modelOptions;
+					$options = $htmlOptions;
 					$options = !empty( $configOptions ) ? ArrayHelper::merge( $options, $configOptions ) : $options;
+					$options = !empty( $modelOptions ) ? ArrayHelper::merge( $options, $modelOptions ) : $options;
 
 					$classOption = isset( $options[ 'class' ] ) ? $options[ 'class' ] : null;
 					$classOption = "widget $classOption obj-widget widget-{$widgetTemplate->slug} widget-{$widget->slug}";

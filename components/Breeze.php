@@ -11,20 +11,39 @@ namespace cmsgears\templates\breeze\components;
 
 // Yii Imports
 use Yii;
-use yii\base\Component;
 
 /**
  * The breeze component initialize Breeze templates.
  *
  * @since 1.0.0
  */
-class Breeze extends Component {
+class Breeze extends \yii\base\Component {
+
+	// Global -----------------
+
+	// Public -----------------
+
+	// Protected --------------
+
+	// Private ----------------
+
+	// Constructor and Initialisation ------------------------------
 
 	public function init() {
 
 		parent::init();
 
 		Yii::setAlias( 'breeze', dirname( __DIR__ ) );
+
+		Yii::setAlias( 'breezeTemplates', dirname( __DIR__ ) . '/templates' );
 	}
+
+	// Instance methods --------------------------------------------
+
+	// Yii parent classes --------------------
+
+	// CMG parent classes --------------------
+
+	// Breeze --------------------------------
 
 }

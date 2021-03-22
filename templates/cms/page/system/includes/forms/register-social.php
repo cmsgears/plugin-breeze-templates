@@ -1,9 +1,9 @@
 <?php
 // Yii Imports
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
 
 // CMG Imports
+use cmsgears\core\common\widgets\ActiveForm;
 use cmsgears\social\connect\widgets\SnsLoginWidget;
 
 $coreProperties = $this->context->getCoreProperties();
@@ -36,13 +36,13 @@ $termsLabel = "I agree to the <a href=\"$termsUrl\">Terms</a> and <a href=\"$pri
 				<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email*' ] ) ?>
 				<?= $form->field( $formModel, 'password' )->passwordInput( [ 'placeholder' => 'Password*' ] ) ?>
 				<?= $form->field( $formModel, 'password_repeat' )->passwordInput([ 'placeholder' => 'Confirm Password*' ] ) ?>
-				<?= Yii::$app->formDesigner->getIconCheckbox( $form, $formModel, 'terms', null, 'cmti cmti-checkbox', $termsLabel ) ?>
+				<?= Yii::$app->formDesigner->getIconCheckbox( $form, $formModel, 'terms', null, 'cmti cmti-checkbox', [ 'label' => $termsLabel ] ) ?>
 			</div>
 
 			<div class="row max-cols-50 padding padding-small-v">
 				<div class="col col2">
 					<label>
-						<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgotton Password?</a>
+						<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgot Password</a>
 					</label>
 				</div>
 				<div class="col col2 align align-right">

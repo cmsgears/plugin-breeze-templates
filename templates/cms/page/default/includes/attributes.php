@@ -2,28 +2,31 @@
 // Yii Imports
 use yii\helpers\HtmlPurifier;
 
-$metaType		= !empty( $settings->metaType ) ? $settings->metaType : null;
+// CMG Imports
+use cmsgears\core\common\config\CoreGlobal;
+
+$metaTypes		= !empty( $settings->metaTypes ) ? $settings->metaTypes : null;
 $metasWrapClass	= !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : null;
 ?>
 <?php if( $metas ) { ?>
 	<div class="page-content-meta <?= $metasWrapClass ?>">
 		<?php
-			$metaType = preg_split( '/,/', $metaType );
+			$metaTypes = isset( $metaTypes ) ? preg_split( '/,/', $metaTypes ) : [];
 
 			// Single Type
-			if( count( $metaType ) == 1 ) {
+			if( count( $metaTypes ) == 1 ) {
 
-				$metas = $model->getActiveMetasByType( $metaType[ 0 ] );
+				$metas = $model->getActiveMetasByType( $metaTypes[ 0 ] );
 			}
 			// Multiple Types
-			else if( count( $metaType ) > 1 ) {
+			else if( count( $metaTypes ) > 1 ) {
 
-				$metas = $model->getActiveMetasByTypes( $metaType );
+				$metas = $model->getActiveMetasByTypes( $metaTypes );
 			}
 			// Default Types
 			else {
 
-				$metas = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
+				$metas = $model->getActiveMetasByType( CoreGlobal::TYPE_USER );
 			}
 
 			foreach( $metas as $meta ) {

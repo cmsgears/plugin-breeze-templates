@@ -20,7 +20,7 @@ use cmsgears\core\common\config\CoreGlobal;
  *
  * @since 1.0.0
  */
-class AjaxFormConfig extends WidgetConfig {
+class AjaxFormConfig extends \cmsgears\templates\breeze\models\widget\WidgetConfig {
 
 	// Variables ---------------------------------------------------
 
@@ -36,8 +36,11 @@ class AjaxFormConfig extends WidgetConfig {
 
 	// Public -----------------
 
+	public $split		= false;
+	public $splitClass	= 'widget-form-split';
+
 	public $wrap	= true;
-	public $wrapper = 'form';
+	public $wrapper = 'div';
 
 	public $formName = 'GenericForm'; // Form Name used to collect the data
 
@@ -80,10 +83,10 @@ class AjaxFormConfig extends WidgetConfig {
 
 		$rules = parent::rules();
 
-		$rules[] = [ [ 'formName', 'slug', 'type', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
+		$rules[] = [ [ 'split', 'labels' ], 'boolean' ];
+		$rules[] = [ [ 'splitClass', 'formName', 'slug', 'type', 'cmtApp', 'cmtController', 'cmtAction' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ];
 		$rules[] = [ [ 'spinner' ], 'string', 'min' => 1, 'max' => Yii::$app->core->largeText ];
 		$rules[] = [ [ 'ajaxUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ];
-		$rules[] = [ [ 'labels' ], 'boolean' ];
 
 		return $rules;
 	}
@@ -94,7 +97,11 @@ class AjaxFormConfig extends WidgetConfig {
 	public function attributeLabels() {
 
 		return [
-
+			'spinner' => 'Spinner',
+			'ajaxUrl' => 'AJAX Url',
+			'cmtApp' => 'AJAX Application',
+			'cmtController' => 'AJAX Controller',
+			'cmtAction' => 'AJAX Action'
 		];
 	}
 
@@ -120,7 +127,7 @@ class AjaxFormConfig extends WidgetConfig {
 
 		$config[ 'cmtController' ] = $this->cmtController;
 
-		$config[ 'cmtAction' ]	= $this->cmtAction;
+		$config[ 'cmtAction' ] = $this->cmtAction;
 
 		return $config;
 	}

@@ -1,14 +1,34 @@
 <?php
-$siteProperties		= $this->context->getSiteProperties();
-$commentProperties	= $this->context->getCommentProperties();
-$cmsProperties		= $this->context->getCmsProperties();
+// Services & Models --------------
 
 $modelContent = $model->modelContent;
 
 // Config -------------------------
 
-$data		= json_decode( $model->data );
-$settings	= isset( $data->settings ) ? $data->settings : [];
+$siteProperties		= $this->context->getSiteProperties();
+$commentProperties	= $this->context->getCommentProperties();
+$cmsProperties		= $this->context->getCmsProperties();
+
+$data		= json_decode(  $model->data );
+$settings	= isset( $data->settings ) ? $data->settings : ( isset( $template->settings ) ? $template->settings : [] );
+
+// Includes -----------------------
+
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$sliderIncludes		= null;
+$socialIncludes		= null;
+$elementIncludes	= null;
+$widgetIncludes		= null;
+$blockIncludes		= null;
+$fileIncludes		= null;
+$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/qna/includes';
+
+// Partials -----------------------
+
+$buffer			= "$defaultIncludes/buffer.php";
+$preObjects		= "$templateIncludes/objects-pre.php";
+$innerObjects	= "$templateIncludes/objects-inner.php";
+$outerObjects	= "$templateIncludes/objects-outer.php";
 
 // Sidebars -----------------------
 
@@ -17,14 +37,6 @@ $bottomSidebar	= isset( $settings->bottomSidebar ) ? $settings->bottomSidebar : 
 $leftSidebar	= isset( $settings->leftSidebar ) ? $settings->leftSidebar : false;
 $rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
-
-$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
-$templateIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/qna/includes';
-
-$buffer			= "$defaultIncludes/buffer.php";
-$preObjects		= "$templateIncludes/objects-pre.php";
-$innerObjects	= "$templateIncludes/objects-inner.php";
-$outerObjects	= "$templateIncludes/objects-outer.php";
 ?>
 <?php include "$defaultIncludes/options.php"; ?>
 <?php include "$defaultIncludes/styles.php"; ?>

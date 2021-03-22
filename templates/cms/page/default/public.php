@@ -1,14 +1,35 @@
 <?php
-$siteProperties		= $this->context->getSiteProperties();
-$commentProperties	= $this->context->getCommentProperties();
-$cmsProperties		= $this->context->getCmsProperties();
+// Services & Models --------------
 
 $modelContent = $model->modelContent;
 
 // Config -------------------------
 
-$data		= json_decode( $model->data );
-$settings	= isset( $data->settings ) ? $data->settings : [];
+$siteProperties		= $this->context->getSiteProperties();
+$commentProperties	= $this->context->getCommentProperties();
+$cmsProperties		= $this->context->getCmsProperties();
+
+$data		= json_decode(  $model->data );
+$settings	= isset( $data->settings ) ? $data->settings : ( isset( $template->settings ) ? $template->settings : [] );
+
+$author = $model->creator;
+
+// Includes -----------------------
+
+$defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
+$sliderIncludes		= null;
+$socialIncludes		= null;
+$elementIncludes	= null;
+$widgetIncludes		= null;
+$blockIncludes		= null;
+$fileIncludes		= null;
+
+// Partials -----------------------
+
+$buffer			= "$defaultIncludes/buffer.php";
+$preObjects		= "$defaultIncludes/objects-pre.php";
+$innerObjects	= "$defaultIncludes/objects-inner.php";
+$outerObjects	= "$defaultIncludes/objects-outer.php";
 
 // Sidebars -----------------------
 
@@ -17,13 +38,6 @@ $bottomSidebar	= isset( $settings->bottomSidebar ) ? $settings->bottomSidebar : 
 $leftSidebar	= isset( $settings->leftSidebar ) ? $settings->leftSidebar : false;
 $rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
-
-$defaultIncludes = Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
-
-$buffer			= "$defaultIncludes/buffer.php";
-$preObjects		= "$defaultIncludes/objects-pre.php";
-$innerObjects	= "$defaultIncludes/objects-inner.php";
-$outerObjects	= "$defaultIncludes/objects-outer.php";
 ?>
 <?php include "$defaultIncludes/options.php"; ?>
 <?php include "$defaultIncludes/styles.php"; ?>
@@ -64,4 +78,5 @@ $outerObjects	= "$defaultIncludes/objects-outer.php";
 		<?php } ?>
 	</div>
 </div>
-<?php include "$defaultIncludes/scripts.php"; ?>
+<?php
+include "$defaultIncludes/scripts.php";

@@ -1,10 +1,10 @@
 <?php
-$sortColumns	= $widget->sortColumns;
+$sortColumns = $widget->sortColumns;
 
 // Sorting
-$sort			= Yii::$app->request->getQueryParam( 'sort' );
-$sortAsc		= isset( $sort ) && $sort[0] === '-' ? false : true;
-$sort			= isset( $sort ) && $sort[0] === '-' ? substr( $sort, 1 ) : $sort;
+$sort		= Yii::$app->request->getQueryParam( 'sort' );
+$sortAsc	= isset( $sort ) && $sort[0] === '-' ? false : true;
+$sort		= isset( $sort ) && $sort[0] === '-' ? substr( $sort, 1 ) : $sort;
 ?>
 <?php if( count( $sortColumns ) > 0 ) { ?>
 <span class="grid-sort-wrap">

@@ -1,10 +1,13 @@
 <?php
-$spinner = isset( $spinner ) ? $spinner : Yii::getAlias( '@breeze' ) . '/templates/components/spinners/10-white-max.php';
+// Config
+$breezeTemplates = Yii::getAlias( '@breeze/templates' );
+
+$frmSpinner = isset( $frmSpinner ) ? $frmSpinner : "$breezeTemplates/components/spinners/10-white-max.php";
 ?>
-<div class="data-crud">
+<div class="data-crud data-crud-password">
 	<div class="data-crud-title">Change Password</div>
-	<form class="form padding padding-small" cmt-app="core" cmt-controller="user" cmt-action="account" action="user/account">
-		<?php include $spinner; ?>
+	<form class="form" cmt-app="core" cmt-controller="user" cmt-action="account" action="<?= $apixBase ?>/account">
+		<?php include $frmSpinner; ?>
 		<div class="data-crud-form">
 			<div class="row max-cols-100">
 				<div class="col col3 hidden-easy">
@@ -38,7 +41,7 @@ $spinner = isset( $spinner ) ? $spinner : Yii::getAlias( '@breeze' ) . '/templat
 			<div class="col col1 message warning"></div>
 			<div class="col col1 message error"></div>
 		</div>
-		<div class="row data-crud-actions align align-right">
+		<div class="row data-crud-actions">
 			<div class="col col1">
 				<input class="frm-element-medium" type="submit" value="Update" />
 			</div>

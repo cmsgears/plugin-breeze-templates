@@ -5,15 +5,15 @@
 <?php } ?>
 <?php if( $headerIcon && !empty( $headerIconUrl ) ) { ?>
 	<div class="page-header-icon">
-		<img class="fluid" src="<?= $headerIconUrl ?>" />
+		<img class="fluid <?= $iconLazyClass ?>" src="<?= $avatarUrl ?>" <?= $iconLazyAttrs ?> />
 	</div>
 <?php } ?>
 <?php if( !empty( $headerTitle ) ) { ?>
-	<div class="page-header-title"><?= $headerTitle ?></div>
+	<h1 class="page-header-title"><?= $headerTitle ?></h1>
 <?php } ?>
 <?php if( !empty( $headerInfo ) ) { ?>
-	<div class="page-header-info reader"><?= $headerInfo ?></div>
+	<h2 class="page-header-info reader"><?= $headerInfo ?></h2>
 <?php } ?>
 <?php if( !empty( $headerContent ) ) { ?>
-	<div class="page-header-content reader"><?= $headerContent ?></div>
+	<h3 class="page-header-content reader"><?= $headerContent ?></h3>
 <?php } ?>

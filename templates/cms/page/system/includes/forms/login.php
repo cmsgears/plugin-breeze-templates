@@ -1,7 +1,9 @@
 <?php
 // Yii Imports
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
+
+// CMG Imports
+use cmsgears\core\common\widgets\ActiveForm;
 
 $coreProperties = $this->context->getCoreProperties();
 ?>
@@ -13,14 +15,14 @@ $coreProperties = $this->context->getCoreProperties();
 	<?php $form = ActiveForm::begin( [ 'id' => 'frm-login', 'options' => [ 'class' => 'form' ] ] ); ?>
 
 		<div class="<?= $frmSplit ? 'frm-split-40-60' : null ?>">
-			<?= $form->field( $formModel, 'email' )->textInput( [ 'placeholder' => 'Email/Username' ] )->label( 'Email/Username' ) ?>
+			<?= $form->field( $formModel, 'identifier' )->textInput( [ 'placeholder' => 'Email/Username' ] )->label( 'Email/Username' ) ?>
 			<?= $form->field( $formModel, 'password' )->passwordInput( [ 'placeholder' => 'Password' ] ) ?>
+			<?= Yii::$app->formDesigner->getIconCheckbox( $form, $formModel, 'rememberMe', null, [ 'label' => 'Remember Me?' ] ) ?>
 		</div>
-
-		<div class="row max-cols-50 padding padding-small-v">
+		<div class="row max-cols-50 padding padding-default-v">
 			<div class="col col2">
 				<label>
-					<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgotton Password?</a>
+					<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgot Password</a>
 				</label>
 			</div>
 			<div class="col col2 align align-right">

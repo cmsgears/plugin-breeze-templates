@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * PageSettings provide page settings data.
  *
  * @since 1.0.0
  */
-class PageSettings extends DataModel {
+class PageSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,7 +35,11 @@ class PageSettings extends DataModel {
 
 	// Avatar & Banner
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 	public $defaultBanner;
+	public $lazyBanner; // Lazy load banner
+	public $resBanner;
 
 	// Banner
 	public $fixedBanner;
@@ -47,6 +48,7 @@ class PageSettings extends DataModel {
 	public $fluidBanner;
 	public $background;
 	public $backgroundClass;
+	public $backgroundVideo;
 
 	// Texture
 	public $texture;
@@ -105,8 +107,7 @@ class PageSettings extends DataModel {
 	public $metas;
 	public $metasWithContent;
 	public $metasOrder;
-	public $metaType;
-
+	public $metaTypes;
 	public $metaWrapClass;
 
 	// Elements
@@ -167,6 +168,31 @@ class PageSettings extends DataModel {
 	public $popular; // Show popular posts
 	public $similar; // Show similar posts
 
+	// Purify
+	public $purifySummary = true;
+	public $purifyContent = true;
+
+	// Routing
+	public $route;
+
+	// Files
+	public $files;
+	public $filesWithContent;
+	public $filesOrder;
+	public $fileTypes;
+
+	public $fileWrapClass;
+	public $fileWrapper;
+	public $fileClass;
+
+	// AMP
+	public $amp;
+	public $ampGoogleScripts;
+	public $ampScriptUrl;
+	public $ampStylePath;
+	public $ampSchema;
+	public $ampMetas;
+
 	// Protected --------------
 
 	// Private ----------------
@@ -192,7 +218,8 @@ class PageSettings extends DataModel {
 
 		return [
 			[ [ 'footerContentData', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'fluidBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner' ], 'boolean' ],
+			[ [ 'fixedBanner', 'scrollBanner', 'parallaxBanner', 'fluidBanner', 'background', 'texture', 'maxCover' ], 'boolean' ],
 			[ [ 'elements', 'widgets', 'blocks' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle', 'headerInfo', 'headerContent', 'headerBanner', 'headerFluid', 'headerGallery', 'headerScroller', 'headerElements' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'contentAvatar', 'contentBanner', 'contentGallery', 'metas' ], 'boolean' ],
@@ -200,16 +227,19 @@ class PageSettings extends DataModel {
 			[ [ 'footer', 'footerIcon', 'footerTitle', 'footerInfo', 'footerContent', 'footerElements' ], 'boolean' ],
 			[ [ 'sidebars', 'topSidebar', 'bottomSidebar', 'leftSidebar', 'rightSidebar', 'footerSidebar' ], 'boolean' ],
 			[ [ 'elementsBeforeContent', 'widgetsBeforeContent', 'blocksBeforeContent', 'sidebarsBeforeContent' ], 'boolean' ],
-			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent' ], 'boolean' ],
-			[ [ 'comments', 'disqus' ], 'boolean' ],
+			[ [ 'metasWithContent', 'elementsWithContent', 'widgetsWithContent', 'blocksWithContent', 'sidebarsWithContent', 'filesWithContent' ], 'boolean' ],
+			[ [ 'comments', 'disqus', 'amp' ], 'boolean' ],
 			[ [ 'author', 'related', 'popular', 'similar' ], 'boolean' ],
-			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'backgroundVideo', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'elementType', 'headerElementType', 'footerElementType', 'widgetType', 'blockType', 'sidebarType', 'boxWrapper', 'widgetWrapper', 'fileWrapper', 'metaTypes', 'route', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'backgroundClass', 'contentClass', 'contentDataClass', 'boxWrapClass', 'boxClass', 'widgetWrapClass', 'widgetClass', 'fileWrapClass', 'fileClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'metaWrapClass', 'footerIconClass', 'footerTitleData' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ [ 'topSidebarSlugs', 'bottomSidebarSlugs', 'leftSidebarSlug', 'rightSidebarSlug' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'footerInfoData' , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
-			[ [ 'metasOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
-			[ [ 'headerIconUrl', 'footerIconUrl' ], 'url' ]
+			[ [ 'metasOrder', 'elementsOrder', 'widgetsOrder', 'blocksOrder', 'sidebarsOrder', 'filesOrder' ], 'number', 'integerOnly' => true, 'min' => 0 ],
+			[ [ 'headerIconUrl', 'footerIconUrl' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ],
+			[ [ 'ampGoogleScripts', 'ampSchema', 'ampMetas' ] , 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ],
+			[ [ 'ampScriptUrl', 'ampStylePath' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ]
 		];
 	}
 
@@ -219,14 +249,25 @@ class PageSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
+			'lazyBanner' => 'Lazy Load Background',
+			'resBanner' => 'Responsive Background',
+			'headerInfo' => 'Header Description',
+			'headerContent' => 'Header Summary',
 			'headerFluid' => 'Fluid Header',
+			'contentInfo' => 'Content Description',
 			'metas' => 'Attributes',
 			'metasWithContent' => 'Attributes With Content',
 			'metasOrder' => 'Attributes Order',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Types',
 			'metaWrapClass' => 'Attribute Wrap Class',
-			'commentAllFields' => 'All Fields',
-			'commentLabels' => 'Labels'
+			'amp' => 'AMP Page',
+			'ampGoogleScripts' => 'Google Script Tags',
+			'ampScriptUrl' => 'Script URL',
+			'ampStylePath' => 'Style Path',
+			'ampSchema' => 'Schema Tags',
+			'ampMetas' => 'Meta Tags'
 		];
 	}
 

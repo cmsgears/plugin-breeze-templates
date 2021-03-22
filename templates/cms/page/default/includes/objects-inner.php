@@ -1,13 +1,23 @@
 <?php
+
 foreach( $objectsOrder as $key => $value ) {
 
 	switch( $key ) {
 
-		case 'attributes': {
+		case 'metas': {
 
-			if( $attributes && $attributesWithContent ) {
+			if( $metas && $metasWithContent ) {
 
 				include "$defaultIncludes/attributes.php";
+			}
+
+			break;
+		}
+		case 'files': {
+
+			if( $files && $filesWithContent ) {
+
+				include isset( $fileIncludes ) ? "$fileIncludes/files.php" : "$defaultIncludes/files.php";
 			}
 
 			break;
@@ -16,7 +26,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 			if( $elements && !$elementsBeforeContent && $elementsWithContent ) {
 
-				include "$defaultIncludes/elements.php";
+				include isset( $elementIncludes ) ? "$elementIncludes/elements.php" : "$defaultIncludes/elements.php";
 			}
 
 			break;
@@ -25,7 +35,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 			if( $widgets && !$widgetsBeforeContent && $widgetsWithContent ) {
 
-				include "$defaultIncludes/widgets.php";
+				include isset( $widgetIncludes ) ? "$widgetIncludes/widgets.php" : "$defaultIncludes/widgets.php";
 			}
 
 			break;
@@ -34,7 +44,7 @@ foreach( $objectsOrder as $key => $value ) {
 
 			if( $blocks && !$blocksBeforeContent && $blocksWithContent ) {
 
-				include "$defaultIncludes/blocks.php";
+				include isset( $blockIncludes ) ? "$blockIncludes/blocks.php" : "$defaultIncludes/blocks.php";
 			}
 
 			break;

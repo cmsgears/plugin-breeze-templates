@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * WidgetSettings provide widget settings data.
  *
  * @since 1.0.0
  */
-class WidgetSettings extends DataModel {
+class WidgetSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,11 +35,16 @@ class WidgetSettings extends DataModel {
 
 	// Avatar
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 
 	// Background
 	public $defaultBanner;
+	public $lazyBanner;
+	public $resBanner;
 	public $bkg;
 	public $bkgClass;
+	public $bkgVideo;
 
 	// Texture
 	public $texture;
@@ -69,9 +71,17 @@ class WidgetSettings extends DataModel {
 
 	// Attributes
 	public $metas;
-	public $metaType;
-
+	public $metaTypes;
 	public $metaWrapClass;
+
+	// Purify
+	public $purifySummary = true;
+	public $purifyContent = true;
+
+	// Files
+	public $files;
+	public $fileTypes;
+	public $fileWrapClass;
 
 	// Protected --------------
 
@@ -98,12 +108,14 @@ class WidgetSettings extends DataModel {
 
 		return [
 			[ [ 'contentRaw', 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
-			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
-			[ 'headerIconUrl', 'url' ]
+			[ [ 'bkgVideo', 'purifySummary', 'purifyContent', 'files' ], 'boolean' ],
+			[ [ 'metaTypes', 'fileTypes' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'metaWrapClass', 'fileWrapClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ 'headerIconUrl', 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
 	}
 
@@ -113,11 +125,19 @@ class WidgetSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'bkgVideo' => 'Background Video',
+			'lazyBanner' => 'Lazy Load',
+			'resBanner' => 'Responsive',
+			'headerInfo' => 'Header Description',
+			'headerContent' => 'Header Summary',
+			'contentInfo' => 'Content Description',
 			'contentRaw' => 'Raw Content',
 			'metas' => 'Attributes',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

@@ -1,10 +1,10 @@
 <?php
 if( $elements && !$elementsBeforeContent ) {
 
-	include "$defaultIncludes/elements.php";
+	include isset( $elementIncludes ) ? "$elementIncludes/elements.php" : "$defaultIncludes/elements.php";
 }
 
 if( $widgets && !$widgetsBeforeContent ) {
 
-	include "$defaultIncludes/widgets.php";
+	include isset( $widgetIncludes ) ? "$widgetIncludes/widgets.php" : "$defaultIncludes/widgets.php";
 }

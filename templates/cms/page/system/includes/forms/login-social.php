@@ -1,9 +1,9 @@
 <?php
 // Yii Imports
 use yii\helpers\Url;
-use yii\widgets\ActiveForm;
 
 // CMG Imports
+use cmsgears\core\common\widgets\ActiveForm;
 use cmsgears\social\connect\widgets\SnsLoginWidget;
 
 $coreProperties = $this->context->getCoreProperties();
@@ -13,7 +13,7 @@ $coreProperties = $this->context->getCoreProperties();
 	<?php
 		if( $coreProperties->isLogin() ) {
 	?>
-	<?= SnsLoginWidget::widget() ?>
+	<?= $socialIcons ? SnsLoginWidget::widget( [ 'icons' => true ] ) : SnsLoginWidget::widget() ?>
 	<div class="filler-height"></div>
 	<div class="text-with-line">
 		<p class="text-content">OR</p>
@@ -28,7 +28,7 @@ $coreProperties = $this->context->getCoreProperties();
 		<div class="row max-cols-50 padding padding-small-v">
 			<div class="col col2">
 				<label>
-					<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgotton Password?</a>
+					<a href="<?= Url::toRoute( [ '/forgot-password' ] ) ?>">Forgot Password</a>
 				</label>
 			</div>
 			<div class="col col2 align align-right">

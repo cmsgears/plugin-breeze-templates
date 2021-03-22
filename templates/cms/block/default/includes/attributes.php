@@ -2,8 +2,11 @@
 // Yii Imports
 use yii\helpers\HtmlPurifier;
 
+// CMG Imports
+use cmsgears\core\common\config\CoreGlobal;
+
 $metas		= isset( $settings->metas ) ? $settings->metas : $widget->metas;
-$metaType	= !empty( $settings->metaType ) ? $settings->metaType : null;
+$metaTypes	= !empty( $settings->metaTypes ) ? $settings->metaTypes : $widget->metaTypes;
 
 $metaWrapClass = !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass : $widget->metaWrapClass;
 ?>
@@ -11,22 +14,22 @@ $metaWrapClass = !empty( $settings->metaWrapClass ) ? $settings->metaWrapClass :
 <?php if( $metas ) { ?>
 	<div class="block-content-meta <?= $metaWrapClass ?>">
 		<?php
-			$metaType = preg_split( '/,/', $metaType );
+			$metaTypes = isset( $metaTypes ) ? preg_split( '/,/', $metaTypes ) : [];
 
 			// Single Type
-			if( count( $metaType ) == 1 ) {
+			if( count( $metaTypes ) == 1 ) {
 
-				$metas = $model->getActiveMetasByType( $metaType[ 0 ] );
+				$metas = $model->getActiveMetasByType( $metaTypes[ 0 ] );
 			}
 			// Multiple Types
-			else if( count( $metaType ) > 1 ) {
+			else if( count( $metaTypes ) > 1 ) {
 
-				$metas = $model->getActiveMetasByTypes( $metaType );
+				$metas = $model->getActiveMetasByTypes( $metaTypes );
 			}
 			// Default Types
 			else {
 
-				$metas = $model->getActiveMetasByTypes( [ '', null, 'default' ] );
+				$metas = $model->getActiveMetasByType( CoreGlobal::TYPE_USER );
 			}
 
 			foreach( $metas as $meta ) {

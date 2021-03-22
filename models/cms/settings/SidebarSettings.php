@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\settings;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * SidebarSettings provide sidebar settings data.
  *
  * @since 1.0.0
  */
-class SidebarSettings extends DataModel {
+class SidebarSettings extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -38,11 +35,16 @@ class SidebarSettings extends DataModel {
 
 	// Avatar
 	public $defaultAvatar;
+	public $lazyAvatar; // Lazy load model avatar
+	public $resAvatar; // Responsive model avatar
 
 	// Background
 	public $defaultBanner;
+	public $lazyBanner;
+	public $resBanner;
 	public $bkg;
 	public $bkgClass;
+	public $bkgVideo;
 
 	// Texture
 	public $texture;
@@ -68,7 +70,7 @@ class SidebarSettings extends DataModel {
 
 	// Attributes
 	public $metas;
-	public $metaType;
+	public $metaTypes;
 
 	public $metaWrapClass;
 
@@ -79,6 +81,10 @@ class SidebarSettings extends DataModel {
 	public $widgetWrapClass;
 	public $widgetWrapper;
 	public $widgetClass;
+
+	// Purify
+	public $purifySummary = true;
+	public $purifyContent = true;
 
 	// Protected --------------
 
@@ -105,14 +111,15 @@ class SidebarSettings extends DataModel {
 
 		return [
 			[ [ 'styles', 'scripts' ], 'safe' ],
-			[ [ 'defaultAvatar', 'defaultBanner', 'bkg', 'texture' ], 'boolean' ],
+			[ [ 'defaultAvatar', 'lazyAvatar', 'resAvatar', 'defaultBanner', 'lazyBanner', 'resBanner', 'bkg', 'texture' ], 'boolean' ],
 			[ 'widgets', 'boolean' ],
 			[ [ 'header', 'headerIcon', 'headerTitle' ], 'boolean' ],
 			[ [ 'content', 'contentTitle', 'contentInfo', 'contentSummary', 'contentData', 'metas' ], 'boolean' ],
+			[ [ 'bkgVideo', 'purifySummary', 'purifyContent' ], 'boolean' ],
 			[ [ 'widgetType', 'widgetWrapper' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
-			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaType', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
+			[ [ 'bkgClass', 'contentClass', 'contentDataClass', 'metaTypes', 'widgetWrapClass', 'widgetClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
 			[ 'metaWrapClass', 'string', 'min' => 1, 'max' => Yii::$app->core->xxxLargeText ],
-			[ 'headerIconUrl', 'url' ]
+			[ 'headerIconUrl', 'string', 'min' => 1, 'max' => Yii::$app->core->xxLargeText ]
 		];
 	}
 
@@ -122,10 +129,18 @@ class SidebarSettings extends DataModel {
 	public function attributeLabels() {
 
 		return [
+			'lazyAvatar' => 'Lazy Load Avatar',
+			'resAvatar' => 'Responsive Avatar',
 			'bkg' => 'Background',
 			'bkgClass' => 'Background Class',
+			'bkgVideo' => 'Background Video',
+			'lazyBanner' => 'Lazy Load',
+			'resBanner' => 'Responsive',
+			'headerInfo' => 'Header Description',
+			'headerContent' => 'Header Summary',
+			'contentInfo' => 'Content Description',
 			'metas' => 'Attributes',
-			'metaType' => 'Attribute Type',
+			'metaTypes' => 'Attribute Type',
 			'metaWrapClass' => 'Attribute Wrap Class'
 		];
 	}

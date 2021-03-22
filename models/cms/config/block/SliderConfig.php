@@ -12,15 +12,12 @@ namespace cmsgears\templates\breeze\models\cms\config\block;
 // Yii Imports
 use Yii;
 
-// CMG Imports
-use cmsgears\core\common\models\forms\DataModel;
-
 /**
  * SliderConfig provide slider configuration data.
  *
  * @since 1.0.0
  */
-class SliderConfig extends DataModel {
+class SliderConfig extends \cmsgears\core\common\models\forms\DataModel {
 
 	// Variables ---------------------------------------------------
 
@@ -35,6 +32,13 @@ class SliderConfig extends DataModel {
 	// Variables -----------------------------
 
 	// Public -----------------
+
+	public $flip		= false;
+	public $flipClass	= 'block-slider-flip';
+
+	public $split		= false;
+	public $splitClass	= 'block-slider-split';
+	public $splitRight	= false;
 
 	// Controls
 	public $lControlContent = '<i class="fa fa-angle-left valign-center"></i>';
@@ -91,8 +95,9 @@ class SliderConfig extends DataModel {
 
 		return [
 			[ 'collageConfig', 'safe' ],
-			[ [ 'circular', 'mediumImage', 'collage', 'lightbox', 'lightboxPopup' ], 'boolean' ],
+			[ [ 'flip', 'split', 'splitRight', 'circular', 'mediumImage', 'collage', 'lightbox', 'lightboxPopup' ], 'boolean' ],
 			[ 'collageLimit', 'number', 'integerOnly' => true, 'min' => 1 ],
+			[ [ 'flipClass', 'splitClass' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'smallerContent', 'onSlideClick', 'preSlideChange', 'postSlideChange', 'collageClass', 'lightboxId' ], 'string', 'min' => 1, 'max' => Yii::$app->core->mediumText ],
 			[ [ 'lControlContent', 'rControlContent' ], 'string', 'min' => 1, 'max' => Yii::$app->core->xtraLargeText ]
 		];

@@ -5,7 +5,8 @@ use yii\helpers\Html;
 
 // Template options
 $template		= $modelContent->template;
-$tclass			= isset( $template ) ? "page-{$template->slug}" : null;
+$tClass			= isset( $template ) ? "page-{$template->slug}" : null;
+$tType			= isset( $template ) ? "page-model-{$template->type}" : null;
 $htmlOptions	= isset( $template ) && !empty( $template->htmlOptions ) ? json_decode( $template->htmlOptions, true ) : [];
 
 // Page Options
@@ -14,6 +15,6 @@ $options = !empty( $htmlOptions ) ? ArrayHelper::merge( $options, $htmlOptions )
 
 $optionClass = $options[ 'class' ] ?? null;
 
-$options[ 'class' ] = isset( $options[ 'class' ] ) ? "page {$optionClass} $tclass page-model-{$template->type} page-{$model->slug}" : "page page-basic page-default $tclass page-model-{$template->type} page-{$model->slug}";
+$options[ 'class' ] = isset( $options[ 'class' ] ) ? "page {$optionClass} $tClass $tType page-{$model->slug}" : "page page-basic page-default $tClass $tType page-{$model->slug}";
 
 $options = Html::renderTagAttributes( $options );
