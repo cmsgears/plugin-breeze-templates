@@ -4,6 +4,10 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
+// Defaults -----------------
+
+$defaultBannerImage	= SiteProperties::getInstance()->getPageBanner();
+
 // Media --------------------
 
 $defaultAvatar	= isset( $settings->defaultAvatar ) ? $settings->defaultAvatar : false;
@@ -29,7 +33,7 @@ $bkgClass	= !empty( $settings->backgroundClass ) ? $settings->backgroundClass : 
 
 $bannerObj	= $modelContent->banner;
 $mbannerObj	= $modelContent->mobileBanner;
-$banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : SiteProperties::getInstance()->getPageBanner() ) : null;
+$banner		= $defaultBanner ? ( isset( $pageBanner ) ? $pageBanner : $defaultBannerImage ) : null;
 $bannerUrl	= $lazyBanner ? CodeGenUtil::getSmallUrl( $modelContent->banner, [ 'image' => $banner ] ) : CodeGenUtil::getFileUrl( $modelContent->banner, [ 'image' => $banner ] );
 $mbannerUrl	= isset( $mbannerObj ) ? CodeGenUtil::getFileUrl( $mbannerObj ) : null;
 

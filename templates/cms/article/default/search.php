@@ -3,7 +3,8 @@
 
 $model			= $this->params[ 'model' ];
 $modelContent	= $model->modelContent;
-$featuredModels	= Yii::$app->factory->get( 'articleService' )->getFeatured();
+$parentType		= Yii::$app->factory->get( 'articleService' )->getParentType();
+$featuredModels	= Yii::$app->factory->get( 'articleService' )->getFeaturedByType( $parentType );
 
 // Config -------------------------
 
