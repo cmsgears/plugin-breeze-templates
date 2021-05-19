@@ -1,6 +1,8 @@
 <?php
 // Services & Models --------------
 
+$modelService = $this->context->modelService;
+
 $model			= $this->params[ 'model' ];
 $modelContent	= $model->modelContent;
 $featuredModels	= Yii::$app->factory->get( 'postService' )->getFeatured();

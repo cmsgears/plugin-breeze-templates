@@ -1,6 +1,8 @@
 <?php
 // Services & Models --------------
 
+$modelService = $this->context->modelService;
+
 $model			= $this->params[ 'model' ];
 $modelContent	= $model->modelContent;
 $parentType		= Yii::$app->factory->get( 'articleService' )->getParentType();

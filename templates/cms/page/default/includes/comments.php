@@ -8,19 +8,22 @@ use cmsgears\widgets\comment\submit\SubmitComment;
 $comments	= $commentProperties->isComments() && $cmsProperties->isPostComments() && $model->comments;
 $scomments	= isset( $settings->comments ) ? ( $comments && $settings->comments ) : true;
 $disqus		= isset( $settings->disqus ) ? ( $comments && $settings->disqus ) : false;
+
+$parentType = $modelService->getParentType();
+$parentType = $parentType == CmsGlobal::TYPE_POST ? 'post' : $parentType;
 ?>
 <?php if( $comments & $scomments ) { ?>
 	<div class="page-content-buffer page-content-comments">
 		<?= SubmitComment::widget([
 			'options' => [ 'class' => 'comment-submit' ],
-			'ajaxUrl' => "cms/post/submit-comment?slug=$model->slug&type=$model->type",
+			'ajaxUrl' => "cms/$parentType/submit-comment?slug=$model->slug&type=$model->type",
 			'model' => $model,
 			'templateDir' => '@breeze/templates/widget/native/comment/submit'
 		]) ?>
 		<?= ShowComments::widget([
 			'options' => [ 'id' => 'wrap-comments' ],
 			'parentId' => $model->id,
-			'parentType' => CmsGlobal::TYPE_POST,
+			'parentType' => $parentType,
 			'templateDir' => '@breeze/templates/widget/native/comment'
 		]) ?>
 	</div>
