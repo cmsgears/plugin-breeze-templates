@@ -39,9 +39,9 @@ $report = Yii::$app->request->getQueryParam( 'report' );
 						<div class="colf colf2">
 							<div class="form-group">
 								<label><?= $title ?></label>
-								<span class="cmt-switch cmt-checkbox">
-									<input id="<?= $key . '-flag' ?>" class="cmt-toggle cmt-toggle-round" type="checkbox" name="value" />
-									<label for='<?= $key . '-flag' ?>'></label>
+								<span class="cmt-checkbox switch">
+									<input id="<?= $key . '-flag' ?>" class="switch-toggle switch-toggle-round" type="checkbox" name="value" />
+									<label for="<?= $key . '-flag' ?>"></label>
 									<input class="report-field" type="hidden" name="<?= $key . '-flag' ?>" value="<?= isset( $flag ) ? $flag : 0 ?>" />
 								</span>
 							</div>

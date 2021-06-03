@@ -349,11 +349,11 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="col col3 align align-right">
 					<span class="relative" cmt-app="core" cmt-controller="address" cmt-action="get" action="<?= $apixBase ?>/get-address?id=<?= $model->id ?>&cid={{cid}}">
 						<?php include $apixSpinner; ?>
-						<i class="icon cmti cmti-edit cmt-click"></i>
+						<i class="pointer icon cmti cmti-edit cmt-click"></i>
 					</span>
 					<span class="relative" cmt-app="core" cmt-controller="address" cmt-action="delete" action="<?= $apixBase ?>/delete-address?id=<?= $model->id ?>&cid={{cid}}">
 						<?php include $apixSpinner; ?>
-						<i class="icon cmti cmti-bin cmt-click"></i>
+						<i class="pointer icon cmti cmti-bin cmt-click"></i>
 					</span>
 				</div>
 			</div>

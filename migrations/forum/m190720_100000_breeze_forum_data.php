@@ -56,6 +56,8 @@ class m190720_100000_breeze_forum_data extends \cmsgears\core\common\base\Migrat
 
 		$this->insertWidgets();
 		$this->insertWidgetMappings();
+
+		$this->insertLinks();
     }
 
 	/**
@@ -150,6 +152,23 @@ class m190720_100000_breeze_forum_data extends \cmsgears\core\common\base\Migrat
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );
+	}
+
+	private function insertLinks() {
+
+		$site	= $this->site;
+		$master	= $this->master;
+
+		// Pages
+		$forumPage = Page::findBySlugType( ForumGlobal::PAGE_FORUM, CmsGlobal::TYPE_PAGE );
+
+		$columns = [ 'siteId', 'pageId', 'createdBy', 'modifiedBy', 'name', 'title', 'url', 'type', 'icon', 'order', 'absolute', 'private', 'createdAt', 'modifiedAt', 'htmlOptions', 'urlOptions', 'data' ];
+
+		$links = [
+			[ $site->id, $forumPage->id, $master->id, $master->id, 'Forum', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
+		];
+
+		$this->batchInsert( $this->cmgPrefix . 'cms_link', $columns, $links );
 	}
 
     public function down() {
