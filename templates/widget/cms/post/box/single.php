@@ -14,7 +14,7 @@ $siteProperties = SiteProperties::getInstance();
 $settings = $widget->widgetObj->getDataMeta( 'settings' );
 
 // Author
-$author			= $model->creator;
+$author			= isset( $model->userId ) ? $model->user : $model->creator;
 $avatar			= $siteProperties->getDefaultAvatar();
 $userAvatarUrl	= CodeGenUtil::getFileUrl( $author->avatar, [ 'image' => $avatar ] );
 $authorName		= $author->getName();

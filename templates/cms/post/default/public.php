@@ -4,6 +4,8 @@
 $modelService = $this->context->modelService;
 $modelContent = $model->modelContent;
 
+$author = isset( $model->userId ) ? $model->user : $model->creator;
+
 // Config -------------------------
 
 $coreProperties		= $this->context->getCoreProperties();
