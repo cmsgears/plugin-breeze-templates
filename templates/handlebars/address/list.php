@@ -49,10 +49,10 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			</div>
 		</div>
 		<div class="row">
-			<div class="cmt-location-countries col col3">
+			<div class="cmt-location-countries col col3" cmt-app="core" cmt-controller="province" cmt-action="optionsList" action="location/province-options" cmt-keep cmt-custom>
 				<div class="form-group">
 					<label>Country *</label>
-					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select' ] ) ?>
+					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select cmt-change' ] ) ?>
 					<span  class="error" cmt-error="Address[countryId]"></span>
 				</div>
 			</div>
@@ -207,10 +207,10 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 			</div>
 		</div>
 		<div class="row">
-			<div class="cmt-location-countries col col3">
+			<div class="cmt-location-countries col col3" cmt-app="core" cmt-controller="province" cmt-action="optionsList" action="location/province-options" cmt-keep cmt-custom>
 				<div class="form-group">
 					<label>Country *</label>
-					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select', 'cid' => "{{address.countryId}}" ] ) ?>
+					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select cmt-change', 'cid' => "{{address.countryId}}" ] ) ?>
 					<span class="error" cmt-error="Address[countryId]"></span>
 				</div>
 			</div>

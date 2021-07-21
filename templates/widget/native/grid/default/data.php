@@ -5,16 +5,16 @@ $models			= $dataProvider->getModels();
 $gridColumns	= $widget->gridColumns;
 $actions		= $widget->actions;
 
-$actionView		= $widget->actionView;
+$actionView = $widget->actionView;
 ?>
 
 <?php
 	if( $widget->grid && count( $models ) > 0 ) {
 
-		$columns		= $widget->columns;
-		$root			= $columns[ 'root' ];
-		$factor			= $columns[ 'factor' ];
-		$index			= 0;
+		$columns	= $widget->columns;
+		$root		= $columns[ 'root' ];
+		$factor		= $columns[ 'factor' ];
+		$index		= 0;
 ?>
 <div class="grid-rows-wrap <?= $widget->layout == 'data' ? 'active' : null ?>">
 	<div class="grid-rows-header row">

@@ -2,10 +2,10 @@
 $dataProvider	= $widget->dataProvider;
 $models			= $dataProvider->getModels();
 
-$columns		= count( $widget->cardColumns ) > 0 ? $widget->cardColumns : $widget->gridColumns;
-$actions		= $widget->actions;
+$columns	= count( $widget->cardColumns ) > 0 ? $widget->cardColumns : $widget->gridColumns;
+$actions	= $widget->actions;
 
-$actionView		= $widget->actionView;
+$actionView = $widget->actionView;
 ?>
 <div class="grid-cards-wrap <?= $widget->layout == 'card' ? 'active' : null ?>">
 	<div class="grid-cards row">
