@@ -1,4 +1,7 @@
 <?php
+// CMG Imports
+use cmsgears\cms\common\config\CmsGlobal;
+
 // Services & Models --------------
 
 $modelService = $this->context->modelService;
@@ -10,10 +13,14 @@ $siteProperties		= $this->context->getSiteProperties();
 $commentProperties	= $this->context->getCommentProperties();
 $cmsProperties		= $this->context->getCmsProperties();
 
+$author = isset( $model->userId ) ? $model->user : $model->creator;
+
 $data		= json_decode( $model->data );
 $settings	= isset( $data->settings ) ? $data->settings : [];
 
-$author = $model->creator;
+$parentType = CmsGlobal::TYPE_ARTICLE;
+
+$commentSubmitUrl = "cms/$parentType/submit-comment?slug=$model->slug&type=$model->type";
 
 // Includes -----------------------
 

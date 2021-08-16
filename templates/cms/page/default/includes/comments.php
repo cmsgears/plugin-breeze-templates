@@ -1,7 +1,5 @@
 <?php
 // CMG Imports
-use cmsgears\cms\common\config\CmsGlobal;
-
 use cmsgears\widgets\comment\show\ShowComments;
 use cmsgears\widgets\comment\submit\SubmitComment;
 
@@ -9,23 +7,24 @@ $comments	= $commentProperties->isComments() && $cmsProperties->isPostComments()
 $scomments	= isset( $settings->comments ) ? ( $comments && $settings->comments ) : true;
 $disqus		= isset( $settings->disqus ) ? ( $comments && $settings->disqus ) : false;
 
-$parentType = $modelService->getParentType();
-$parentType = $parentType == CmsGlobal::TYPE_POST ? 'post' : $parentType;
+$commentSubmitUrl = isset( $commentSubmitUrl ) ? $commentSubmitUrl : null;
 ?>
 <?php if( $comments & $scomments ) { ?>
 	<div class="page-content-buffer page-content-comments">
-		<?= SubmitComment::widget([
-			'options' => [ 'class' => 'comment-submit' ],
-			'ajaxUrl' => "cms/$parentType/submit-comment?slug=$model->slug&type=$model->type",
-			'model' => $model,
-			'templateDir' => '@breeze/templates/widget/native/comment/submit'
-		]) ?>
+		<?php if( isset( $commentSubmitUrl ) ) { ?>
+			<?= SubmitComment::widget([
+				'options' => [ 'class' => 'comment-submit' ],
+				'ajaxUrl' => $commentSubmitUrl,
+				'model' => $model,
+				'templateDir' => '@breeze/templates/widget/native/comment/submit'
+			])?>
+		<?php } ?>
 		<?= ShowComments::widget([
 			'options' => [ 'id' => 'wrap-comments' ],
 			'parentId' => $model->id,
 			'parentType' => $parentType,
 			'templateDir' => '@breeze/templates/widget/native/comment'
-		]) ?>
+		])?>
 	</div>
 <?php } ?>
 <?php if( $comments & $disqus ) { ?>
