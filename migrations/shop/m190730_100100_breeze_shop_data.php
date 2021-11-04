@@ -56,6 +56,8 @@ class m190730_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 
 		$this->insertWidgets();
 		$this->insertWidgetMappings();
+
+		$this->insertLinks();
     }
 
 	/**
@@ -92,6 +94,7 @@ class m190730_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 		$checkoutPage		= Page::findBySlugType( ShopGlobal::PAGE_CHECKOUT, CmsGlobal::TYPE_PAGE );
 		$paymentPage		= Page::findBySlugType( ShopGlobal::PAGE_PAYMENT, CmsGlobal::TYPE_PAGE );
 		$searchProductsPage	= Page::findBySlugType( ShopGlobal::PAGE_SEARCH_PRODUCTS, CmsGlobal::TYPE_PAGE );
+		$searchOffersPage	= Page::findBySlugType( ShopGlobal::PAGE_SEARCH_OFFERS, CmsGlobal::TYPE_PAGE );
 		$shopPage			= Page::findBySlugType( ShopGlobal::PAGE_SHOP, CmsGlobal::TYPE_PAGE );
 		$offersPage			= Page::findBySlugType( ShopGlobal::PAGE_OFFERS, CmsGlobal::TYPE_PAGE );
 
@@ -99,6 +102,7 @@ class m190730_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $checkTemplate->id ], "id=$checkoutPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $payTemplate->id ], "id=$paymentPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$searchProductsPage->id" );
+		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $searchTemplate->id ], "id=$searchOffersPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $shopTemplate->id ], "id=$shopPage->id" );
 		$this->update( $this->cmgPrefix . 'cms_model_content', [ 'templateId' => $offerTemplate->id ], "id=$offersPage->id" );
 	}
@@ -199,6 +203,31 @@ class m190730_100100_breeze_shop_data extends \cmsgears\core\common\base\Migrati
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );
+	}
+
+	private function insertLinks() {
+
+		$site	= $this->site;
+		$master	= $this->master;
+
+		// Pages
+		$cartPage		= Page::findBySlugType( ShopGlobal::PAGE_CART, CmsGlobal::TYPE_PAGE );
+		$checkoutPage	= Page::findBySlugType( ShopGlobal::PAGE_CHECKOUT, CmsGlobal::TYPE_PAGE );
+		$paymentPage	= Page::findBySlugType( ShopGlobal::PAGE_PAYMENT, CmsGlobal::TYPE_PAGE );
+		$shopPage		= Page::findBySlugType( ShopGlobal::PAGE_SHOP, CmsGlobal::TYPE_PAGE );
+		$offersPage		= Page::findBySlugType( ShopGlobal::PAGE_OFFERS, CmsGlobal::TYPE_PAGE );
+
+		$columns = [ 'siteId', 'pageId', 'createdBy', 'modifiedBy', 'name', 'title', 'url', 'type', 'icon', 'order', 'absolute', 'private', 'createdAt', 'modifiedAt', 'htmlOptions', 'urlOptions', 'data' ];
+
+		$links = [
+			[ $site->id, $cartPage->id, $master->id, $master->id, 'Cart', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
+			[ $site->id, $checkoutPage->id, $master->id, $master->id, 'Checkout', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
+			[ $site->id, $paymentPage->id, $master->id, $master->id, 'Payment', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
+			[ $site->id, $shopPage->id, $master->id, $master->id, 'Shop', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
+			[ $site->id, $offersPage->id, $master->id, $master->id, 'Offers', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
+		];
+
+		$this->batchInsert( $this->cmgPrefix . 'cms_link', $columns, $links );
 	}
 
     public function down() {

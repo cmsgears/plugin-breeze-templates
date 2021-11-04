@@ -6,6 +6,7 @@ use cmsgears\cms\common\utilities\ContentUtil;
 
 $model = isset( $this->params[ 'model' ] ) ? $this->params[ 'model' ] : ContentUtil::findPage( $this );
 
+$modelService = $this->context->modelService;
 $modelContent = $model->modelContent;
 
 // Config -------------------------

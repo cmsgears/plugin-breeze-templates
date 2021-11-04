@@ -497,7 +497,7 @@ class m190710_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 
 		$columns = [ 'siteId', 'pageId', 'createdBy', 'modifiedBy', 'name', 'title', 'url', 'type', 'icon', 'order', 'absolute', 'private', 'createdAt', 'modifiedAt', 'htmlOptions', 'urlOptions', 'data' ];
 
-		$linksMenus = [
+		$links = [
 			[ $site->id, NULL, $master->id, $master->id, 'Home', NULL, '/', 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, $loginPage->id, $master->id, $master->id, 'Login', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
 			[ $site->id, $registerPage->id, $master->id, $master->id, 'Register', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ],
@@ -513,7 +513,7 @@ class m190710_100100_breeze_cms_data extends \cmsgears\core\common\base\Migratio
 			[ $site->id, $testiPage->id, $master->id, $master->id, 'Testimonial', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
 		];
 
-		$this->batchInsert( $this->cmgPrefix . 'cms_link', $columns, $linksMenus );
+		$this->batchInsert( $this->cmgPrefix . 'cms_link', $columns, $links );
 	}
 
 	/**

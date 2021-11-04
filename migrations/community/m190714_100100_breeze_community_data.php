@@ -56,11 +56,10 @@ class m190714_100100_breeze_community_data extends \cmsgears\core\common\base\Mi
 
 		$this->insertWidgets();
 		$this->insertWidgetMappings();
+
+		$this->insertLinks();
     }
 
-	/**
-	 * Pages
-	 */
 	private function insertPages() {
 
 		$master	= $this->master;
@@ -151,6 +150,23 @@ class m190714_100100_breeze_community_data extends \cmsgears\core\common\base\Mi
 		];
 
 		$this->batchInsert( $this->cmgPrefix . 'core_model_object', $columns, $mappings );
+	}
+
+	private function insertLinks() {
+
+		$site	= $this->site;
+		$master	= $this->master;
+
+		// Pages
+		$groupsPage	= Page::findBySlugType( CmnGlobal::PAGE_GROUPS, CmsGlobal::TYPE_PAGE );
+
+		$columns = [ 'siteId', 'pageId', 'createdBy', 'modifiedBy', 'name', 'title', 'url', 'type', 'icon', 'order', 'absolute', 'private', 'createdAt', 'modifiedAt', 'htmlOptions', 'urlOptions', 'data' ];
+
+		$links = [
+			[ $site->id, $groupsPage->id, $master->id, $master->id, 'Groups', NULL, NULL, 'site', NULL, 0, 0, 0, DateUtil::getDateTime(), DateUtil::getDateTime(), NULL, NULL, NULL ]
+		];
+
+		$this->batchInsert( $this->cmgPrefix . 'cms_link', $columns, $links );
 	}
 
     public function down() {

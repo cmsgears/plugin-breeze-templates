@@ -1,9 +1,12 @@
 <?php
 // Services & Models --------------
 
+$modelService = $this->context->modelService;
+
 $model			= $this->params[ 'model' ];
 $modelContent	= $model->modelContent;
-$featuredModels	= Yii::$app->factory->get( 'pageService' )->getFeatured();
+$parentType		= Yii::$app->factory->get( 'pageService' )->getParentType();
+$featuredModels	= Yii::$app->factory->get( 'pageService' )->getFeaturedByType( $parentType );
 
 // Config -------------------------
 

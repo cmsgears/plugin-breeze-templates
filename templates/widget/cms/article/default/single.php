@@ -8,7 +8,7 @@ use cmsgears\core\frontend\config\SiteProperties;
 use cmsgears\core\common\utilities\CodeGenUtil;
 
 // Author
-$author			= $model->creator;
+$author			= isset( $model->userId ) ? $model->user : $model->creator;
 $avatar			= SiteProperties::getInstance()->getDefaultAvatar();
 $userAvatarUrl	= CodeGenUtil::getFileUrl( $author->avatar, [ 'image' => $avatar ] );
 $authorName		= $author->getName();

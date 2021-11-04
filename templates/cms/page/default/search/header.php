@@ -7,9 +7,17 @@ use cmsgears\core\frontend\config\SiteProperties;
 
 use cmsgears\core\common\utilities\CodeGenUtil;
 
+// Defaults -----------------
+
+$defaultAvatarImage	= SiteProperties::getInstance()->getDefaultAvatar();
+
+// Header -------------------
+
 $header		= isset( $settings->header ) ? $settings->header : false;
 $headerIcon	= isset( $settings->headerIcon ) ? $settings->headerIcon : false;
 $lazyAvatar	= isset( $settings->lazyAvatar ) ? $settings->lazyAvatar : false;
+
+// Header Content -----------
 
 $headerTitle	= isset( $settings->headerTitle ) && $settings->headerTitle ? $model->displayName : null;
 $headerInfo		= isset( $settings->headerInfo ) && $settings->headerInfo ? $model->description : null;
@@ -21,7 +29,7 @@ $headerBanner	= isset( $settings->headerBanner ) ? $settings->headerBanner : fal
 $headerGallery	= isset( $settings->headerGallery ) ? $settings->headerGallery : false;
 
 $avatarObj		= isset( $model->avatar ) ? $model->avatar : null;
-$avatar			= isset( $settings->defaultAvatar ) && $settings->defaultAvatar ? SiteProperties::getInstance()->getDefaultAvatar() : null;
+$avatar			= isset( $settings->defaultAvatar ) && $settings->defaultAvatar ? $defaultAvatarImage : null;
 $headerIconUrl	= isset( $model->avatar ) ? CodeGenUtil::getFileUrl( $model->avatar, [ 'image' => $avatar ] ) : CodeGenUtil::getFileUrl( null, [ 'image' => $avatar ] );
 $headerIconUrl	= !empty( $settings->headerIconUrl ) ? $settings->headerIconUrl : $headerIconUrl;
 
@@ -45,7 +53,7 @@ $iconLazyAttrs	= isset( $iconLazyClass ) ? "data-src=\"$smallUrl\" data-srcset=\
 ?>
 <?php if( $header ) { ?>
 	<div class="page-header-wrap <?= $headerBanner || $headerGallery ? $fluidClass : null ?>">
-		<?php if( $headerBanner && !$headerGallery ) { ?>
+		<?php if( $headerBanner && !$headerGallery && empty( $featuredModels ) ) { ?>
 			<?php if( $fixedBanner ) { ?>
 				<div class="page-bkg-fixed <?= $bkgClass ?> <?= $bkgLazyClass ?>" style="background-image:url(<?= $bkgUrl ?>);" <?= $bkgLazyAttrs ?>></div>
 			<?php } else if( $parallaxBanner ) { ?>
@@ -64,7 +72,7 @@ $iconLazyAttrs	= isset( $iconLazyClass ) ? "data-src=\"$smallUrl\" data-srcset=\
 			<?php } ?>
 		<?php } ?>
 
-		<?php if( $headerGallery ) { ?>
+		<?php if( $headerGallery && empty( $featuredModels ) ) { ?>
 			<div class="fx fx-slider fx-slider-regular <?= $sliderClass ?>">
 			<?php
 				foreach( $slides as $slide ) {
@@ -101,7 +109,7 @@ $iconLazyAttrs	= isset( $iconLazyClass ) ? "data-src=\"$smallUrl\" data-srcset=\
 					foreach( $featuredModels as $featuredModel ) {
 
 						$content	= $featuredModel->modelContent;
-						$bannerUrl	= CodeGenUtil::getFileUrl( $content->banner );
+						$bannerUrl	= CodeGenUtil::getFileUrl( $content->banner, [ 'image' => $defaultBannerImage ] );
 				?>
 					<div>
 						<?php if( !empty( $bannerUrl ) ) { ?>

@@ -1,6 +1,7 @@
 <?php
 // Services & Models --------------
 
+$modelService = $this->context->modelService;
 $modelContent = $model->modelContent;
 
 // Config -------------------------

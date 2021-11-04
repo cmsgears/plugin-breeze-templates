@@ -17,6 +17,8 @@ $leftSidebar	= isset( $settings->leftSidebar ) ? $settings->leftSidebar : false;
 $rightSidebar	= isset( $settings->rightSidebar ) ? $settings->rightSidebar : false;
 $footerSidebar	= isset( $settings->footerSidebar ) ? $settings->footerSidebar : false;
 
+// Includes -----------------------
+
 $defaultIncludes	= Yii::getAlias( '@breeze' ) . '/templates/cms/page/default/includes';
 $elementIncludes	= null;
 $widgetIncludes		= null;

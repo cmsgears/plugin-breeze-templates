@@ -217,7 +217,7 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<span class="cmt-click"></span>
 				<div class="form-group">
 					<label>Country *</label>
-					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select', 'cid' => "{{address.countryId}}" ] ) ?>
+					<?= Html::dropDownList( 'Address[countryId]', null, $countryMap, [ 'class' => 'cmt-location-country element-60 cmt-select cmt-change', 'cid' => "{{address.countryId}}" ] ) ?>
 					<span class="error" cmt-error="Address[countryId]"></span>
 				</div>
 			</div>
@@ -349,11 +349,11 @@ $addressTypeOptions = CodeGenUtil::generateSelectOptionsFromArray( $addressTypes
 				<div class="col col3 align align-right">
 					<span class="relative" cmt-app="core" cmt-controller="address" cmt-action="get" action="<?= $apixBase ?>/get-address?id=<?= $model->id ?>&cid={{cid}}">
 						<?php include $apixSpinner; ?>
-						<i class="icon cmti cmti-edit cmt-click"></i>
+						<i class="pointer icon cmti cmti-edit cmt-click"></i>
 					</span>
 					<span class="relative" cmt-app="core" cmt-controller="address" cmt-action="delete" action="<?= $apixBase ?>/delete-address?id=<?= $model->id ?>&cid={{cid}}">
 						<?php include $apixSpinner; ?>
-						<i class="icon cmti cmti-bin cmt-click"></i>
+						<i class="pointer icon cmti cmti-bin cmt-click"></i>
 					</span>
 				</div>
 			</div>

@@ -27,7 +27,15 @@ $cbkgLazyAttrs = isset( $cbkgLazyClass ) ? $bkgLazyAttrs : null;
 	<div class="block-content <?= $contentClass ?>">
 		<?php if( $contentBanner ) { ?>
 			<div class="block-content-banner">
-				<img class="width width-100 <?= $cbkgLazyClass ?>" src="<?= $bkgUrl ?>" title="<?= "{$model->displayName}" ?>" alt="<?= "{$model->displayName}" ?>" <?= $cbkgLazyAttrs ?> />
+				<?php
+					if( isset( $model->mbannerId ) ) {
+
+						$mbkgUrl = $model->mobileBanner->getFileUrl();
+				?>
+					<img class="width width-100" src="<?= $mbkgUrl ?>" alt="<?= "{$model->displayName}" ?>" srcset="<?= $mbkgUrl ?> 500w,<?= $bkgUrl ?> 800w" sizes="(max-width: 800px) 100px, 100vw" />
+				<?php } else { ?>
+					<img class="width width-100 <?= $cbkgLazyClass ?>" src="<?= $bkgUrl ?>" title="<?= "{$model->displayName}" ?>" alt="<?= "{$model->displayName}" ?>" <?= $cbkgLazyAttrs ?> />
+				<?php } ?>
 			</div>
 		<?php } ?>
 		<?php if( !empty( $contentTitle ) ) { ?>

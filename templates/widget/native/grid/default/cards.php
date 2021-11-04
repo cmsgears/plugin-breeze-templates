@@ -2,10 +2,10 @@
 $dataProvider	= $widget->dataProvider;
 $models			= $dataProvider->getModels();
 
-$columns		= count( $widget->cardColumns ) > 0 ? $widget->cardColumns : $widget->gridColumns;
-$actions		= $widget->actions;
+$columns	= count( $widget->cardColumns ) > 0 ? $widget->cardColumns : $widget->gridColumns;
+$actions	= $widget->actions;
 
-$actionView		= $widget->actionView;
+$actionView = $widget->actionView;
 ?>
 <div class="grid-cards-wrap <?= $widget->layout == 'card' ? 'active' : null ?>">
 	<div class="grid-cards row">
@@ -25,8 +25,8 @@ $actionView		= $widget->actionView;
 			<div class="card grid-card <?= $root . $factor ?>">
 				<div class="card-header grid-card-header row">
 					<div class="colf colf5 card-title grid-card-title">
-						<span class="data cmt-choice">
-							<label>
+						<span class="choice data">
+							<label class="choice-option">
 								<input class="grid-bulk-single grid-bulk-<?= $id ?>" type="checkbox" data-id=<?= $id ?> />
 								<span class="label cmti cmti-checkbox"></span>
 							</label>
