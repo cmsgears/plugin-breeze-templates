@@ -21,7 +21,7 @@ $settings	= isset( $data->settings ) ? $data->settings : ( isset( $template->set
 
 $parentType = CmsGlobal::TYPE_POST;
 
-$commentSubmitUrl = "cms/$parentType/submit-comment?slug=$model->slug&type=$model->type";
+$commentSubmitUrl = "cms/post/submit-comment?slug=$model->slug&type=$model->type";
 
 // Includes -----------------------
 
